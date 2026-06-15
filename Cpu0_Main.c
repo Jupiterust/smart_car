@@ -327,7 +327,10 @@ int core0_main (void)
 //        BT_flag
         sprintf(txt, "bt:%s ",angle_hint_str[BT_flag]);
         TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
-
+        if(line_record1 == true){
+            sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
+            UART_PutStr(UART1,txt);
+        }
         if(BT_flag_set){
             if(BT_flag_set == 1){
                 FSUS_SetServoAngle(servo_usart, 1, servo_angle[0], interval, power);

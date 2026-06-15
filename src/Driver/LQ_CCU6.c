@@ -90,6 +90,7 @@ void CCU60_CH0_IRQHandler(void)
 
     if(following_flow_start == true){
         position_loop((coordinate_struct *)following_flow1);
+        return;
     }
 
     if(is_task1_wheels_moving_to_next_point == true){
@@ -171,22 +172,33 @@ void CCU60_CH0_IRQHandler(void)
     }
     //angle_correct(0);
     //following_correct_by_icm();
-    if(following_correct_flag1 == true){
-        following_speed[0] = 22;following_speed[1] = 22;following_speed[2] = 22;following_speed[3] = 22;
-    }
-    if(following_correct_flag2 == true){
-        following_speed[0] = 22;following_speed[1] = 22;following_speed[2] = 22;following_speed[3] = 22;
-    }
+
     //循迹任务
    // angle_correct(0);
+    crossing_line_handle();
+    if(is_crossing_line1 == true){
+        following_speed[0] = 25;
+        following_speed[1] = 25;
+        following_speed[2] = 25;
+        following_speed[3] = 25;
+        angle_correct(0.0f);
+    }
+    if(is_crossing_line2 == true){
+        following_speed[0] = 25;
+        following_speed[1] = 25;
+        following_speed[2] = 25;
+        following_speed[3] = 25;
+        angle_correct(270.0f);
+    }
+    //
     motor_speed_loop((float *)following_speed);
 
 
-    following_speed[0] = 0;
-    following_speed[1] = 0;
-    following_speed[2] = 0;
-
-    following_speed[3] = 0;
+//    following_speed[0] = 0;
+//    following_speed[1] = 0;
+//    following_speed[2] = 0;
+//
+//    following_speed[3] = 0;
 
     // InductorGetSample();
     // 读取按键

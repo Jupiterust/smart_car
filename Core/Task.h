@@ -14,13 +14,6 @@
 #include <stdbool.h>
 
 
-extern volatile bool following_correct_flag1;
-extern volatile bool following_correct_flag2;
-
-
-
-void following_correct_by_icm(void);
-
 
 
 

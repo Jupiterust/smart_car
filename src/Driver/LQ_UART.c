@@ -144,46 +144,54 @@ void UART0_RX_IRQHandler(void)
                 break;
 
             case 3: // 验证帧尾: 0x0D
-                if (one_byte == 0x0D)
                 {
-                    // 只有帧头、数据长度、帧尾全部匹配，才解析
-                    speed_error_from_camera = (int32_t)((temp_buffer[0]) |
-                            (temp_buffer[1] << 8) |
-                            (temp_buffer[2] << 16) |
-                            (temp_buffer[3] << 24));
-                    //printf("hello %d\r\n",speed_error_from_camera);
-                    current_deviation = (float)speed_error_from_camera / 10000.0f;
-                    current_deviation *= 0.93;
-                    // 取绝对值用于计算减速比
-                    float abs_dev = (current_deviation > 0) ? current_deviation : -current_deviation;
-                    // 在直道 (abs_dev < 5) 时，速度接近 22
-                    // 在急弯 (abs_dev > 20) 时，速度大幅下降到 5 左右，甚至更低
-                    float v_x = 24.0f - (abs_dev * 0.455f);
-                    if (v_x < 15.0f) v_x = 15.0f; // 确保在极弯时还有一点微弱的前进动力
-
-                    // 当偏差很大时，我们需要爆发性的转向力
-                    // 使用 1.2 这个系数，当偏差为 30 时，W = 36，远超前进速度 3，实现原地自旋
-                    float v_y = current_deviation * 0.115f;   // 减小平移比重，防止侧滑
-                    float w = 0;
-                    if (abs_dev < 8.0f) {
-                        // 直道区间：低增益，保证平稳
-                        w = current_deviation * 0.45f;
-                    } else {
-                        // 弯道区间：高增益，确保能转过来
-                        // 使用 0.95 基础 + 差值补偿
-                        w = current_deviation * 0.835f;
-                    }
-                    // 4. O型麦轮解算 (20x30 底盘标准公式)
-                    following_speed[0] = v_x - v_y - w; // 左前
-                    following_speed[1] = v_x + v_y + w; // 右前
-                    following_speed[2] = v_x + v_y - w; // 左后
-                    following_speed[3] = v_x - v_y + w; // 右后
-                    rx_state = 0;
+                    // 最先处理
                     // 无论帧尾是否正确，都回到状态0重新寻找
                     rx_state = 0;
+                    if (one_byte == 0x0D)
+                    {
+                        if(is_crossing_line1 == true){
+                            return;
+                        }
+                        if(is_crossing_line2 == true){
+                            return;
+                        }
+                    // 只有帧头、数据长度、帧尾全部匹配，才解析
+                        speed_error_from_camera = (int32_t)((temp_buffer[0]) |
+                                (temp_buffer[1] << 8) |
+                                (temp_buffer[2] << 16) |
+                                (temp_buffer[3] << 24));
+                        //printf("hello %d\r\n",speed_error_from_camera);
+                        current_deviation = (float)speed_error_from_camera / 10000.0f;
+                        current_deviation *= 0.93;
+                        // 取绝对值用于计算减速比
+                        float abs_dev = (current_deviation > 0) ? current_deviation : -current_deviation;
+                        // 在直道 (abs_dev < 5) 时，速度接近 22
+                        // 在急弯 (abs_dev > 20) 时，速度大幅下降到 5 左右，甚至更低
+                        float v_x = 24.0f - (abs_dev * 0.455f);
+                        if (v_x < 15.0f) v_x = 15.0f; // 确保在极弯时还有一点微弱的前进动力
+
+                        // 当偏差很大时，我们需要爆发性的转向力
+                        // 使用 1.2 这个系数，当偏差为 30 时，W = 36，远超前进速度 3，实现原地自旋
+                      float v_y = current_deviation * 0.115f;   // 减小平移比重，防止侧滑
+                      float w = 0;
+                      if (abs_dev < 8.0f) {
+                          // 直道区间：低增益，保证平稳
+                          w = current_deviation * 0.45f;
+                      } else {
+                        // 弯道区间：高增益，确保能转过来
+                        // 使用 0.95 基础 + 差值补偿
+                          w = current_deviation * 0.835f;
+                      }
+                    // 4. O型麦轮解算 (20x30 底盘标准公式)
+                      following_speed[0] = v_x - v_y - w; // 左前
+                      following_speed[1] = v_x + v_y + w; // 右前
+                      following_speed[2] = v_x + v_y - w; // 左后
+                      following_speed[3] = v_x - v_y + w; // 右后
+
                 }
                 break;
-
+        }
 // task1 抓取圆柱逻辑
             case 4:
                 temp_buffer1[rx_count1++] = one_byte;

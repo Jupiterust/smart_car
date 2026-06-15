@@ -745,10 +745,10 @@ void following_flow1_init(void){
 
     following_flow1[0].flag = dis_start_y;
 
-    following_flow1[0].delta_distance.x_y_path = 17;
+    following_flow1[0].delta_distance.x_y_path = 15.7f;
     following_flow1[0].next_flag = dis_start_angle;
 
-    following_flow1[1].delta_distance.angle = 38;
+    following_flow1[1].delta_distance.angle = 40;
     following_flow1[1].flag = dis_start_angle;
     following_flow1[1].next_flag = dis_start_y;
 
@@ -890,6 +890,9 @@ void position_loop(coordinate_struct *Points){
             if(is_task1_wheels_moving_to_last_point == true){
                 is_task1_wheels_moving_to_last_point = false;
                 task1_start_yaw_correction = true;
+            }
+            if(following_flow_start == true){
+                following_flow_start = false;
             }
             break;
             /*
@@ -1083,6 +1086,9 @@ void position_loop(coordinate_struct *Points){
             if(is_task1_wheels_moving_to_last_point == true){
                 is_task1_wheels_moving_to_last_point = false;
             }
+            if(following_flow_start == true){
+                following_flow_start = false;
+            }
             break;
     }
 //    for(u16 i = 0; i < Point_length; i++){
@@ -1116,6 +1122,77 @@ void ICM_READ_REAL_GYRO(MY_ICM_STRUCT* icm_para){
     icm_para->az/= 4096.0f;
 }
 
+typedef enum{
+    CROSS_NONE = 0,
+    CROSS_WAIT_FIRST,    // 等待第一次cross line (yaw≈0)
+    CROSS_HANDLING_FIRST,
+    CROSS_WAIT_SECOND,   // 等待第二次cross line (yaw≈270)
+    CROSS_HANDLING_SECOND,
+    CROSS_DONE,
+}cross_line_state_enum;
 
+volatile cross_line_state_enum cross_state = CROSS_WAIT_FIRST;
+volatile bool is_crossing_line1 = false;
+volatile bool is_crossing_line2 = false;
+volatile bool line_record1 = false;
+volatile float crossing_line_only_total_path = 0;
+#define CROSS_LINE_DURATION_CNT1 350
+#define CROSS_LINE_DURATION_CNT2 21
+// 在5ms速度环里调用
+void crossing_line_handle(void){
+    float yaw = wheel_asix.yaw;
+    static u16 cross_timer = 0;     // 计时，用于"处理窗口"持续时间
+    static float yaw_dev_threshold = 1.0f; // yaw判定容差
+    static u16 record_pointer_distance = 0;  // 打印到第几个10cm
+    crossing_line_only_total_path += 0.00125f * (motor_pid.actual_speed[0] + motor_pid.actual_speed[1]
+                               + motor_pid.actual_speed[2] + motor_pid.actual_speed[3]);
+    if(crossing_line_only_total_path > record_pointer_distance * 10){
+        record_pointer_distance++;
+        line_record1 = true;
+    }
+    switch(cross_state){
+        case CROSS_WAIT_FIRST:
+            // 检测是否接近 yaw = 0
+            if(fabs(yaw - 0.0f) < yaw_dev_threshold){
+                cross_state = CROSS_HANDLING_FIRST;
+                cross_timer = 0;
+                // 进入第一个cross line的特殊处理（比如忽略视觉、直行）
+                is_crossing_line1 = true;   // 标志位，给视觉处理逻辑用，告诉它"现在别用视觉修正"
+            }
+            break;
 
+        case CROSS_HANDLING_FIRST:
+            cross_timer++;
+            // 假设小车以一定速度通过路口需要约 N 个5ms周期
+            // 比如车速10cm/s，路口宽度5cm，需要 0.5s = 100个周期
+            if(cross_timer >= CROSS_LINE_DURATION_CNT1){
+                is_crossing_line1 = false;  // 恢复视觉修正
+                cross_state = CROSS_WAIT_SECOND;
+            }
+            // 这段时间内可以让速度环按直行PWM跑（不依赖视觉偏角）
+            break;
 
+        case CROSS_WAIT_SECOND:
+            // 检测是否接近 yaw = 270
+            if(fabs(yaw - 270.0f) < yaw_dev_threshold){
+                cross_state = CROSS_HANDLING_SECOND;
+                cross_timer = 0;
+                is_crossing_line2 = true;
+            }
+            break;
+
+        case CROSS_HANDLING_SECOND:
+            cross_timer++;
+            if(cross_timer >= CROSS_LINE_DURATION_CNT2){
+                is_crossing_line2 = false;
+                cross_state = CROSS_DONE;
+            }
+            break;
+
+        case CROSS_DONE:
+            // 两次cross line都处理完了，后续巡线正常进行
+            break;
+        default:
+            break;
+    }
+}
