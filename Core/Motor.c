@@ -1,0 +1,1085 @@
+/*
+ * Motor.c
+ *
+ *  Created on: Mar 23, 2026
+ *      Author: Jupiter
+ */
+
+#include "Motor.h"
+#include "LQ_IIC_Gyro.h"
+// 先写底层驱动 以我们会使用的外设的方法，不仅只是为了熟悉基本函数操作，而且还是为了遇到问题时知道可能的所在地
+// 然后写调用底层驱动的算法 先就这两步 会#define现实中车的长度和宽度，以及轮子直径，方便算法映射现实
+// motor1
+//
+    //2 4 3
+#define code_is_wrong1  0
+
+// 用于传入速度环里的全局速度变量
+
+
+
+
+
+
+void motor_all_run(int* pwm_arr){
+   if(pwm_arr[0] < 0){
+#if code_is_wrong1
+       IfxPort_setPinLow(&MODULE_P21, 3);
+#else
+       Set_Motor1_BW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR1_PWM, (0-pwm_arr[0]), MOTOR_FREQUENCY);
+   }
+   else{
+#if code_is_wrong1
+       IfxPort_setPinHigh(&MODULE_P21, 3);
+#else
+       Set_Motor1_FW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR1_PWM, pwm_arr[0], MOTOR_FREQUENCY);
+   }
+
+   if(pwm_arr[1] < 0){
+#if code_is_wrong1
+       IfxPort_setPinLow(&MODULE_P32, 4);
+#else
+       Set_Motor2_BW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR2_PWM, (0-pwm_arr[1]), MOTOR_FREQUENCY);
+   }
+   else{
+#if code_is_wrong1
+       IfxPort_setPinHigh(&MODULE_P32, 4);
+#else
+       Set_Motor2_FW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR2_PWM, pwm_arr[1], MOTOR_FREQUENCY);
+   }
+
+   if(pwm_arr[2] < 0){
+#if code_is_wrong1
+       IfxPort_setPinHigh(&MODULE_P21, 5);
+#else
+       Set_Motor3_BW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR3_PWM, (0-pwm_arr[2]), MOTOR_FREQUENCY);
+   }
+   else{
+#if code_is_wrong1
+       IfxPort_setPinLow(&MODULE_P21, 5);
+#else
+       Set_Motor3_FW();
+#endif
+       ATOM_PWM_SetDuty(MOTOR3_PWM, pwm_arr[2], MOTOR_FREQUENCY);
+   }
+
+   if(pwm_arr[3] < 0){
+#if code_is_wrong1
+        IfxPort_setPinHigh(&MODULE_P22, 3);
+#else
+        Set_Motor4_BW();
+#endif
+        ATOM_PWM_SetDuty(MOTOR4_PWM, (0-pwm_arr[3]), MOTOR_FREQUENCY);
+    }
+    else{
+#if code_is_wrong1
+        IfxPort_setPinLow(&MODULE_P22, 3);
+#else
+        Set_Motor4_FW();
+#endif
+        ATOM_PWM_SetDuty(MOTOR4_PWM, pwm_arr[3], MOTOR_FREQUENCY);
+    }
+}
+
+// 3  2  1 4
+// ECPULSE1 = ENC_GetCounter(ENC2_InPut_P33_7);   // 02
+// ECPULSE2 = ENC_GetCounter(ENC4_InPut_P02_8);   // 04
+// ECPULSE3 = ENC_GetCounter(ENC5_InPut_P10_3);   // 05
+// ECPULSE4 = ENC_GetCounter(ENC6_InPut_P20_3);   // 06
+
+void encoder_clear(void){
+    MODULE_GPT120.T5.U = 0;
+    MODULE_GPT120.T4.U = 0;
+    MODULE_GPT120.T2.U = 0;
+    MODULE_GPT120.T6.U = 0;
+}
+
+
+void get_encoder(int* value){
+    value[0] = (signed short)MODULE_GPT120.T5.U;
+    MODULE_GPT120.T5.U = 0;
+    value[1] = (signed short)MODULE_GPT120.T4.U;
+    MODULE_GPT120.T4.U = 0;
+    value[2] = (signed short)MODULE_GPT120.T2.U;
+    MODULE_GPT120.T2.U = 0;
+    value[3] = (signed short)MODULE_GPT120.T6.U;
+    MODULE_GPT120.T6.U = 0;
+
+}
+
+void get_encoder_directly(int* value){
+     value[0] = (signed short)MODULE_GPT120.T5.U;
+     value[1] = (signed short)MODULE_GPT120.T4.U;
+     value[2] = (signed short)MODULE_GPT120.T2.U;
+     value[3] = (signed short)MODULE_GPT120.T6.U;
+}
+
+// 速度环
+// 目标速度计算
+
+#define RADIUS      2.92f       // 半径 cm
+#define MOTOR_RADIO 1.0f        // 减速比 一圈电机也转一圈
+#define MOTOR_T     0.005f      // 5ms一周期
+#define MOTOR_T_    200.0f      //  周期倒数
+#define MOTOR_PI    3.14159265f //
+#define MOTOR_C     501.4f      //转一圈所需要的编码值 10圈的平均值
+#define MOTOR_SPEED_PARA  ( (float)((RADIUS * 2.0f * MOTOR_PI * MOTOR_RADIO ) / (MOTOR_C * MOTOR_T )))
+
+#define GET_SPEED(encoder)       ((encoder) * MOTOR_SPEED_PARA)
+
+#define PID_MAX 10000
+#define PID_MIN -10000
+
+
+volatile Motor_pid_struct motor_pid = {{0}, {0}, {0}, {0},{0}, {0}, {0}, {0}, {0}, {0}};
+
+void PID_init(void){
+    motor_pid.k_p[0] = 3.6f;
+    motor_pid.k_p[1] = 3.6f;
+    motor_pid.k_p[2] = 3.6f;
+    motor_pid.k_p[3] = 3.6f;
+
+    motor_pid.k_i[0] = 3.251f;
+    motor_pid.k_i[1] = 3.251f;
+    motor_pid.k_i[2] = 3.251f;
+    motor_pid.k_i[3] = 3.251f;
+
+    motor_pid.k_d[0] = 1.0f;
+    motor_pid.k_d[1] = 1.0f;
+    motor_pid.k_d[2] = 1.0f;
+    motor_pid.k_d[3] = 1.0f;
+
+    // 其余均已在创立时清零
+}
+inline void get_real_speed(int * encoder_value, float * actual_speed){
+    actual_speed[0] = (float)encoder_value[0] *  2.507f;
+    actual_speed[1] = (float)encoder_value[1] *  2.507f;
+    actual_speed[2] = (float)encoder_value[2] *  2.507f;
+    actual_speed[3] = (float)encoder_value[3] *  2.507f;
+}
+
+
+char debug_massage[40] = {0};
+
+
+void all_error_clear(void){
+    for(u8 i = 0; i < 4; i++){
+        motor_pid.error[i] = 0;
+        motor_pid.last_error[i] = 0;
+    }
+}
+
+void motor_speed_loop(float *target_s){
+    u8 i = 0;
+    // 赋值 目标速度
+    for(i = 0; i < 4; i++){
+        motor_pid.target_speed[i] = target_s[i];
+    }
+    // 获取 编码值
+    get_encoder((int*)motor_pid.encoder_value);
+    // 由公式换算成cm/s的单位
+//    motor_pid.actual_speed[0] = GET_SPEED(motor_pid.encoder_value[0]);
+//    motor_pid.actual_speed[1] = GET_SPEED(motor_pid.encoder_value[1]);
+//    motor_pid.actual_speed[2] = GET_SPEED(motor_pid.encoder_value[2]);
+//    motor_pid.actual_speed[3] = GET_SPEED(motor_pid.encoder_value[3]);
+//    get_real_speed((int *)motor_pid.encoder_value,(float *)motor_pid.actual_speed);
+    motor_pid.actual_speed[0] = (float)motor_pid.encoder_value[0] *  3.507f;
+    motor_pid.actual_speed[1] = (float)motor_pid.encoder_value[1] *  3.507f;
+    motor_pid.actual_speed[2] = (float)motor_pid.encoder_value[2] *  3.507f;
+    motor_pid.actual_speed[3] = (float)motor_pid.encoder_value[3] *  3.507f;
+//    printf("%d %d %d %d \r\n", motor_pid.encoder_value[0], motor_pid.encoder_value[1], motor_pid.encoder_value[2], motor_pid.encoder_value[3]);
+//
+//sprintf(debug_massage,"%f %f %f %f \r\n", motor_pid.actual_speed[0], motor_pid.actual_speed[1], motor_pid.actual_speed[2], motor_pid.actual_speed[3]);
+//    printf("%s",debug_massage);
+
+    // 临时存储增量 pwm value
+    float delta_pid[4] = {0};
+    for(i = 0; i < 4; i++){
+        motor_pid.error[i] =  motor_pid.target_speed[i] -  motor_pid.actual_speed[i];
+        // k_p是用来预测的 k_i是速度积分
+        delta_pid[i] = ( motor_pid.error[i] - motor_pid.last_error[i] ) * motor_pid.k_p[i] + motor_pid.error[i] * motor_pid.k_i[i];
+        motor_pid.pwm_out[i] += (int)delta_pid[i];
+
+        motor_pid.last_error[i] = motor_pid.error[i];
+        if(motor_pid.pwm_out[i] > PID_MAX){
+            motor_pid.pwm_out[i] = PID_MAX;
+        }
+        if(motor_pid.pwm_out[i] < PID_MIN){
+            motor_pid.pwm_out[i] = PID_MIN;
+        }
+    }
+    int pwm_out[4] = {(int)motor_pid.pwm_out[0], (int)motor_pid.pwm_out[1], (int)motor_pid.pwm_out[2],(int)motor_pid.pwm_out[3]};
+    motor_all_run((int *)motor_pid.pwm_out);
+}
+// 全局变量angle由外界设置
+// 所以在设置角度的时候需要注意设置后就不能对angle这个角度做出任何赋值等操作
+// angle > 0 --> 右转
+// angle < 0 --> 左转
+
+// 左右转参数
+#define angle_derease_para    0.2438f
+// 这个参数只是测试而已
+//  右转
+// 2000,-2000,2000,-2000
+//  左转
+// -2000,2000,2000,-2000
+
+
+
+
+volatile float angle = 0.0f;
+volatile u8 angle_dir = 0;
+volatile int turning_speed[4] = {2200,-2000,2000,-2000};
+void turning_any_angle(void){
+    if(angle == 0.0f)
+        return;
+    else if(angle > 0){
+        angle -= angle_derease_para;
+        motor_all_run((int *)turning_speed);
+        if(angle < 0){
+            angle = 0.0f;
+        }
+    }
+}
+
+inline void get_ang_vel(float* all_vel,float * all_angle_vel){
+    all_vel[0] *=0.83333f;
+    all_vel[1] *=0.83333f;
+    all_vel[2] *=0.83333f;
+    all_vel[3] *=0.83333f;
+}
+
+// 下面的这个函数完全是我的兴趣爱好而写的
+// 既然我们的速度环单位是cm/s
+// 那我就有信息我们可以完成由坐标1到达坐标2的位置环
+//
+
+volatile u16 point_number = 0;
+volatile coordinate_struct Points[20] = {0};
+
+
+
+//void position_init(void){
+//    ;
+//}
+
+// 初始话时需要自己判断方向 功能测试
+void position_init(void){
+
+    //
+    point_number = 4;
+
+    Points[0].delta_distance.x_y_path = 10;
+    // LF=-V，RF=+V，LB=+V，RB=-V（V 为速度值） 1 2 3 4
+
+    Points[0].target_speed.x_y[0] = 14;
+    Points[0].target_speed.x_y[1] = 14;
+    Points[0].target_speed.x_y[2] = 14;
+    Points[0].target_speed.x_y[3] = 14;
+    Points[0].flag = dis_start_y; //这个和速度决定了行驶的路线
+
+
+    Points[1].delta_distance.x_y_path = 10;
+    // LF=-V，RF=+V，LB=+V，RB=-V（V 为速度值） 1 2 3 4
+
+    Points[1].target_speed.x_y[0] = -14;
+    Points[1].target_speed.x_y[1] = -14;
+    Points[1].target_speed.x_y[2] = -14;
+    Points[1].target_speed.x_y[3] = -14;
+    Points[1].flag = dis_start_y;
+
+    Points[2].delta_distance.x_y_path = 10;
+    // LF=-V，RF=+V，LB=+V，RB=-V（V 为速度值） 1 2 3 4
+    Points[2].target_speed.x_y[0] = -14;
+    Points[2].target_speed.x_y[1] = -14;
+    Points[2].target_speed.x_y[2] = -14;
+    Points[2].target_speed.x_y[3] = -14;
+    Points[2].flag = dis_start_y;
+
+    Points[3].delta_distance.x_y_path = 30;
+    // LF=-V，RF=+V，LB=+V，RB=-V（V 为速度值） 1 2 3 4
+
+    Points[3].target_speed.x_y[0] = 14;
+    Points[3].target_speed.x_y[1] = 14;
+    Points[3].target_speed.x_y[2] = 14;
+    Points[3].target_speed.x_y[3] = 14;
+    Points[3].flag = dis_start_y;
+}
+
+
+
+volatile bool is_position_loop_done = false;
+
+volatile coordinate_struct task1_points_to_put[1] = {0};
+volatile coordinate_struct task1_points_to_pick[3] = {0};
+
+// task1 测试
+void task1_get_put_position_loop_init(void){
+    task1_points_to_put[0].delta_distance.x_y_path = 7;
+
+    task1_points_to_put[0].target_speed.x_y[0] =  -10;
+    task1_points_to_put[0].target_speed.x_y[1] =   10;
+    task1_points_to_put[0].target_speed.x_y[2] =   10;
+    task1_points_to_put[0].target_speed.x_y[3] =  -10;
+    task1_points_to_put[0].flag = dis_start_x;
+
+}
+
+void task1_get_pick_position_loop_init(void){
+    task1_points_to_pick[0].delta_distance.x_y_path = 10;
+
+    task1_points_to_pick[0].target_speed.x_y[0] =  -10;
+    task1_points_to_pick[0].target_speed.x_y[1] =   10;
+    task1_points_to_pick[0].target_speed.x_y[2] =   10;
+    task1_points_to_pick[0].target_speed.x_y[3] =  -10;
+    task1_points_to_pick[0].flag = dis_start_x;
+
+    task1_points_to_pick[1].delta_distance.x_y_path = 20;
+
+    task1_points_to_pick[1].target_speed.x_y[0] =  -10;
+    task1_points_to_pick[1].target_speed.x_y[1] =  -10;
+    task1_points_to_pick[1].target_speed.x_y[2] =  -10;
+    task1_points_to_pick[1].target_speed.x_y[3] =  -10;
+    task1_points_to_pick[1].flag = dis_start_y;
+
+
+    task1_points_to_pick[2].delta_distance.x_y_path = 30;
+
+    task1_points_to_pick[2].target_speed.x_y[0] =  10;
+    task1_points_to_pick[2].target_speed.x_y[1] =  10;
+    task1_points_to_pick[2].target_speed.x_y[2] =  10;
+    task1_points_to_pick[2].target_speed.x_y[3] =  10;
+    task1_points_to_pick[2].flag = dis_start_y;
+
+}
+
+
+volatile coordinate_struct task1_encounter_small_cy_in_one_S[3] = {0};
+volatile coordinate_struct task1_back_to_two_from_small_cy_S[2] = {0};
+
+volatile coordinate_struct task1_encounter_medium_cy_in_one_S[2] = {0};
+volatile coordinate_struct task1_back_to_two_from_medium_cy_S[1] = {0};
+
+volatile coordinate_struct task1_encounter_large_cy_in_one_S[1] = {0};
+volatile coordinate_struct task1_back_to_two_from_large_cy_S[2] = {0};
+
+// state;
+void task1_encounter_small_cy_in_one(void){
+    point_number = 3;
+    task1_encounter_small_cy_in_one_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_small_cy_in_one_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_small_cy_in_one_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_small_cy_in_one_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_small_cy_in_one_S[0].flag = dis_start_x;
+
+    task1_encounter_small_cy_in_one_S[0].delta_distance.x_y_path = 9;
+    task1_encounter_small_cy_in_one_S[0].next_flag = dis_start_y;
+
+
+
+    task1_encounter_small_cy_in_one_S[1].target_speed.x_y[0] =   18;
+    task1_encounter_small_cy_in_one_S[1].target_speed.x_y[1] =   18;
+    task1_encounter_small_cy_in_one_S[1].target_speed.x_y[2] =   18;
+    task1_encounter_small_cy_in_one_S[1].target_speed.x_y[3] =   18;
+
+    task1_encounter_small_cy_in_one_S[1].flag = dis_start_y;
+
+    task1_encounter_small_cy_in_one_S[1].delta_distance.x_y_path = 7;
+    task1_encounter_small_cy_in_one_S[1].next_flag = dis_end;     // [1]完成后期望结束
+}
+
+void task1_back_to_two_from_small_cy(void){
+    point_number = 3;
+    task1_back_to_two_from_small_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_two_from_small_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_two_from_small_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_two_from_small_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_two_from_small_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_two_from_small_cy_S[0].delta_distance.x_y_path = 9;
+    task1_back_to_two_from_small_cy_S[0].next_flag = dis_start_y;
+
+
+    task1_back_to_two_from_small_cy_S[1].target_speed.x_y[0] =   -18;
+    task1_back_to_two_from_small_cy_S[1].target_speed.x_y[1] =   -18;
+    task1_back_to_two_from_small_cy_S[1].target_speed.x_y[2] =   -18;
+    task1_back_to_two_from_small_cy_S[1].target_speed.x_y[3] =   -18;
+
+    task1_back_to_two_from_small_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_two_from_small_cy_S[1].delta_distance.x_y_path = 4.5;
+    task1_back_to_two_from_small_cy_S[1].next_flag = dis_end;     // [1]完成后期望结束
+
+}
+
+
+//
+void task1_encounter_medium_cy_in_one(void){
+    point_number = 3;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_medium_cy_in_one_S[0].flag = dis_start_x;
+
+    task1_encounter_medium_cy_in_one_S[0].delta_distance.x_y_path = 9;
+    task1_encounter_medium_cy_in_one_S[0].next_flag = dis_start_y;
+
+
+    task1_encounter_medium_cy_in_one_S[1].target_speed.x_y[0] =   18;
+    task1_encounter_medium_cy_in_one_S[1].target_speed.x_y[1] =   18;
+    task1_encounter_medium_cy_in_one_S[1].target_speed.x_y[2] =   18;
+    task1_encounter_medium_cy_in_one_S[1].target_speed.x_y[3] =   18;
+
+    task1_encounter_medium_cy_in_one_S[1].flag = dis_start_y;
+
+    task1_encounter_medium_cy_in_one_S[1].delta_distance.x_y_path = 4.5;
+    task1_encounter_medium_cy_in_one_S[1].next_flag = dis_end;
+
+}
+
+void task1_back_to_two_from_medium_cy(void){
+    task1_back_to_two_from_medium_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_two_from_medium_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_two_from_medium_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_two_from_medium_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_two_from_medium_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_two_from_medium_cy_S[0].delta_distance.x_y_path = 9;
+}
+
+
+//
+void task1_encounter_large_cy_in_one(void){
+    task1_encounter_large_cy_in_one_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_large_cy_in_one_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_large_cy_in_one_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_large_cy_in_one_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_large_cy_in_one_S[0].flag = dis_start_x;
+
+    task1_encounter_large_cy_in_one_S[0].delta_distance.x_y_path = 9;
+}
+
+void task1_back_to_two_from_large_cy(void){
+    task1_back_to_two_from_large_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_two_from_large_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_two_from_large_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_two_from_large_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_two_from_large_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_two_from_large_cy_S[0].delta_distance.x_y_path = 9;
+    task1_back_to_two_from_large_cy_S[0].next_flag = dis_start_y;
+
+
+    task1_back_to_two_from_large_cy_S[1].target_speed.x_y[0] =   18;
+    task1_back_to_two_from_large_cy_S[1].target_speed.x_y[1] =   18;
+    task1_back_to_two_from_large_cy_S[1].target_speed.x_y[2] =   18;
+    task1_back_to_two_from_large_cy_S[1].target_speed.x_y[3] =   18;
+
+    task1_back_to_two_from_large_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_two_from_large_cy_S[1].delta_distance.x_y_path = 4;
+    task1_back_to_two_from_large_cy_S[1].next_flag = dis_end;
+}
+
+
+volatile coordinate_struct task1_encounter_small_cy_in_two_S[2] = {0};
+volatile coordinate_struct task1_back_to_three_from_small_cy_S[1] = {0};
+
+volatile coordinate_struct task1_encounter_medium_cy_in_two_S[1] = {0};
+volatile coordinate_struct task1_back_to_three_from_medium_cy_S[2] = {0};
+
+volatile coordinate_struct task1_encounter_large_cy_in_two_S[2] = {0};
+volatile coordinate_struct task1_back_to_three_from_large_cy_S[2] = {0};
+
+void task1_encounter_small_cy_in_two(void){
+    task1_encounter_small_cy_in_two_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_small_cy_in_two_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_small_cy_in_two_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_small_cy_in_two_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_small_cy_in_two_S[0].flag = dis_start_x;
+
+    task1_encounter_small_cy_in_two_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_small_cy_in_two_S[0].next_flag = dis_start_y;
+
+
+    task1_encounter_small_cy_in_two_S[1].target_speed.x_y[0] =   18;
+    task1_encounter_small_cy_in_two_S[1].target_speed.x_y[1] =   18;
+    task1_encounter_small_cy_in_two_S[1].target_speed.x_y[2] =   18;
+    task1_encounter_small_cy_in_two_S[1].target_speed.x_y[3] =   18;
+
+    task1_encounter_small_cy_in_two_S[1].flag = dis_start_y;
+
+    task1_encounter_small_cy_in_two_S[1].delta_distance.x_y_path = 4;
+    task1_encounter_small_cy_in_two_S[1].next_flag = dis_end;
+
+}
+
+void task1_back_to_three_from_small_cy(void){
+    task1_back_to_three_from_small_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_three_from_small_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_three_from_small_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_three_from_small_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_three_from_small_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_three_from_small_cy_S[0].delta_distance.x_y_path = 10;
+}
+
+
+void task1_encounter_medium_cy_in_two(void){
+    task1_encounter_medium_cy_in_two_S[0].target_speed.x_y[0] =   15;
+    task1_encounter_medium_cy_in_two_S[0].target_speed.x_y[1] =  -15;
+    task1_encounter_medium_cy_in_two_S[0].target_speed.x_y[2] =  -15;
+    task1_encounter_medium_cy_in_two_S[0].target_speed.x_y[3] =   15;
+
+    task1_encounter_medium_cy_in_two_S[0].flag = dis_start_x;
+
+    task1_encounter_medium_cy_in_two_S[0].delta_distance.x_y_path = 10;
+}
+
+void task1_back_to_three_from_medium_cy(void){
+    task1_back_to_three_from_medium_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_three_from_medium_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_three_from_medium_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_three_from_medium_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_three_from_medium_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_three_from_medium_cy_S[0].delta_distance.x_y_path = 10;
+    task1_back_to_three_from_medium_cy_S[0].next_flag = dis_start_y;
+
+    task1_back_to_three_from_medium_cy_S[1].target_speed.x_y[0] =   18;
+    task1_back_to_three_from_medium_cy_S[1].target_speed.x_y[1] =   18;
+    task1_back_to_three_from_medium_cy_S[1].target_speed.x_y[2] =   18;
+    task1_back_to_three_from_medium_cy_S[1].target_speed.x_y[3] =   18;
+
+    task1_back_to_three_from_medium_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_three_from_medium_cy_S[1].delta_distance.x_y_path = 4;
+    task1_back_to_three_from_medium_cy_S[1].next_flag = dis_end;
+}
+
+
+void task1_encounter_large_cy_in_two(void){
+
+    task1_encounter_large_cy_in_two_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_large_cy_in_two_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_large_cy_in_two_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_large_cy_in_two_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_large_cy_in_two_S[0].flag = dis_start_x;
+
+    task1_encounter_large_cy_in_two_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_large_cy_in_two_S[0].next_flag = dis_start_y;
+
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[0] =   -18;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[1] =   -18;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[2] =   -18;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[3] =   -18;
+
+    task1_encounter_large_cy_in_two_S[1].flag = dis_start_y;
+
+    task1_encounter_large_cy_in_two_S[1].delta_distance.x_y_path = 4;
+
+    task1_encounter_large_cy_in_two_S[1].next_flag = dis_end;
+}
+
+void task1_back_to_three_from_large_cy(void){
+    task1_back_to_three_from_large_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_three_from_large_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_three_from_large_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_three_from_large_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_three_from_large_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_three_from_large_cy_S[0].delta_distance.x_y_path = 10;
+    task1_back_to_three_from_large_cy_S[0].next_flag = dis_start_y;
+
+
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[0] =   18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[1] =   18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[2] =   18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[3] =   18;
+
+    task1_back_to_three_from_large_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_three_from_large_cy_S[1].delta_distance.x_y_path = 6;
+    task1_back_to_three_from_large_cy_S[1].next_flag = dis_end;
+}
+
+volatile coordinate_struct task1_encounter_small_cy_in_three_S[1] = {0};
+volatile coordinate_struct task1_back_to_following_from_small_cy_S[1] = {0};
+
+volatile coordinate_struct task1_encounter_medium_cy_in_three_S[2] = {0};
+volatile coordinate_struct task1_back_to_following_from_medium_cy_S[1] = {0};
+
+volatile coordinate_struct task1_encounter_large_cy_in_three_S[2] = {0};
+volatile coordinate_struct task1_back_to_following_from_large_cy_S[1] = {0};
+
+void task1_encounter_small_cy_in_three(void){
+    task1_encounter_small_cy_in_three_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_small_cy_in_three_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_small_cy_in_three_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_small_cy_in_three_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_small_cy_in_three_S[0].flag = dis_start_x;
+
+    task1_encounter_small_cy_in_three_S[0].delta_distance.x_y_path = 10;
+}
+
+void task1_back_to_following_from_small_cy(void){
+    task1_back_to_following_from_small_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_following_from_small_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_following_from_small_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_following_from_small_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_following_from_small_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_following_from_small_cy_S[0].delta_distance.x_y_path = 6;
+}
+
+
+void task1_encounter_medium_cy_in_three(void){
+    task1_encounter_medium_cy_in_three_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_medium_cy_in_three_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_medium_cy_in_three_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_medium_cy_in_three_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_medium_cy_in_three_S[0].flag = dis_start_x;
+
+    task1_encounter_medium_cy_in_three_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_medium_cy_in_three_S[0].next_flag = dis_start_y;
+
+
+
+    task1_encounter_medium_cy_in_three_S[1].target_speed.x_y[0] =    -18;
+    task1_encounter_medium_cy_in_three_S[1].target_speed.x_y[1] =    -18;
+    task1_encounter_medium_cy_in_three_S[1].target_speed.x_y[2] =    -18;
+    task1_encounter_medium_cy_in_three_S[1].target_speed.x_y[3] =    -18;
+
+    task1_encounter_medium_cy_in_three_S[1].flag = dis_start_y;
+
+    task1_encounter_medium_cy_in_three_S[1].delta_distance.x_y_path = 4;
+    task1_encounter_medium_cy_in_three_S[1].next_flag = dis_end;
+}
+
+void task1_back_to_following_from_medium_cy(void){
+    task1_back_to_following_from_medium_cy_S[0].target_speed.x_y[0] =  15;
+    task1_back_to_following_from_medium_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_following_from_medium_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_following_from_medium_cy_S[0].target_speed.x_y[3] =  15;
+
+    task1_back_to_following_from_medium_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_following_from_medium_cy_S[0].delta_distance.x_y_path = 6;
+
+
+}
+
+
+void task1_encounter_large_cy_in_three(void){
+    task1_encounter_large_cy_in_three_S[0].target_speed.x_y[0] =  -15;
+    task1_encounter_large_cy_in_three_S[0].target_speed.x_y[1] =   15;
+    task1_encounter_large_cy_in_three_S[0].target_speed.x_y[2] =   15;
+    task1_encounter_large_cy_in_three_S[0].target_speed.x_y[3] =  -15;
+
+    task1_encounter_large_cy_in_three_S[0].flag = dis_start_x;
+
+    task1_encounter_large_cy_in_three_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_large_cy_in_three_S[0].next_flag = dis_start_y;
+
+
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[0] =    -18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[1] =    -18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[2] =    -18;
+    task1_back_to_three_from_large_cy_S[1].target_speed.x_y[3] =    -18;
+
+    task1_back_to_three_from_large_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_three_from_large_cy_S[1].delta_distance.x_y_path = 6;
+    task1_encounter_large_cy_in_three_S[0].next_flag = dis_end;
+}
+
+void task1_back_to_following_from_large_cy(void){
+    task1_back_to_following_from_large_cy_S[0].target_speed.x_y[0] =   15;
+    task1_back_to_following_from_large_cy_S[0].target_speed.x_y[1] =  -15;
+    task1_back_to_following_from_large_cy_S[0].target_speed.x_y[2] =  -15;
+    task1_back_to_following_from_large_cy_S[0].target_speed.x_y[3] =   15;
+
+    task1_back_to_following_from_large_cy_S[0].flag = dis_start_x;
+
+    task1_back_to_following_from_large_cy_S[0].delta_distance.x_y_path = 4;
+}
+
+void task1_all_position_loop_init(void){
+    ;
+    // state;
+    task1_encounter_small_cy_in_one();
+    task1_back_to_two_from_small_cy();
+
+    task1_encounter_medium_cy_in_one();
+    task1_back_to_two_from_medium_cy();
+
+    task1_encounter_large_cy_in_one();
+    task1_back_to_two_from_large_cy();
+
+
+    task1_encounter_small_cy_in_two();
+    task1_back_to_three_from_small_cy();
+
+    task1_encounter_medium_cy_in_two();
+    task1_back_to_three_from_medium_cy();
+
+    task1_encounter_large_cy_in_two();
+    task1_back_to_three_from_large_cy();
+
+
+    task1_encounter_small_cy_in_three();
+    task1_back_to_following_from_small_cy();
+
+    task1_encounter_medium_cy_in_three();
+    task1_back_to_following_from_medium_cy();
+
+    task1_encounter_large_cy_in_three();
+    task1_back_to_following_from_large_cy();
+}
+
+void angle_stable(float angle){
+    float angle_dev = wheel_asix.yaw - angle;
+    if(angle_dev > -0.8f && angle_dev < 0.8f){
+        angle_dev = 0;
+    }
+    static float last_dev = 0;
+    static float Kp = 2;
+    static float Kd = 0.5;
+    float d = angle_dev - last_dev;
+    last_dev = angle_dev;
+    angle_dev = Kp * angle_dev + Kd * d;
+    float yaw_correction_speed[4] = {angle_dev, -angle_dev, angle_dev,-angle_dev};
+    for(u8 i = 0; i < 4; i++){
+        if(yaw_correction_speed[i]> 8){
+            yaw_correction_speed[i] = 8;
+        }
+        if(yaw_correction_speed[i] < -8){
+            yaw_correction_speed[i] = -8;
+        }
+    }
+    motor_speed_loop(yaw_correction_speed);
+}
+
+
+void angle_correct(float angle){
+    float angle_dev = wheel_asix.yaw - angle;
+    if(angle_dev > -0.8f && angle_dev < 0.8f){
+        angle_dev = 0;
+    }
+    static float last_dev = 0;
+    static float Kp = 2;
+    static float Kd = 0.5;
+    float d = angle_dev - last_dev;
+    last_dev = angle_dev;
+    angle_dev = Kp * angle_dev + Kd * d;
+    float yaw_correction_speed[4] = {angle_dev, -angle_dev, angle_dev,-angle_dev};
+    for(u8 i = 0; i < 4; i++){
+        if(yaw_correction_speed[i]> 8){
+            yaw_correction_speed[i] = 8;
+        }
+        if(yaw_correction_speed[i] < -8){
+            yaw_correction_speed[i] = -8;
+        }
+    }
+    following_speed[0] = following_speed[0] + yaw_correction_speed[0];
+    following_speed[1] = following_speed[1] + yaw_correction_speed[1];
+    following_speed[2] = following_speed[2] + yaw_correction_speed[2];
+    following_speed[3] = following_speed[3] + yaw_correction_speed[3];
+
+   // motor_speed_loop(yaw_correction_speed);
+}
+
+void position_loop(coordinate_struct *Points){
+    // 记录当前 位置环行驶的点数
+    static volatile u16 index = 0;
+    //
+
+    //
+    static volatile u16 last_index = 0;
+    // 因为是增量是pwm, 提取设置速度附加的pwm来防止 变化太快产生影响
+    static volatile int tem_pwm[4] = {0};
+    // 仅用来第一次设置pwm,来避免速度环误差产生太快影响
+    static volatile int tem_pwm_flag[6] = {0};
+    if(is_position_loop_done == true){
+        return;
+    }
+    switch(Points[index].flag){
+        case dis_idle:
+            if(tem_pwm_flag[0] == 0){
+                tem_pwm[0] = 0;tem_pwm[1] = 0;tem_pwm[2] = 0;tem_pwm[3] = 0;motor_all_run((int *)tem_pwm);
+                tem_pwm_flag[0] = 1;
+            }
+            index = 0;
+            is_position_loop_done = true;
+            for(u8 i = 0; i < 6; i++){
+                tem_pwm_flag[i] = 0;
+            }
+
+            if(is_task1_wheels_moving_to_next_point == true){
+                is_task1_wheels_moving_to_next_point = false;
+                task1_start_yaw_correction = true;
+            }
+            if(is_task1_wheels_moving_to_last_point == true){
+                is_task1_wheels_moving_to_last_point = false;
+                task1_start_yaw_correction = true;
+            }
+            break;
+            /*
+//            Points[index].flag = dis_start_y;
+//            Points[index].delta_distance.x = Points[index].target_point.x; // cm
+//            Points[index].delta_distance.y = Points[index].target_point.y;
+//            if(Points[index].target_point.y > 0)
+//            {
+//                Points[index].speed[0] = 10;
+//                Points[index].speed[1] = 10;
+//                Points[index].speed[2] = 10;
+//                Points[index].speed[3] = 10;sa
+//            }
+//            else{
+//                Points[index].speed[0] = -10;
+//                Points[index].speed[1] = -10;
+//                Points[index].speed[2] = -10;
+//                Points[index].speed[3] = -10;
+//            }
+//            Points[index].position.x = 0;
+//            Points[index].position.y = 0;
+//            break;
+ */
+        case dis_start_y:
+            if(tem_pwm_flag[1] == 0){ // 提前设置速度，因为这是增量式速度环
+                all_error_clear(); // 清理所有error
+                motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
+                motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
+                motor_pid.pwm_out[2] = Points[index].target_speed.x_y[2] * 207;
+                motor_pid.pwm_out[3] = Points[index].target_speed.x_y[3] * 207;
+                motor_all_run((int *)tem_pwm);
+                tem_pwm_flag[1] = 1;
+            }
+            motor_speed_loop((float *)Points[index].target_speed.x_y);
+//            Points[index].clock.ms+=5;
+            // 0.005 / 4 * sum(all_speed) 积分成速度
+            Points[index].position.x_y_path += 0.00125f *( motor_pid.actual_speed[0] + motor_pid.actual_speed[1] + motor_pid.actual_speed[2]+ motor_pid.actual_speed[3]);
+            if(fabs(Points[index].delta_distance.x_y_path) <= fabs(Points[index].position.x_y_path)){
+                last_index = index;
+                index++;
+                if(index >= point_number)
+                {
+                    index = point_number - 1;
+                    Points[index].flag = dis_end;
+                    break;
+                }
+                if(Points[last_index].next_flag == Points[index].flag){
+                    // 修改提前提前调整速度flag
+                    tem_pwm_flag[(Points[index].flag)] = 0;
+                    break;
+                    // 进入下一个状态
+                }
+                else{
+                    // 赋值环节出现问题 进入空闲状态
+                    Points[index].flag = dis_idle;
+                }
+
+            }
+            break;
+        case dis_start_x:
+            if(tem_pwm_flag[2] == 0){
+                all_error_clear(); // 清理所以error // 无需清空 encoder 因为 这里设置了速度，下一环节 get_encoder 可以读取到已经设置过的编码值，而且每次循环均有将编码器值清除这种行为
+                motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
+                motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
+                motor_pid.pwm_out[2] = Points[index].target_speed.x_y[2] * 207;
+                motor_pid.pwm_out[3] = Points[index].target_speed.x_y[3] * 207;
+                motor_all_run((int *)tem_pwm);
+                tem_pwm_flag[2] = 1;
+            }
+            motor_speed_loop((float *)Points[index].target_speed.x_y);
+            // L = 0.005 / 4 * abs(sum(all_speed))
+            // 转化为 cm/s的单位
+            Points[index].position.x_y_path +=  0.00125f * (fabs(motor_pid.actual_speed[0]) +fabs(motor_pid.actual_speed[1])+ fabs(motor_pid.actual_speed[2])+ fabs(motor_pid.actual_speed[3]));
+            // 总路程 和 积分的路程比较
+            if(fabs(Points[index].delta_distance.x_y_path) <= fabs(Points[index].position.x_y_path)){
+                last_index = index;
+                index++;
+                if(index >= point_number)
+                {
+                    index = point_number - 1;
+                    Points[index].flag = dis_end;
+                    break;
+                }
+                if(Points[last_index].next_flag == Points[index].flag){
+                    tem_pwm_flag[(Points[index].flag)] = 0;
+                    break;
+                }
+                else{
+                    Points[index].flag = dis_idle;
+                }
+            }
+            break;
+        case dis_start_x_y:
+            if(tem_pwm_flag[3] == 0){
+                all_error_clear(); // 清理所以error // 无需清空 encoder 因为 这里设置了速度，下一环节 get_encoder 可以读取到已经设置过的编码值，而且每次循环均有将编码器值清除这种行为
+                motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
+                motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
+                motor_pid.pwm_out[2] = Points[index].target_speed.x_y[2] * 207;
+                motor_pid.pwm_out[3] = Points[index].target_speed.x_y[3] * 207;
+                motor_all_run((int *)tem_pwm);
+                tem_pwm_flag[3] = 1;
+            }
+            motor_speed_loop((float *)Points[index].target_speed.x_y);
+            // L = 0.005 / 4 * abs(sum(all_speed))
+            // 转化为 cm/s的单位
+            Points[index].position.x_y_path +=  0.00125f * (fabs(motor_pid.actual_speed[0]) +fabs(motor_pid.actual_speed[1])+ fabs(motor_pid.actual_speed[2])+ fabs(motor_pid.actual_speed[3]));
+            if(fabs(Points[index].delta_distance.x_y_path) <= fabs(Points[index].position.x_y_path)){
+                last_index = index;
+                index++;
+                if(index >= point_number)
+                {
+                    index = point_number - 1;
+                    Points[index].flag = dis_end;
+                    break;
+                }
+                if(Points[last_index].next_flag == Points[index].flag){
+                    tem_pwm_flag[(Points[index].flag)] = 0;
+                    break;
+                }
+                else{
+                    Points[index].flag = dis_idle;
+                }
+            }
+            break;
+        case dis_start_angle:
+            if(tem_pwm_flag[4] == 0){
+                all_error_clear(); // 清理所以error
+                motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
+                motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
+                motor_pid.pwm_out[2] = Points[index].target_speed.x_y[2] * 207;
+                motor_pid.pwm_out[3] = Points[index].target_speed.x_y[3] * 207;
+                motor_all_run((int *)tem_pwm);
+                tem_pwm_flag[4] = 1;
+            }
+            //
+            motor_speed_loop((float *)Points[index].target_speed.x_y);
+            // 将实际速度转化为角速度
+            get_ang_vel((float *)motor_pid.actual_speed, (float *)Points[index].target_speed.w);
+            Points[index].position.angle += 0.00125f *(fabs(Points[index].target_speed.w[0]) +fabs(Points[index].target_speed.w[1]) +fabs(Points[index].target_speed.w[2]) + fabs(Points[index].target_speed.w[3]));
+            if(Points[index].position.angle >= Points[index].delta_distance.angle){
+                last_index = index;
+                index++;
+                if(index >= point_number)
+                {
+                    index = point_number - 1;
+                    Points[index].flag = dis_end;
+                    break;
+                }
+                if(Points[last_index].next_flag == Points[index].flag){
+                    tem_pwm_flag[(Points[index].flag)] = 0;
+                    break;
+                }
+                else{
+                    Points[index].flag = dis_idle;
+                }
+            }
+            break;
+        case dis_end:
+            index = 0;
+            is_position_loop_done = true;
+            for(u8 i = 0; i < 6; i++){
+                tem_pwm_flag[i] = 0;
+            }
+            tem_pwm[0] = 0;
+            tem_pwm[1] = 0;
+            tem_pwm[2] = 0;
+            tem_pwm[3] = 0;
+            motor_all_run((int *)tem_pwm);
+            if(is_task1_wheels_moving_to_next_point == true){
+                is_task1_wheels_moving_to_next_point = false;
+            }
+            if(is_task1_wheels_moving_to_last_point == true){
+                is_task1_wheels_moving_to_last_point = false;
+            }
+            break;
+    }
+//    for(u16 i = 0; i < Point_length; i++){
+//    }
+//
+}
+
+
+
+
+volatile MOTOR_ICM_TRACKING_STRUCT motor_icm_track = {0};
+
+
+
+void ICM_READ_REAL_GYRO(MY_ICM_STRUCT* icm_para){
+    unsigned char  buf[14],res;
+    res=MPU_Read_Len(MPU6050_ADDR,0X1F,12,buf);
+    icm_para->ax=((uint16)buf[0]<<8)|buf[1];
+    icm_para->ay=((uint16)buf[2]<<8)|buf[3];
+    icm_para->az=((uint16)buf[4]<<8)|buf[5];
+    icm_para->gx=((uint16)buf[6]<<8)|buf[7];
+    icm_para->gy=((uint16)buf[8]<<8)|buf[9];
+    icm_para->gz=((uint16)buf[10]<<8)|buf[11];
+
+    icm_para->gx /= 32.8f;
+    icm_para->gy /= 32.8f;
+    icm_para->gz /= 32.8f;
+
+    icm_para->ax/= 4096.0f;
+    icm_para->ay/= 4096.0f;
+    icm_para->az/= 4096.0f;
+}
+
+
+
+void run_in_target_angle(){
+    static float temp_angle = 0.0f;
+    ICM_READ_REAL_GYRO((MY_ICM_STRUCT *)&motor_icm_track.icm_para);
+    // 5ms运行一次
+    temp_angle+=(motor_icm_track.icm_para.gz * 0.005);
+
+    if(motor_icm_track.FLAG == TRACKING_BY_ICM_OFF)
+        return;
+    else {
+        if(temp_angle > motor_icm_track.target_angle){
+            motor_icm_track.speed[0] = 18;
+            motor_icm_track.speed[1] = 23;
+            motor_icm_track.speed[2] = 18;
+            motor_icm_track.speed[3] = 23;
+        }
+        else if(temp_angle < motor_icm_track.target_angle){
+            motor_icm_track.speed[0] = 23;
+            motor_icm_track.speed[1] = 18;
+            motor_icm_track.speed[2] = 23;
+            motor_icm_track.speed[3] = 18;
+        }
+        motor_speed_loop((float *)motor_icm_track.speed);
+    }
+
+}
+
+

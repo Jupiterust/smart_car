@@ -1,0 +1,72 @@
+/*
+ * Servo.h
+ *
+ *  Created on: Apr 17, 2026
+ *      Author: TX
+ */
+
+#ifndef CORE_SERVO_H_
+#define CORE_SERVO_H_
+
+#include "fashion_star_uart_servo_examples.h"
+#include "fashion_star_uart_servo.h"
+#include "user_uart.h"
+#include "include.h"
+#include <stdbool.h>
+
+#define SERVO1_ADDR     0X00
+#define SERVO2_ADDR     0X01
+#define SERVO3_ADDR     0X02
+#define SERVO4_ADDR     0X03
+#define SERVO5_ADDR     0X04
+
+
+typedef enum{
+    PUMP_IDLE = 0,
+    PUMP_ON = 1,
+    PUMP_OFF = 2,
+}AIR_PUMP_STATE;
+
+typedef struct{
+        float angle[5];
+        u16 interval[5];
+        u8 id[5];
+        ServoData servo_data[5];
+        AIR_PUMP_STATE pump_state;
+        FSUS_sync_servo sync_servo[5];
+}dummy_struct;
+
+extern volatile dummy_struct my_dummy;
+extern float angle_sequence[20][5];
+
+
+void Servo_angle_move_Syn(float* angle, u16* interval);
+void Servo_angle_read(float* angle);
+void Air_pump_pwm_init();
+void air_pump_pick_up(void);
+
+#define AIR_PUMP_PWM1               IfxGtm_ATOM2_0_TOUT32_P33_10_OUT
+#define AIR_PUMP_CRL_PWM2           IfxGtm_ATOM2_5_TOUT35_P33_13_OUT
+
+#define SERVO_PERIOD_F      50
+#define PUMP_OFF_CCR        500
+#define PWMP_ON_CCR         1300
+
+void TASK1_PICK_OBJECT_UP(void);
+
+void TASK1_PUT_OBJECT(void);
+
+void TASK1_FLOW(void);
+extern volatile bool is_task1_wheels_moving_to_next_point;
+extern volatile bool is_task1_wheels_moving_to_last_point;
+
+
+
+
+
+
+
+
+
+
+#endif /* CORE_SERVO_H_ */
