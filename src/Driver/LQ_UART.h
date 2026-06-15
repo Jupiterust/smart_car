@@ -260,6 +260,6 @@ extern uint32_t peak,intg;
 
 
 extern IfxAsclin_Asc g_UartConfig[4];
-
+extern volatile uint32_t rx_irq_count;
 
 #endif /* 0_APPSW_TRICORE_APP_LQ_ASC_H_ */

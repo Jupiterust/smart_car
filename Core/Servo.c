@@ -176,4 +176,22 @@ void TASK1_FLOW(void){
     }
 }
 
+void angle_all_read(void){
+    ServoData temp_servo[1] = {0};
+     static float temp_angles[4] = {0};
+     char temp_buffer[20] = {20};
+     for(u8 i = 1; i <= 4; i++){
+         int ret = FSUS_ServoMonitor(servo_usart, i, temp_servo);
+         if (ret == 0) {
+             temp_angles[i-1] = temp_servo[0].angle;  // ÐÞÕýÏÂ±ê
+         } else {
+             printf("servo %d read fail\r\n", i);
+         }
+     }
+     sprintf(temp_buffer,"angles: %0.2f %0.2f %0.2f %0.2f \r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3]);
+     UART_PutStr(UART1,temp_buffer);
+     printf("angles: %0.2f %0.2f %0.2f %0.2f %u\r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3], rx_irq_count);
+
+}
+
 

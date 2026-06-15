@@ -230,4 +230,7 @@ extern volatile coordinate_struct task1_back_to_following_from_medium_cy_S[1];
 extern volatile coordinate_struct task1_encounter_large_cy_in_three_S[2];
 extern volatile coordinate_struct task1_back_to_following_from_large_cy_S[1];
 
+extern volatile coordinate_struct following_flow1[3];
+
+
 #endif /* CORE_MOTOR_H_ */

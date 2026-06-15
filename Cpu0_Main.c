@@ -275,16 +275,7 @@ int core0_main (void)
     delayms(100);
     //  0
     //  30
-    ServoData temp_servo[1] = {0};
-    static float temp_angles[4] = {0};
 
-//    for(u8 i =1; i <= 4; i++){
-//        FSUS_ServoMonitor(servo_usart,i,temp_servo);
-//        temp_angles[i] = temp_servo[0].angle;
-//    }
-
-    sprintf(txt,"angles: %0.2f %0.2f %0.2f %0.2f \r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3]);
-    UART_PutStr(UART1,txt);
     // -58
     // 35
     //Servo angle:{0.0f, -75.0f, 27.0f, -35.0f};
@@ -295,6 +286,7 @@ int core0_main (void)
     FSUS_SetServoAngle(servo_usart, 3, 28.0f, interval, power);
     delayms(10);
     FSUS_SetServoAngle(servo_usart, 4, -35.0f, interval, power);
+    delayms(100);
 
 
     // 是否开启 角度修正
@@ -307,6 +299,7 @@ int core0_main (void)
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
     wheel_system_tick.does_tick_start = true;
+    following_flow_start = true;
     while (1)	//主循环
     {
 #if TFT_VERSION

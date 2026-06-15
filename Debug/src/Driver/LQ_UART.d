@@ -526,3 +526,5 @@ LQ_UART.o :	..\src\Driver\LQ_CCU6.h
 ..\src\Driver\LQ_CCU6.h :
 LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :

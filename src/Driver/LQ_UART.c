@@ -446,54 +446,7 @@ void UART1_ER_IRQHandler(void)
     /* 用户代码 */
 }
 
-
-uint16_t point1 ;
-LidarPointTypedef Pack_Data[12];/* 雷达接收的数据储存在这个变量之中 */
-LidarPointTypedef Pack_sum;     /* 输出结果储存 */
-uint16_t receive_cnt;
-uint8_t confidence;
-uint16_t distance,noise,reftof;
-uint32_t peak,intg;
-
-
-void data_process(void)/*数据处理函数，完成一帧之后可进行数据处理*/
-{
-        /* 计算距离 */
-        u8 i;
-        static u16 count = 0;
-        LidarPointTypedef Pack_sum;
-        for(i=0;i<12;i++)                                   /* 12个点取平均 */
-        {
-                if(Pack_Data[i].distance != 0)  /* 去除0的点 */
-                {
-                        count++;
-                        Pack_sum.distance += Pack_Data[i].distance;
-                        Pack_sum.noise += Pack_Data[i].noise;
-                        Pack_sum.peak += Pack_Data[i].peak;
-                        Pack_sum.confidence += Pack_Data[i].confidence;
-                        Pack_sum.intg += Pack_Data[i].intg;
-                        Pack_sum.reftof += Pack_Data[i].reftof;
-                }
-        }
-        if(count !=0)
-        {
-
-                    distance = Pack_sum.distance/count;
-                    noise = Pack_sum.noise/count;
-                    peak = Pack_sum.peak/count;
-                    confidence = Pack_sum.confidence/count;
-                    intg = Pack_sum.intg/count;
-                    reftof = Pack_sum.reftof/count;
-                    Pack_sum.distance = 0;
-                    Pack_sum.noise = 0;
-                    Pack_sum.peak = 0;
-                    Pack_sum.confidence = 0;
-                    Pack_sum.intg = 0;
-                    Pack_sum.reftof = 0;
-                    count = 0;
-        }
-}
-
+volatile uint32_t rx_irq_count = 0;
 
 void UART2_RX_IRQHandler(void)
 {
@@ -502,12 +455,13 @@ void UART2_RX_IRQHandler(void)
     uint8_t ucTemp = 0;
     Ifx_SizeT count = 1;
     IfxAsclin_Asc_read(&g_UartConfig[2], &ucTemp, &count, TIME_INFINITE);
-
+    rx_irq_count++;
     if (count > 0)
     {
         RingBuffer_Push(FSUS_Usart.recvBuf, ucTemp);
     }
 }
+
 void UART2_TX_IRQHandler(void)
 {
     IfxAsclin_Asc_isrTransmit(&g_UartConfig[2]);

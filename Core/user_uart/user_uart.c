@@ -14,6 +14,7 @@ void User_Uart_Init(IfxAsclin_Asc *ascHandle)
     FSUS_Usart.recvBuf = &usart1RecvRingBuf;
     FSUS_Usart.sendBuf = &usart1SendRingBuf;
     FSUS_Usart.ascHandle = ascHandle;
+
 }
 
 // TC264 串口发送实现
@@ -25,6 +26,7 @@ void Usart_SendAll(Usart_DataTypeDef *usart)
         // 使用 iLLD 阻塞发送
         IfxAsclin_Asc_blockingWrite(usart->ascHandle, value);
     }
+
 }
 
 /*

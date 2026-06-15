@@ -91,6 +91,12 @@ void motor_all_run(int* pwm_arr){
     }
 }
 
+void motor_all_stop(void){
+
+    int temp_speed[4] = {0};
+    motor_all_run(temp_speed);
+    encoder_clear();
+}
 // 3  2  1 4
 // ECPULSE1 = ENC_GetCounter(ENC2_InPut_P33_7);   // 02
 // ECPULSE2 = ENC_GetCounter(ENC4_InPut_P02_8);   // 04
@@ -715,7 +721,7 @@ void task1_encounter_large_cy_in_three(void){
     task1_back_to_three_from_large_cy_S[1].flag = dis_start_y;
 
     task1_back_to_three_from_large_cy_S[1].delta_distance.x_y_path = 6;
-    task1_encounter_large_cy_in_three_S[0].next_flag = dis_end;
+    task1_back_to_three_from_large_cy_S[1].next_flag = dis_end;
 }
 
 void task1_back_to_following_from_large_cy(void){
@@ -727,6 +733,41 @@ void task1_back_to_following_from_large_cy(void){
     task1_back_to_following_from_large_cy_S[0].flag = dis_start_x;
 
     task1_back_to_following_from_large_cy_S[0].delta_distance.x_y_path = 4;
+}
+
+volatile coordinate_struct following_flow1[3] = {0};
+
+void following_flow1_init(void){
+    following_flow1[0].target_speed.x_y[0] =  27;
+    following_flow1[0].target_speed.x_y[1] =  27;
+    following_flow1[0].target_speed.x_y[2] =  27;
+    following_flow1[0].target_speed.x_y[3] =  27;
+
+    following_flow1[0].flag = dis_start_y;
+
+    following_flow1[0].delta_distance.x_y_path = 17;
+    following_flow1[0].next_flag = dis_start_angle;
+
+    following_flow1[1].delta_distance.angle = 38;
+    following_flow1[1].flag = dis_start_angle;
+    following_flow1[1].next_flag = dis_start_y;
+
+    following_flow1[2].target_speed.x_y[0] =  27;
+    following_flow1[2].target_speed.x_y[1] =  27;
+    following_flow1[2].target_speed.x_y[2] =  27;
+    following_flow1[2].target_speed.x_y[3] =  27;
+
+    following_flow1[2].flag = dis_start_y;
+
+    following_flow1[2].target_speed.x_y[0] =  27;
+    following_flow1[2].target_speed.x_y[1] =  27;
+    following_flow1[2].target_speed.x_y[2] =  27;
+    following_flow1[2].target_speed.x_y[3] =  27;
+
+    following_flow1[2].flag = dis_start_y;
+
+    following_flow1[2].delta_distance.x_y_path = 17;
+    following_flow1[2].next_flag = dis_idle;
 }
 
 void task1_all_position_loop_init(void){
@@ -760,6 +801,8 @@ void task1_all_position_loop_init(void){
 
     task1_encounter_large_cy_in_three();
     task1_back_to_following_from_large_cy();
+
+    following_flow1_init();
 }
 
 void angle_stable(float angle){
@@ -768,18 +811,18 @@ void angle_stable(float angle){
         angle_dev = 0;
     }
     static float last_dev = 0;
-    static float Kp = 2;
-    static float Kd = 0.5;
+    static float angle_Kp = 2;
+    static float angle_Kd = 0.5;
     float d = angle_dev - last_dev;
     last_dev = angle_dev;
-    angle_dev = Kp * angle_dev + Kd * d;
+    angle_dev = angle_Kp  * angle_dev + angle_Kd * d;
     float yaw_correction_speed[4] = {angle_dev, -angle_dev, angle_dev,-angle_dev};
     for(u8 i = 0; i < 4; i++){
-        if(yaw_correction_speed[i]> 8){
-            yaw_correction_speed[i] = 8;
+        if(yaw_correction_speed[i]> 25){
+            yaw_correction_speed[i] = 25;
         }
-        if(yaw_correction_speed[i] < -8){
-            yaw_correction_speed[i] = -8;
+        if(yaw_correction_speed[i] < -25){
+            yaw_correction_speed[i] = -25;
         }
     }
     motor_speed_loop(yaw_correction_speed);
@@ -974,36 +1017,54 @@ void position_loop(coordinate_struct *Points){
         case dis_start_angle:
             if(tem_pwm_flag[4] == 0){
                 all_error_clear(); // 清理所以error
-                motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
-                motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
-                motor_pid.pwm_out[2] = Points[index].target_speed.x_y[2] * 207;
-                motor_pid.pwm_out[3] = Points[index].target_speed.x_y[3] * 207;
-                motor_all_run((int *)tem_pwm);
+                motor_all_stop();
                 tem_pwm_flag[4] = 1;
             }
-            //
-            motor_speed_loop((float *)Points[index].target_speed.x_y);
-            // 将实际速度转化为角速度
-            get_ang_vel((float *)motor_pid.actual_speed, (float *)Points[index].target_speed.w);
-            Points[index].position.angle += 0.00125f *(fabs(Points[index].target_speed.w[0]) +fabs(Points[index].target_speed.w[1]) +fabs(Points[index].target_speed.w[2]) + fabs(Points[index].target_speed.w[3]));
-            if(Points[index].position.angle >= Points[index].delta_distance.angle){
-                last_index = index;
-                index++;
-                if(index >= point_number)
-                {
-                    index = point_number - 1;
-                    Points[index].flag = dis_end;
-                    break;
-                }
-                if(Points[last_index].next_flag == Points[index].flag){
-                    tem_pwm_flag[(Points[index].flag)] = 0;
-                    break;
-                }
-                else{
-                    Points[index].flag = dis_idle;
-                }
-            }
-            break;
+            {
+                 // delta_distance.angle 存目标偏航角（绝对角度，度）
+                 float target_yaw = Points[index].delta_distance.angle;
+                 float angle_dev = wheel_asix.yaw - target_yaw;
+
+
+                 if(angle_dev > -0.8f && angle_dev < 0.8f){
+                     angle_dev = 0;
+                 }
+
+                 static float last_dev = 0;
+                 static float angle_Kp = 2;
+                 static float angle_Kd = 0.5;
+                 float d = angle_dev - last_dev;
+                 last_dev = angle_dev;
+                 float correction = angle_Kp * angle_dev + angle_Kd * d;
+
+                 float yaw_correction_speed[4] = {correction, -correction, correction, -correction};
+                 for(u8 i = 0; i < 4; i++){
+                     if(yaw_correction_speed[i] > 20)  yaw_correction_speed[i] = 20;
+                     if(yaw_correction_speed[i] < -20) yaw_correction_speed[i] = -20;
+                 }
+
+                 motor_speed_loop(yaw_correction_speed);
+
+                 if(angle_dev == 0){
+                     last_dev = 0; // 复位静态变量，供下一个角度点使用
+
+                     last_index = index;
+                     index++;
+                     if(index >= point_number){
+                         index = point_number - 1;
+                         Points[index].flag = dis_end;
+                         break;
+                     }
+                     if(Points[last_index].next_flag == Points[index].flag){
+                         tem_pwm_flag[(Points[index].flag)] = 0;
+                         break;
+                     }
+                     else{
+                         Points[index].flag = dis_idle;
+                     }
+                 }
+             }
+             break;
         case dis_end:
             index = 0;
             is_position_loop_done = true;
@@ -1014,6 +1075,7 @@ void position_loop(coordinate_struct *Points){
             tem_pwm[1] = 0;
             tem_pwm[2] = 0;
             tem_pwm[3] = 0;
+
             motor_all_run((int *)tem_pwm);
             if(is_task1_wheels_moving_to_next_point == true){
                 is_task1_wheels_moving_to_next_point = false;
@@ -1055,31 +1117,5 @@ void ICM_READ_REAL_GYRO(MY_ICM_STRUCT* icm_para){
 }
 
 
-
-void run_in_target_angle(){
-    static float temp_angle = 0.0f;
-    ICM_READ_REAL_GYRO((MY_ICM_STRUCT *)&motor_icm_track.icm_para);
-    // 5ms运行一次
-    temp_angle+=(motor_icm_track.icm_para.gz * 0.005);
-
-    if(motor_icm_track.FLAG == TRACKING_BY_ICM_OFF)
-        return;
-    else {
-        if(temp_angle > motor_icm_track.target_angle){
-            motor_icm_track.speed[0] = 18;
-            motor_icm_track.speed[1] = 23;
-            motor_icm_track.speed[2] = 18;
-            motor_icm_track.speed[3] = 23;
-        }
-        else if(temp_angle < motor_icm_track.target_angle){
-            motor_icm_track.speed[0] = 23;
-            motor_icm_track.speed[1] = 18;
-            motor_icm_track.speed[2] = 23;
-            motor_icm_track.speed[3] = 18;
-        }
-        motor_speed_loop((float *)motor_icm_track.speed);
-    }
-
-}
 
 

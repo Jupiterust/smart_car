@@ -75,6 +75,7 @@ volatile bool task1_start_yaw_correction = false;
 // { 10,-10, 10,-10}
 volatile int tem1_speed[4] = {0};
 volatile int error_clear_count[10] = {0};
+volatile bool following_flow_start = false;
 void CCU60_CH0_IRQHandler(void)
 {
     /* 开启CPU中断  否则中断不可嵌套 */
@@ -86,6 +87,10 @@ void CCU60_CH0_IRQHandler(void)
     // 任务1
 
     //angle_stable(0);
+
+    if(following_flow_start == true){
+        position_loop((coordinate_struct *)following_flow1);
+    }
 
     if(is_task1_wheels_moving_to_next_point == true){
         is_position_loop_done = false;

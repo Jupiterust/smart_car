@@ -53,7 +53,7 @@ extern volatile float following_speed[4];
 extern volatile int error_clear_count[10];
 extern volatile bool task1_start_yaw_correction ;
 extern volatile wheel_xyz_asix wheel_asix;
-
+extern volatile bool following_flow_start;
 typedef struct {
         bool does_tick_start;
         uint32_t tick_in_100_ms;
