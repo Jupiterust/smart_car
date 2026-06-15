@@ -175,7 +175,8 @@ void CCU60_CH0_IRQHandler(void)
 
     //Ñ­¼£ÈÎÎñ
    // angle_correct(0);
-    crossing_line_handle();
+    if(following_flow_start == false)
+        crossing_line_handle();
     if(is_crossing_line1 == true){
         following_speed[0] = 25;
         following_speed[1] = 25;

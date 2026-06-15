@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc30944a --dep-file=src/Driver/LQ_CCU6.d -c99 --fp-model=1cFLNRSTZ -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x -D__CPU__=tc26xb -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\user_uart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\ring_buffer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo_examples -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\APP -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Main -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\User -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Trap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Comm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Trig -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TimerWithTrigger -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiSlave -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Icu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Phy_Pef7071 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Can -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Crc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\General -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Cam -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmBc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TPwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Time -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\InternalMux -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Rdc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Lin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim\\\\In -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations\\\\Debug -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Spi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Io -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Std -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o src/Driver/LQ_CCU6.src ../src/Driver/LQ_CCU6.c"
+	.compiler_invocation	"ctc -f cc14480a --dep-file=src/Driver/LQ_CCU6.d -c99 --fp-model=1cFLNRSTZ -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x -D__CPU__=tc26xb -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\user_uart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\ring_buffer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo_examples -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\APP -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Main -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\User -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Trap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Comm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Trig -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TimerWithTrigger -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiSlave -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Icu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Phy_Pef7071 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Can -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Crc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\General -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Cam -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmBc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TPwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Time -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\InternalMux -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Rdc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Lin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim\\\\In -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations\\\\Debug -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Spi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Io -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Std -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o src/Driver/LQ_CCU6.src ../src/Driver/LQ_CCU6.c"
 	.compiler_name		"ctc"
 	;source	'../src/Driver/LQ_CCU6.c'
 
@@ -19,83 +19,83 @@ $TC16X
 	
 	.global	CCU60_CH0_IRQHandler
 ; Function CCU60_CH0_IRQHandler
-.L66:
+.L67:
 CCU60_CH0_IRQHandler:	.type	func
 	mov	d0,#7
-.L224:
-	mov	d15,#1
-.L412:
-	sh	d15,d15,d0
-.L264:
-	st.w	0xf0002aa8,d15
 .L225:
+	mov	d15,#1
+.L413:
+	sh	d15,d15,d0
+.L265:
+	st.w	0xf0002aa8,d15
+.L226:
 	movh.a	a15,#@his(following_flow_start)
 	lea	a15,[a15]@los(following_flow_start)
 	ld.bu	d15,[a15]
-.L265:
+.L266:
 	jeq	d15,#0,.L2
-.L413:
+.L414:
 	movh.a	a4,#@his(following_flow1)
 	lea	a4,[a4]@los(following_flow1)
-.L414:
-	call	position_loop
 .L415:
+	call	position_loop
+.L416:
 	j	.L3
 .L2:
 	movh.a	a15,#@his(is_task1_wheels_moving_to_next_point)
 	lea	a15,[a15]@los(is_task1_wheels_moving_to_next_point)
 	ld.bu	d15,[a15]
-.L416:
-	jeq	d15,#0,.L4
 .L417:
+	jeq	d15,#0,.L4
+.L418:
 	movh.a	a15,#@his(is_position_loop_done)
 	lea	a15,[a15]@los(is_position_loop_done)
-.L418:
-	mov	d15,#0
 .L419:
-	st.b	[a15],d15
+	mov	d15,#0
 .L420:
+	st.b	[a15],d15
+.L421:
 	movh.a	a15,#@his(pick_times)
 	lea	a15,[a15]@los(pick_times)
 	ld.bu	d15,[a15]
-.L421:
-	jne	d15,#1,.L5
 .L422:
+	jne	d15,#1,.L5
+.L423:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L423:
-	jne	d15,#1,.L6
 .L424:
+	jne	d15,#1,.L6
+.L425:
 	movh.a	a4,#@his(task1_encounter_small_cy_in_one_S)
 	lea	a4,[a4]@los(task1_encounter_small_cy_in_one_S)
-.L425:
-	call	position_loop
 .L426:
+	call	position_loop
+.L427:
 	j	.L7
 .L6:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L427:
-	jne	d15,#2,.L8
 .L428:
+	jne	d15,#2,.L8
+.L429:
 	movh.a	a4,#@his(task1_encounter_medium_cy_in_one_S)
 	lea	a4,[a4]@los(task1_encounter_medium_cy_in_one_S)
-.L429:
-	call	position_loop
 .L430:
+	call	position_loop
+.L431:
 	j	.L9
 .L8:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L431:
-	jne	d15,#3,.L10
 .L432:
+	jne	d15,#3,.L10
+.L433:
 	movh.a	a4,#@his(task1_encounter_large_cy_in_one_S)
 	lea	a4,[a4]@los(task1_encounter_large_cy_in_one_S)
-.L433:
+.L434:
 	call	position_loop
 .L10:
 .L9:
@@ -105,44 +105,44 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(pick_times)
 	lea	a15,[a15]@los(pick_times)
 	ld.bu	d15,[a15]
-.L434:
-	jne	d15,#2,.L12
 .L435:
+	jne	d15,#2,.L12
+.L436:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L436:
-	jne	d15,#1,.L13
 .L437:
+	jne	d15,#1,.L13
+.L438:
 	movh.a	a4,#@his(task1_encounter_small_cy_in_two_S)
 	lea	a4,[a4]@los(task1_encounter_small_cy_in_two_S)
-.L438:
-	call	position_loop
 .L439:
+	call	position_loop
+.L440:
 	j	.L14
 .L13:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L440:
-	jne	d15,#2,.L15
 .L441:
+	jne	d15,#2,.L15
+.L442:
 	movh.a	a4,#@his(task1_encounter_medium_cy_in_two_S)
 	lea	a4,[a4]@los(task1_encounter_medium_cy_in_two_S)
-.L442:
-	call	position_loop
 .L443:
+	call	position_loop
+.L444:
 	j	.L16
 .L15:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L444:
-	jne	d15,#3,.L17
 .L445:
+	jne	d15,#3,.L17
+.L446:
 	movh.a	a4,#@his(task1_encounter_large_cy_in_two_S)
 	lea	a4,[a4]@los(task1_encounter_large_cy_in_two_S)
-.L446:
+.L447:
 	call	position_loop
 .L17:
 .L16:
@@ -152,44 +152,44 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(pick_times)
 	lea	a15,[a15]@los(pick_times)
 	ld.bu	d15,[a15]
-.L447:
-	jne	d15,#3,.L19
 .L448:
+	jne	d15,#3,.L19
+.L449:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L449:
-	jne	d15,#1,.L20
 .L450:
+	jne	d15,#1,.L20
+.L451:
 	movh.a	a4,#@his(task1_encounter_small_cy_in_three_S)
 	lea	a4,[a4]@los(task1_encounter_small_cy_in_three_S)
-.L451:
-	call	position_loop
 .L452:
+	call	position_loop
+.L453:
 	j	.L21
 .L20:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L453:
-	jne	d15,#2,.L22
 .L454:
+	jne	d15,#2,.L22
+.L455:
 	movh.a	a4,#@his(task1_encounter_medium_cy_in_three_S)
 	lea	a4,[a4]@los(task1_encounter_medium_cy_in_three_S)
-.L455:
-	call	position_loop
 .L456:
+	call	position_loop
+.L457:
 	j	.L23
 .L22:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L457:
-	jne	d15,#3,.L24
 .L458:
+	jne	d15,#3,.L24
+.L459:
 	movh.a	a4,#@his(task1_encounter_large_cy_in_three_S)
 	lea	a4,[a4]@los(task1_encounter_large_cy_in_three_S)
-.L459:
+.L460:
 	call	position_loop
 .L24:
 .L23:
@@ -202,57 +202,57 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(is_task1_wheels_moving_to_last_point)
 	lea	a15,[a15]@los(is_task1_wheels_moving_to_last_point)
 	ld.bu	d15,[a15]
-.L460:
-	jeq	d15,#0,.L26
 .L461:
+	jeq	d15,#0,.L26
+.L462:
 	movh.a	a15,#@his(is_position_loop_done)
 	lea	a15,[a15]@los(is_position_loop_done)
-.L462:
-	mov	d15,#0
 .L463:
-	st.b	[a15],d15
+	mov	d15,#0
 .L464:
+	st.b	[a15],d15
+.L465:
 	movh.a	a15,#@his(put_times)
 	lea	a15,[a15]@los(put_times)
 	ld.bu	d15,[a15]
-.L465:
-	jne	d15,#1,.L27
 .L466:
+	jne	d15,#1,.L27
+.L467:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L467:
-	jne	d15,#1,.L28
 .L468:
+	jne	d15,#1,.L28
+.L469:
 	movh.a	a4,#@his(task1_back_to_two_from_small_cy_S)
 	lea	a4,[a4]@los(task1_back_to_two_from_small_cy_S)
-.L469:
-	call	position_loop
 .L470:
+	call	position_loop
+.L471:
 	j	.L29
 .L28:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L471:
-	jne	d15,#2,.L30
 .L472:
+	jne	d15,#2,.L30
+.L473:
 	movh.a	a4,#@his(task1_back_to_two_from_medium_cy_S)
 	lea	a4,[a4]@los(task1_back_to_two_from_medium_cy_S)
-.L473:
-	call	position_loop
 .L474:
+	call	position_loop
+.L475:
 	j	.L31
 .L30:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L475:
-	jne	d15,#3,.L32
 .L476:
+	jne	d15,#3,.L32
+.L477:
 	movh.a	a4,#@his(task1_back_to_two_from_large_cy_S)
 	lea	a4,[a4]@los(task1_back_to_two_from_large_cy_S)
-.L477:
+.L478:
 	call	position_loop
 .L32:
 .L31:
@@ -262,44 +262,44 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(put_times)
 	lea	a15,[a15]@los(put_times)
 	ld.bu	d15,[a15]
-.L478:
-	jne	d15,#2,.L34
 .L479:
+	jne	d15,#2,.L34
+.L480:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L480:
-	jne	d15,#1,.L35
 .L481:
+	jne	d15,#1,.L35
+.L482:
 	movh.a	a4,#@his(task1_back_to_three_from_small_cy_S)
 	lea	a4,[a4]@los(task1_back_to_three_from_small_cy_S)
-.L482:
-	call	position_loop
 .L483:
+	call	position_loop
+.L484:
 	j	.L36
 .L35:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L484:
-	jne	d15,#2,.L37
 .L485:
+	jne	d15,#2,.L37
+.L486:
 	movh.a	a4,#@his(task1_back_to_three_from_medium_cy_S)
 	lea	a4,[a4]@los(task1_back_to_three_from_medium_cy_S)
-.L486:
-	call	position_loop
 .L487:
+	call	position_loop
+.L488:
 	j	.L38
 .L37:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L488:
-	jne	d15,#3,.L39
 .L489:
+	jne	d15,#3,.L39
+.L490:
 	movh.a	a4,#@his(task1_back_to_three_from_large_cy_S)
 	lea	a4,[a4]@los(task1_back_to_three_from_large_cy_S)
-.L490:
+.L491:
 	call	position_loop
 .L39:
 .L38:
@@ -309,44 +309,44 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(put_times)
 	lea	a15,[a15]@los(put_times)
 	ld.bu	d15,[a15]
-.L491:
-	jne	d15,#3,.L41
 .L492:
+	jne	d15,#3,.L41
+.L493:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L493:
-	jne	d15,#1,.L42
 .L494:
+	jne	d15,#1,.L42
+.L495:
 	movh.a	a4,#@his(task1_back_to_following_from_small_cy_S)
 	lea	a4,[a4]@los(task1_back_to_following_from_small_cy_S)
-.L495:
-	call	position_loop
 .L496:
+	call	position_loop
+.L497:
 	j	.L43
 .L42:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L497:
-	jne	d15,#2,.L44
 .L498:
+	jne	d15,#2,.L44
+.L499:
 	movh.a	a4,#@his(task1_back_to_following_from_medium_cy_S)
 	lea	a4,[a4]@los(task1_back_to_following_from_medium_cy_S)
-.L499:
-	call	position_loop
 .L500:
+	call	position_loop
+.L501:
 	j	.L45
 .L44:
 	movh.a	a15,#@his(task1_cy_id)
 	lea	a15,[a15]@los(task1_cy_id)
 	ld.bu	d15,[a15]
-.L501:
-	jne	d15,#3,.L46
 .L502:
+	jne	d15,#3,.L46
+.L503:
 	movh.a	a4,#@his(task1_back_to_following_from_large_cy_S)
 	lea	a4,[a4]@los(task1_back_to_following_from_large_cy_S)
-.L503:
+.L504:
 	call	position_loop
 .L46:
 .L45:
@@ -359,101 +359,107 @@ CCU60_CH0_IRQHandler:	.type	func
 	movh.a	a15,#@his(task1_start_yaw_correction)
 	lea	a15,[a15]@los(task1_start_yaw_correction)
 	ld.bu	d15,[a15]
-.L504:
-	jeq	d15,#0,.L48
 .L505:
+	jeq	d15,#0,.L48
+.L506:
 	mov	d4,#0
 	call	angle_stable
 .L48:
+	movh.a	a15,#@his(following_flow_start)
+	lea	a15,[a15]@los(following_flow_start)
+	ld.bu	d15,[a15]
+.L507:
+	jne	d15,#0,.L49
+.L508:
 	call	crossing_line_handle
-.L506:
+.L49:
 	movh.a	a15,#@his(is_crossing_line1)
 	lea	a15,[a15]@los(is_crossing_line1)
 	ld.bu	d15,[a15]
-.L507:
-	jeq	d15,#0,.L49
-.L508:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
 .L509:
-	movh	d15,#16840
+	jeq	d15,#0,.L50
 .L510:
-	st.w	[a15],d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L511:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
+	movh	d15,#16840
 .L512:
-	movh	d15,#16840
+	st.w	[a15],d15
 .L513:
-	st.w	[a15]4,d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L514:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
+	movh	d15,#16840
 .L515:
-	movh	d15,#16840
+	st.w	[a15]4,d15
 .L516:
-	st.w	[a15]8,d15
-.L517:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L518:
+.L517:
 	movh	d15,#16840
+.L518:
+	st.w	[a15]8,d15
 .L519:
-	st.w	[a15]12,d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L520:
+	movh	d15,#16840
+.L521:
+	st.w	[a15]12,d15
+.L522:
 	mov	d4,#0
 	call	angle_correct
-.L49:
+.L50:
 	movh.a	a15,#@his(is_crossing_line2)
 	lea	a15,[a15]@los(is_crossing_line2)
 	ld.bu	d15,[a15]
-.L521:
-	jeq	d15,#0,.L50
-.L522:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
 .L523:
-	movh	d15,#16840
+	jeq	d15,#0,.L51
 .L524:
-	st.w	[a15],d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L525:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
+	movh	d15,#16840
 .L526:
-	movh	d15,#16840
+	st.w	[a15],d15
 .L527:
-	st.w	[a15]4,d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L528:
-	movh.a	a15,#@his(following_speed)
-	lea	a15,[a15]@los(following_speed)
+	movh	d15,#16840
 .L529:
-	movh	d15,#16840
+	st.w	[a15]4,d15
 .L530:
-	st.w	[a15]8,d15
-.L531:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L532:
+.L531:
 	movh	d15,#16840
+.L532:
+	st.w	[a15]8,d15
 .L533:
-	st.w	[a15]12,d15
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
 .L534:
+	movh	d15,#16840
+.L535:
+	st.w	[a15]12,d15
+.L536:
 	movh	d4,#17287
 	call	angle_correct
-.L50:
+.L51:
 	movh.a	a4,#@his(following_speed)
 	lea	a4,[a4]@los(following_speed)
-.L535:
+.L537:
 	call	motor_speed_loop
 .L47:
 .L25:
 .L3:
 	ret
-.L223:
+.L224:
 	
 __CCU60_CH0_IRQHandler_function_end:
 	.size	CCU60_CH0_IRQHandler,__CCU60_CH0_IRQHandler_function_end-CCU60_CH0_IRQHandler
-.L102:
+.L103:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU60_CH1_IRQHandler',code,cluster('CCU60_CH1_IRQHandler')
@@ -462,46 +468,46 @@ __CCU60_CH0_IRQHandler_function_end:
 	
 	.global	CCU60_CH1_IRQHandler
 ; Function CCU60_CH1_IRQHandler
-.L68:
+.L69:
 CCU60_CH1_IRQHandler:	.type	func
 	enable
-.L231:
+.L232:
 	mov	d15,#9
-.L233:
-	mov	d0,#1
-.L540:
-	sh	d0,d0,d15
-.L266:
-	st.w	0xf0002aa8,d0
 .L234:
+	mov	d0,#1
+.L542:
+	sh	d0,d0,d15
+.L267:
+	st.w	0xf0002aa8,d0
+.L235:
 	movh.a	a15,#@his(wheel_system_tick)
 	lea	a15,[a15]@los(wheel_system_tick)
-.L541:
-	ld.bu	d15,[a15]
-.L542:
-	jeq	d15,#0,.L51
 .L543:
+	ld.bu	d15,[a15]
+.L544:
+	jeq	d15,#0,.L52
+.L545:
 	movh.a	a15,#@his(wheel_system_tick)
 	lea	a15,[a15]@los(wheel_system_tick)
 	movh.a	a2,#@his(wheel_system_tick)
 	lea	a2,[a2]@los(wheel_system_tick)
-.L544:
+.L546:
 	ld.w	d15,[a2]2
-.L545:
+.L547:
 	add	d15,#1
 	st.w	[a15]2,d15
-.L51:
+.L52:
 	mov	d4,#4
-.L546:
+.L548:
 	mov	d5,#2
 	call	LED_Ctrl
-.L267:
+.L268:
 	ret
-.L229:
+.L230:
 	
 __CCU60_CH1_IRQHandler_function_end:
 	.size	CCU60_CH1_IRQHandler,__CCU60_CH1_IRQHandler_function_end-CCU60_CH1_IRQHandler
-.L107:
+.L108:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU61_CH0_IRQHandler',code,cluster('CCU61_CH0_IRQHandler')
@@ -510,138 +516,138 @@ __CCU60_CH1_IRQHandler_function_end:
 	
 	.global	CCU61_CH0_IRQHandler
 ; Function CCU61_CH0_IRQHandler
-.L70:
+.L71:
 CCU61_CH0_IRQHandler:	.type	func
 	enable
-.L239:
-	mov	d0,#7
 .L240:
-	mov	d15,#1
-.L551:
-	sh	d15,d15,d0
-.L268:
-	st.w	0xf0002ba8,d15
+	mov	d0,#7
 .L241:
-	movh.a	a15,#@his(wheel_asix)
-	lea	a15,[a15]@los(wheel_asix)
-.L552:
-	lea	a4,[a15]12
+	mov	d15,#1
 .L553:
+	sh	d15,d15,d0
+.L269:
+	st.w	0xf0002ba8,d15
+.L242:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
 .L554:
-	lea	a5,[a15]16
+	lea	a4,[a15]12
 .L555:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
 .L556:
-	lea	a6,[a15]20
+	lea	a5,[a15]16
 .L557:
-	call	get_real_gyro
-.L558:
-	movh.a	a12,#@his(wheel_asix)
-	lea	a12,[a12]@los(wheel_asix)
-.L559:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
+.L558:
+	lea	a6,[a15]20
+.L559:
+	call	get_real_gyro
 .L560:
+	movh.a	a12,#@his(wheel_asix)
+	lea	a12,[a12]@los(wheel_asix)
+.L561:
+	movh.a	a15,#@his(wheel_asix)
+	lea	a15,[a15]@los(wheel_asix)
+.L562:
 	ld.w	d4,[a15]12
 	call	__f_ftod
-.L561:
+.L563:
 	movh.a	a15,#@his(.1.cnt)
 	lea	a15,[a15]@los(.1.cnt)
 	ld.d	e6,[a15]0
-.L562:
+.L564:
 	mov	e4,d3,d2
 	call	__d_mul_precise
 	mov	e8,d3,d2
-.L563:
+.L565:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L564:
+.L566:
 	ld.w	d4,[a15]4
 	call	__f_ftod
-.L565:
+.L567:
 	mov	e4,d9,d8
 	mov	e6,d3,d2
 	call	__d_add
 	mov	e4,d3,d2
 	call	__d_dtof
 	st.w	[a12]4,d2
-.L566:
+.L568:
 	movh.a	a12,#@his(wheel_asix)
 	lea	a12,[a12]@los(wheel_asix)
-.L567:
+.L569:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L568:
+.L570:
 	ld.w	d4,[a15]16
 	call	__f_ftod
-.L569:
+.L571:
 	movh.a	a15,#@his(.1.cnt)
 	lea	a15,[a15]@los(.1.cnt)
 	ld.d	e6,[a15]0
-.L570:
+.L572:
 	mov	e4,d3,d2
 	call	__d_mul_precise
 	mov	e8,d3,d2
-.L571:
+.L573:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L572:
+.L574:
 	ld.w	d4,[a15]
 	call	__f_ftod
-.L573:
+.L575:
 	mov	e4,d9,d8
 	mov	e6,d3,d2
 	call	__d_add
 	mov	e4,d3,d2
 	call	__d_dtof
 	st.w	[a12],d2
-.L574:
+.L576:
 	movh.a	a12,#@his(wheel_asix)
 	lea	a12,[a12]@los(wheel_asix)
-.L575:
+.L577:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L576:
+.L578:
 	ld.w	d4,[a15]20
 	call	__f_ftod
-.L577:
+.L579:
 	movh.a	a15,#@his(.1.cnt)
 	lea	a15,[a15]@los(.1.cnt)
 	ld.d	e6,[a15]0
-.L578:
+.L580:
 	mov	e4,d3,d2
 	call	__d_mul_precise
 	mov	e8,d3,d2
-.L579:
+.L581:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L580:
+.L582:
 	ld.w	d4,[a15]8
 	call	__f_ftod
-.L581:
+.L583:
 	mov	e4,d9,d8
 	mov	e6,d3,d2
 	call	__d_add
 	mov	e4,d3,d2
 	call	__d_dtof
 	st.w	[a12]8,d2
-.L582:
+.L584:
 	movh.a	a15,#@his(flag_from_irq)
 	lea	a15,[a15]@los(flag_from_irq)
-.L583:
+.L585:
 	mov	d15,#1
-.L269:
+.L270:
 	st.w	[a15],d15
-.L584:
+.L586:
 	ret
-.L238:
+.L239:
 	
 __CCU61_CH0_IRQHandler_function_end:
 	.size	CCU61_CH0_IRQHandler,__CCU61_CH0_IRQHandler_function_end-CCU61_CH0_IRQHandler
-.L112:
+.L113:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU61_CH1_IRQHandler',code,cluster('CCU61_CH1_IRQHandler')
@@ -650,29 +656,29 @@ __CCU61_CH0_IRQHandler_function_end:
 	
 	.global	CCU61_CH1_IRQHandler
 ; Function CCU61_CH1_IRQHandler
-.L72:
+.L73:
 CCU61_CH1_IRQHandler:	.type	func
 	enable
-.L246:
-	mov	d15,#9
 .L247:
-	mov	d0,#1
-.L589:
-	sh	d0,d0,d15
-.L270:
-	st.w	0xf0002ba8,d0
+	mov	d15,#9
 .L248:
+	mov	d0,#1
+.L591:
+	sh	d0,d0,d15
+.L271:
+	st.w	0xf0002ba8,d0
+.L249:
 	mov	d4,#0
-.L590:
+.L592:
 	mov	d5,#2
 	call	LED_Ctrl
-.L271:
+.L272:
 	ret
-.L245:
+.L246:
 	
 __CCU61_CH1_IRQHandler_function_end:
 	.size	CCU61_CH1_IRQHandler,__CCU61_CH1_IRQHandler_function_end-CCU61_CH1_IRQHandler
-.L117:
+.L118:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU6_InitConfig',code,cluster('CCU6_InitConfig')
@@ -681,255 +687,255 @@ __CCU61_CH1_IRQHandler_function_end:
 	
 	.global	CCU6_InitConfig
 ; Function CCU6_InitConfig
-.L74:
+.L75:
 CCU6_InitConfig:	.type	func
 	sub.a	a10,#152
-.L272:
-	st.w	[a10]136,d4
-.L275:
-	mov	d14,d5
-.L276:
-	mov	d9,d6
-.L277:
-	ld.w	d15,[a10]136
 .L273:
+	st.w	[a10]136,d4
+.L276:
+	mov	d14,d5
+.L277:
+	mov	d9,d6
+.L278:
+	ld.w	d15,[a10]136
+.L274:
 	ld.b	d4,[a10]136
 	call	IfxCcu6_getAddress
-.L274:
+.L275:
 	mov	d0,#2
-.L334:
+.L335:
 	madd	d15,d14,d15,d0
-.L278:
+.L279:
 	extr.u	d15,d15,#0,#8
-.L280:
-	st.w	[a10]140,d15
-.L282:
-	mov	d10,#0
-.L160:
-	mfcr	d15,#65068
 .L281:
-	extr.u	d15,d15,#15,#1
+	st.w	[a10]140,d15
 .L283:
+	mov	d10,#0
+.L161:
+	mfcr	d15,#65068
+.L282:
+	extr.u	d15,d15,#15,#1
+.L284:
 	ne	d15,d15,#0
 	st.w	[a10]144,d15
-.L335:
-	j	.L52
-.L52:
-	disable
 .L336:
-	nop
-.L337:
 	j	.L53
 .L53:
+	disable
+.L337:
+	nop
+.L338:
 	j	.L54
 .L54:
+	j	.L55
+.L55:
 	lea	a4,[a10]0
-.L338:
+.L339:
 	mov.aa	a5,a2
-.L284:
+.L285:
 	call	IfxCcu6_Timer_initModuleConfig
-.L279:
+.L280:
 	call	IfxScuCcu_getSpbFrequency
 	mov	d4,d2
 	call	__f_ftoull
 	mov	e12,d3,d2
-.L169:
+.L170:
 	mov	d8,#0
-.L285:
-	j	.L55
-.L56:
+.L286:
+	j	.L56
+.L57:
 	mov	d7,#0
 	mov	d6,d9
-.L287:
-	mov	e4,d13,d12
 .L288:
-	call	__ll_mul64
+	mov	e4,d13,d12
 .L289:
+	call	__ll_mul64
+.L290:
 	mov	e4,d3,d2
-.L339:
+.L340:
 	mov.u	d6,#16960
 	addih	d6,d6,#15
 	mov	d7,#0
-.L340:
-	call	__ll_udiv64
-.L290:
-	mov	d10,d2
-.L291:
-	mov.u	d15,#65535
 .L341:
-	jge.u	d10,d15,.L57
-.L342:
-	j	.L58
-.L57:
-	mov	e6,#2
+	call	__ll_udiv64
+.L291:
+	mov	d10,d2
 .L292:
-	mov	e4,d13,d12
+	mov.u	d15,#65535
+.L342:
+	jge.u	d10,d15,.L58
+.L343:
+	j	.L59
+.L58:
+	mov	e6,#2
 .L293:
+	mov	e4,d13,d12
+.L294:
 	call	__ll_udiv64
 	mov	e12,d3,d2
-.L55:
+.L56:
 	mov	d0,d8
 	add	d8,#1
-.L286:
+.L287:
 	extr.u	d8,d8,#0,#8
-.L294:
+.L295:
 	mov	d15,#16
-.L343:
-	jlt.u	d0,d15,.L56
-.L58:
-	mov	d15,#0
-	jeq	d15,d14,.L59
 .L344:
-	mov	d15,#1
-	jeq	d15,d14,.L60
-	j	.L61
+	jlt.u	d0,d15,.L57
 .L59:
 	mov	d15,#0
+	jeq	d15,d14,.L60
 .L345:
-	st.b	[a10]28,d15
-.L346:
-	mov	d15,#7
-.L347:
-	st.b	[a10]60,d15
-.L348:
 	mov	d15,#1
-.L349:
-	st.b	[a10]61,d15
-.L295:
-	mov	e4,d13,d12
-.L296:
-	call	__f_ulltof
-.L350:
-	st.w	[a10],d2
-.L351:
-	st.w	[a10]4,d10
-.L352:
-	mov	d15,#0
-.L353:
-	st.b	[a10]40,d15
-.L354:
-	mov	d15,#0
-.L355:
-	st.h	[a10]54,d15
-.L356:
-	movh.a	a15,#@his(Ccu6IrqVectabNum)
-	lea	a15,[a15]@los(Ccu6IrqVectabNum)
-.L357:
-	ld.w	d15,[a10]136
-.L297:
-	addsc.a	a15,a15,d15,#0
-	ld.bu	d15,[a15]
-.L298:
-	st.b	[a10]64,d15
-.L358:
-	movh.a	a15,#@his(Ccu6IrqPriority)
-	lea	a15,[a15]@los(Ccu6IrqPriority)
-.L359:
-	ld.w	d15,[a10]140
-.L299:
-	addsc.a	a15,a15,d15,#0
-	ld.bu	d15,[a15]
-.L300:
-	st.h	[a10]62,d15
-.L360:
+	jeq	d15,d14,.L61
 	j	.L62
 .L60:
-	mov	d15,#1
-.L361:
+	mov	d15,#0
+.L346:
 	st.b	[a10]28,d15
-.L362:
-	mov	d15,#9
-.L363:
-	st.b	[a10]66,d15
-.L364:
-	mov	d15,#2
-.L365:
-	st.b	[a10]67,d15
-.L301:
+.L347:
+	mov	d15,#7
+.L348:
+	st.b	[a10]60,d15
+.L349:
+	mov	d15,#1
+.L350:
+	st.b	[a10]61,d15
+.L296:
 	mov	e4,d13,d12
-.L302:
+.L297:
 	call	__f_ulltof
-	mov	d15,d2
-.L366:
-	st.w	[a10]8,d15
-.L367:
-	st.w	[a10]12,d10
-.L368:
+.L351:
+	st.w	[a10],d2
+.L352:
+	st.w	[a10]4,d10
+.L353:
 	mov	d15,#0
-.L369:
-	st.b	[a10]48,d15
-.L370:
+.L354:
+	st.b	[a10]40,d15
+.L355:
 	mov	d15,#0
-.L371:
-	st.h	[a10]56,d15
-.L372:
+.L356:
+	st.h	[a10]54,d15
+.L357:
 	movh.a	a15,#@his(Ccu6IrqVectabNum)
 	lea	a15,[a15]@los(Ccu6IrqVectabNum)
-.L373:
+.L358:
 	ld.w	d15,[a10]136
-.L303:
+.L298:
 	addsc.a	a15,a15,d15,#0
 	ld.bu	d15,[a15]
-.L304:
-	st.b	[a10]70,d15
-.L374:
+.L299:
+	st.b	[a10]64,d15
+.L359:
 	movh.a	a15,#@his(Ccu6IrqPriority)
 	lea	a15,[a15]@los(Ccu6IrqPriority)
-.L375:
+.L360:
 	ld.w	d15,[a10]140
-.L305:
+.L300:
 	addsc.a	a15,a15,d15,#0
 	ld.bu	d15,[a15]
-.L306:
-	st.h	[a10]68,d15
-.L376:
+.L301:
+	st.h	[a10]62,d15
+.L361:
 	j	.L63
 .L61:
-.L63:
-.L62:
+	mov	d15,#1
+.L362:
+	st.b	[a10]28,d15
+.L363:
+	mov	d15,#9
+.L364:
+	st.b	[a10]66,d15
+.L365:
+	mov	d15,#2
+.L366:
+	st.b	[a10]67,d15
+.L302:
+	mov	e4,d13,d12
+.L303:
+	call	__f_ulltof
+	mov	d15,d2
+.L367:
+	st.w	[a10]8,d15
+.L368:
+	st.w	[a10]12,d10
+.L369:
 	mov	d15,#0
-.L377:
-	st.b	[a10]93,d15
-.L171:
-	lea	a4,[a10]100
-.L378:
-	lea	a5,[a10]0
-	call	IfxCcu6_Timer_initModule
-.L379:
-	ld.w	d15,[a10]140
-.L307:
-	mul	d15,d15,#4
-.L308:
-	movh.a	a15,#@his(Ccu6IrqFuncPointer)
-	lea	a15,[a15]@los(Ccu6IrqFuncPointer)
-.L380:
+.L370:
+	st.b	[a10]48,d15
+.L371:
+	mov	d15,#0
+.L372:
+	st.h	[a10]56,d15
+.L373:
+	movh.a	a15,#@his(Ccu6IrqVectabNum)
+	lea	a15,[a15]@los(Ccu6IrqVectabNum)
+.L374:
+	ld.w	d15,[a10]136
+.L304:
 	addsc.a	a15,a15,d15,#0
-	ld.a	a4,[a15]
-.L381:
+	ld.bu	d15,[a15]
+.L305:
+	st.b	[a10]70,d15
+.L375:
 	movh.a	a15,#@his(Ccu6IrqPriority)
 	lea	a15,[a15]@los(Ccu6IrqPriority)
-.L382:
+.L376:
 	ld.w	d15,[a10]140
+.L306:
+	addsc.a	a15,a15,d15,#0
+	ld.bu	d15,[a15]
+.L307:
+	st.h	[a10]68,d15
+.L377:
+	j	.L64
+.L62:
+.L64:
+.L63:
+	mov	d15,#0
+.L378:
+	st.b	[a10]93,d15
+.L172:
+	lea	a4,[a10]100
+.L379:
+	lea	a5,[a10]0
+	call	IfxCcu6_Timer_initModule
+.L380:
+	ld.w	d15,[a10]140
+.L308:
+	mul	d15,d15,#4
 .L309:
+	movh.a	a15,#@his(Ccu6IrqFuncPointer)
+	lea	a15,[a15]@los(Ccu6IrqFuncPointer)
+.L381:
+	addsc.a	a15,a15,d15,#0
+	ld.a	a4,[a15]
+.L382:
+	movh.a	a15,#@his(Ccu6IrqPriority)
+	lea	a15,[a15]@los(Ccu6IrqPriority)
+.L383:
+	ld.w	d15,[a10]140
+.L310:
 	addsc.a	a15,a15,d15,#0
 	ld.bu	d4,[a15]
 	call	IfxCpu_Irq_installInterruptHandler
-.L383:
-	ld.w	d15,[a10]144
-.L175:
-	jeq	d15,#0,.L64
 .L384:
+	ld.w	d15,[a10]144
+.L176:
+	jeq	d15,#0,.L65
+.L385:
 	enable
-.L64:
+.L65:
 	lea	a4,[a10]100
 	call	IfxCcu6_Timer_start
-.L385:
+.L386:
 	ret
-.L142:
+.L143:
 	
 __CCU6_InitConfig_function_end:
 	.size	CCU6_InitConfig,__CCU6_InitConfig_function_end-CCU6_InitConfig
-.L87:
+.L88:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU6_DisableInterrupt',code,cluster('CCU6_DisableInterrupt')
@@ -938,51 +944,51 @@ __CCU6_InitConfig_function_end:
 	
 	.global	CCU6_DisableInterrupt
 ; Function CCU6_DisableInterrupt
-.L76:
+.L77:
 CCU6_DisableInterrupt:	.type	func
 	mov	d8,d5
-.L312:
-	extr	d4,d4,#0,#8
-.L310:
-	call	IfxCcu6_getAddress
-.L311:
-	mul	d15,d8,#2
-.L390:
-	add	d15,#7
-.L391:
-	extr.u	d0,d15,#0,#8
-.L188:
-	mov	d15,#1
-.L392:
-	sh	d15,d15,d0
 .L313:
-	st.w	[a2]168,d15
-.L189:
+	extr	d4,d4,#0,#8
+.L311:
+	call	IfxCcu6_getAddress
+.L312:
 	mul	d15,d8,#2
-.L314:
+.L391:
 	add	d15,#7
-.L393:
+.L392:
 	extr.u	d0,d15,#0,#8
-.L197:
+.L189:
 	mov	d15,#1
-.L394:
+.L393:
 	sh	d15,d15,d0
+.L314:
+	st.w	[a2]168,d15
+.L190:
+	mul	d15,d8,#2
 .L315:
-	ld.w	d0,[a2]176
+	add	d15,#7
+.L394:
+	extr.u	d0,d15,#0,#8
+.L198:
+	mov	d15,#1
 .L395:
+	sh	d15,d15,d0
+.L316:
+	ld.w	d0,[a2]176
+.L396:
 	mov	d1,#-1
 	xor	d15,d1
-.L316:
+.L317:
 	and	d0,d15
-.L396:
+.L397:
 	st.w	[a2]176,d0
-.L198:
+.L199:
 	ret
-.L183:
+.L184:
 	
 __CCU6_DisableInterrupt_function_end:
 	.size	CCU6_DisableInterrupt,__CCU6_DisableInterrupt_function_end-CCU6_DisableInterrupt
-.L92:
+.L93:
 	; End of function
 	
 	.sdecl	'.text.LQ_CCU6.CCU6_EnableInterrupt',code,cluster('CCU6_EnableInterrupt')
@@ -991,48 +997,48 @@ __CCU6_DisableInterrupt_function_end:
 	
 	.global	CCU6_EnableInterrupt
 ; Function CCU6_EnableInterrupt
-.L78:
+.L79:
 CCU6_EnableInterrupt:	.type	func
 	mov	d8,d5
-.L319:
-	extr	d4,d4,#0,#8
-.L317:
-	call	IfxCcu6_getAddress
-.L318:
-	mul	d15,d8,#2
-.L401:
-	add	d15,#7
-.L402:
-	extr.u	d0,d15,#0,#8
-.L209:
-	mov	d15,#1
-.L403:
-	sh	d15,d15,d0
 .L320:
-	st.w	[a2]168,d15
-.L210:
+	extr	d4,d4,#0,#8
+.L318:
+	call	IfxCcu6_getAddress
+.L319:
 	mul	d15,d8,#2
-.L321:
+.L402:
 	add	d15,#7
-.L404:
+.L403:
 	extr.u	d0,d15,#0,#8
-.L215:
+.L210:
 	mov	d15,#1
-.L405:
+.L404:
 	sh	d15,d15,d0
+.L321:
+	st.w	[a2]168,d15
+.L211:
+	mul	d15,d8,#2
 .L322:
-	ld.w	d0,[a2]176
-.L406:
-	or	d0,d15
-.L407:
-	st.w	[a2]176,d0
+	add	d15,#7
+.L405:
+	extr.u	d0,d15,#0,#8
 .L216:
+	mov	d15,#1
+.L406:
+	sh	d15,d15,d0
+.L323:
+	ld.w	d0,[a2]176
+.L407:
+	or	d0,d15
+.L408:
+	st.w	[a2]176,d0
+.L217:
 	ret
-.L205:
+.L206:
 	
 __CCU6_EnableInterrupt_function_end:
 	.size	CCU6_EnableInterrupt,__CCU6_EnableInterrupt_function_end-CCU6_EnableInterrupt
-.L97:
+.L98:
 	; End of function
 	
 	.sdecl	'.data.LQ_CCU6.flag_from_irq',data,cluster('flag_from_irq')
@@ -1201,17 +1207,17 @@ wheel_asix:	.type	object
 	.calls	'CCU6_EnableInterrupt','',0
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
-.L80:
+.L81:
 	.word	325914
 	.half	3
-	.word	.L81
+	.word	.L82
 	.byte	4
-.L79:
+.L80:
 	.byte	1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L82
+	.word	.L83
 	.byte	2,1,1,3
 	.word	166
 	.byte	4
@@ -1244,7 +1250,7 @@ wheel_asix:	.type	object
 	.byte	'value',0,2,108,75
 	.word	328
 	.byte	6,0
-.L156:
+.L157:
 	.byte	7
 	.byte	'unsigned long long int',0,8,7,3
 	.word	312
@@ -1262,7 +1268,7 @@ wheel_asix:	.type	object
 	.byte	'value',0,2,140,1,43
 	.word	406
 	.byte	6,0
-.L147:
+.L148:
 	.byte	7
 	.byte	'unsigned long int',0,4,7,4
 	.byte	'__st64_lu',0,3,2,159,1,17,1,1,5
@@ -1299,7 +1305,7 @@ wheel_asix:	.type	object
 	.byte	'B',0
 	.word	638
 	.byte	4,2,35,0,0
-.L153:
+.L154:
 	.byte	7
 	.byte	'unsigned char',0,1,8,7
 	.byte	'unsigned short int',0,2,7,12
@@ -2838,34 +2844,34 @@ wheel_asix:	.type	object
 	.byte	'IfxCpu_getCoreIndex',0,3,8,138,6,31
 	.word	10361
 	.byte	1,1,6,0
-.L165:
+.L166:
 	.byte	8
 	.byte	'IfxCpu_areInterruptsEnabled',0,3,8,136,5,20
 	.word	774
 	.byte	1,1
-.L166:
+.L167:
 	.byte	6,0
-.L162:
+.L163:
 	.byte	8
 	.byte	'IfxCpu_disableInterrupts',0,3,8,144,5,20
 	.word	774
 	.byte	1,1
-.L163:
+.L164:
 	.byte	11,6,0,0
-.L230:
+.L231:
 	.byte	4
 	.byte	'IfxCpu_enableInterrupts',0,3,8,154,5,17,1,1
-.L232:
+.L233:
 	.byte	6,0,4
 	.byte	'IfxCpu_forceDisableInterrupts',0,3,8,222,5,17,1,1,6,0
-.L179:
+.L180:
 	.byte	4
 	.byte	'IfxCpu_restoreInterrupts',0,3,8,165,7,17,1,1
-.L180:
+.L181:
 	.byte	5
 	.byte	'enabled',0,8,165,7,50
 	.word	774
-.L182:
+.L183:
 	.byte	6,0,8
 	.byte	'IfxCpu_getPerformanceCounter',0,3,8,158,6,19
 	.word	518
@@ -3545,21 +3551,21 @@ wheel_asix:	.type	object
 	.byte	'deadLine',0,12,251,5,45
 	.word	14843
 	.byte	11,6,0,0
-.L159:
+.L160:
 	.byte	8
 	.byte	'disableInterrupts',0,3,14,105,20
 	.word	774
 	.byte	1,1
-.L161:
+.L162:
 	.byte	11,6,0,0
-.L174:
+.L175:
 	.byte	4
 	.byte	'restoreInterrupts',0,3,14,139,1,17,1,1
-.L176:
+.L177:
 	.byte	5
 	.byte	'enabled',0,14,139,1,43
 	.word	774
-.L178:
+.L179:
 	.byte	11,6,0,0,8
 	.byte	'getDeadLine',0,3,14,131,2,25
 	.word	14843
@@ -5176,7 +5182,7 @@ wheel_asix:	.type	object
 	.word	24288
 	.byte	4,3,35,252,1,0,10
 	.word	24328
-.L151:
+.L152:
 	.byte	3
 	.word	25184
 	.byte	18,15,179,1,9,1,19
@@ -5193,44 +5199,44 @@ wheel_asix:	.type	object
 	.byte	'IfxCcu6_InterruptSource_trap',0,10,19
 	.byte	'IfxCcu6_InterruptSource_correctHallEvent',0,12,19
 	.byte	'IfxCcu6_InterruptSource_wrongHallEvent',0,13,0
-.L187:
+.L188:
 	.byte	4
 	.byte	'IfxCcu6_clearInterruptStatusFlag',0,3,15,138,11,17,1,1
-.L190:
+.L191:
 	.byte	5
 	.byte	'ccu6',0,15,138,11,60
 	.word	25189
-.L192:
+.L193:
 	.byte	5
 	.byte	'source',0,15,138,11,90
 	.word	25194
-.L194:
+.L195:
 	.byte	6,0
-.L196:
+.L197:
 	.byte	4
 	.byte	'IfxCcu6_disableInterrupt',0,3,15,185,11,17,1,1
-.L199:
+.L200:
 	.byte	5
 	.byte	'ccu6',0,15,185,11,52
 	.word	25189
-.L201:
+.L202:
 	.byte	5
 	.byte	'source',0,15,185,11,82
 	.word	25194
-.L203:
+.L204:
 	.byte	6,0
-.L214:
+.L215:
 	.byte	4
 	.byte	'IfxCcu6_enableInterrupt',0,3,15,152,12,17,1,1
-.L217:
+.L218:
 	.byte	5
 	.byte	'ccu6',0,15,152,12,51
 	.word	25189
-.L219:
+.L220:
 	.byte	5
 	.byte	'source',0,15,152,12,81
 	.word	25194
-.L221:
+.L222:
 	.byte	6,0,18,15,78,9,1,19
 	.byte	'IfxCcu6_CaptureCompareInput_cC60',0,0,19
 	.byte	'IfxCcu6_CaptureCompareInput_cC61',0,2,19
@@ -14747,7 +14753,7 @@ wheel_asix:	.type	object
 	.byte	't13InSyncWithT12',0
 	.word	774
 	.byte	1,2,35,9,0
-.L172:
+.L173:
 	.byte	22,35,165,2,9,36,15
 	.byte	'base',0
 	.word	86862
@@ -14861,7 +14867,7 @@ wheel_asix:	.type	object
 	.word	9526
 	.byte	1,2,35,8,0,3
 	.word	89077
-.L149:
+.L150:
 	.byte	22,35,175,2,9,100,15
 	.byte	'base',0
 	.word	87644
@@ -14933,11 +14939,11 @@ wheel_asix:	.type	object
 	.byte	'serviceReqPrioNumber',0,40,84,81
 	.word	518
 	.byte	0
-.L143:
+.L144:
 	.byte	18,41,69,9,1,19
 	.byte	'CCU60',0,0,19
 	.byte	'CCU61',0,1,0
-.L145:
+.L146:
 	.byte	18,41,78,9,1,19
 	.byte	'CCU6_Channel0',0,0,19
 	.byte	'CCU6_Channel1',0,1,0,12
@@ -14957,7 +14963,7 @@ wheel_asix:	.type	object
 	.byte	'reserved_26',0,4
 	.word	622
 	.byte	6,0,2,35,0,0
-.L167:
+.L168:
 	.byte	14,42,241,7,9,4,15
 	.byte	'U',0
 	.word	328
@@ -15243,7 +15249,7 @@ wheel_asix:	.type	object
 	.byte	'angle',0
 	.word	226
 	.byte	4,2,35,4,0
-.L262:
+.L263:
 	.byte	16,16
 	.word	226
 	.byte	17,3,0,22,45,133,1,9,32,15
@@ -27102,27 +27108,27 @@ wheel_asix:	.type	object
 	.byte	4,2,35,20,0,36
 	.byte	'wheel_xyz_asix',0,41,49,2
 	.word	175188
-.L252:
+.L253:
 	.byte	10
 	.word	615
-.L253:
+.L254:
 	.byte	10
 	.word	90822
 	.byte	16,40
 	.word	615
 	.byte	17,9,0
-.L254:
+.L255:
 	.byte	10
 	.word	175305
 	.byte	7
 	.byte	'_Bool',0,1,2
-.L255:
-	.byte	10
-	.word	175319
 .L256:
 	.byte	10
-	.word	175188
+	.word	175319
 .L257:
+	.byte	10
+	.word	175188
+.L258:
 	.byte	10
 	.word	175319
 	.byte	22,41,57,9,12,15
@@ -27137,7 +27143,7 @@ wheel_asix:	.type	object
 	.byte	4,2,35,6,0,36
 	.byte	'Wheel_system_tick_struct',0,41,61,2
 	.word	175343
-.L258:
+.L259:
 	.byte	10
 	.word	175343
 	.byte	36
@@ -28181,9 +28187,9 @@ wheel_asix:	.type	object
 	.byte	'SpiIf_Status',0,56,71,3
 	.word	188751
 	.byte	3
-	.word	.L323-.L80
+	.word	.L324-.L81
 	.byte	3
-	.word	.L323-.L80
+	.word	.L324-.L81
 	.byte	39
 	.word	188751
 	.byte	1,1,24
@@ -28209,7 +28215,7 @@ wheel_asix:	.type	object
 	.byte	'SpiIf_GetStatus',0,56,136,1,24
 	.word	188919
 	.byte	3
-	.word	.L324-.L80
+	.word	.L325-.L81
 	.byte	38,1,1,24
 	.word	188949
 	.byte	0,3
@@ -28233,7 +28239,7 @@ wheel_asix:	.type	object
 	.byte	'onError',0
 	.word	188968
 	.byte	4,2,35,16,0
-.L324:
+.L325:
 	.byte	12
 	.byte	'SpiIf_',0,56,150,1,8,40,15
 	.byte	'driver',0
@@ -28298,7 +28304,7 @@ wheel_asix:	.type	object
 	.byte	36
 	.byte	'TxRxHandler',0,56,209,1,16
 	.word	189447
-.L323:
+.L324:
 	.byte	12
 	.byte	'SpiIf_Ch_',0,56,211,1,8,48,15
 	.byte	'driver',0
@@ -28522,7 +28528,7 @@ wheel_asix:	.type	object
 	.byte	'IfxQspi_SuspendMode',0,22,171,2,3
 	.word	191807
 	.byte	3
-	.word	.L325-.L80
+	.word	.L326-.L81
 	.byte	38,1,1,24
 	.word	191924
 	.byte	0,3
@@ -28562,7 +28568,7 @@ wheel_asix:	.type	object
 	.byte	'expectTimeoutError',0,1
 	.word	774
 	.byte	1,0,2,35,0,0
-.L325:
+.L326:
 	.byte	12
 	.byte	'IfxQspi_SpiMaster_Channel_s',0,57,144,5,8,84,15
 	.byte	'base',0
@@ -45073,28 +45079,28 @@ wheel_asix:	.type	object
 	.byte	1,1,16,2
 	.word	774
 	.byte	17,1,0
-.L259:
+.L260:
 	.byte	20
 	.word	325866
 	.byte	16,4
 	.word	774
 	.byte	17,3,0
-.L260:
+.L261:
 	.byte	20
 	.word	325880
-.L261:
+.L262:
 	.byte	16,16
 	.word	42791
 	.byte	17,3,0,16,16
 	.word	615
 	.byte	17,3,0
-.L263:
+.L264:
 	.byte	10
 	.word	325903
 	.byte	0
 	.sdecl	'.debug_abbrev',debug
 	.sect	'.debug_abbrev'
-.L81:
+.L82:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,39,12,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32,13
 	.byte	58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,36,0,3,8,11,15,62
 	.byte	15,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,59,0,3,8,0,0,10,53,0,73,19,0,0,11,11
@@ -45110,12 +45116,12 @@ wheel_asix:	.type	object
 	.byte	19,54,15,39,12,0,0,40,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
-.L82:
-	.word	.L327-.L326
-.L326:
+.L83:
+	.word	.L328-.L327
+.L327:
 	.half	3
-	.word	.L329-.L328
-.L328:
+	.word	.L330-.L329
+.L329:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg',0
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp',0
@@ -45255,109 +45261,109 @@ wheel_asix:	.type	object
 	.byte	'ring_buffer.h',0,21,0,0
 	.byte	'fashion_star_uart_servo.h',0,22,0,0
 	.byte	'Servo.h',0,11,0,0,0
-.L329:
-.L327:
+.L330:
+.L328:
 	.sdecl	'.debug_info',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_info'
-.L83:
+.L84:
 	.word	657
 	.half	3
-	.word	.L84
+	.word	.L85
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L86,.L85
+	.word	.L87,.L86
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU6_InitConfig',0,1,235,2,6,1,1,1
-	.word	.L74,.L142,.L73
+	.byte	'CCU6_InitConfig',0,1,236,2,6,1,1,1
+	.word	.L75,.L143,.L74
 	.byte	4
-	.byte	'ccu6',0,1,235,2,30
-	.word	.L143,.L144
+	.byte	'ccu6',0,1,236,2,30
+	.word	.L144,.L145
 	.byte	4
-	.byte	'channel',0,1,235,2,51
-	.word	.L145,.L146
+	.byte	'channel',0,1,236,2,51
+	.word	.L146,.L147
 	.byte	4
-	.byte	'us',0,1,235,2,67
-	.word	.L147,.L148
+	.byte	'us',0,1,236,2,67
+	.word	.L148,.L149
 	.byte	5
-	.word	.L74,.L142
+	.word	.L75,.L143
 	.byte	6
-	.byte	'timerConfig',0,1,237,2,26
-	.word	.L149,.L150
+	.byte	'timerConfig',0,1,238,2,26
+	.word	.L150,.L151
 	.byte	6
-	.byte	'module',0,1,239,2,16
-	.word	.L151,.L152
+	.byte	'module',0,1,240,2,16
+	.word	.L152,.L153
 	.byte	6
-	.byte	'Index',0,1,241,2,11
-	.word	.L153,.L154
+	.byte	'Index',0,1,242,2,11
+	.word	.L154,.L155
 	.byte	6
-	.byte	'period',0,1,243,2,12
-	.word	.L147,.L155
+	.byte	'period',0,1,244,2,12
+	.word	.L148,.L156
 	.byte	6
-	.byte	'clk',0,1,245,2,12
-	.word	.L156,.L157
+	.byte	'clk',0,1,246,2,12
+	.word	.L157,.L158
 	.byte	6
-	.byte	'interrupt_state',0,1,248,2,13
-	.word	.L153,.L158
+	.byte	'interrupt_state',0,1,249,2,13
+	.word	.L154,.L159
 	.byte	7
-	.word	.L159,.L160,.L54
+	.word	.L160,.L161,.L55
 	.byte	8
-	.word	.L161,.L160,.L54
+	.word	.L162,.L161,.L55
 	.byte	7
-	.word	.L162,.L160,.L53
+	.word	.L163,.L161,.L54
 	.byte	8
-	.word	.L163,.L160,.L53
+	.word	.L164,.L161,.L54
 	.byte	6
 	.byte	'enabled',0,2,146,5,13
-	.word	.L153,.L164
+	.word	.L154,.L165
 	.byte	7
-	.word	.L165,.L160,.L52
+	.word	.L166,.L161,.L53
 	.byte	8
-	.word	.L166,.L160,.L52
+	.word	.L167,.L161,.L53
 	.byte	6
 	.byte	'reg',0,2,138,5,17
-	.word	.L167,.L168
+	.word	.L168,.L169
 	.byte	0,0,0,0,0,0,5
-	.word	.L169,.L142
+	.word	.L170,.L143
 	.byte	6
-	.byte	'i',0,1,255,2,11
-	.word	.L153,.L170
+	.byte	'i',0,1,128,3,11
+	.word	.L154,.L171
 	.byte	5
-	.word	.L171,.L142
+	.word	.L172,.L143
 	.byte	6
-	.byte	'Ccu6Timer',0,1,169,3,19
-	.word	.L172,.L173
+	.byte	'Ccu6Timer',0,1,170,3,19
+	.word	.L173,.L174
 	.byte	7
-	.word	.L174,.L175,.L64
+	.word	.L175,.L176,.L65
 	.byte	9
-	.word	.L176,.L177
+	.word	.L177,.L178
 	.byte	8
-	.word	.L178,.L175,.L64
+	.word	.L179,.L176,.L65
 	.byte	7
-	.word	.L179,.L175,.L64
+	.word	.L180,.L176,.L65
 	.byte	9
-	.word	.L180,.L181
+	.word	.L181,.L182
 	.byte	10
-	.word	.L182,.L175,.L64
+	.word	.L183,.L176,.L65
 	.byte	0,0,0,0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_abbrev'
-.L84:
+.L85:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,11,1,49,16,17,1,18,1,0,0,9,5,0,49,16,2
 	.byte	6,0,0,10,11,0,49,16,17,1,18,1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_line'
-.L85:
-	.word	.L331-.L330
-.L330:
+.L86:
+	.word	.L332-.L331
+.L331:
 	.half	3
-	.word	.L333-.L332
-.L332:
+	.word	.L334-.L333
+.L333:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp',0
 	.byte	0
@@ -45365,837 +45371,841 @@ wheel_asix:	.type	object
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\Cpu\\Std\\IfxCpu.h',0
 	.byte	0,0,0
 	.byte	'Bsp.h',0,1,0,0,0
-.L333:
+.L334:
 	.byte	5,6,7,0,5,2
-	.word	.L74
-	.byte	3,234,2,1,5,44,9
-	.half	.L277-.L74
+	.word	.L75
+	.byte	3,235,2,1,5,44,9
+	.half	.L278-.L75
 	.byte	3,4,1,5,26,9
-	.half	.L274-.L277
+	.half	.L275-.L278
 	.byte	3,2,1,5,28,9
-	.half	.L334-.L274
+	.half	.L335-.L275
 	.byte	1,5,19,9
-	.half	.L282-.L334
+	.half	.L283-.L335
 	.byte	3,2,1,4,2,9
-	.half	.L160-.L282
-	.byte	3,152,2,1,5,17,9
-	.half	.L281-.L160
+	.half	.L161-.L283
+	.byte	3,151,2,1,5,17,9
+	.half	.L282-.L161
 	.byte	3,1,1,5,21,9
-	.half	.L283-.L281
+	.half	.L284-.L282
 	.byte	1,5,5,9
-	.half	.L335-.L283
+	.half	.L336-.L284
 	.byte	1,5,14,9
-	.half	.L52-.L335
+	.half	.L53-.L336
 	.byte	3,8,1,5,10,9
-	.half	.L336-.L52
+	.half	.L337-.L53
 	.byte	3,1,1,5,5,9
-	.half	.L337-.L336
+	.half	.L338-.L337
 	.byte	3,1,1,4,3,9
-	.half	.L53-.L337
+	.half	.L54-.L338
 	.byte	3,213,123,1,4,1,5,37,9
-	.half	.L54-.L53
-	.byte	3,143,2,1,5,50,9
-	.half	.L338-.L54
+	.half	.L55-.L54
+	.byte	3,144,2,1,5,50,9
+	.half	.L339-.L55
 	.byte	1,5,36,9
-	.half	.L279-.L338
+	.half	.L280-.L339
 	.byte	3,2,1,5,13,9
-	.half	.L169-.L279
+	.half	.L170-.L280
 	.byte	3,3,1,5,20,9
-	.half	.L285-.L169
+	.half	.L286-.L170
 	.byte	3,1,1,5,34,9
-	.half	.L56-.L285
+	.half	.L57-.L286
 	.byte	3,2,1,5,32,9
-	.half	.L287-.L56
+	.half	.L288-.L57
 	.byte	1,5,39,9
-	.half	.L339-.L287
+	.half	.L340-.L288
 	.byte	1,5,37,9
-	.half	.L340-.L339
+	.half	.L341-.L340
 	.byte	1,5,22,9
-	.half	.L291-.L340
+	.half	.L292-.L341
 	.byte	3,1,1,5,9,9
-	.half	.L341-.L291
+	.half	.L342-.L292
 	.byte	1,5,13,7,9
-	.half	.L342-.L341
+	.half	.L343-.L342
 	.byte	3,2,1,5,25,9
-	.half	.L57-.L342
-	.byte	3,4,1,5,23,9
-	.half	.L292-.L57
-	.byte	1,5,13,9
-	.half	.L55-.L292
-	.byte	3,119,1,5,18,9
-	.half	.L294-.L55
-	.byte	1,5,20,9
-	.half	.L343-.L294
-	.byte	1,5,14,7,9
 	.half	.L58-.L343
-	.byte	3,14,1,9
-	.half	.L344-.L58
-	.byte	3,12,1,5,33,9
+	.byte	3,4,1,5,23,9
+	.half	.L293-.L58
+	.byte	1,5,13,9
+	.half	.L56-.L293
+	.byte	3,119,1,5,18,9
+	.half	.L295-.L56
+	.byte	1,5,20,9
+	.half	.L344-.L295
+	.byte	1,5,14,7,9
 	.half	.L59-.L344
-	.byte	3,117,1,5,31,9
+	.byte	3,14,1,9
 	.half	.L345-.L59
+	.byte	3,12,1,5,33,9
+	.half	.L60-.L345
+	.byte	3,117,1,5,31,9
+	.half	.L346-.L60
 	.byte	1,5,45,9
-	.half	.L346-.L345
-	.byte	3,1,1,5,43,9
 	.half	.L347-.L346
-	.byte	1,5,53,9
+	.byte	3,1,1,5,43,9
 	.half	.L348-.L347
-	.byte	3,1,1,5,51,9
-	.half	.L349-.L348
-	.byte	1,5,45,9
-	.half	.L295-.L349
-	.byte	3,1,1,5,43,9
-	.half	.L350-.L295
-	.byte	1,5,40,9
-	.half	.L351-.L350
-	.byte	3,1,1,5,54,9
-	.half	.L352-.L351
-	.byte	3,1,1,5,52,9
-	.half	.L353-.L352
-	.byte	1,5,48,9
-	.half	.L354-.L353
-	.byte	3,1,1,5,46,9
-	.half	.L355-.L354
-	.byte	1,5,52,9
-	.half	.L356-.L355
-	.byte	3,1,1,5,68,9
-	.half	.L357-.L356
-	.byte	1,5,50,9
-	.half	.L298-.L357
-	.byte	1,5,47,9
-	.half	.L358-.L298
-	.byte	3,1,1,5,62,9
-	.half	.L359-.L358
-	.byte	1,5,45,9
-	.half	.L300-.L359
-	.byte	1,5,13,9
-	.half	.L360-.L300
-	.byte	3,1,1,5,33,9
-	.half	.L60-.L360
-	.byte	3,3,1,5,31,9
-	.half	.L361-.L60
-	.byte	1,5,45,9
-	.half	.L362-.L361
-	.byte	3,1,1,5,43,9
-	.half	.L363-.L362
 	.byte	1,5,53,9
-	.half	.L364-.L363
+	.half	.L349-.L348
 	.byte	3,1,1,5,51,9
-	.half	.L365-.L364
+	.half	.L350-.L349
 	.byte	1,5,45,9
-	.half	.L301-.L365
+	.half	.L296-.L350
 	.byte	3,1,1,5,43,9
-	.half	.L366-.L301
+	.half	.L351-.L296
 	.byte	1,5,40,9
-	.half	.L367-.L366
+	.half	.L352-.L351
 	.byte	3,1,1,5,54,9
-	.half	.L368-.L367
+	.half	.L353-.L352
 	.byte	3,1,1,5,52,9
-	.half	.L369-.L368
+	.half	.L354-.L353
 	.byte	1,5,48,9
-	.half	.L370-.L369
+	.half	.L355-.L354
 	.byte	3,1,1,5,46,9
-	.half	.L371-.L370
+	.half	.L356-.L355
 	.byte	1,5,52,9
-	.half	.L372-.L371
+	.half	.L357-.L356
 	.byte	3,1,1,5,68,9
-	.half	.L373-.L372
+	.half	.L358-.L357
 	.byte	1,5,50,9
-	.half	.L304-.L373
+	.half	.L299-.L358
 	.byte	1,5,47,9
-	.half	.L374-.L304
+	.half	.L359-.L299
 	.byte	3,1,1,5,62,9
-	.half	.L375-.L374
+	.half	.L360-.L359
 	.byte	1,5,45,9
-	.half	.L306-.L375
+	.half	.L301-.L360
 	.byte	1,5,13,9
-	.half	.L376-.L306
+	.half	.L361-.L301
+	.byte	3,1,1,5,33,9
+	.half	.L61-.L361
+	.byte	3,3,1,5,31,9
+	.half	.L362-.L61
+	.byte	1,5,45,9
+	.half	.L363-.L362
+	.byte	3,1,1,5,43,9
+	.half	.L364-.L363
+	.byte	1,5,53,9
+	.half	.L365-.L364
+	.byte	3,1,1,5,51,9
+	.half	.L366-.L365
+	.byte	1,5,45,9
+	.half	.L302-.L366
+	.byte	3,1,1,5,43,9
+	.half	.L367-.L302
+	.byte	1,5,40,9
+	.half	.L368-.L367
+	.byte	3,1,1,5,54,9
+	.half	.L369-.L368
+	.byte	3,1,1,5,52,9
+	.half	.L370-.L369
+	.byte	1,5,48,9
+	.half	.L371-.L370
+	.byte	3,1,1,5,46,9
+	.half	.L372-.L371
+	.byte	1,5,52,9
+	.half	.L373-.L372
+	.byte	3,1,1,5,68,9
+	.half	.L374-.L373
+	.byte	1,5,50,9
+	.half	.L305-.L374
+	.byte	1,5,47,9
+	.half	.L375-.L305
+	.byte	3,1,1,5,62,9
+	.half	.L376-.L375
+	.byte	1,5,45,9
+	.half	.L307-.L376
+	.byte	1,5,13,9
+	.half	.L377-.L307
 	.byte	3,1,1,5,44,9
-	.half	.L62-.L376
+	.half	.L63-.L377
 	.byte	3,3,1,5,42,9
-	.half	.L377-.L62
+	.half	.L378-.L63
 	.byte	1,5,31,9
-	.half	.L171-.L377
+	.half	.L172-.L378
 	.byte	3,4,1,5,43,9
-	.half	.L378-.L171
+	.half	.L379-.L172
 	.byte	1,5,66,9
-	.half	.L379-.L378
+	.half	.L380-.L379
 	.byte	3,2,1,5,48,9
-	.half	.L308-.L379
+	.half	.L309-.L380
 	.byte	1,5,66,9
-	.half	.L380-.L308
+	.half	.L381-.L309
 	.byte	1,5,75,9
-	.half	.L381-.L380
-	.byte	1,5,90,9
 	.half	.L382-.L381
-	.byte	1,5,23,9
+	.byte	1,5,90,9
 	.half	.L383-.L382
+	.byte	1,5,23,9
+	.half	.L384-.L383
 	.byte	3,2,1,4,2,5,5,9
-	.half	.L175-.L383
-	.byte	3,248,3,1,5,17,7,9
-	.half	.L384-.L175
+	.half	.L176-.L384
+	.byte	3,247,3,1,5,17,7,9
+	.half	.L385-.L176
 	.byte	3,2,1,4,1,5,26,9
-	.half	.L64-.L384
-	.byte	3,136,124,1,5,1,9
-	.half	.L385-.L64
+	.half	.L65-.L385
+	.byte	3,137,124,1,5,1,9
+	.half	.L386-.L65
 	.byte	3,1,1,7,9
-	.half	.L87-.L385
+	.half	.L88-.L386
 	.byte	0,1,1
-.L331:
+.L332:
 	.sdecl	'.debug_ranges',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_ranges'
-.L86:
-	.word	-1,.L74,0,.L87-.L74,0,0
+.L87:
+	.word	-1,.L75,0,.L88-.L75,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_info'
-.L88:
+.L89:
 	.word	412
 	.half	3
-	.word	.L89
+	.word	.L90
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L91,.L90
+	.word	.L92,.L91
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU6_DisableInterrupt',0,1,189,3,6,1,1,1
-	.word	.L76,.L183,.L75
+	.byte	'CCU6_DisableInterrupt',0,1,190,3,6,1,1,1
+	.word	.L77,.L184,.L76
 	.byte	4
-	.byte	'ccu6',0,1,189,3,36
-	.word	.L143,.L184
+	.byte	'ccu6',0,1,190,3,36
+	.word	.L144,.L185
 	.byte	4
-	.byte	'channel',0,1,189,3,57
-	.word	.L145,.L185
+	.byte	'channel',0,1,190,3,57
+	.word	.L146,.L186
 	.byte	5
-	.word	.L76,.L183
+	.word	.L77,.L184
 	.byte	6
-	.byte	'module',0,1,191,3,16
-	.word	.L151,.L186
+	.byte	'module',0,1,192,3,16
+	.word	.L152,.L187
 	.byte	7
-	.word	.L187,.L188,.L189
+	.word	.L188,.L189,.L190
 	.byte	8
-	.word	.L190,.L191
+	.word	.L191,.L192
 	.byte	8
-	.word	.L192,.L193
+	.word	.L193,.L194
 	.byte	9
-	.word	.L194,.L188,.L189
+	.word	.L195,.L189,.L190
 	.byte	6
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L195
+	.word	.L148,.L196
 	.byte	0,0,7
-	.word	.L196,.L197,.L198
+	.word	.L197,.L198,.L199
 	.byte	8
-	.word	.L199,.L200
+	.word	.L200,.L201
 	.byte	8
-	.word	.L201,.L202
+	.word	.L202,.L203
 	.byte	9
-	.word	.L203,.L197,.L198
+	.word	.L204,.L198,.L199
 	.byte	6
 	.byte	'mask',0,2,187,11,12
-	.word	.L147,.L204
+	.word	.L148,.L205
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_abbrev'
-.L89:
+.L90:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,17,1,18
 	.byte	1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_line'
-.L90:
-	.word	.L387-.L386
-.L386:
+.L91:
+	.word	.L388-.L387
+.L387:
 	.half	3
-	.word	.L389-.L388
-.L388:
+	.word	.L390-.L389
+.L389:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
 	.byte	'../src/Driver/LQ_CCU6.c',0,0,0,0
 	.byte	'IfxCcu6.h',0,1,0,0,0
-.L389:
+.L390:
 	.byte	5,6,7,0,5,2
-	.word	.L76
-	.byte	3,188,3,1,5,44,9
-	.half	.L312-.L76
+	.word	.L77
+	.byte	3,189,3,1,5,44,9
+	.half	.L313-.L77
 	.byte	3,2,1,5,85,9
-	.half	.L311-.L312
+	.half	.L312-.L313
 	.byte	3,1,1,5,75,9
-	.half	.L390-.L311
+	.half	.L391-.L312
 	.byte	1,5,46,9
-	.half	.L391-.L390
+	.half	.L392-.L391
 	.byte	1,4,2,5,20,9
-	.half	.L188-.L391
-	.byte	3,204,7,1,5,23,9
-	.half	.L392-.L188
+	.half	.L189-.L392
+	.byte	3,203,7,1,5,23,9
+	.half	.L393-.L189
 	.byte	1,5,17,9
-	.half	.L313-.L392
+	.half	.L314-.L393
 	.byte	3,1,1,4,1,5,77,9
-	.half	.L189-.L313
-	.byte	3,180,120,1,5,67,9
-	.half	.L314-.L189
+	.half	.L190-.L314
+	.byte	3,181,120,1,5,67,9
+	.half	.L315-.L190
 	.byte	1,5,38,9
-	.half	.L393-.L314
+	.half	.L394-.L315
 	.byte	1,4,2,5,20,9
-	.half	.L197-.L393
-	.byte	3,250,7,1,5,23,9
-	.half	.L394-.L197
+	.half	.L198-.L394
+	.byte	3,249,7,1,5,23,9
+	.half	.L395-.L198
 	.byte	1,5,28,9
-	.half	.L315-.L394
-	.byte	3,1,1,5,33,9
-	.half	.L395-.L315
-	.byte	1,5,31,9
 	.half	.L316-.L395
-	.byte	1,5,17,9
+	.byte	3,1,1,5,33,9
 	.half	.L396-.L316
+	.byte	1,5,31,9
+	.half	.L317-.L396
+	.byte	1,5,17,9
+	.half	.L397-.L317
 	.byte	1,4,1,5,1,9
-	.half	.L198-.L396
-	.byte	3,135,120,1,7,9
-	.half	.L92-.L198
+	.half	.L199-.L397
+	.byte	3,136,120,1,7,9
+	.half	.L93-.L199
 	.byte	0,1,1
-.L387:
+.L388:
 	.sdecl	'.debug_ranges',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_ranges'
-.L91:
-	.word	-1,.L76,0,.L92-.L76,0,0
+.L92:
+	.word	-1,.L77,0,.L93-.L77,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_info'
-.L93:
+.L94:
 	.word	411
 	.half	3
-	.word	.L94
+	.word	.L95
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L96,.L95
+	.word	.L97,.L96
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU6_EnableInterrupt',0,1,206,3,6,1,1,1
-	.word	.L78,.L205,.L77
+	.byte	'CCU6_EnableInterrupt',0,1,207,3,6,1,1,1
+	.word	.L79,.L206,.L78
 	.byte	4
-	.byte	'ccu6',0,1,206,3,35
-	.word	.L143,.L206
+	.byte	'ccu6',0,1,207,3,35
+	.word	.L144,.L207
 	.byte	4
-	.byte	'channel',0,1,206,3,56
-	.word	.L145,.L207
+	.byte	'channel',0,1,207,3,56
+	.word	.L146,.L208
 	.byte	5
-	.word	.L78,.L205
+	.word	.L79,.L206
 	.byte	6
-	.byte	'module',0,1,208,3,16
-	.word	.L151,.L208
+	.byte	'module',0,1,209,3,16
+	.word	.L152,.L209
 	.byte	7
-	.word	.L187,.L209,.L210
+	.word	.L188,.L210,.L211
 	.byte	8
-	.word	.L190,.L211
+	.word	.L191,.L212
 	.byte	8
-	.word	.L192,.L212
+	.word	.L193,.L213
 	.byte	9
-	.word	.L194,.L209,.L210
+	.word	.L195,.L210,.L211
 	.byte	6
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L213
+	.word	.L148,.L214
 	.byte	0,0,7
-	.word	.L214,.L215,.L216
+	.word	.L215,.L216,.L217
 	.byte	8
-	.word	.L217,.L218
+	.word	.L218,.L219
 	.byte	8
-	.word	.L219,.L220
+	.word	.L220,.L221
 	.byte	9
-	.word	.L221,.L215,.L216
+	.word	.L222,.L216,.L217
 	.byte	6
 	.byte	'mask',0,2,154,12,12
-	.word	.L147,.L222
+	.word	.L148,.L223
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_abbrev'
-.L94:
+.L95:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,17,1,18
 	.byte	1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_line'
-.L95:
-	.word	.L398-.L397
-.L397:
+.L96:
+	.word	.L399-.L398
+.L398:
 	.half	3
-	.word	.L400-.L399
-.L399:
+	.word	.L401-.L400
+.L400:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
 	.byte	'../src/Driver/LQ_CCU6.c',0,0,0,0
 	.byte	'IfxCcu6.h',0,1,0,0,0
-.L400:
+.L401:
 	.byte	5,6,7,0,5,2
-	.word	.L78
-	.byte	3,205,3,1,5,44,9
-	.half	.L319-.L78
+	.word	.L79
+	.byte	3,206,3,1,5,44,9
+	.half	.L320-.L79
 	.byte	3,2,1,5,85,9
-	.half	.L318-.L319
+	.half	.L319-.L320
 	.byte	3,1,1,5,75,9
-	.half	.L401-.L318
+	.half	.L402-.L319
 	.byte	1,5,46,9
-	.half	.L402-.L401
+	.half	.L403-.L402
 	.byte	1,4,2,5,20,9
-	.half	.L209-.L402
-	.byte	3,187,7,1,5,23,9
-	.half	.L403-.L209
+	.half	.L210-.L403
+	.byte	3,186,7,1,5,23,9
+	.half	.L404-.L210
 	.byte	1,5,17,9
-	.half	.L320-.L403
+	.half	.L321-.L404
 	.byte	3,1,1,4,1,5,76,9
-	.half	.L210-.L320
-	.byte	3,197,120,1,5,66,9
-	.half	.L321-.L210
+	.half	.L211-.L321
+	.byte	3,198,120,1,5,66,9
+	.half	.L322-.L211
 	.byte	1,5,37,9
-	.half	.L404-.L321
+	.half	.L405-.L322
 	.byte	1,4,2,5,20,9
-	.half	.L215-.L404
-	.byte	3,200,8,1,5,23,9
-	.half	.L405-.L215
+	.half	.L216-.L405
+	.byte	3,199,8,1,5,23,9
+	.half	.L406-.L216
 	.byte	1,5,28,9
-	.half	.L322-.L405
+	.half	.L323-.L406
 	.byte	3,1,1,5,31,9
-	.half	.L406-.L322
+	.half	.L407-.L323
 	.byte	1,5,17,9
-	.half	.L407-.L406
+	.half	.L408-.L407
 	.byte	1,4,1,5,1,9
-	.half	.L216-.L407
-	.byte	3,185,119,1,7,9
-	.half	.L97-.L216
+	.half	.L217-.L408
+	.byte	3,186,119,1,7,9
+	.half	.L98-.L217
 	.byte	0,1,1
-.L398:
+.L399:
 	.sdecl	'.debug_ranges',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_ranges'
-.L96:
-	.word	-1,.L78,0,.L97-.L78,0,0
+.L97:
+	.word	-1,.L79,0,.L98-.L79,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_info'
-.L98:
+.L99:
 	.word	287
 	.half	3
-	.word	.L99
+	.word	.L100
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L101,.L100
+	.word	.L102,.L101
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'CCU60_CH0_IRQHandler',0,1,79,6,1,1,1
-	.word	.L66,.L223,.L65
+	.word	.L67,.L224,.L66
 	.byte	4
-	.word	.L66,.L223
+	.word	.L67,.L224
 	.byte	5
-	.word	.L187,.L224,.L225
+	.word	.L188,.L225,.L226
 	.byte	6
-	.word	.L190,.L226
+	.word	.L191,.L227
 	.byte	6
-	.word	.L192,.L227
+	.word	.L193,.L228
 	.byte	7
-	.word	.L194,.L224,.L225
+	.word	.L195,.L225,.L226
 	.byte	8
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L228
+	.word	.L148,.L229
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_abbrev'
-.L99:
+.L100:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,29,1,49,16,17,1,18,1,0,0,6,5,0,49,16,2,6,0,0,7,11
 	.byte	1,49,16,17,1,18,1,0,0,8,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_line'
-.L100:
-	.word	.L409-.L408
-.L408:
+.L101:
+	.word	.L410-.L409
+.L409:
 	.half	3
-	.word	.L411-.L410
-.L410:
+	.word	.L412-.L411
+.L411:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
 	.byte	'../src/Driver/LQ_CCU6.c',0,0,0,0
 	.byte	'IfxCcu6.h',0,1,0,0,0
-.L411:
+.L412:
 	.byte	5,53,7,0,5,2
-	.word	.L66
+	.word	.L67
 	.byte	3,211,0,1,4,2,5,20,9
-	.half	.L224-.L66
+	.half	.L225-.L67
 	.byte	3,184,10,1,5,23,9
-	.half	.L412-.L224
+	.half	.L413-.L225
 	.byte	1,5,17,9
-	.half	.L264-.L412
+	.half	.L265-.L413
 	.byte	3,1,1,4,1,5,8,9
-	.half	.L225-.L264
+	.half	.L226-.L265
 	.byte	3,206,117,1,5,5,9
-	.half	.L265-.L225
+	.half	.L266-.L226
 	.byte	1,5,44,7,9
-	.half	.L413-.L265
+	.half	.L414-.L266
 	.byte	3,1,1,5,23,9
-	.half	.L414-.L413
-	.byte	1,5,9,9
 	.half	.L415-.L414
+	.byte	1,5,9,9
+	.half	.L416-.L415
 	.byte	3,1,1,5,8,9
-	.half	.L2-.L415
+	.half	.L2-.L416
 	.byte	3,3,1,5,5,9
-	.half	.L416-.L2
+	.half	.L417-.L2
 	.byte	1,5,9,7,9
-	.half	.L417-.L416
-	.byte	3,1,1,5,33,9
 	.half	.L418-.L417
-	.byte	1,5,31,9
+	.byte	3,1,1,5,33,9
 	.half	.L419-.L418
-	.byte	1,5,12,9
+	.byte	1,5,31,9
 	.half	.L420-.L419
-	.byte	3,1,1,5,9,9
+	.byte	1,5,12,9
 	.half	.L421-.L420
-	.byte	1,5,16,7,9
+	.byte	3,1,1,5,9,9
 	.half	.L422-.L421
-	.byte	3,1,1,5,13,9
+	.byte	1,5,16,7,9
 	.half	.L423-.L422
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L424-.L423
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L425-.L424
-	.byte	1,5,86,9
+	.byte	3,1,1,5,31,9
 	.half	.L426-.L425
+	.byte	1,5,86,9
+	.half	.L427-.L426
 	.byte	1,5,21,9
-	.half	.L6-.L426
+	.half	.L6-.L427
 	.byte	3,2,1,5,18,9
-	.half	.L427-.L6
+	.half	.L428-.L6
 	.byte	1,5,52,7,9
-	.half	.L428-.L427
-	.byte	3,1,1,5,31,9
 	.half	.L429-.L428
-	.byte	1,5,87,9
-	.half	.L430-.L429
-	.byte	1,5,21,9
-	.half	.L8-.L430
-	.byte	3,2,1,5,18,9
-	.half	.L431-.L8
-	.byte	1,5,52,7,9
-	.half	.L432-.L431
 	.byte	3,1,1,5,31,9
+	.half	.L430-.L429
+	.byte	1,5,87,9
+	.half	.L431-.L430
+	.byte	1,5,21,9
+	.half	.L8-.L431
+	.byte	3,2,1,5,18,9
+	.half	.L432-.L8
+	.byte	1,5,52,7,9
 	.half	.L433-.L432
+	.byte	3,1,1,5,31,9
+	.half	.L434-.L433
 	.byte	1,5,13,9
-	.half	.L7-.L433
+	.half	.L7-.L434
 	.byte	3,124,1,5,17,9
 	.half	.L5-.L7
 	.byte	3,7,1,5,14,9
-	.half	.L434-.L5
+	.half	.L435-.L5
 	.byte	1,5,16,7,9
-	.half	.L435-.L434
-	.byte	3,1,1,5,13,9
 	.half	.L436-.L435
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L437-.L436
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L438-.L437
-	.byte	1,5,86,9
+	.byte	3,1,1,5,31,9
 	.half	.L439-.L438
+	.byte	1,5,86,9
+	.half	.L440-.L439
 	.byte	1,5,21,9
-	.half	.L13-.L439
+	.half	.L13-.L440
 	.byte	3,2,1,5,18,9
-	.half	.L440-.L13
+	.half	.L441-.L13
 	.byte	1,5,52,7,9
-	.half	.L441-.L440
-	.byte	3,1,1,5,31,9
 	.half	.L442-.L441
-	.byte	1,5,87,9
-	.half	.L443-.L442
-	.byte	1,5,21,9
-	.half	.L15-.L443
-	.byte	3,2,1,5,18,9
-	.half	.L444-.L15
-	.byte	1,5,52,7,9
-	.half	.L445-.L444
 	.byte	3,1,1,5,31,9
+	.half	.L443-.L442
+	.byte	1,5,87,9
+	.half	.L444-.L443
+	.byte	1,5,21,9
+	.half	.L15-.L444
+	.byte	3,2,1,5,18,9
+	.half	.L445-.L15
+	.byte	1,5,52,7,9
 	.half	.L446-.L445
+	.byte	3,1,1,5,31,9
+	.half	.L447-.L446
 	.byte	1,5,13,9
-	.half	.L14-.L446
+	.half	.L14-.L447
 	.byte	3,124,1,5,17,9
 	.half	.L12-.L14
 	.byte	3,7,1,5,14,9
-	.half	.L447-.L12
+	.half	.L448-.L12
 	.byte	1,5,16,7,9
-	.half	.L448-.L447
-	.byte	3,1,1,5,13,9
 	.half	.L449-.L448
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L450-.L449
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L451-.L450
-	.byte	1,5,88,9
+	.byte	3,1,1,5,31,9
 	.half	.L452-.L451
+	.byte	1,5,88,9
+	.half	.L453-.L452
 	.byte	1,5,21,9
-	.half	.L20-.L452
+	.half	.L20-.L453
 	.byte	3,2,1,5,18,9
-	.half	.L453-.L20
+	.half	.L454-.L20
 	.byte	1,5,52,7,9
-	.half	.L454-.L453
-	.byte	3,1,1,5,31,9
 	.half	.L455-.L454
-	.byte	1,5,89,9
-	.half	.L456-.L455
-	.byte	1,5,21,9
-	.half	.L22-.L456
-	.byte	3,2,1,5,18,9
-	.half	.L457-.L22
-	.byte	1,5,52,7,9
-	.half	.L458-.L457
 	.byte	3,1,1,5,31,9
+	.half	.L456-.L455
+	.byte	1,5,89,9
+	.half	.L457-.L456
+	.byte	1,5,21,9
+	.half	.L22-.L457
+	.byte	3,2,1,5,18,9
+	.half	.L458-.L22
+	.byte	1,5,52,7,9
 	.half	.L459-.L458
+	.byte	3,1,1,5,31,9
+	.half	.L460-.L459
 	.byte	1,5,9,9
-	.half	.L11-.L459
+	.half	.L11-.L460
 	.byte	3,3,1,5,8,9
 	.half	.L4-.L11
 	.byte	3,2,1,5,5,9
-	.half	.L460-.L4
+	.half	.L461-.L4
 	.byte	1,5,9,7,9
-	.half	.L461-.L460
-	.byte	3,1,1,5,33,9
 	.half	.L462-.L461
-	.byte	1,5,31,9
+	.byte	3,1,1,5,33,9
 	.half	.L463-.L462
-	.byte	1,5,12,9
+	.byte	1,5,31,9
 	.half	.L464-.L463
-	.byte	3,1,1,5,9,9
+	.byte	1,5,12,9
 	.half	.L465-.L464
-	.byte	1,5,16,7,9
+	.byte	3,1,1,5,9,9
 	.half	.L466-.L465
-	.byte	3,1,1,5,13,9
+	.byte	1,5,16,7,9
 	.half	.L467-.L466
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L468-.L467
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L469-.L468
-	.byte	1,5,86,9
+	.byte	3,1,1,5,31,9
 	.half	.L470-.L469
+	.byte	1,5,86,9
+	.half	.L471-.L470
 	.byte	1,5,21,9
-	.half	.L28-.L470
+	.half	.L28-.L471
 	.byte	3,2,1,5,18,9
-	.half	.L471-.L28
+	.half	.L472-.L28
 	.byte	1,5,52,7,9
-	.half	.L472-.L471
-	.byte	3,1,1,5,31,9
 	.half	.L473-.L472
-	.byte	1,5,87,9
-	.half	.L474-.L473
-	.byte	1,5,21,9
-	.half	.L30-.L474
-	.byte	3,2,1,5,18,9
-	.half	.L475-.L30
-	.byte	1,5,52,7,9
-	.half	.L476-.L475
 	.byte	3,1,1,5,31,9
+	.half	.L474-.L473
+	.byte	1,5,87,9
+	.half	.L475-.L474
+	.byte	1,5,21,9
+	.half	.L30-.L475
+	.byte	3,2,1,5,18,9
+	.half	.L476-.L30
+	.byte	1,5,52,7,9
 	.half	.L477-.L476
+	.byte	3,1,1,5,31,9
+	.half	.L478-.L477
 	.byte	1,5,13,9
-	.half	.L29-.L477
+	.half	.L29-.L478
 	.byte	3,124,1,5,17,9
 	.half	.L27-.L29
 	.byte	3,7,1,5,14,9
-	.half	.L478-.L27
+	.half	.L479-.L27
 	.byte	1,5,16,7,9
-	.half	.L479-.L478
-	.byte	3,1,1,5,13,9
 	.half	.L480-.L479
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L481-.L480
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L482-.L481
-	.byte	1,5,88,9
+	.byte	3,1,1,5,31,9
 	.half	.L483-.L482
+	.byte	1,5,88,9
+	.half	.L484-.L483
 	.byte	1,5,21,9
-	.half	.L35-.L483
+	.half	.L35-.L484
 	.byte	3,2,1,5,18,9
-	.half	.L484-.L35
+	.half	.L485-.L35
 	.byte	1,5,52,7,9
-	.half	.L485-.L484
-	.byte	3,1,1,5,31,9
 	.half	.L486-.L485
-	.byte	1,5,89,9
-	.half	.L487-.L486
-	.byte	1,5,21,9
-	.half	.L37-.L487
-	.byte	3,2,1,5,18,9
-	.half	.L488-.L37
-	.byte	1,5,52,7,9
-	.half	.L489-.L488
 	.byte	3,1,1,5,31,9
+	.half	.L487-.L486
+	.byte	1,5,89,9
+	.half	.L488-.L487
+	.byte	1,5,21,9
+	.half	.L37-.L488
+	.byte	3,2,1,5,18,9
+	.half	.L489-.L37
+	.byte	1,5,52,7,9
 	.half	.L490-.L489
+	.byte	3,1,1,5,31,9
+	.half	.L491-.L490
 	.byte	1,5,13,9
-	.half	.L36-.L490
+	.half	.L36-.L491
 	.byte	3,124,1,5,17,9
 	.half	.L34-.L36
 	.byte	3,7,1,5,14,9
-	.half	.L491-.L34
+	.half	.L492-.L34
 	.byte	1,5,16,7,9
-	.half	.L492-.L491
-	.byte	3,1,1,5,13,9
 	.half	.L493-.L492
-	.byte	1,5,52,7,9
+	.byte	3,1,1,5,13,9
 	.half	.L494-.L493
-	.byte	3,1,1,5,31,9
+	.byte	1,5,52,7,9
 	.half	.L495-.L494
-	.byte	1,5,92,9
+	.byte	3,1,1,5,31,9
 	.half	.L496-.L495
+	.byte	1,5,92,9
+	.half	.L497-.L496
 	.byte	1,5,21,9
-	.half	.L42-.L496
+	.half	.L42-.L497
 	.byte	3,2,1,5,18,9
-	.half	.L497-.L42
+	.half	.L498-.L42
 	.byte	1,5,52,7,9
-	.half	.L498-.L497
-	.byte	3,1,1,5,31,9
 	.half	.L499-.L498
-	.byte	1,5,93,9
-	.half	.L500-.L499
-	.byte	1,5,21,9
-	.half	.L44-.L500
-	.byte	3,2,1,5,18,9
-	.half	.L501-.L44
-	.byte	1,5,52,7,9
-	.half	.L502-.L501
 	.byte	3,1,1,5,31,9
+	.half	.L500-.L499
+	.byte	1,5,93,9
+	.half	.L501-.L500
+	.byte	1,5,21,9
+	.half	.L44-.L501
+	.byte	3,2,1,5,18,9
+	.half	.L502-.L44
+	.byte	1,5,52,7,9
 	.half	.L503-.L502
+	.byte	3,1,1,5,31,9
+	.half	.L504-.L503
 	.byte	1,5,9,9
-	.half	.L33-.L503
+	.half	.L33-.L504
 	.byte	3,3,1,5,8,9
 	.half	.L26-.L33
 	.byte	3,2,1,5,5,9
-	.half	.L504-.L26
+	.half	.L505-.L26
 	.byte	1,5,22,7,9
-	.half	.L505-.L504
-	.byte	3,1,1,5,25,9
-	.half	.L48-.L505
-	.byte	3,7,1,5,8,9
-	.half	.L506-.L48
-	.byte	3,1,1,5,5,9
-	.half	.L507-.L506
-	.byte	1,5,9,7,9
-	.half	.L508-.L507
-	.byte	3,1,1,5,30,9
-	.half	.L509-.L508
-	.byte	1,5,28,9
-	.half	.L510-.L509
-	.byte	1,5,9,9
-	.half	.L511-.L510
-	.byte	3,1,1,5,30,9
-	.half	.L512-.L511
-	.byte	1,5,28,9
-	.half	.L513-.L512
-	.byte	1,5,9,9
-	.half	.L514-.L513
-	.byte	3,1,1,5,30,9
-	.half	.L515-.L514
-	.byte	1,5,28,9
-	.half	.L516-.L515
-	.byte	1,5,9,9
-	.half	.L517-.L516
-	.byte	3,1,1,5,30,9
-	.half	.L518-.L517
-	.byte	1,5,28,9
-	.half	.L519-.L518
-	.byte	1,5,23,9
-	.half	.L520-.L519
+	.half	.L506-.L505
 	.byte	3,1,1,5,8,9
-	.half	.L49-.L520
-	.byte	3,2,1,5,5,9
-	.half	.L521-.L49
+	.half	.L48-.L506
+	.byte	3,7,1,5,5,9
+	.half	.L507-.L48
+	.byte	1,5,29,7,9
+	.half	.L508-.L507
+	.byte	3,1,1,5,8,9
+	.half	.L49-.L508
+	.byte	3,1,1,5,5,9
+	.half	.L509-.L49
 	.byte	1,5,9,7,9
-	.half	.L522-.L521
+	.half	.L510-.L509
 	.byte	3,1,1,5,30,9
-	.half	.L523-.L522
+	.half	.L511-.L510
 	.byte	1,5,28,9
-	.half	.L524-.L523
+	.half	.L512-.L511
 	.byte	1,5,9,9
-	.half	.L525-.L524
+	.half	.L513-.L512
 	.byte	3,1,1,5,30,9
-	.half	.L526-.L525
+	.half	.L514-.L513
 	.byte	1,5,28,9
-	.half	.L527-.L526
+	.half	.L515-.L514
 	.byte	1,5,9,9
-	.half	.L528-.L527
+	.half	.L516-.L515
 	.byte	3,1,1,5,30,9
-	.half	.L529-.L528
+	.half	.L517-.L516
 	.byte	1,5,28,9
-	.half	.L530-.L529
+	.half	.L518-.L517
 	.byte	1,5,9,9
-	.half	.L531-.L530
+	.half	.L519-.L518
 	.byte	3,1,1,5,30,9
-	.half	.L532-.L531
+	.half	.L520-.L519
 	.byte	1,5,28,9
-	.half	.L533-.L532
+	.half	.L521-.L520
 	.byte	1,5,23,9
+	.half	.L522-.L521
+	.byte	3,1,1,5,8,9
+	.half	.L50-.L522
+	.byte	3,2,1,5,5,9
+	.half	.L523-.L50
+	.byte	1,5,9,7,9
+	.half	.L524-.L523
+	.byte	3,1,1,5,30,9
+	.half	.L525-.L524
+	.byte	1,5,28,9
+	.half	.L526-.L525
+	.byte	1,5,9,9
+	.half	.L527-.L526
+	.byte	3,1,1,5,30,9
+	.half	.L528-.L527
+	.byte	1,5,28,9
+	.half	.L529-.L528
+	.byte	1,5,9,9
+	.half	.L530-.L529
+	.byte	3,1,1,5,30,9
+	.half	.L531-.L530
+	.byte	1,5,28,9
+	.half	.L532-.L531
+	.byte	1,5,9,9
+	.half	.L533-.L532
+	.byte	3,1,1,5,30,9
 	.half	.L534-.L533
+	.byte	1,5,28,9
+	.half	.L535-.L534
+	.byte	1,5,23,9
+	.half	.L536-.L535
 	.byte	3,1,1,5,31,9
-	.half	.L50-.L534
+	.half	.L51-.L536
 	.byte	3,3,1,5,22,9
-	.half	.L535-.L50
+	.half	.L537-.L51
 	.byte	1,5,1,9
-	.half	.L3-.L535
+	.half	.L3-.L537
 	.byte	3,205,0,1,7,9
-	.half	.L102-.L3
+	.half	.L103-.L3
 	.byte	0,1,1
-.L409:
+.L410:
 	.sdecl	'.debug_ranges',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_ranges'
-.L101:
-	.word	-1,.L66,0,.L102-.L66,0,0
+.L102:
+	.word	-1,.L67,0,.L103-.L67,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_info'
-.L103:
+.L104:
 	.word	315
 	.half	3
-	.word	.L104
+	.word	.L105
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L106,.L105
+	.word	.L107,.L106
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU60_CH1_IRQHandler',0,1,161,2,6,1,1,1
-	.word	.L68,.L229,.L67
+	.byte	'CCU60_CH1_IRQHandler',0,1,162,2,6,1,1,1
+	.word	.L69,.L230,.L68
 	.byte	4
-	.word	.L68,.L229
+	.word	.L69,.L230
 	.byte	5
-	.word	.L230,.L68,.L231
+	.word	.L231,.L69,.L232
 	.byte	6
-	.word	.L232,.L68,.L231
+	.word	.L233,.L69,.L232
 	.byte	0,5
-	.word	.L187,.L233,.L234
+	.word	.L188,.L234,.L235
 	.byte	7
-	.word	.L190,.L235
+	.word	.L191,.L236
 	.byte	7
-	.word	.L192,.L236
+	.word	.L193,.L237
 	.byte	8
-	.word	.L194,.L233,.L234
+	.word	.L195,.L234,.L235
 	.byte	9
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L237
+	.word	.L148,.L238
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_abbrev'
-.L104:
+.L105:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,29,1,49,16,17,1,18,1,0,0,6,11,0,49,16,17,1,18,1
 	.byte	0,0,7,5,0,49,16,2,6,0,0,8,11,1,49,16,17,1,18,1,0,0,9,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_line'
-.L105:
-	.word	.L537-.L536
-.L536:
-	.half	3
+.L106:
 	.word	.L539-.L538
 .L538:
+	.half	3
+	.word	.L541-.L540
+.L540:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
@@ -46203,91 +46213,91 @@ wheel_asix:	.type	object
 	.byte	'IfxCcu6.h',0,1,0,0
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\Cpu\\Std\\IfxCpu.h',0
 	.byte	0,0,0,0
-.L539:
+.L541:
 	.byte	4,3,5,13,7,0,5,2
-	.word	.L68
+	.word	.L69
 	.byte	3,155,5,1,4,1,5,53,9
-	.half	.L231-.L68
-	.byte	3,138,125,1,4,2,5,20,9
-	.half	.L233-.L231
-	.byte	3,230,8,1,5,23,9
-	.half	.L540-.L233
+	.half	.L232-.L69
+	.byte	3,139,125,1,4,2,5,20,9
+	.half	.L234-.L232
+	.byte	3,229,8,1,5,23,9
+	.half	.L542-.L234
 	.byte	1,5,17,9
-	.half	.L266-.L540
+	.half	.L267-.L542
 	.byte	3,1,1,4,1,5,8,9
-	.half	.L234-.L266
-	.byte	3,155,119,1,5,25,9
-	.half	.L541-.L234
+	.half	.L235-.L267
+	.byte	3,156,119,1,5,25,9
+	.half	.L543-.L235
 	.byte	1,5,5,9
-	.half	.L542-.L541
-	.byte	1,5,9,7,9
-	.half	.L543-.L542
-	.byte	3,1,1,5,26,9
 	.half	.L544-.L543
-	.byte	1,5,41,9
+	.byte	1,5,9,7,9
 	.half	.L545-.L544
+	.byte	3,1,1,5,26,9
+	.half	.L546-.L545
+	.byte	1,5,41,9
+	.half	.L547-.L546
 	.byte	1,5,14,9
-	.half	.L51-.L545
+	.half	.L52-.L547
 	.byte	3,3,1,5,22,9
-	.half	.L546-.L51
+	.half	.L548-.L52
 	.byte	1,5,1,9
-	.half	.L267-.L546
+	.half	.L268-.L548
 	.byte	3,2,1,7,9
-	.half	.L107-.L267
+	.half	.L108-.L268
 	.byte	0,1,1
-.L537:
+.L539:
 	.sdecl	'.debug_ranges',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_ranges'
-.L106:
-	.word	-1,.L68,0,.L107-.L68,0,0
+.L107:
+	.word	-1,.L69,0,.L108-.L69,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU61_CH0_IRQHandler')
 	.sect	'.debug_info'
-.L108:
+.L109:
 	.word	315
 	.half	3
-	.word	.L109
+	.word	.L110
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L111,.L110
+	.word	.L112,.L111
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU61_CH0_IRQHandler',0,1,186,2,6,1,1,1
-	.word	.L70,.L238,.L69
+	.byte	'CCU61_CH0_IRQHandler',0,1,187,2,6,1,1,1
+	.word	.L71,.L239,.L70
 	.byte	4
-	.word	.L70,.L238
+	.word	.L71,.L239
 	.byte	5
-	.word	.L230,.L70,.L239
+	.word	.L231,.L71,.L240
 	.byte	6
-	.word	.L232,.L70,.L239
+	.word	.L233,.L71,.L240
 	.byte	0,5
-	.word	.L187,.L240,.L241
+	.word	.L188,.L241,.L242
 	.byte	7
-	.word	.L190,.L242
+	.word	.L191,.L243
 	.byte	7
-	.word	.L192,.L243
+	.word	.L193,.L244
 	.byte	8
-	.word	.L194,.L240,.L241
+	.word	.L195,.L241,.L242
 	.byte	9
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L244
+	.word	.L148,.L245
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU61_CH0_IRQHandler')
 	.sect	'.debug_abbrev'
-.L109:
+.L110:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,29,1,49,16,17,1,18,1,0,0,6,11,0,49,16,17,1,18,1
 	.byte	0,0,7,5,0,49,16,2,6,0,0,8,11,1,49,16,17,1,18,1,0,0,9,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU61_CH0_IRQHandler')
 	.sect	'.debug_line'
-.L110:
-	.word	.L548-.L547
-.L547:
-	.half	3
+.L111:
 	.word	.L550-.L549
 .L549:
+	.half	3
+	.word	.L552-.L551
+.L551:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
@@ -46295,143 +46305,143 @@ wheel_asix:	.type	object
 	.byte	'IfxCcu6.h',0,1,0,0
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\Cpu\\Std\\IfxCpu.h',0
 	.byte	0,0,0,0
-.L550:
+.L552:
 	.byte	4,3,5,13,7,0,5,2
-	.word	.L70
+	.word	.L71
 	.byte	3,155,5,1,4,1,5,53,9
-	.half	.L239-.L70
-	.byte	3,164,125,1,4,2,5,20,9
-	.half	.L240-.L239
-	.byte	3,204,8,1,5,23,9
-	.half	.L551-.L240
+	.half	.L240-.L71
+	.byte	3,165,125,1,4,2,5,20,9
+	.half	.L241-.L240
+	.byte	3,203,8,1,5,23,9
+	.half	.L553-.L241
 	.byte	1,5,17,9
-	.half	.L268-.L551
+	.half	.L269-.L553
 	.byte	3,1,1,4,1,5,29,9
-	.half	.L241-.L268
-	.byte	3,183,119,1,5,39,9
-	.half	.L552-.L241
+	.half	.L242-.L269
+	.byte	3,184,119,1,5,39,9
+	.half	.L554-.L242
 	.byte	1,5,53,9
-	.half	.L553-.L552
-	.byte	1,5,63,9
-	.half	.L554-.L553
-	.byte	1,5,77,9
 	.half	.L555-.L554
-	.byte	1,5,87,9
+	.byte	1,5,63,9
 	.half	.L556-.L555
-	.byte	1,5,67,9
+	.byte	1,5,77,9
 	.half	.L557-.L556
-	.byte	1,5,5,9
+	.byte	1,5,87,9
 	.half	.L558-.L557
-	.byte	3,1,1,5,25,9
+	.byte	1,5,67,9
 	.half	.L559-.L558
-	.byte	1,5,35,9
+	.byte	1,5,5,9
 	.half	.L560-.L559
-	.byte	1,5,41,9
+	.byte	3,1,1,5,25,9
 	.half	.L561-.L560
-	.byte	1,5,39,9
+	.byte	1,5,35,9
 	.half	.L562-.L561
-	.byte	1,5,5,9
+	.byte	1,5,41,9
 	.half	.L563-.L562
-	.byte	1,5,15,9
+	.byte	1,5,39,9
 	.half	.L564-.L563
-	.byte	1,5,22,9
+	.byte	1,5,5,9
 	.half	.L565-.L564
-	.byte	1,5,5,9
+	.byte	1,5,15,9
 	.half	.L566-.L565
-	.byte	3,1,1,5,25,9
+	.byte	1,5,22,9
 	.half	.L567-.L566
-	.byte	1,5,35,9
+	.byte	1,5,5,9
 	.half	.L568-.L567
-	.byte	1,5,41,9
-	.half	.L569-.L568
-	.byte	1,5,39,9
-	.half	.L570-.L569
-	.byte	1,5,5,9
-	.half	.L571-.L570
-	.byte	1,5,15,9
-	.half	.L572-.L571
-	.byte	1,5,22,9
-	.half	.L573-.L572
-	.byte	1,5,5,9
-	.half	.L574-.L573
 	.byte	3,1,1,5,25,9
-	.half	.L575-.L574
+	.half	.L569-.L568
 	.byte	1,5,35,9
-	.half	.L576-.L575
+	.half	.L570-.L569
 	.byte	1,5,41,9
-	.half	.L577-.L576
+	.half	.L571-.L570
 	.byte	1,5,39,9
-	.half	.L578-.L577
+	.half	.L572-.L571
 	.byte	1,5,5,9
-	.half	.L579-.L578
+	.half	.L573-.L572
 	.byte	1,5,15,9
-	.half	.L580-.L579
+	.half	.L574-.L573
 	.byte	1,5,22,9
-	.half	.L581-.L580
+	.half	.L575-.L574
 	.byte	1,5,5,9
+	.half	.L576-.L575
+	.byte	3,1,1,5,25,9
+	.half	.L577-.L576
+	.byte	1,5,35,9
+	.half	.L578-.L577
+	.byte	1,5,41,9
+	.half	.L579-.L578
+	.byte	1,5,39,9
+	.half	.L580-.L579
+	.byte	1,5,5,9
+	.half	.L581-.L580
+	.byte	1,5,15,9
 	.half	.L582-.L581
-	.byte	3,1,1,5,21,9
+	.byte	1,5,22,9
 	.half	.L583-.L582
+	.byte	1,5,5,9
+	.half	.L584-.L583
+	.byte	3,1,1,5,21,9
+	.half	.L585-.L584
 	.byte	1,5,19,9
-	.half	.L269-.L583
+	.half	.L270-.L585
 	.byte	1,5,1,9
-	.half	.L584-.L269
+	.half	.L586-.L270
 	.byte	3,4,1,7,9
-	.half	.L112-.L584
+	.half	.L113-.L586
 	.byte	0,1,1
-.L548:
+.L550:
 	.sdecl	'.debug_ranges',debug,cluster('CCU61_CH0_IRQHandler')
 	.sect	'.debug_ranges'
-.L111:
-	.word	-1,.L70,0,.L112-.L70,0,0
+.L112:
+	.word	-1,.L71,0,.L113-.L71,0,0
 	.sdecl	'.debug_info',debug,cluster('CCU61_CH1_IRQHandler')
 	.sect	'.debug_info'
-.L113:
+.L114:
 	.word	315
 	.half	3
-	.word	.L114
+	.word	.L115
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L116,.L115
+	.word	.L117,.L116
 	.byte	2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'CCU61_CH1_IRQHandler',0,1,213,2,6,1,1,1
-	.word	.L72,.L245,.L71
+	.byte	'CCU61_CH1_IRQHandler',0,1,214,2,6,1,1,1
+	.word	.L73,.L246,.L72
 	.byte	4
-	.word	.L72,.L245
+	.word	.L73,.L246
 	.byte	5
-	.word	.L230,.L72,.L246
+	.word	.L231,.L73,.L247
 	.byte	6
-	.word	.L232,.L72,.L246
+	.word	.L233,.L73,.L247
 	.byte	0,5
-	.word	.L187,.L247,.L248
+	.word	.L188,.L248,.L249
 	.byte	7
-	.word	.L190,.L249
+	.word	.L191,.L250
 	.byte	7
-	.word	.L192,.L250
+	.word	.L193,.L251
 	.byte	8
-	.word	.L194,.L247,.L248
+	.word	.L195,.L248,.L249
 	.byte	9
 	.byte	'mask',0,2,140,11,12
-	.word	.L147,.L251
+	.word	.L148,.L252
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('CCU61_CH1_IRQHandler')
 	.sect	'.debug_abbrev'
-.L114:
+.L115:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,29,1,49,16,17,1,18,1,0,0,6,11,0,49,16,17,1,18,1
 	.byte	0,0,7,5,0,49,16,2,6,0,0,8,11,1,49,16,17,1,18,1,0,0,9,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('CCU61_CH1_IRQHandler')
 	.sect	'.debug_line'
-.L115:
-	.word	.L586-.L585
-.L585:
-	.half	3
+.L116:
 	.word	.L588-.L587
 .L587:
+	.half	3
+	.word	.L590-.L589
+.L589:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std',0
 	.byte	0
@@ -46439,581 +46449,581 @@ wheel_asix:	.type	object
 	.byte	'IfxCcu6.h',0,1,0,0
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\Cpu\\Std\\IfxCpu.h',0
 	.byte	0,0,0,0
-.L588:
+.L590:
 	.byte	4,3,5,13,7,0,5,2
-	.word	.L72
+	.word	.L73
 	.byte	3,155,5,1,4,1,5,53,9
-	.half	.L246-.L72
-	.byte	3,191,125,1,4,2,5,20,9
-	.half	.L247-.L246
-	.byte	3,177,8,1,5,23,9
-	.half	.L589-.L247
+	.half	.L247-.L73
+	.byte	3,192,125,1,4,2,5,20,9
+	.half	.L248-.L247
+	.byte	3,176,8,1,5,23,9
+	.half	.L591-.L248
 	.byte	1,5,17,9
-	.half	.L270-.L589
+	.half	.L271-.L591
 	.byte	3,1,1,4,1,5,14,9
-	.half	.L248-.L270
-	.byte	3,209,119,1,5,20,9
-	.half	.L590-.L248
+	.half	.L249-.L271
+	.byte	3,210,119,1,5,20,9
+	.half	.L592-.L249
 	.byte	1,5,1,9
-	.half	.L271-.L590
+	.half	.L272-.L592
 	.byte	3,1,1,7,9
-	.half	.L117-.L271
+	.half	.L118-.L272
 	.byte	0,1,1
-.L586:
+.L588:
 	.sdecl	'.debug_ranges',debug,cluster('CCU61_CH1_IRQHandler')
 	.sect	'.debug_ranges'
-.L116:
-	.word	-1,.L72,0,.L117-.L72,0,0
+.L117:
+	.word	-1,.L73,0,.L118-.L73,0,0
 	.sdecl	'.debug_info',debug,cluster('flag_from_irq')
 	.sect	'.debug_info'
-.L118:
+.L119:
 	.word	193
 	.half	3
-	.word	.L119
+	.word	.L120
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'flag_from_irq',0,46,38,14
-	.word	.L252
+	.word	.L253
 	.byte	1,5,3
 	.word	flag_from_irq
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('flag_from_irq')
 	.sect	'.debug_abbrev'
-.L119:
+.L120:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('following_speed')
 	.sect	'.debug_info'
-.L120:
+.L121:
 	.word	195
 	.half	3
-	.word	.L121
+	.word	.L122
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'following_speed',0,46,68,16
-	.word	.L253
+	.word	.L254
 	.byte	1,5,3
 	.word	following_speed
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('following_speed')
 	.sect	'.debug_abbrev'
-.L121:
+.L122:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('error_clear_count')
 	.sect	'.debug_info'
-.L122:
+.L123:
 	.word	197
 	.half	3
-	.word	.L123
+	.word	.L124
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'error_clear_count',0,46,77,14
-	.word	.L254
+	.word	.L255
 	.byte	1,5,3
 	.word	error_clear_count
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('error_clear_count')
 	.sect	'.debug_abbrev'
-.L123:
+.L124:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('task1_start_yaw_correction')
 	.sect	'.debug_info'
-.L124:
+.L125:
 	.word	206
 	.half	3
-	.word	.L125
+	.word	.L126
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'task1_start_yaw_correction',0,46,69,15
-	.word	.L255
+	.word	.L256
 	.byte	1,5,3
 	.word	task1_start_yaw_correction
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('task1_start_yaw_correction')
 	.sect	'.debug_abbrev'
-.L125:
+.L126:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('wheel_asix')
 	.sect	'.debug_info'
-.L126:
+.L127:
 	.word	191
 	.half	3
-	.word	.L127
+	.word	.L128
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'wheel_asix',0,46,184,2,25
-	.word	.L256
+	.byte	'wheel_asix',0,46,185,2,25
+	.word	.L257
 	.byte	1,5,3
 	.word	wheel_asix
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('wheel_asix')
 	.sect	'.debug_abbrev'
-.L127:
+.L128:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('following_flow_start')
 	.sect	'.debug_info'
-.L128:
+.L129:
 	.word	200
 	.half	3
-	.word	.L129
+	.word	.L130
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'following_flow_start',0,46,78,15
-	.word	.L257
+	.word	.L258
 	.byte	1,5,3
 	.word	following_flow_start
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('following_flow_start')
 	.sect	'.debug_abbrev'
-.L129:
+.L130:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('wheel_system_tick')
 	.sect	'.debug_info'
-.L130:
+.L131:
 	.word	198
 	.half	3
-	.word	.L131
+	.word	.L132
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
-	.byte	'wheel_system_tick',0,46,158,2,35
-	.word	.L258
+	.byte	'wheel_system_tick',0,46,159,2,35
+	.word	.L259
 	.byte	1,5,3
 	.word	wheel_system_tick
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('wheel_system_tick')
 	.sect	'.debug_abbrev'
-.L131:
+.L132:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('Ccu6IrqVectabNum')
 	.sect	'.debug_info'
-.L132:
+.L133:
 	.word	196
 	.half	3
-	.word	.L133
+	.word	.L134
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'Ccu6IrqVectabNum',0,46,45,13
-	.word	.L259
+	.word	.L260
 	.byte	1,5,3
 	.word	Ccu6IrqVectabNum
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('Ccu6IrqVectabNum')
 	.sect	'.debug_abbrev'
-.L133:
+.L134:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('Ccu6IrqPriority')
 	.sect	'.debug_info'
-.L134:
+.L135:
 	.word	195
 	.half	3
-	.word	.L135
+	.word	.L136
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'Ccu6IrqPriority',0,46,48,13
-	.word	.L260
+	.word	.L261
 	.byte	1,5,3
 	.word	Ccu6IrqPriority
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('Ccu6IrqPriority')
 	.sect	'.debug_abbrev'
-.L135:
+.L136:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('Ccu6IrqFuncPointer')
 	.sect	'.debug_info'
-.L136:
+.L137:
 	.word	198
 	.half	3
-	.word	.L137
+	.word	.L138
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'Ccu6IrqFuncPointer',0,46,51,13
-	.word	.L261
+	.word	.L262
 	.byte	1,5,3
 	.word	Ccu6IrqFuncPointer
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('Ccu6IrqFuncPointer')
 	.sect	'.debug_abbrev'
-.L137:
+.L138:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('target_speed')
 	.sect	'.debug_info'
-.L138:
+.L139:
 	.word	192
 	.half	3
-	.word	.L139
+	.word	.L140
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'target_speed',0,46,67,7
-	.word	.L262
+	.word	.L263
 	.byte	1,5,3
 	.word	target_speed
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('target_speed')
 	.sect	'.debug_abbrev'
-.L139:
+.L140:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('tem1_speed')
 	.sect	'.debug_info'
-.L140:
+.L141:
 	.word	190
 	.half	3
-	.word	.L141
+	.word	.L142
 	.byte	4,1
 	.byte	'../src/Driver/LQ_CCU6.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L79
+	.word	.L80
 	.byte	3
 	.byte	'tem1_speed',0,46,76,14
-	.word	.L263
+	.word	.L264
 	.byte	1,5,3
 	.word	tem1_speed
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('tem1_speed')
 	.sect	'.debug_abbrev'
-.L141:
+.L142:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_loc',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_loc'
-.L65:
-	.word	-1,.L66,0,.L223-.L66
+.L66:
+	.word	-1,.L67,0,.L224-.L67
 	.half	2
 	.byte	138,0
-	.word	0,0
-.L226:
-	.word	0,0
-.L228:
-	.word	-1,.L66,.L264-.L66,.L265-.L66
-	.half	1
-	.byte	95
 	.word	0,0
 .L227:
 	.word	0,0
+.L229:
+	.word	-1,.L67,.L265-.L67,.L266-.L67
+	.half	1
+	.byte	95
+	.word	0,0
+.L228:
+	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_loc'
-.L67:
-	.word	-1,.L68,0,.L229-.L68
+.L68:
+	.word	-1,.L69,0,.L230-.L69
 	.half	2
 	.byte	138,0
-	.word	0,0
-.L235:
-	.word	0,0
-.L237:
-	.word	-1,.L68,.L266-.L68,.L267-.L68
-	.half	5
-	.byte	144,32,157,32,0
 	.word	0,0
 .L236:
 	.word	0,0
-	.sdecl	'.debug_loc',debug,cluster('CCU61_CH0_IRQHandler')
-	.sect	'.debug_loc'
-.L69:
-	.word	-1,.L70,0,.L238-.L70
-	.half	2
-	.byte	138,0
-	.word	0,0
-.L242:
-	.word	0,0
-.L244:
-	.word	-1,.L70,.L268-.L70,.L269-.L70
-	.half	1
-	.byte	95
-	.word	0,0
-.L243:
-	.word	0,0
-	.sdecl	'.debug_loc',debug,cluster('CCU61_CH1_IRQHandler')
-	.sect	'.debug_loc'
-.L71:
-	.word	-1,.L72,0,.L245-.L72
-	.half	2
-	.byte	138,0
-	.word	0,0
-.L249:
-	.word	0,0
-.L251:
-	.word	-1,.L72,.L270-.L72,.L271-.L72
+.L238:
+	.word	-1,.L69,.L267-.L69,.L268-.L69
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
+.L237:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('CCU61_CH0_IRQHandler')
+	.sect	'.debug_loc'
+.L70:
+	.word	-1,.L71,0,.L239-.L71
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L243:
+	.word	0,0
+.L245:
+	.word	-1,.L71,.L269-.L71,.L270-.L71
+	.half	1
+	.byte	95
+	.word	0,0
+.L244:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('CCU61_CH1_IRQHandler')
+	.sect	'.debug_loc'
+.L72:
+	.word	-1,.L73,0,.L246-.L73
+	.half	2
+	.byte	138,0
+	.word	0,0
 .L250:
+	.word	0,0
+.L252:
+	.word	-1,.L73,.L271-.L73,.L272-.L73
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L251:
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_loc'
-.L75:
-	.word	-1,.L76,0,.L183-.L76
+.L76:
+	.word	-1,.L77,0,.L184-.L77
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L184:
-	.word	-1,.L76,0,.L310-.L76
+.L185:
+	.word	-1,.L77,0,.L311-.L77
 	.half	1
 	.byte	84
 	.word	0,0
-.L191:
+.L192:
 	.word	0,0
-.L200:
+.L201:
 	.word	0,0
-.L185:
-	.word	-1,.L76,0,.L311-.L76
+.L186:
+	.word	-1,.L77,0,.L312-.L77
 	.half	1
 	.byte	85
-	.word	.L312-.L76,.L183-.L76
+	.word	.L313-.L77,.L184-.L77
 	.half	1
 	.byte	88
 	.word	0,0
-.L195:
-	.word	-1,.L76,.L313-.L76,.L314-.L76
+.L196:
+	.word	-1,.L77,.L314-.L77,.L315-.L77
 	.half	1
 	.byte	95
 	.word	0,0
-.L204:
-	.word	-1,.L76,.L315-.L76,.L316-.L76
+.L205:
+	.word	-1,.L77,.L316-.L77,.L317-.L77
 	.half	1
 	.byte	95
 	.word	0,0
-.L186:
-	.word	-1,.L76,.L311-.L76,.L183-.L76
+.L187:
+	.word	-1,.L77,.L312-.L77,.L184-.L77
 	.half	1
 	.byte	98
 	.word	0,0
-.L193:
+.L194:
 	.word	0,0
-.L202:
+.L203:
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_loc'
-.L77:
-	.word	-1,.L78,0,.L205-.L78
+.L78:
+	.word	-1,.L79,0,.L206-.L79
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L206:
-	.word	-1,.L78,0,.L317-.L78
+.L207:
+	.word	-1,.L79,0,.L318-.L79
 	.half	1
 	.byte	84
-	.word	0,0
-.L211:
-	.word	0,0
-.L218:
-	.word	0,0
-.L207:
-	.word	-1,.L78,0,.L318-.L78
-	.half	1
-	.byte	85
-	.word	.L319-.L78,.L205-.L78
-	.half	1
-	.byte	88
-	.word	0,0
-.L213:
-	.word	-1,.L78,.L320-.L78,.L321-.L78
-	.half	1
-	.byte	95
-	.word	0,0
-.L222:
-	.word	-1,.L78,.L322-.L78,.L205-.L78
-	.half	1
-	.byte	95
-	.word	0,0
-.L208:
-	.word	-1,.L78,.L318-.L78,.L205-.L78
-	.half	1
-	.byte	98
 	.word	0,0
 .L212:
 	.word	0,0
-.L220:
+.L219:
+	.word	0,0
+.L208:
+	.word	-1,.L79,0,.L319-.L79
+	.half	1
+	.byte	85
+	.word	.L320-.L79,.L206-.L79
+	.half	1
+	.byte	88
+	.word	0,0
+.L214:
+	.word	-1,.L79,.L321-.L79,.L322-.L79
+	.half	1
+	.byte	95
+	.word	0,0
+.L223:
+	.word	-1,.L79,.L323-.L79,.L206-.L79
+	.half	1
+	.byte	95
+	.word	0,0
+.L209:
+	.word	-1,.L79,.L319-.L79,.L206-.L79
+	.half	1
+	.byte	98
+	.word	0,0
+.L213:
+	.word	0,0
+.L221:
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_loc'
-.L73:
-	.word	-1,.L74,0,.L272-.L74
+.L74:
+	.word	-1,.L75,0,.L273-.L75
 	.half	2
 	.byte	138,0
-	.word	.L272-.L74,.L142-.L74
+	.word	.L273-.L75,.L143-.L75
 	.half	3
 	.byte	138,152,1
-	.word	.L142-.L74,.L142-.L74
+	.word	.L143-.L75,.L143-.L75
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L173:
-	.word	-1,.L74,0,.L142-.L74
+.L174:
+	.word	-1,.L75,0,.L143-.L75
 	.half	2
 	.byte	145,76
 	.word	0,0
-.L154:
-	.word	-1,.L74,.L280-.L74,.L281-.L74
+.L155:
+	.word	-1,.L75,.L281-.L75,.L282-.L75
 	.half	1
 	.byte	95
-	.word	.L282-.L74,.L142-.L74
+	.word	.L283-.L75,.L143-.L75
 	.half	2
 	.byte	145,116
-	.word	.L299-.L74,.L300-.L74
+	.word	.L300-.L75,.L301-.L75
 	.half	1
 	.byte	95
-	.word	.L305-.L74,.L306-.L74
+	.word	.L306-.L75,.L307-.L75
 	.half	1
 	.byte	95
-	.word	.L307-.L74,.L308-.L74
+	.word	.L308-.L75,.L309-.L75
 	.half	1
 	.byte	95
-	.word	.L309-.L74,.L175-.L74
+	.word	.L310-.L75,.L176-.L75
 	.half	1
 	.byte	95
 	.word	0,0
-.L144:
-	.word	-1,.L74,0,.L273-.L74
+.L145:
+	.word	-1,.L75,0,.L274-.L75
 	.half	1
 	.byte	84
-	.word	.L275-.L74,.L142-.L74
+	.word	.L276-.L75,.L143-.L75
 	.half	2
 	.byte	145,112
-	.word	.L273-.L74,.L278-.L74
+	.word	.L274-.L75,.L279-.L75
 	.half	1
 	.byte	95
-	.word	.L297-.L74,.L298-.L74
+	.word	.L298-.L75,.L299-.L75
 	.half	1
 	.byte	95
-	.word	.L303-.L74,.L304-.L74
+	.word	.L304-.L75,.L305-.L75
 	.half	1
 	.byte	95
 	.word	0,0
-.L146:
-	.word	-1,.L74,0,.L274-.L74
+.L147:
+	.word	-1,.L75,0,.L275-.L75
 	.half	1
 	.byte	85
-	.word	.L276-.L74,.L142-.L74
+	.word	.L277-.L75,.L143-.L75
 	.half	1
 	.byte	94
 	.word	0,0
-.L157:
-	.word	-1,.L74,.L287-.L74,.L288-.L74
-	.half	2
-	.byte	144,38
-	.word	.L292-.L74,.L293-.L74
-	.half	2
-	.byte	144,38
-	.word	.L295-.L74,.L296-.L74
-	.half	2
-	.byte	144,38
-	.word	.L301-.L74,.L302-.L74
-	.half	2
-	.byte	144,38
-	.word	0,0
-.L177:
-	.word	0,0
-.L164:
-	.word	0,0
-.L181:
-	.word	0,0
-.L170:
-	.word	-1,.L74,.L285-.L74,.L286-.L74
-	.half	1
-	.byte	88
-	.word	.L294-.L74,.L142-.L74
-	.half	1
-	.byte	88
-	.word	0,0
 .L158:
-	.word	-1,.L74,.L175-.L74,.L142-.L74
+	.word	-1,.L75,.L288-.L75,.L289-.L75
+	.half	2
+	.byte	144,38
+	.word	.L293-.L75,.L294-.L75
+	.half	2
+	.byte	144,38
+	.word	.L296-.L75,.L297-.L75
+	.half	2
+	.byte	144,38
+	.word	.L302-.L75,.L303-.L75
+	.half	2
+	.byte	144,38
+	.word	0,0
+.L178:
+	.word	0,0
+.L165:
+	.word	0,0
+.L182:
+	.word	0,0
+.L171:
+	.word	-1,.L75,.L286-.L75,.L287-.L75
+	.half	1
+	.byte	88
+	.word	.L295-.L75,.L143-.L75
+	.half	1
+	.byte	88
+	.word	0,0
+.L159:
+	.word	-1,.L75,.L176-.L75,.L143-.L75
 	.half	1
 	.byte	95
 	.word	0,0
-.L152:
-	.word	-1,.L74,.L274-.L74,.L279-.L74
+.L153:
+	.word	-1,.L75,.L275-.L75,.L280-.L75
 	.half	1
 	.byte	98
-	.word	.L284-.L74,.L279-.L74
+	.word	.L285-.L75,.L280-.L75
 	.half	1
 	.byte	101
 	.word	0,0
-.L155:
-	.word	-1,.L74,.L160-.L74,.L142-.L74
+.L156:
+	.word	-1,.L75,.L161-.L75,.L143-.L75
 	.half	1
 	.byte	90
-	.word	.L290-.L74,.L291-.L74
+	.word	.L291-.L75,.L292-.L75
 	.half	1
 	.byte	82
 	.word	0,0
-.L168:
-	.word	-1,.L74,.L281-.L74,.L283-.L74
+.L169:
+	.word	-1,.L75,.L282-.L75,.L284-.L75
 	.half	1
 	.byte	95
 	.word	0,0
-.L150:
-	.word	-1,.L74,0,.L142-.L74
+.L151:
+	.word	-1,.L75,0,.L143-.L75
 	.half	3
 	.byte	145,232,126
 	.word	0,0
-.L148:
-	.word	-1,.L74,0,.L274-.L74
+.L149:
+	.word	-1,.L75,0,.L275-.L75
 	.half	1
 	.byte	86
-	.word	.L277-.L74,.L142-.L74
+	.word	.L278-.L75,.L143-.L75
 	.half	1
 	.byte	89
-	.word	.L287-.L74,.L289-.L74
+	.word	.L288-.L75,.L290-.L75
 	.half	1
 	.byte	86
 	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L591:
+.L593:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
@@ -47021,34 +47031,34 @@ wheel_asix:	.type	object
 	.sdecl	'.debug_frame',debug,cluster('CCU60_CH0_IRQHandler')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L66,.L223-.L66
+	.word	.L593,.L67,.L224-.L67
 	.sdecl	'.debug_frame',debug,cluster('CCU60_CH1_IRQHandler')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L68,.L229-.L68
+	.word	.L593,.L69,.L230-.L69
 	.sdecl	'.debug_frame',debug,cluster('CCU61_CH0_IRQHandler')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L70,.L238-.L70
+	.word	.L593,.L71,.L239-.L71
 	.sdecl	'.debug_frame',debug,cluster('CCU61_CH1_IRQHandler')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L72,.L245-.L72
+	.word	.L593,.L73,.L246-.L73
 	.sdecl	'.debug_frame',debug,cluster('CCU6_InitConfig')
 	.sect	'.debug_frame'
 	.word	36
-	.word	.L591,.L74,.L142-.L74
+	.word	.L593,.L75,.L143-.L75
 	.byte	4
-	.word	(.L272-.L74)/2
+	.word	(.L273-.L75)/2
 	.byte	19,152,1,22,26,4,19,138,152,1,4
-	.word	(.L142-.L272)/2
+	.word	(.L143-.L273)/2
 	.byte	19,0,8,26
 	.sdecl	'.debug_frame',debug,cluster('CCU6_DisableInterrupt')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L76,.L183-.L76
+	.word	.L593,.L77,.L184-.L77
 	.sdecl	'.debug_frame',debug,cluster('CCU6_EnableInterrupt')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L591,.L78,.L205-.L78
+	.word	.L593,.L79,.L206-.L79
 	; Module end

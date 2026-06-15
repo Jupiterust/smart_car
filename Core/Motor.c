@@ -748,7 +748,7 @@ void following_flow1_init(void){
     following_flow1[0].delta_distance.x_y_path = 15.7f;
     following_flow1[0].next_flag = dis_start_angle;
 
-    following_flow1[1].delta_distance.angle = 40;
+    following_flow1[1].delta_distance.angle = 35.8f;
     following_flow1[1].flag = dis_start_angle;
     following_flow1[1].next_flag = dis_start_y;
 
@@ -842,11 +842,11 @@ void angle_correct(float angle){
     angle_dev = Kp * angle_dev + Kd * d;
     float yaw_correction_speed[4] = {angle_dev, -angle_dev, angle_dev,-angle_dev};
     for(u8 i = 0; i < 4; i++){
-        if(yaw_correction_speed[i]> 8){
-            yaw_correction_speed[i] = 8;
+        if(yaw_correction_speed[i]> 12){
+            yaw_correction_speed[i] = 12;
         }
-        if(yaw_correction_speed[i] < -8){
-            yaw_correction_speed[i] = -8;
+        if(yaw_correction_speed[i] < -12){
+            yaw_correction_speed[i] = -12;
         }
     }
     following_speed[0] = following_speed[0] + yaw_correction_speed[0];
@@ -1136,8 +1136,8 @@ volatile bool is_crossing_line1 = false;
 volatile bool is_crossing_line2 = false;
 volatile bool line_record1 = false;
 volatile float crossing_line_only_total_path = 0;
-#define CROSS_LINE_DURATION_CNT1 350
-#define CROSS_LINE_DURATION_CNT2 21
+#define CROSS_LINE_DURATION_CNT1 250
+#define CROSS_LINE_DURATION_CNT2 210
 // 在5ms速度环里调用
 void crossing_line_handle(void){
     float yaw = wheel_asix.yaw;
@@ -1153,7 +1153,7 @@ void crossing_line_handle(void){
     switch(cross_state){
         case CROSS_WAIT_FIRST:
             // 检测是否接近 yaw = 0
-            if(fabs(yaw - 0.0f) < yaw_dev_threshold){
+            if(fabs(yaw - 0.0f) < yaw_dev_threshold && crossing_line_only_total_path > 70){
                 cross_state = CROSS_HANDLING_FIRST;
                 cross_timer = 0;
                 // 进入第一个cross line的特殊处理（比如忽略视觉、直行）
