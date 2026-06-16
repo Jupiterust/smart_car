@@ -278,28 +278,38 @@ int core0_main (void)
 
     // -58
     // 35
-    //Servo angle:{0.0f, -75.0f, 27.0f, -35.0f};
+    //Servo angle:Servo angle:{0.0f, -75.0f, 28.0f, -32.0f};
     FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
     delayms(10);
-    FSUS_SetServoAngle(servo_usart, 2, -75.0f, interval, power);
+    FSUS_SetServoAngle(servo_usart, 2, -65.0f, interval, power);//-169
     delayms(10);
-    FSUS_SetServoAngle(servo_usart, 3, 28.0f, interval, power);
+    FSUS_SetServoAngle(servo_usart, 3, 30.0f, interval, power);//-108
     delayms(10);
-    FSUS_SetServoAngle(servo_usart, 4, -35.0f, interval, power);
+    FSUS_SetServoAngle(servo_usart, 4, -30.0f, interval, power);//76
     delayms(100);
 
-
+    delayms(3000);
+    TASK1_PICK_OBJECT_UP_SYN();
     // 是否开启 角度修正
     //task1_start_yaw_correction = true;
+//    interval = 2000;
+//    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 2, 180.0f, interval, power);//-169
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 3,-90.0f, interval, power);//-108
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 4, 73.0f, interval, power);//76
+//    delayms(100);
 
-
-//    delayms(2000);
+    //FSUS_SetServoAngle(servo_usart, 2, -169.0f, interval, power);//-169
+    delayms(2000);
 //    TASK1_PICK_OBJECT_UP();
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
     wheel_system_tick.does_tick_start = true;
-    following_flow_start = true;
+    following_flow_start = false;
     while (1)	//主循环
     {
 #if TFT_VERSION

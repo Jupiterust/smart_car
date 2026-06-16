@@ -75,7 +75,10 @@ void TASK1_DEFAULT_STATE(void){
 
 // pick up details
 float task1_idle_angle[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
-float task1_pick_up_angle[4] = {-90.0f, 114.0f, 40.0f, -67.0f};
+
+float task1_pick_up_angle[4] = {0.0f, -180.0f, -90.0f, 76.0f};
+
+
 float task1_pick_up_middle[4] = {-90.0f, -126.0f, -20.0f, -60.0f};
 float task1_turning_angle1[4] = {90.0f,  -126.0f, -20.0f, -60.0f};
 float task1_put_angle[4] = {90.0f, 131.0f, 19.0f, -60.0f};
@@ -87,10 +90,10 @@ u8 sync_mode = 1;
 u8 sync_count = 4;
 
 void TASK1_PICK_OBJECT_UP_SYN(void){
-    SyncArray[0].id = 1;SyncArray[0].power = 0; SyncArray[0].interval_single = 100;SyncArray[0].angle = task1_pick_up_angle[0];
-    SyncArray[0].id = 2;SyncArray[0].power = 0; SyncArray[0].interval_single = 100;SyncArray[0].angle = task1_pick_up_angle[1];
-    SyncArray[0].id = 3;SyncArray[0].power = 0; SyncArray[0].interval_single = 100;SyncArray[0].angle = task1_pick_up_angle[2];
-    SyncArray[0].id = 4;SyncArray[0].power = 0; SyncArray[0].interval_single = 100;SyncArray[0].angle = task1_pick_up_angle[3];
+    SyncArray[0].id = 1;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[0];
+    SyncArray[0].id = 2;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[1];
+    SyncArray[0].id = 3;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[2];
+    SyncArray[0].id = 4;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
 
 }

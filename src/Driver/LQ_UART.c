@@ -189,9 +189,9 @@ void UART0_RX_IRQHandler(void)
                       following_speed[2] = v_x + v_y - w; // 左后
                       following_speed[3] = v_x - v_y + w; // 右后
 
+                    }
+                    break;
                 }
-                break;
-        }
 // task1 抓取圆柱逻辑
             case 4:
                 temp_buffer1[rx_count1++] = one_byte;
@@ -235,19 +235,7 @@ void UART0_RX_IRQHandler(void)
                         float x_dev_f = x_dev * 0.2; // 简单的p项
                         float y_dev_f = y_dev * 0.2;
 
-                        if(x_dev_f >0){
-                            x_dev_f = 11;
-                        }
-                        else {
-                            x_dev_f = -11;
-                        }
 
-                        if(y_dev_f > 0){
-                            y_dev_f = 11;
-                        }
-                        else{
-                            y_dev_f = -11;
-                        }
                         float temp_speed[4] = {0};
                         // 只有当机械臂抓到了然后把标志位换回来外 加上 下一个动作和上一个动作不一样时才再次启动摇车
 
