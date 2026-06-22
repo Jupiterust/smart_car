@@ -210,7 +210,6 @@ void UART0_RX_IRQHandler(void)
                     pick_or_put = (SERVO_ACTION_ENUM)temp_buffer1[4]; // typedef enum{pick = 1, put = 2};
                     task1_cy_id = (task1_cylinder_enum)temp_buffer1[5];
                     if(pick_or_put == servo_pick_up_from_camera){
-                        does_dummy_run = true;
                         pick_times++;
                         following_speed[0] = 0;
                         following_speed[1] = 0;
@@ -310,7 +309,7 @@ typedef enum{
 volatile uint8_t BT_flag = 0;
 volatile uint8_t BT_flag_set = 0;
 volatile uint8_t servo_id = 0;
-volatile float servo_angle[4] = {0.0f, -75.0f, 27.0f, -35.0f};//  0
+volatile float servo_angle[5]= {0.0f, -100.0f, -5.0f, 60.0f, 47.0f};
 //  30 25.0f}
 
 
@@ -336,7 +335,7 @@ void UART1_RX_IRQHandler(void)
             break;
         case servo_id_switch_increase:
             servo_id += 1;
-            servo_id %= 4;
+            servo_id %= 5;
             UART_PutStr(UART1,"Servo index inc...\r\n");
             break;
         case servo_id_switch_decrease:
@@ -357,14 +356,14 @@ void UART1_RX_IRQHandler(void)
             break;
         case servo_angle_check:{
             char temp_str_buffer[40] = {0};
-            sprintf(temp_str_buffer,"Servo angle:{%d.0f, %d.0f, %d.0f, %d.0f};\r\n",(int)servo_angle[0],(int)servo_angle[1],(int)servo_angle[2],(int)servo_angle[3]);
+            sprintf(temp_str_buffer,"servo_angle= {%d.0f, %d.0f, %d.0f, %d.0f};\r\n",(int)servo_angle[0],(int)servo_angle[1],(int)servo_angle[2],(int)servo_angle[3]);
             UART_PutStr(UART1,temp_str_buffer);
             break;
         }
         case servo_angle_reedit:{
             volatile static u8 index = 0;
             if(index == 0){
-                float task1_idle_angle_in_idle[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
+                float task1_idle_angle_in_idle[5] = {0.0f, 125.0f,-75.0f, 75.0f,55.0f};
                 for(u8 i = 0; i < 4; i++){
                     servo_angle[i] = task1_idle_angle_in_idle[i];
                 }
@@ -577,7 +576,7 @@ void UART_InitConfig(UART_RX_t RxPin, UART_TX_t TxPin, unsigned long baudrate)
             /* Default values for baudrate */
             ascConfig.clockSource           = IfxAsclin_ClockSource_kernelClock;         /* kernel clock, fclc*/
             ascConfig.baudrate.prescaler    = 4;                                         /* default prescaler*/
-            ascConfig.baudrate.baudrate     = 100000;                                    /* default baudrate (the fractional dividier setup will be calculated in initModule*/
+            ascConfig.baudrate.baudrate     = 115200;                                    /* default baudrate (the fractional dividier setup will be calculated in initModule*/
             ascConfig.baudrate.oversampling = IfxAsclin_OversamplingFactor_8;            /* default oversampling factor*/
 
             /* Default Values for Bit Timings */
@@ -606,7 +605,10 @@ void UART_InitConfig(UART_RX_t RxPin, UART_TX_t TxPin, unsigned long baudrate)
             ascConfig.interrupt.typeOfService = UartIrqVectabNum[IfxAsclin_getIndex(IfxAsclin_Tx->module)];
 
             /* Enable error flags */
-            ascConfig.errorFlags.ALL = ~0;                                               /* all error flags enabled*/
+            ascConfig.errorFlags.ALL = ~0;
+            ascConfig.baudrate.baudrate     = 115200;                // 改：100000 -> 115200
+            ascConfig.frame.stopBit         = IfxAsclin_StopBit_1;   // 改：2停止位 -> 1停止位
+            ascConfig.frame.parityBit       = FALSE;                 // 改：TRUE -> FALSE，关掉校验/* all error flags enabled*/
             IfxAsclin_Asc_Pins pins =
             {
                 NULL,                     IfxPort_InputMode_pullUp,        /* CTS pin not used */

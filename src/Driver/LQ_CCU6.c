@@ -168,7 +168,7 @@ void CCU60_CH0_IRQHandler(void)
         return;
     }
     if(task1_start_yaw_correction == true){
-        angle_stable(0);
+        //angle_stable(45);
     }
     //angle_correct(0);
     //following_correct_by_icm();

@@ -191,7 +191,7 @@ extern volatile int speed_error_from_camera;
 
 extern volatile uint8_t BT_flag;
 extern volatile uint8_t BT_flag_set;
-extern volatile float servo_angle[4];
+extern volatile float servo_angle[5];
 // extern volatile blue tooth variables
 
 typedef enum{

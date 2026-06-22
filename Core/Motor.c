@@ -283,7 +283,7 @@ volatile coordinate_struct Points[20] = {0};
 void position_init(void){
 
     //
-    point_number = 4;
+    point_number = 5;
 
     Points[0].delta_distance.x_y_path = 10;
     // LF=-V，RF=+V，LB=+V，RB=-V（V 为速度值） 1 2 3 4
@@ -389,7 +389,7 @@ void task1_encounter_small_cy_in_one(void){
 
     task1_encounter_small_cy_in_one_S[0].flag = dis_start_x;
 
-    task1_encounter_small_cy_in_one_S[0].delta_distance.x_y_path = 9;
+    task1_encounter_small_cy_in_one_S[0].delta_distance.x_y_path = 10.6f;
     task1_encounter_small_cy_in_one_S[0].next_flag = dis_start_y;
 
 
@@ -401,7 +401,7 @@ void task1_encounter_small_cy_in_one(void){
 
     task1_encounter_small_cy_in_one_S[1].flag = dis_start_y;
 
-    task1_encounter_small_cy_in_one_S[1].delta_distance.x_y_path = 7;
+    task1_encounter_small_cy_in_one_S[1].delta_distance.x_y_path = 12.7f;
     task1_encounter_small_cy_in_one_S[1].next_flag = dis_end;     // [1]完成后期望结束
 }
 
@@ -414,7 +414,7 @@ void task1_back_to_two_from_small_cy(void){
 
     task1_back_to_two_from_small_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_two_from_small_cy_S[0].delta_distance.x_y_path = 9;
+    task1_back_to_two_from_small_cy_S[0].delta_distance.x_y_path = 8.6f;
     task1_back_to_two_from_small_cy_S[0].next_flag = dis_start_y;
 
 
@@ -425,7 +425,7 @@ void task1_back_to_two_from_small_cy(void){
 
     task1_back_to_two_from_small_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_two_from_small_cy_S[1].delta_distance.x_y_path = 4.5;
+    task1_back_to_two_from_small_cy_S[1].delta_distance.x_y_path = 8.5f;
     task1_back_to_two_from_small_cy_S[1].next_flag = dis_end;     // [1]完成后期望结束
 
 }
@@ -441,7 +441,7 @@ void task1_encounter_medium_cy_in_one(void){
 
     task1_encounter_medium_cy_in_one_S[0].flag = dis_start_x;
 
-    task1_encounter_medium_cy_in_one_S[0].delta_distance.x_y_path = 9;
+    task1_encounter_medium_cy_in_one_S[0].delta_distance.x_y_path = 8.6f;
     task1_encounter_medium_cy_in_one_S[0].next_flag = dis_start_y;
 
 
@@ -452,7 +452,7 @@ void task1_encounter_medium_cy_in_one(void){
 
     task1_encounter_medium_cy_in_one_S[1].flag = dis_start_y;
 
-    task1_encounter_medium_cy_in_one_S[1].delta_distance.x_y_path = 4.5;
+    task1_encounter_medium_cy_in_one_S[1].delta_distance.x_y_path = 8.5f;
     task1_encounter_medium_cy_in_one_S[1].next_flag = dis_end;
 
 }
@@ -465,7 +465,7 @@ void task1_back_to_two_from_medium_cy(void){
 
     task1_back_to_two_from_medium_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_two_from_medium_cy_S[0].delta_distance.x_y_path = 9;
+    task1_back_to_two_from_medium_cy_S[0].delta_distance.x_y_path = 8.6;
 }
 
 
@@ -478,7 +478,7 @@ void task1_encounter_large_cy_in_one(void){
 
     task1_encounter_large_cy_in_one_S[0].flag = dis_start_x;
 
-    task1_encounter_large_cy_in_one_S[0].delta_distance.x_y_path = 9;
+    task1_encounter_large_cy_in_one_S[0].delta_distance.x_y_path = 8.6f;
 }
 
 void task1_back_to_two_from_large_cy(void){
@@ -489,7 +489,7 @@ void task1_back_to_two_from_large_cy(void){
 
     task1_back_to_two_from_large_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_two_from_large_cy_S[0].delta_distance.x_y_path = 9;
+    task1_back_to_two_from_large_cy_S[0].delta_distance.x_y_path = 8.6f;
     task1_back_to_two_from_large_cy_S[0].next_flag = dis_start_y;
 
 
@@ -500,7 +500,7 @@ void task1_back_to_two_from_large_cy(void){
 
     task1_back_to_two_from_large_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_two_from_large_cy_S[1].delta_distance.x_y_path = 4;
+    task1_back_to_two_from_large_cy_S[1].delta_distance.x_y_path = 8.6f;
     task1_back_to_two_from_large_cy_S[1].next_flag = dis_end;
 }
 
@@ -533,7 +533,7 @@ void task1_encounter_small_cy_in_two(void){
 
     task1_encounter_small_cy_in_two_S[1].flag = dis_start_y;
 
-    task1_encounter_small_cy_in_two_S[1].delta_distance.x_y_path = 4;
+    task1_encounter_small_cy_in_two_S[1].delta_distance.x_y_path = 8.5f;
     task1_encounter_small_cy_in_two_S[1].next_flag = dis_end;
 
 }
@@ -546,7 +546,7 @@ void task1_back_to_three_from_small_cy(void){
 
     task1_back_to_three_from_small_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_three_from_small_cy_S[0].delta_distance.x_y_path = 10;
+    task1_back_to_three_from_small_cy_S[0].delta_distance.x_y_path = 10.7f;
 }
 
 
@@ -558,7 +558,7 @@ void task1_encounter_medium_cy_in_two(void){
 
     task1_encounter_medium_cy_in_two_S[0].flag = dis_start_x;
 
-    task1_encounter_medium_cy_in_two_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_medium_cy_in_two_S[0].delta_distance.x_y_path = 8.9f;
 }
 
 void task1_back_to_three_from_medium_cy(void){
@@ -569,7 +569,7 @@ void task1_back_to_three_from_medium_cy(void){
 
     task1_back_to_three_from_medium_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_three_from_medium_cy_S[0].delta_distance.x_y_path = 10;
+    task1_back_to_three_from_medium_cy_S[0].delta_distance.x_y_path = 10.9f;
     task1_back_to_three_from_medium_cy_S[0].next_flag = dis_start_y;
 
     task1_back_to_three_from_medium_cy_S[1].target_speed.x_y[0] =   18;
@@ -603,7 +603,7 @@ void task1_encounter_large_cy_in_two(void){
 
     task1_encounter_large_cy_in_two_S[1].flag = dis_start_y;
 
-    task1_encounter_large_cy_in_two_S[1].delta_distance.x_y_path = 4;
+    task1_encounter_large_cy_in_two_S[1].delta_distance.x_y_path = 5.6f;
 
     task1_encounter_large_cy_in_two_S[1].next_flag = dis_end;
 }
@@ -659,7 +659,7 @@ void task1_back_to_following_from_small_cy(void){
 
     task1_back_to_following_from_small_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_following_from_small_cy_S[0].delta_distance.x_y_path = 6;
+    task1_back_to_following_from_small_cy_S[0].delta_distance.x_y_path = 10;
 }
 
 
@@ -709,7 +709,7 @@ void task1_encounter_large_cy_in_three(void){
 
     task1_encounter_large_cy_in_three_S[0].flag = dis_start_x;
 
-    task1_encounter_large_cy_in_three_S[0].delta_distance.x_y_path = 10;
+    task1_encounter_large_cy_in_three_S[0].delta_distance.x_y_path = 1;
     task1_encounter_large_cy_in_three_S[0].next_flag = dis_start_y;
 
 
@@ -732,12 +732,13 @@ void task1_back_to_following_from_large_cy(void){
 
     task1_back_to_following_from_large_cy_S[0].flag = dis_start_x;
 
-    task1_back_to_following_from_large_cy_S[0].delta_distance.x_y_path = 4;
+    task1_back_to_following_from_large_cy_S[0].delta_distance.x_y_path = 1;
 }
 
-volatile coordinate_struct following_flow1[3] = {0};
+volatile coordinate_struct following_flow1[4] = {0};
 
 void following_flow1_init(void){
+    point_number = 5;
     following_flow1[0].target_speed.x_y[0] =  27;
     following_flow1[0].target_speed.x_y[1] =  27;
     following_flow1[0].target_speed.x_y[2] =  27;
@@ -748,7 +749,7 @@ void following_flow1_init(void){
     following_flow1[0].delta_distance.x_y_path = 15.7f;
     following_flow1[0].next_flag = dis_start_angle;
 
-    following_flow1[1].delta_distance.angle = 35.8f;
+    following_flow1[1].delta_distance.angle = 34.8f;
     following_flow1[1].flag = dis_start_angle;
     following_flow1[1].next_flag = dis_start_y;
 
@@ -759,15 +760,21 @@ void following_flow1_init(void){
 
     following_flow1[2].flag = dis_start_y;
 
-    following_flow1[2].target_speed.x_y[0] =  27;
-    following_flow1[2].target_speed.x_y[1] =  27;
-    following_flow1[2].target_speed.x_y[2] =  27;
-    following_flow1[2].target_speed.x_y[3] =  27;
 
-    following_flow1[2].flag = dis_start_y;
 
-    following_flow1[2].delta_distance.x_y_path = 17;
-    following_flow1[2].next_flag = dis_idle;
+    following_flow1[2].delta_distance.x_y_path = 22;
+    following_flow1[2].next_flag = dis_start_x;
+
+    following_flow1[3].flag = dis_start_x;
+
+    following_flow1[3].target_speed.x_y[0] =  15;
+    following_flow1[3].target_speed.x_y[1] =  -15;
+    following_flow1[3].target_speed.x_y[2] =  -15;
+    following_flow1[3].target_speed.x_y[3] =  15;
+
+// { 10,-10.-10. 10}
+    following_flow1[3].delta_distance.x_y_path = 4.4;
+    following_flow1[3].next_flag = dis_idle;
 }
 
 void task1_all_position_loop_init(void){
@@ -954,6 +961,7 @@ void position_loop(coordinate_struct *Points){
             break;
         case dis_start_x:
             if(tem_pwm_flag[2] == 0){
+                motor_all_stop();
                 all_error_clear(); // 清理所以error // 无需清空 encoder 因为 这里设置了速度，下一环节 get_encoder 可以读取到已经设置过的编码值，而且每次循环均有将编码器值清除这种行为
                 motor_pid.pwm_out[0] = Points[index].target_speed.x_y[0] * 207;
                 motor_pid.pwm_out[1] = Points[index].target_speed.x_y[1] * 207;
@@ -1153,7 +1161,7 @@ void crossing_line_handle(void){
     switch(cross_state){
         case CROSS_WAIT_FIRST:
             // 检测是否接近 yaw = 0
-            if(fabs(yaw - 0.0f) < yaw_dev_threshold && crossing_line_only_total_path > 70){
+            if(fabs(yaw - 0.0f) < yaw_dev_threshold && crossing_line_only_total_path > 200){
                 cross_state = CROSS_HANDLING_FIRST;
                 cross_timer = 0;
                 // 进入第一个cross line的特殊处理（比如忽略视觉、直行）

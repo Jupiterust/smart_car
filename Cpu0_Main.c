@@ -264,56 +264,56 @@ int core0_main (void)
     task1_get_put_position_loop_init();
     task1_get_pick_position_loop_init();
     task1_all_position_loop_init();
-    uint16_t  interval=100;
+    uint16_t  interval=200;
     uint16_t power = 0;
 
+    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
+    delayms(10);
+    FSUS_SetServoAngle(servo_usart, 2, 125.0f, interval, power);//-169
+    delayms(10);
+    FSUS_SetServoAngle(servo_usart, 3, -75.0f, interval, power);//-108
+    delayms(10);
+    FSUS_SetServoAngle(servo_usart, 4, 75.0f, interval, power);//76
+    delayms(10);
     my_dummy.pump_state = PUMP_ON;
     air_pump_pick_up();
-    delayms(100);
+    delayms(500);
     my_dummy.pump_state = PUMP_OFF;
     air_pump_pick_up();
-    delayms(100);
+    delayms(500);
+  //  delayms(5000);
+    //TASK1_PICK_OBJECT_UP_SYN();
     //  0
     //  30
 
     // -58
     // 35
-    //Servo angle:Servo angle:{0.0f, -75.0f, 28.0f, -32.0f};
-    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
-    delayms(10);
-    FSUS_SetServoAngle(servo_usart, 2, -65.0f, interval, power);//-169
-    delayms(10);
-    FSUS_SetServoAngle(servo_usart, 3, 30.0f, interval, power);//-108
-    delayms(10);
-    FSUS_SetServoAngle(servo_usart, 4, -30.0f, interval, power);//76
-    delayms(100);
+    //Servo angle:Servo angle:{0.0f, 125.0f,-75.0f, 75.0f,19.0f};
 
-    delayms(3000);
-    TASK1_PICK_OBJECT_UP_SYN();
+    //delayms(3000);
+  //  TASK1_PICK_OBJECT_UP_SYN();
     // 是否开启 角度修正
     //task1_start_yaw_correction = true;
-//    interval = 2000;
-//    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 2, 180.0f, interval, power);//-169
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 3,-90.0f, interval, power);//-108
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 4, 73.0f, interval, power);//76
-//    delayms(100);
+  //  interval = 2000;
+
 
     //FSUS_SetServoAngle(servo_usart, 2, -169.0f, interval, power);//-169
-    delayms(2000);
-//    TASK1_PICK_OBJECT_UP();
+
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
     wheel_system_tick.does_tick_start = true;
-    following_flow_start = false;
+    following_flow_start = true;
+    static volatile bool temp_flag1 = false;
     while (1)	//主循环
     {
 #if TFT_VERSION
+        if(temp_flag1 == false && following_flow_start == false){
 
+            temp_flag1 =true;
+        }
+        TASK1_PICK_OBJECT_UP_SYN();
+        TASK1_PUT_OBJECT_DOWN_SYN();
         // 显示 巡线速度
         sprintf(txt,"%d %d %d %d  ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
         TFTSPI_P8X16Str(1, 0, txt, u16WHITE, u16BLACK);
@@ -338,8 +338,9 @@ int core0_main (void)
         sprintf(txt, "bt:%s ",angle_hint_str[BT_flag]);
         TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
         if(line_record1 == true){
-            sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
-            UART_PutStr(UART1,txt);
+            line_record1 = false;
+            //sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
+            //UART_PutStr(UART1,txt);
         }
         if(BT_flag_set){
             if(BT_flag_set == 1){

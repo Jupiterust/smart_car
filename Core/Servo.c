@@ -74,14 +74,16 @@ void TASK1_DEFAULT_STATE(void){
 }
 
 // pick up details
-float task1_idle_angle[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
+//2:-100 3:-5 4:60 5:47
+//3:53 3:-57 4: 40 5:83
+float task1_idle_angle[4] ={0.0f, 125.0f,-75.0f, 75.0f};
 
-float task1_pick_up_angle[4] = {0.0f, -180.0f, -90.0f, 76.0f};
+float task1_pick_up_angle[4] = {0.0f, -100.0f, 0.0f, 99.0f};
 
+float task1_turning_angle1[4] = {180.0f,17.0f, -48.0f, 75.0f};
 
-float task1_pick_up_middle[4] = {-90.0f, -126.0f, -20.0f, -60.0f};
-float task1_turning_angle1[4] = {90.0f,  -126.0f, -20.0f, -60.0f};
-float task1_put_angle[4] = {90.0f, 131.0f, 19.0f, -60.0f};
+float task1_put_angle[4] = {180.0f, -100.0f, 0.0f, 99.0f};
+
 float task1_turning_angle2[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
 volatile bool is_task1_wheels_moving_to_next_point = false;
 volatile bool is_task1_wheels_moving_to_last_point = false;
@@ -90,11 +92,59 @@ u8 sync_mode = 1;
 u8 sync_count = 4;
 
 void TASK1_PICK_OBJECT_UP_SYN(void){
-    SyncArray[0].id = 1;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[0];
-    SyncArray[0].id = 2;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[1];
-    SyncArray[0].id = 3;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[2];
-    SyncArray[0].id = 4;SyncArray[0].power = 0; SyncArray[0].interval_single = 10000;SyncArray[0].angle = task1_pick_up_angle[3];
+    if(pick_or_put != servo_pick_up_from_camera){
+        return ;
+    }
+    my_dummy.pump_state = PUMP_ON;
+    air_pump_pick_up();
+
+    SyncArray[0].id = 1;SyncArray[0].power = 0; SyncArray[0].interval_single = 0;SyncArray[0].angle = task1_pick_up_angle[0];
+    SyncArray[1].id = 2;SyncArray[1].power = 0; SyncArray[1].interval_single = 1500;SyncArray[1].angle = task1_pick_up_angle[1];
+    SyncArray[2].id = 3;SyncArray[2].power = 0; SyncArray[2].interval_single = 50;SyncArray[2].angle = task1_pick_up_angle[2];
+    SyncArray[3].id = 4;SyncArray[3].power = 0; SyncArray[3].interval_single = 50;SyncArray[3].angle = task1_pick_up_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    delayms(4000);
+//    my_dummy.pump_state = PUMP_IDLE;
+//    air_pump_pick_up();
+//    is_task1_wheels_moving_to_next_point = true;
+//    pick_times = 1;
+//    task1_cy_id = task1_cylinder_id_small;
+    is_task1_wheels_moving_to_next_point =true;
+    SyncArray[0].interval_single = 1000;SyncArray[0].angle = task1_turning_angle1[0];
+    SyncArray[1].interval_single = 1000;SyncArray[1].angle = task1_turning_angle1[1];
+    SyncArray[2].interval_single = 100; SyncArray[2].angle = task1_turning_angle1[2];
+    SyncArray[3].interval_single = 100; SyncArray[3].angle = task1_turning_angle1[3];
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    delayms(2000);
+    pick_or_put = servo_from_camera_idle;
+}
+
+void TASK1_PUT_OBJECT_DOWN_SYN(void){
+    if(pick_or_put != servo_put_down_from_camera){
+            return ;
+        }
+    SyncArray[0].interval_single = 1000;SyncArray[0].angle = task1_put_angle[0];
+    SyncArray[1].interval_single = 1200;SyncArray[1].angle = task1_put_angle[1];
+    SyncArray[2].interval_single = 100; SyncArray[2].angle = task1_put_angle[2];
+    SyncArray[3].interval_single = 100; SyncArray[3].angle = task1_put_angle[3];
+    SyncArray[4].interval_single = 100; SyncArray[4].angle = task1_put_angle[4];
+
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    delayms(2500);
+    my_dummy.pump_state = PUMP_OFF;
+    air_pump_pick_up();
+    delayms(500);
+    my_dummy.pump_state = PUMP_IDLE;
+    air_pump_pick_up();
+
+
+    SyncArray[0].interval_single = 300;SyncArray[0].angle = task1_idle_angle[0];
+    SyncArray[1].interval_single = 400;SyncArray[1].angle = task1_idle_angle[1];
+    SyncArray[2].interval_single = 800; SyncArray[2].angle = task1_idle_angle[2];
+    SyncArray[3].interval_single = 800; SyncArray[3].angle = task1_idle_angle[3];
+    SyncArray[4].interval_single = 100; SyncArray[4].angle = task1_idle_angle[4];
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    is_task1_wheels_moving_to_last_point = true;
 
 }
 
@@ -162,22 +212,7 @@ void TASK1_PUT_OBJECT(void){
     delayms(10);
 }
 
-void TASK1_FLOW(void){
-    if(does_dummy_run == false)
-        return;
-    switch(pick_or_put){
-        case servo_from_camera_idle:
-            break;
-        case servo_pick_up_from_camera:
-            TASK1_PICK_OBJECT_UP();
-            does_dummy_run = false;
-            break;
-        case servo_put_down_from_camera:
-            TASK1_PUT_OBJECT();
-            does_dummy_run = false;
-            break;
-    }
-}
+
 
 void angle_all_read(void){
     ServoData temp_servo[1] = {0};

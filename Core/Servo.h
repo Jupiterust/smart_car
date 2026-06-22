@@ -56,14 +56,13 @@ void TASK1_PICK_OBJECT_UP(void);
 
 void TASK1_PUT_OBJECT(void);
 
-void TASK1_FLOW(void);
 extern volatile bool is_task1_wheels_moving_to_next_point;
 extern volatile bool is_task1_wheels_moving_to_last_point;
 
 
 
 void TASK1_PICK_OBJECT_UP_SYN(void);
-
+void TASK1_PUT_OBJECT_DOWN_SYN(void);
 
 
 
