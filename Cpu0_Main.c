@@ -113,6 +113,7 @@ volatile char mutexCpu0TFTIsOk=0;         // CPU1 0占用/1释放 TFT
 
 #include "LQ_CCU6.h"
 #include "cheju.h"
+#include "IR_sensor.h"
 /*************************************************************************
 *  函数名称：int core0_main (void)
 *  功能说明：CPU0主函数
@@ -242,6 +243,8 @@ int core0_main (void)
     EncInit();
     Reed_Init();
     MotorInit();
+
+    ir_sensor_init();
     //2 4 3 1
     position_init();
 
@@ -266,21 +269,26 @@ int core0_main (void)
     task1_all_position_loop_init();
     uint16_t  interval=200;
     uint16_t power = 0;
-
+    delayms(1000);
     FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
-    delayms(10);
-    FSUS_SetServoAngle(servo_usart, 2, 125.0f, interval, power);//-169
-    delayms(10);
+    delayms(20);
+    FSUS_SetServoAngle(servo_usart, 2, 126.50f, 2000, power);//-169
+    delayms(20);
     FSUS_SetServoAngle(servo_usart, 3, -75.0f, interval, power);//-108
-    delayms(10);
+    delayms(20);
     FSUS_SetServoAngle(servo_usart, 4, 75.0f, interval, power);//76
-    delayms(10);
+    delayms(20);
     my_dummy.pump_state = PUMP_ON;
     air_pump_pick_up();
     delayms(500);
     my_dummy.pump_state = PUMP_OFF;
     air_pump_pick_up();
-    delayms(500);
+    delayms(300);
+
+    PIN_InitConfig(P15_1, IfxPort_Mode_inputNoPullDevice, 0);
+    // P10_2 P11_10 P11_6 P11_3 P13_3 P13_2 P13_0 P15_1
+    //TASK1_PICK_OBJECT_UP_SYN();
+
   //  delayms(5000);
     //TASK1_PICK_OBJECT_UP_SYN();
     //  0
@@ -302,14 +310,23 @@ int core0_main (void)
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
+
     wheel_system_tick.does_tick_start = true;
-    following_flow_start = true;
+    following_flow_start = false;
     static volatile bool temp_flag1 = false;
+    task1_y_correct_start1  = false;
+    uint8_t temp_ir_record[6] = {0};
+
+
     while (1)	//主循环
     {
 #if TFT_VERSION
+        get_ir_pins_state(2,temp_ir_record);
+        for(uint8_t i = 0; i< 6; i++){
+            printf("%d ",temp_ir_record[i]);
+        }
+        printf("\r\n");
         if(temp_flag1 == false && following_flow_start == false){
-
             temp_flag1 =true;
         }
         TASK1_PICK_OBJECT_UP_SYN();
@@ -332,7 +349,7 @@ int core0_main (void)
 
         int temp_encoder[4] = {0};
         get_encoder_directly(temp_encoder);
-        sprintf(txt, "enc_b %d %d %d %d     ", temp_encoder[0],temp_encoder[1],temp_encoder[2],  temp_encoder[3]);
+        sprintf(txt, "enc_b %d %d %d %d     ", temp_encoder[0],temp_encoder[1],temp_encoder[2], temp_encoder[3]);
         TFTSPI_P8X16Str(1, 5, txt, u16WHITE, u16BLACK);
 //        BT_flag
         sprintf(txt, "bt:%s ",angle_hint_str[BT_flag]);
@@ -373,7 +390,7 @@ int core0_main (void)
             flag_from_irq = 0;
         }
 
- //       get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
+//        get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
 
 //        printf("%d %d %d \r\n",  (int)wheel_asix.gx, (int)wheel_asix.gy, (int)wheel_asix.gz);
 //        printf("%f %f %f \r\n",  wheel_asix.roll,wheel_asix.pitch,wheel_asix.yaw);

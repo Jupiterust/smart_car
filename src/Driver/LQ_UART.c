@@ -218,7 +218,6 @@ void UART0_RX_IRQHandler(void)
                         task1_start_yaw_correction = false;
                     }
                     else if(pick_or_put == servo_put_down_from_camera){
-                        does_dummy_run = true;
                         put_times++;
                         following_speed[0] = 0;
                         following_speed[1] = 0;
@@ -231,8 +230,8 @@ void UART0_RX_IRQHandler(void)
                         // x_dev_f = cur_pos - target_pos
                         // y_dev_f = cur_suq - target_suq  < 0 -> right; >0 -> left;
                         // < 0 -> right
-                        float x_dev_f = x_dev * 0.2; // 简单的p项
-                        float y_dev_f = y_dev * 0.2;
+                        float x_dev_f = x_dev * 0.8; // 简单的p项
+                        float y_dev_f = y_dev * 0.8;
 
 
                         float temp_speed[4] = {0};
@@ -259,6 +258,7 @@ void UART0_RX_IRQHandler(void)
                                 temp_speed[i] = -15;
                             }
                         }
+                       // task1_start_yaw_correction = true;
                         following_speed[0] = temp_speed[0];
                         following_speed[1] = temp_speed[1];
                         following_speed[2] = temp_speed[2];
@@ -331,100 +331,191 @@ void UART1_RX_IRQHandler(void)
     bt_rx_enum bt_flag = (bt_rx_enum)BT_flag;
     static char temp_str_buffer[30] = {0};
     switch(bt_flag){
-        case servo_rx_idle:
-            break;
-        case servo_id_switch_increase:
-            servo_id += 1;
-            servo_id %= 5;
-            UART_PutStr(UART1,"Servo index inc...\r\n");
-            break;
-        case servo_id_switch_decrease:
-            servo_id -= 1;
-            if(servo_id <= 0)
-                servo_id =0;
-            UART_PutStr(UART1,"Servo index dec...\r\n");
-            break;
-        case servo_angle_increase:
-            servo_angle[servo_id]+=1;
-            BT_flag_set = 1;
-            UART_PutStr(UART1,"Servo angle inc...\r\n");
-            break;
-        case servo_angle_decrease:
-            servo_angle[servo_id]-=1;
-            BT_flag_set = 1;
-            UART_PutStr(UART1,"Servo angle dec...\r\n");
-            break;
-        case servo_angle_check:{
-            char temp_str_buffer[40] = {0};
-            sprintf(temp_str_buffer,"servo_angle= {%d.0f, %d.0f, %d.0f, %d.0f};\r\n",(int)servo_angle[0],(int)servo_angle[1],(int)servo_angle[2],(int)servo_angle[3]);
-            UART_PutStr(UART1,temp_str_buffer);
-            break;
-        }
-        case servo_angle_reedit:{
-            volatile static u8 index = 0;
-            if(index == 0){
-                float task1_idle_angle_in_idle[5] = {0.0f, 125.0f,-75.0f, 75.0f,55.0f};
-                for(u8 i = 0; i < 4; i++){
-                    servo_angle[i] = task1_idle_angle_in_idle[i];
-                }
-            }
-            else if(index == 1){// :-84 157 37 -62
-                float task1_pick_up_angle_in_bt[4] = {-90, 157,37,-62};
-                for(u8 i = 0; i < 4; i++){
-                    servo_angle[i] = task1_pick_up_angle_in_bt[i];
-                }
-            }
-            else if(index == 2){
-                float task1_turning_angle1_in_bt[4] = {90.0f,  -126.0f, -20.0f, -60.0f};
-                for(u8 i = 0; i < 4; i++){
-                    servo_angle[i] = task1_turning_angle1_in_bt[i];
-                }
-            }
-            else if(index == 3){
-                float task1_put_angle_in_bt[4] = {90.0f, 131.0f, 19.0f, -60.0f};
-                for(u8 i = 0; i < 4; i++){
-                    servo_angle[i] = task1_put_angle_in_bt[i];
-                }
-            }
-            index++;
-            index%=3;
-            BT_flag_set = 2;
-            break;
-        }
-        case task_pick_control:{
-            task1_start_yaw_correction = false;
-            is_task1_wheels_moving_to_next_point = true;
-            pick_times++;
-            break;
-        }
-        case task_put_control:{
-            task1_start_yaw_correction = false;
-            is_task1_wheels_moving_to_last_point = true;
-            put_times++;
-            break;
-        }
-        case task_id_switch:{
-            task1_cy_id ++;
-            task1_cy_id %=4;
+          case servo_rx_idle:
+              following_speed[0] = 0;
+              following_speed[1] = 0;
+              following_speed[2] = 0;
+              following_speed[3] = 0;
+              UART_PutStr(UART1,"car STOP...\r\n");
 
-            sprintf(temp_str_buffer,"task cy id %d %d %d \r\n",task1_cy_id,pick_times,put_times);
-            UART_PutStr(UART1,temp_str_buffer);
-            break;
-        }
-        case task_angle_angle:{
-            static ServoData temp_servo[1] = {0};
-            static float temp_angles[4] = {0};
-            for(u8 i =1; i <= 4; i++){
-                FSUS_ServoMonitor(servo_usart,i,temp_servo);
-                temp_angles[i] = temp_servo[0].angle;
-            }
-            sprintf(temp_str_buffer,"angles: %0.2f %0.2f %0.2f %0.2f \r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3]);
-            ;
-            break;
-        }
-        default:
-            break;
-    }
+              break;
+          case servo_id_switch_increase:
+              following_speed[0] = 10;
+              following_speed[1] = 10;
+              following_speed[2] = 10;
+              following_speed[3] = 10;
+              UART_PutStr(UART1,"car FORKWARD...\r\n");
+
+              break;
+          case servo_id_switch_decrease:
+              following_speed[0] = -10;
+              following_speed[1] = -10;
+              following_speed[2] = -10;
+              following_speed[3] = -10;
+              UART_PutStr(UART1,"car BACKWARD...\r\n");
+              break;
+          case servo_angle_increase:
+              // {-10, 10, 10,-10};
+              following_speed[0] = -10;
+              following_speed[1] =  10;
+              following_speed[2] =  10;
+              following_speed[3] = -10;
+              UART_PutStr(UART1,"car LEFTWARD...\r\n");
+              break;
+          case servo_angle_decrease:
+              following_speed[0] = 10;
+              following_speed[1] = -10;
+              following_speed[2] = -10;
+              following_speed[3] = 10;
+              UART_PutStr(UART1,"car RIGHTWARD...\r\n");
+              break;
+          case servo_angle_check:{
+              following_speed[0] = -10;
+              following_speed[1] = -10;
+              following_speed[2] = 10;
+              following_speed[3] = 10;
+              UART_PutStr(UART1,"car CIRCLE...\r\n");
+              break;
+          }
+          case servo_angle_reedit:{
+              following_speed[0] = 10;
+              following_speed[1] = 10;
+              following_speed[2] = -10;
+              following_speed[3] = -10;
+              UART_PutStr(UART1,"car CIRCLE...\r\n");
+              break;
+
+          }
+          case task_pick_control:{
+              task1_start_yaw_correction = false;
+              is_task1_wheels_moving_to_next_point = true;
+              pick_times++;
+              break;
+          }
+          case task_put_control:{
+              task1_start_yaw_correction = false;
+              is_task1_wheels_moving_to_last_point = true;
+              put_times++;
+              break;
+          }
+          case task_id_switch:{
+              task1_cy_id ++;
+              task1_cy_id %=4;
+
+              sprintf(temp_str_buffer,"task cy id %d %d %d \r\n",task1_cy_id,pick_times,put_times);
+              UART_PutStr(UART1,temp_str_buffer);
+              break;
+          }
+          case task_angle_angle:{
+              static ServoData temp_servo[1] = {0};
+              static float temp_angles[4] = {0};
+              for(u8 i =1; i <= 4; i++){
+                  FSUS_ServoMonitor(servo_usart,i,temp_servo);
+                  temp_angles[i] = temp_servo[0].angle;
+              }
+              sprintf(temp_str_buffer,"angles: %0.2f %0.2f %0.2f %0.2f \r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3]);
+              ;
+              break;
+          }
+          default:
+              break;
+      }
+//    switch(bt_flag){
+//        case servo_rx_idle:
+//
+//            break;
+//        case servo_id_switch_increase:
+//            servo_id += 1;
+//            servo_id %= 5;
+//            UART_PutStr(UART1,"Servo index inc...\r\n");
+//            break;
+//        case servo_id_switch_decrease:
+//            servo_id -= 1;
+//            if(servo_id <= 0)
+//                servo_id =0;
+//            UART_PutStr(UART1,"Servo index dec...\r\n");
+//            break;
+//        case servo_angle_increase:
+//            servo_angle[servo_id]+=1;
+//            BT_flag_set = 1;
+//            UART_PutStr(UART1,"Servo angle inc...\r\n");
+//            break;
+//        case servo_angle_decrease:
+//            servo_angle[servo_id]-=1;
+//            BT_flag_set = 1;
+//            UART_PutStr(UART1,"Servo angle dec...\r\n");
+//            break;
+//        case servo_angle_check:{
+//            char temp_str_buffer[40] = {0};
+//            sprintf(temp_str_buffer,"servo_angle= {%d.0f, %d.0f, %d.0f, %d.0f};\r\n",(int)servo_angle[0],(int)servo_angle[1],(int)servo_angle[2],(int)servo_angle[3]);
+//            UART_PutStr(UART1,temp_str_buffer);
+//            break;
+//        }
+//        case servo_angle_reedit:{
+//            volatile static u8 index = 0;
+//            if(index == 0){
+//                float task1_idle_angle_in_idle[5] = {0.0f, 125.0f,-75.0f, 75.0f,55.0f};
+//                for(u8 i = 0; i < 4; i++){
+//                    servo_angle[i] = task1_idle_angle_in_idle[i];
+//                }
+//            }
+//            else if(index == 1){// :-84 157 37 -62
+//                float task1_pick_up_angle_in_bt[4] = {-90, 157,37,-62};
+//                for(u8 i = 0; i < 4; i++){
+//                    servo_angle[i] = task1_pick_up_angle_in_bt[i];
+//                }
+//            }
+//            else if(index == 2){
+//                float task1_turning_angle1_in_bt[4] = {90.0f,  -126.0f, -20.0f, -60.0f};
+//                for(u8 i = 0; i < 4; i++){
+//                    servo_angle[i] = task1_turning_angle1_in_bt[i];
+//                }
+//            }
+//            else if(index == 3){
+//                float task1_put_angle_in_bt[4] = {90.0f, 131.0f, 19.0f, -60.0f};
+//                for(u8 i = 0; i < 4; i++){
+//                    servo_angle[i] = task1_put_angle_in_bt[i];
+//                }
+//            }
+//            index++;
+//            index%=3;
+//            BT_flag_set = 2;
+//            break;
+//        }
+//        case task_pick_control:{
+//            task1_start_yaw_correction = false;
+//            is_task1_wheels_moving_to_next_point = true;
+//            pick_times++;
+//            break;
+//        }
+//        case task_put_control:{
+//            task1_start_yaw_correction = false;
+//            is_task1_wheels_moving_to_last_point = true;
+//            put_times++;
+//            break;
+//        }
+//        case task_id_switch:{
+//            task1_cy_id ++;
+//            task1_cy_id %=4;
+//
+//            sprintf(temp_str_buffer,"task cy id %d %d %d \r\n",task1_cy_id,pick_times,put_times);
+//            UART_PutStr(UART1,temp_str_buffer);
+//            break;
+//        }
+//        case task_angle_angle:{
+//            static ServoData temp_servo[1] = {0};
+//            static float temp_angles[4] = {0};
+//            for(u8 i =1; i <= 4; i++){
+//                FSUS_ServoMonitor(servo_usart,i,temp_servo);
+//                temp_angles[i] = temp_servo[0].angle;
+//            }
+//            sprintf(temp_str_buffer,"angles: %0.2f %0.2f %0.2f %0.2f \r\n", temp_angles[0], temp_angles[1], temp_angles[2], temp_angles[3]);
+//            ;
+//            break;
+//        }
+//        default:
+//            break;
+//    }
 }
 
 void UART1_TX_IRQHandler(void)

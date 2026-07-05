@@ -590,3 +590,5 @@ LQ_CCU6.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
 LQ_CCU6.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Motor.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Motor.h" :
+LQ_CCU6.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :

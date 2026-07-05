@@ -196,7 +196,7 @@ void task1_get_pick_position_loop_init(void);
 
 void task1_all_position_loop_init(void);
 void angle_stable(float angle);
-void angle_correct(float angle);
+void angle_correct(float angle, float limit);
 extern volatile coordinate_struct task1_points_to_put[1];
 extern volatile coordinate_struct task1_points_to_pick[3];
 

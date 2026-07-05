@@ -159,6 +159,7 @@
 "Core/fashion_star_uart_servo_examples/fashion_star_uart_servo_examples.o"
 "Core/fashion_star_uart_servo/fashion_star_uart_servo.o"
 "Core/Communication.o"
+"Core/IR_sensor.o"
 "Core/Motor.o"
 "Core/Servo.o"
 "Core/Task.o"

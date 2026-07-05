@@ -33,6 +33,7 @@
 #include "motor.h"
 #include "Servo.h"
 #include "Task.h"
+#include "IR_sensor.h"
 //#include "Motor.h"
 
 volatile int flag_from_irq = 0;
@@ -76,6 +77,9 @@ volatile bool task1_start_yaw_correction = false;
 volatile int tem1_speed[4] = {0};
 volatile int error_clear_count[10] = {0};
 volatile bool following_flow_start = false;
+volatile bool task1_y_correct_start1 = false;
+volatile bool task1_y_correct_start2 = false;
+
 void CCU60_CH0_IRQHandler(void)
 {
     /* 开启CPU中断  否则中断不可嵌套 */
@@ -88,117 +92,147 @@ void CCU60_CH0_IRQHandler(void)
 
     //angle_stable(0);
 
-    if(following_flow_start == true){
-        position_loop((coordinate_struct *)following_flow1);
-        return;
-    }
-
-    if(is_task1_wheels_moving_to_next_point == true){
-        is_position_loop_done = false;
-        if(pick_times == 1){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_encounter_small_cy_in_one_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_one_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_encounter_large_cy_in_one_S);
-            }
-        }
-        else if(pick_times == 2){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_encounter_small_cy_in_two_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_two_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_encounter_large_cy_in_two_S);
-            }
-        }
-        else if(pick_times == 3){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_encounter_small_cy_in_three_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_three_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_encounter_large_cy_in_three_S);
-            }
-        }
-        return;
-    }
-    if(is_task1_wheels_moving_to_last_point){
-        is_position_loop_done = false;
-        if(put_times == 1){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_back_to_two_from_small_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_back_to_two_from_medium_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_back_to_two_from_large_cy_S);
-            }
-        }
-        else if(put_times == 2){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_back_to_three_from_small_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_back_to_three_from_medium_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_back_to_three_from_large_cy_S);
-            }
-        }
-        else if(put_times == 3){
-            if(task1_cy_id == task1_cylinder_id_small){
-                position_loop((coordinate_struct *)task1_back_to_following_from_small_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_medium){
-                position_loop((coordinate_struct *)task1_back_to_following_from_medium_cy_S);
-            }
-            else if(task1_cy_id == task1_cylinder_id_large){
-                position_loop((coordinate_struct *)task1_back_to_following_from_large_cy_S);
-            }
-        }
-        return;
-    }
-    if(task1_start_yaw_correction == true){
-        //angle_stable(45);
-    }
-    //angle_correct(0);
-    //following_correct_by_icm();
-
-    //循迹任务
-   // angle_correct(0);
-    if(following_flow_start == false)
-        crossing_line_handle();
-    if(is_crossing_line1 == true){
-        following_speed[0] = 25;
-        following_speed[1] = 25;
-        following_speed[2] = 25;
-        following_speed[3] = 25;
-        angle_correct(0.0f);
-    }
-    if(is_crossing_line2 == true){
-        following_speed[0] = 25;
-        following_speed[1] = 25;
-        following_speed[2] = 25;
-        following_speed[3] = 25;
-        angle_correct(270.0f);
-    }
-    //
+//    if(following_flow_start == true){
+//        position_loop((coordinate_struct *)following_flow1);
+//        return;
+//    }
+//
+//    if(is_task1_wheels_moving_to_next_point == true){
+//        is_position_loop_done = false;
+//        if(pick_times == 1){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_encounter_small_cy_in_one_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_one_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_encounter_large_cy_in_one_S);
+//            }
+//        }
+//        else if(pick_times == 2){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_encounter_small_cy_in_two_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_two_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_encounter_large_cy_in_two_S);
+//            }
+//        }
+//        else if(pick_times == 3){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_encounter_small_cy_in_three_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_encounter_medium_cy_in_three_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_encounter_large_cy_in_three_S);
+//            }
+//        }
+//        return;
+//    }
+//    if(is_task1_wheels_moving_to_last_point){
+//        is_position_loop_done = false;
+//        if(put_times == 1){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_back_to_two_from_small_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_back_to_two_from_medium_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_back_to_two_from_large_cy_S);
+//            }
+//        }
+//        else if(put_times == 2){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_back_to_three_from_small_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_back_to_three_from_medium_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_back_to_three_from_large_cy_S);
+//            }
+//        }
+//        else if(put_times == 3){
+//            if(task1_cy_id == task1_cylinder_id_small){
+//                position_loop((coordinate_struct *)task1_back_to_following_from_small_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_medium){
+//                position_loop((coordinate_struct *)task1_back_to_following_from_medium_cy_S);
+//            }
+//            else if(task1_cy_id == task1_cylinder_id_large){
+//                position_loop((coordinate_struct *)task1_back_to_following_from_large_cy_S);
+//            }
+//        }
+//        return;
+//    }
+//
+//    //angle_correct(0);
+//    //following_correct_by_icm();
+//
+//    //循迹任务
+//
+//    if(following_flow_start == false)
+//        crossing_line_handle();
+//    if(is_crossing_line1 == true){
+//        following_speed[0] = 25;
+//        following_speed[1] = 25;
+//        following_speed[2] = 25;
+//        following_speed[3] = 25;
+//        angle_correct(0.0f,14);
+//    }
+//    if(is_crossing_line2 == true){
+//        following_speed[0] = 25;
+//        following_speed[1] = 25;
+//        following_speed[2] = 25;
+//        following_speed[3] = 25;
+//        angle_correct(270.0f,14);
+//    }
+//    //
+//    if(task1_start_yaw_correction){
+//        angle_correct(45,8);
+//        task1_start_yaw_correction = false;
+//    }
+//    motor_speed_loop((float *)following_speed);
+//    if(task1_y_correct_start1){
+//        if(get_ir_pins_state_num(IR_SENSOR1) < 2){
+//            following_speed[0] = 5.5;
+//            following_speed[1] = -5.5;
+//            following_speed[2] = -5.5;
+//            following_speed[3] = 5.5;
+//        }
+//        else {
+//            task1_y_correct_start1 = false;
+//            following_speed[0] = 0;
+//            following_speed[1] = 0;
+//            following_speed[2] = 0;
+//            following_speed[3] = 0;
+//        }
+//    }
+//    if(task1_y_correct_start2 == true){
+//        if(get_ir_pins_state_num(IR_SENSOR1) < 2){
+//            following_speed[0] = -5.5;
+//            following_speed[1] = 5.5;
+//            following_speed[2] = 5.5;
+//            following_speed[3] = -5.5;
+//        }
+//        else {
+//            task1_y_correct_start2 = false;
+//            following_speed[0] = 0;
+//            following_speed[1] = 0;
+//            following_speed[2] = 0;
+//            following_speed[3] = 0;
+//        }
+//    }
     motor_speed_loop((float *)following_speed);
-
-
 //    following_speed[0] = 0;
 //    following_speed[1] = 0;
 //    following_speed[2] = 0;
-//
 //    following_speed[3] = 0;
 
     // InductorGetSample();
@@ -348,7 +382,7 @@ void CCU61_CH1_IRQHandler (void)
     IfxCcu6_clearInterruptStatusFlag(&MODULE_CCU61, IfxCcu6_InterruptSource_t13PeriodMatch);
 
     /* 用户代码 */
-    LED_Ctrl(LED0, RVS);        // 电平翻转,LED闪烁
+    //LED_Ctrl(LED0, RVS);        // 电平翻转,LED闪烁
 }
 
 /*************************************************************************
