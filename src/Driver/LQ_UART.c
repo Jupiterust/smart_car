@@ -206,25 +206,29 @@ void UART0_RX_IRQHandler(void)
                     }
                     int16_t x_dev = (int16_t)((temp_buffer1[0]) | (temp_buffer1[1] << 8));
                     int16_t y_dev = (int16_t)((temp_buffer1[2]) | (temp_buffer1[3] << 8));
+                    SERVO_ACTION_ENUM temp_pick_or_put = (SERVO_ACTION_ENUM)temp_buffer1[4]; // typedef enum{pick = 1, put = 2};
 
-                    pick_or_put = (SERVO_ACTION_ENUM)temp_buffer1[4]; // typedef enum{pick = 1, put = 2};
-                    task1_cy_id = (task1_cylinder_enum)temp_buffer1[5];
-                    if(pick_or_put == servo_pick_up_from_camera){
+
+                    if(temp_pick_or_put == servo_pick_up_from_camera){
                         pick_times++;
+                        task1_cy_id = (task1_cylinder_enum)temp_buffer1[5];
+                        pick_or_put = temp_pick_or_put;
                         following_speed[0] = 0;
                         following_speed[1] = 0;
                         following_speed[2] = 0;
                         following_speed[3] = 0;
                         task1_start_yaw_correction = false;
                     }
-                    else if(pick_or_put == servo_put_down_from_camera){
+                    else if(temp_pick_or_put == servo_put_down_from_camera){
                         put_times++;
+                        pick_or_put = temp_pick_or_put;
                         following_speed[0] = 0;
                         following_speed[1] = 0;
                         following_speed[2] = 0;
                         following_speed[3] = 0;
                         task1_start_yaw_correction = false;
                     }
+
                     else {
                         // 这里本来是位置环结果，但是因为帧率低，而放弃
                         // x_dev_f = cur_pos - target_pos

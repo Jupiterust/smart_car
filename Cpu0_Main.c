@@ -310,19 +310,28 @@ int core0_main (void)
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
-
-    wheel_system_tick.does_tick_start = true;
-    following_flow_start = false;
     static volatile bool temp_flag1 = false;
-    task1_y_correct_start1  = false;
-    uint8_t temp_ir_record[6] = {0};
+    wheel_system_tick.does_tick_start = true;
 
+    following_flow_start = false;
+    task1_y_correct_start1  = true;
+    task1_start_yaw_correction = false; // yaw矫正还未开启
 
+    uint8_t temp_ir_record[8] = {0};
+
+//    is_task1_wheels_moving_to_next_point = true;
+//    pick_times = 1;
+//    task1_cy_id = task1_cylinder_id_small;
+//    delayms(5000);
+//    is_position_loop_done = false;
+//    is_task1_wheels_moving_to_last_point = true;
+//    put_times = 1;
+//    task1_cy_id = task1_cylinder_id_small;
     while (1)	//主循环
     {
 #if TFT_VERSION
-        get_ir_pins_state(2,temp_ir_record);
-        for(uint8_t i = 0; i< 6; i++){
+        get_ir_pins_state(1,temp_ir_record);
+        for(uint8_t i = 0; i< 8; i++){
             printf("%d ",temp_ir_record[i]);
         }
         printf("\r\n");
@@ -399,7 +408,7 @@ int core0_main (void)
 //        MPU_Get_Gyroscope(&gx12,&gy12,&gz12);
 //        printf("%d %d %d \r\n",  gx12,gy12,gz12);
 
-        sprintf(txt, "A:%d %d %d ", (int)wheel_asix.roll,(int)wheel_asix.pitch,(int)wheel_asix.yaw);
+        sprintf(txt, "A:%d %d %d %d %d", (int)wheel_asix.roll,(int)wheel_asix.pitch,(int)wheel_asix.yaw,pick_times, put_times);
         //UART_PutStr(UART1,txt);
         TFTSPI_P8X16Str(1, 9, txt, u16WHITE, u16BLACK);
 

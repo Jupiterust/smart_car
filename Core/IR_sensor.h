@@ -17,7 +17,7 @@
 #define sr1_pin3 P11_6
 #define sr1_pin4 P11_3
 #define sr1_pin5 P13_3
-#define sr1_pin6 P13_2
+#define sr1_pin6 P15_8
 #define sr1_pin7 P13_0
 #define sr1_pin8 P15_1
 

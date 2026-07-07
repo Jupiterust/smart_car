@@ -67,12 +67,12 @@ uint8_t get_ir_pins_state_num(uint8_t ir_sensorx){
     }
     else if(ir_sensorx == 2){
         uint8_t count = 0;
-        for(uint8_t i = 0; i < 8; i++){
+        for(uint8_t i = 0; i < 6; i++){
             if(PIN_Read(ir_sensor2_pins[i]) == 0){
                 count++;
             }
         }
-        return 0;
+        return count;
     }
 }
 

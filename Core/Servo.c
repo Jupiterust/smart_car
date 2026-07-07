@@ -70,20 +70,22 @@ void TASK1_DEFAULT_STATE(void){
     FSUS_SetServoAngle(servo_usart, 1, -90.0f,  100, 0);
     FSUS_SetServoAngle(servo_usart, 2, -180.0f, 100, 0);
     FSUS_SetServoAngle(servo_usart, 3, -30.0f,  100, 0);
-    FSUS_SetServoAngle(servo_usart, 4, -75.0f, 100, 0);
+    FSUS_SetServoAngle(servo_usart, 4, -75.0f,  100, 0);
 }
 
 // pick up details
 //2:-100 3:-5 4:60 5:47
 //3:53 3:-57 4: 40 5:83
 float task1_idle_angle[4] ={0.0f, 126.50f,-75.0f, 75.0f};
-
-float task1_pick_up_angle[4] = {0.0f, -118.0f, -13.0f, 85.0f};
+// -87  -16 86
+float task1_pick_up_angle[4] = {0.0f, -87.0f, -16.0f, 86.0f};
 // -101 -29  -79
 // 36 -49  87
-float task1_turning_angle1[4] = {180.0f, 36.0f, -49.0f, 87.0f};
-
-float task1_put_angle[4] = {180.0f, -118.0f, -13.0f, 85.0f};
+//27   -52 76
+float task1_turning_angle1[4] = {180.0f, 27.0f, -52.0f, 76.0f};
+// -60    -26  85
+// -79 -14 88
+float task1_put_angle[4] = {180.0f, -75.0f, -14.0f, 88.0f};
 
 float task1_turning_angle2[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
 volatile bool is_task1_wheels_moving_to_next_point = false;
@@ -96,58 +98,66 @@ void TASK1_PICK_OBJECT_UP_SYN(void){
     if(pick_or_put != servo_pick_up_from_camera){
         return ;
     }
+    // 正常启动气泵
     my_dummy.pump_state = PUMP_ON;
     air_pump_pick_up();
-
+    // 转动抓取
     SyncArray[0].id = 1;SyncArray[0].power = 0; SyncArray[0].interval_single = 0;   SyncArray[0].angle = task1_pick_up_angle[0];
     SyncArray[1].id = 2;SyncArray[1].power = 0; SyncArray[1].interval_single = 1500;SyncArray[1].angle = task1_pick_up_angle[1];
     SyncArray[2].id = 3;SyncArray[2].power = 0; SyncArray[2].interval_single = 50;  SyncArray[2].angle = task1_pick_up_angle[2];
     SyncArray[3].id = 4;SyncArray[3].power = 0; SyncArray[3].interval_single = 50;  SyncArray[3].angle = task1_pick_up_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    delayms(5000);
+    delayms(2000);
 //    my_dummy.pump_state = PUMP_IDLE;
 //    air_pump_pick_up();
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
+    // 可以正常移动到下一点
     is_task1_wheels_moving_to_next_point =true;
-    SyncArray[0].interval_single = 1900;SyncArray[0].angle = task1_turning_angle1[0];
-    SyncArray[1].interval_single = 1300; SyncArray[1].angle = task1_turning_angle1[1];
-    SyncArray[2].interval_single = 1500; SyncArray[2].angle = task1_turning_angle1[2];
-    SyncArray[3].interval_single = 1500; SyncArray[3].angle = task1_turning_angle1[3];
+    SyncArray[0].interval_single = 1500; SyncArray[0].angle = task1_turning_angle1[0];
+    SyncArray[1].interval_single = 1;   SyncArray[1].angle = task1_turning_angle1[1];
+    SyncArray[2].interval_single = 1000; SyncArray[2].angle = task1_turning_angle1[2];
+    SyncArray[3].interval_single = 1000; SyncArray[3].angle = task1_turning_angle1[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    delayms(2000);
+    delayms(10);
+    is_task1_wheels_moving_to_next_point =true;
+    delayms(1000);
+    // 同时启动y轴校准以及摄像头接收数据正常
     pick_or_put = servo_from_camera_idle;
     task1_y_correct_start2 = true;
+    task1_start_yaw_correction = false;
+
 }
 
 void TASK1_PUT_OBJECT_DOWN_SYN(void){
     if(pick_or_put != servo_put_down_from_camera){
             return ;
-        }
+    }
+    // 正常放下
     SyncArray[0].interval_single = 1000;SyncArray[0].angle = task1_put_angle[0];
     SyncArray[1].interval_single = 1200;SyncArray[1].angle = task1_put_angle[1];
     SyncArray[2].interval_single = 100; SyncArray[2].angle = task1_put_angle[2];
     SyncArray[3].interval_single = 100; SyncArray[3].angle = task1_put_angle[3];
-
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    delayms(2500);
+    delayms(2000);
     my_dummy.pump_state = PUMP_OFF;
     air_pump_pick_up();
-    delayms(500);
-    my_dummy.pump_state = PUMP_IDLE;
-    air_pump_pick_up();
-
-
-    SyncArray[0].interval_single = 300; SyncArray[0].angle = task1_idle_angle[0];
-    SyncArray[1].interval_single = 400; SyncArray[1].angle = task1_idle_angle[1];
-    SyncArray[2].interval_single = 800; SyncArray[2].angle = task1_idle_angle[2];
-    SyncArray[3].interval_single = 800; SyncArray[3].angle = task1_idle_angle[3];
-    SyncArray[4].interval_single = 100; SyncArray[4].angle = task1_idle_angle[4];
+    delayms(600);
+    // 1先单独动一下
+    // 机械臂和小车都回到原来的位置
+    SyncArray[0].interval_single = 1600; SyncArray[0].angle = task1_idle_angle[0];
+    SyncArray[1].interval_single = 10;   SyncArray[1].angle = task1_idle_angle[1];
+    SyncArray[2].interval_single = 500; SyncArray[2].angle = task1_idle_angle[2];
+    SyncArray[3].interval_single = 500; SyncArray[3].angle = task1_idle_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    is_task1_wheels_moving_to_last_point = true;
-    task1_y_correct_start1 = true;
+    delayms(10);
 
+    is_task1_wheels_moving_to_last_point = true;
+    delayms(400);
+
+    task1_y_correct_start1 = true;
+    pick_or_put = servo_from_camera_idle;
 }
 
 void TASK1_PICK_OBJECT_UP(void){
@@ -190,7 +200,6 @@ void TASK1_PICK_OBJECT_UP(void){
     for(i = 0; i< 4;i++){
         FSUS_SetServoAngle(servo_usart, (i+1), task1_turning_angle1[i], 1500, 0);
     }
-
 }
 // put details
 

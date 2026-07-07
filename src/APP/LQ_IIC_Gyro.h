@@ -207,7 +207,7 @@ extern short magx, magy, magz;
 #define fifo_data_port                 0x30
 
 
-#define MPU6050_ADDR  0x69  //IIC写入时的地址字节数据，+1为读取
+#define MPU6050_ADDR  0x68  //IIC写入时的地址字节数据，+1为读取
 
 
 extern unsigned char IIC_ICM20602;
