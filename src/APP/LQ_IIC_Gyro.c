@@ -35,7 +35,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 unsigned char IIC_ICM20602 = 0;
 unsigned char IIC_ICM20689 = 0;
 unsigned char IIC_MPU9250 = 0;
-volatile  unsigned char IIC_ICM42605 = 1;
+volatile  unsigned char IIC_ICM42605 = 0;
 unsigned char IIC_MPU6050 = 0;
 unsigned char IIC_errorid = 0;
 
@@ -504,19 +504,34 @@ unsigned char MPU_Get_Gyroscope(signed short *gx,signed short *gy,signed short *
 	}
     return res;
 }
-//
-//uint8_t get_real_gyro(float* gx, float *gy, float* gz){
-//    unsigned char  buf[6],res;
-//    res=MPU_Read_Len(MPU6050_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
-//    if(res==0)
-//    {
-//        *gx=(float)(((int16_t)(buf[0]<<8))|buf[1]) / 32.8f;
-//        *gy=(float)(((int16_t)(buf[2]<<8))|buf[3]) / 32.8f;
-//        *gz=(float)(((int16_t)(buf[4]<<8))|buf[5]) / 32.8f;
-//    }
-//    return res;
-//
-//}
+
+
+volatile float gx_error2,gy_error2,gz_error2;
+
+void get_real_gyro_error2(void){
+    unsigned char  buf[6];
+    MPU_Read_Len(MPU6050_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
+
+    gx_error2=(float)(((int16_t)(buf[0]<<8))|buf[1]) / 16.4f;
+    gy_error2=(float)(((int16_t)(buf[2]<<8))|buf[3]) / 16.4f;
+    gz_error2=(float)(((int16_t)(buf[4]<<8))|buf[5]) / 16.4f;
+
+}
+
+
+
+uint8_t get_real_gyro2(float* gx, float *gy, float* gz){
+    unsigned char  buf[6],res;
+    res=MPU_Read_Len(MPU6050_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
+    if(res==0)
+    {
+        *gx=(float)((((int16_t)(buf[0]<<8))|buf[1]) / 16.4f - gx_error2);
+        *gy=(float)((((int16_t)(buf[2]<<8))|buf[3]) / 16.4f - gy_error2);
+        *gz=(float)((((int16_t)(buf[4]<<8))|buf[5]) / 16.4f -  gz_error2);
+    }
+    return res;
+
+}
 
 
 
@@ -534,6 +549,12 @@ unsigned char MPU_Get_Gyroscope(signed short *gx,signed short *gy,signed short *
   *
   * @date     2019/6/12 ÐÇÆÚÈý
   */
+
+
+
+
+
+
 unsigned char MPU_Get_Accelerometer(signed short *ax,signed short *ay,signed short *az)
 {
     unsigned char  buf[6],res;
@@ -598,9 +619,10 @@ unsigned char MPU_Get_Raw_data(signed short *ax,signed short *ay,signed short *a
 
 volatile float gx_error,gy_error,gz_error;
 
+
 void get_real_gyro_error(void){
     unsigned char  buf[14];
-    MPU_Read_Len(MPU6050_ADDR,0X1F,12,buf);
+    MPU_Read_Len(MPU6050_ADDR,MPU_ACCEL_XOUTH_REG,14,buf);
 
     gx_error=(float)(((int16_t)(buf[6]<<8))|buf[7]) / 32.8f;
     gy_error=(float)(((int16_t)(buf[8]<<8))|buf[9]) / 32.8f;
@@ -612,7 +634,7 @@ void get_real_gyro_error(void){
 uint8_t get_real_gyro(float* gx, float *gy, float* gz){
 
     unsigned char  buf[14],res;
-    res=MPU_Read_Len(MPU6050_ADDR,0X1F,12,buf);
+    res=MPU_Read_Len(MPU6050_ADDR,MPU_ACCEL_XOUTH_REG,14,buf);
     if(res==0)
     {
         *gx=((float)(((int16_t)(buf[6]<<8))|buf[7]) / 32.8f - gx_error);

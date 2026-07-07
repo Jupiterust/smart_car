@@ -237,7 +237,7 @@ int core0_main (void)
     delayms(300);
     MPU6050_Init();
     delayms(500);
-    get_real_gyro_error();
+    get_real_gyro_error2();
     //ICM20602_Init();
     // encoder init
     EncInit();
@@ -313,8 +313,8 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
 
-    following_flow_start = false;
-    task1_y_correct_start1  = true;
+    following_flow_start = true;
+    task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw矫正还未开启
 
     uint8_t temp_ir_record[8] = {0};
@@ -383,7 +383,7 @@ int core0_main (void)
             }
             BT_flag_set =0;
         }
-        sprintf(txt, "%d %d %d %d  ", (int)servo_angle[0],(int)servo_angle[1],(int)servo_angle[2],(int)servo_angle[3]);
+        sprintf(txt, "debug:%d %d", task1_bug_flag,feedback_task1_y_ir2);
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
         Radar_Distance_Judge();
         if (radar_distance < RADAR_TARGET_MM) {        // 小于30cm(=300mm)

@@ -313,7 +313,7 @@ typedef enum{
 volatile uint8_t BT_flag = 0;
 volatile uint8_t BT_flag_set = 0;
 volatile uint8_t servo_id = 0;
-volatile float servo_angle[5]= {0.0f, -100.0f, -5.0f, 60.0f, 47.0f};
+volatile float servo_angle[5]= {0.0f, 0.0f, 0, 0, 0};
 //  30 25.0f}
 
 

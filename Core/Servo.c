@@ -115,7 +115,7 @@ void TASK1_PICK_OBJECT_UP_SYN(void){
 //    task1_cy_id = task1_cylinder_id_small;
     // 可以正常移动到下一点
     is_task1_wheels_moving_to_next_point =true;
-    SyncArray[0].interval_single = 1500; SyncArray[0].angle = task1_turning_angle1[0];
+    SyncArray[0].interval_single = 1200; SyncArray[0].angle = task1_turning_angle1[0];
     SyncArray[1].interval_single = 1;   SyncArray[1].angle = task1_turning_angle1[1];
     SyncArray[2].interval_single = 1000; SyncArray[2].angle = task1_turning_angle1[2];
     SyncArray[3].interval_single = 1000; SyncArray[3].angle = task1_turning_angle1[3];
@@ -148,8 +148,8 @@ void TASK1_PUT_OBJECT_DOWN_SYN(void){
     // 机械臂和小车都回到原来的位置
     SyncArray[0].interval_single = 1600; SyncArray[0].angle = task1_idle_angle[0];
     SyncArray[1].interval_single = 10;   SyncArray[1].angle = task1_idle_angle[1];
-    SyncArray[2].interval_single = 500; SyncArray[2].angle = task1_idle_angle[2];
-    SyncArray[3].interval_single = 500; SyncArray[3].angle = task1_idle_angle[3];
+    SyncArray[2].interval_single = 500;  SyncArray[2].angle = task1_idle_angle[2];
+    SyncArray[3].interval_single = 500;  SyncArray[3].angle = task1_idle_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
     delayms(10);
 

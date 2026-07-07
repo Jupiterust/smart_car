@@ -483,6 +483,8 @@ void get_real_gyro_error(void);
 uint8_t get_real_gyro(float* gx, float *gy, float* gz);
 
 
+void get_real_gyro_error2(void);
+uint8_t get_real_gyro2(float* gx, float *gy, float* gz);
 
 
 

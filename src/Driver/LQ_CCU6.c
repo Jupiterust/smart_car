@@ -200,10 +200,10 @@ void CCU60_CH0_IRQHandler(void)
     // 红外矫正task1的 y轴坐标
     if(task1_y_correct_start1 == true){
         if(get_ir_pins_state_num(IR_SENSOR1) < 2){
-            following_speed[0] = 6;
-            following_speed[1] = -6;
-            following_speed[2] = -6;
-            following_speed[3] = 6;
+            following_speed[0] = 5.4;
+            following_speed[1] = -5.4;
+            following_speed[2] = -5.4;
+            following_speed[3] = 5.4;
         }
         else {
             task1_y_correct_start1 = false;
@@ -215,10 +215,10 @@ void CCU60_CH0_IRQHandler(void)
     }
     if(task1_y_correct_start2 == true){
         if(get_ir_pins_state_num(IR_SENSOR2) < 2){
-            following_speed[0] = -6;
-            following_speed[1] =  6;
-            following_speed[2] =  6;
-            following_speed[3] = -6;
+            following_speed[0] = -5.4;
+            following_speed[1] =  5.4;
+            following_speed[2] =  5.4;
+            following_speed[3] = -5.4;
 
             feedback_task1_y_ir2 = 1;
         }
@@ -234,7 +234,7 @@ void CCU60_CH0_IRQHandler(void)
     }
     // y轴修正后再task1环节修正角度
     if(task1_start_yaw_correction){
-   //     angle_correct(45,8);
+        angle_correct(45,8);
         // 内部又修正
     }
 
@@ -366,7 +366,7 @@ void CCU61_CH0_IRQHandler (void)
 
     /* 用户代码 */
     /* 获取编码器值 */
-    get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
+    get_real_gyro2((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
     wheel_asix.roll  += wheel_asix.gx * 0.001;
     wheel_asix.pitch += wheel_asix.gy * 0.001;
     wheel_asix.yaw   += wheel_asix.gz * 0.001;

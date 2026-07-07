@@ -236,6 +236,7 @@ extern volatile bool is_crossing_line1;
 extern volatile bool is_crossing_line2;
 extern volatile bool line_record1;
 extern volatile float crossing_line_only_total_path;
+extern volatile int task1_bug_flag;
 void crossing_line_handle(void);
 
 #endif /* CORE_MOTOR_H_ */
