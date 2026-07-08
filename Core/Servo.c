@@ -88,6 +88,9 @@ float task1_turning_angle1[4] = {180.0f, 27.0f, -52.0f, 76.0f};
 float task1_put_angle[4] = {180.0f, -75.0f, -14.0f, 88.0f};
 
 float task1_turning_angle2[4] = {-90.0f,-180.0f,-30.0f,-75.0f};
+
+float task3_watch_angle[4] = {180.0f,  180.0f, -132.0f,-15.0f };
+
 volatile bool is_task1_wheels_moving_to_next_point = false;
 volatile bool is_task1_wheels_moving_to_last_point = false;
 uint8_t run_only_once_in_servo[10] = {0};
@@ -115,7 +118,7 @@ void TASK1_PICK_OBJECT_UP_SYN(void){
 //    task1_cy_id = task1_cylinder_id_small;
     // 可以正常移动到下一点
     is_task1_wheels_moving_to_next_point =true;
-    SyncArray[0].interval_single = 1200; SyncArray[0].angle = task1_turning_angle1[0];
+    SyncArray[0].interval_single = 100; SyncArray[0].angle = task1_turning_angle1[0];
     SyncArray[1].interval_single = 1;   SyncArray[1].angle = task1_turning_angle1[1];
     SyncArray[2].interval_single = 1000; SyncArray[2].angle = task1_turning_angle1[2];
     SyncArray[3].interval_single = 1000; SyncArray[3].angle = task1_turning_angle1[3];
@@ -146,6 +149,10 @@ void TASK1_PUT_OBJECT_DOWN_SYN(void){
     delayms(600);
     // 1先单独动一下
     // 机械臂和小车都回到原来的位置
+    if(put_times == 3){
+        SyncArray[0].angle = 180;
+    }
+
     SyncArray[0].interval_single = 1600; SyncArray[0].angle = task1_idle_angle[0];
     SyncArray[1].interval_single = 10;   SyncArray[1].angle = task1_idle_angle[1];
     SyncArray[2].interval_single = 500;  SyncArray[2].angle = task1_idle_angle[2];
@@ -155,8 +162,17 @@ void TASK1_PUT_OBJECT_DOWN_SYN(void){
 
     is_task1_wheels_moving_to_last_point = true;
     delayms(400);
-
-    task1_y_correct_start1 = true;
+    if(put_times ==  3){
+        task1_y_correct_start1 = false;
+        SyncArray[0].interval_single = 1600; SyncArray[0].angle = task1_idle_angle[0];
+        SyncArray[1].interval_single = 10;   SyncArray[1].angle = task3_watch_angle[1];
+        SyncArray[2].interval_single = 500;  SyncArray[2].angle = task3_watch_angle[2];
+        SyncArray[3].interval_single = 500;  SyncArray[3].angle = task3_watch_angle[3];
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    }
+    else{
+        task1_y_correct_start1 = true;
+    }
     pick_or_put = servo_from_camera_idle;
 }
 

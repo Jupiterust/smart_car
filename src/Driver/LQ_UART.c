@@ -113,6 +113,7 @@ volatile bool does_dummy_run = false;
 volatile task1_cylinder_enum task1_cy_id;
 volatile u8 pick_times = 0;
 volatile u8 put_times = 0;
+volatile bool following_after_task1 = false;
 
 void UART0_RX_IRQHandler(void)
 {
@@ -157,6 +158,7 @@ void UART0_RX_IRQHandler(void)
                             return;
                         }
                     // 只有帧头、数据长度、帧尾全部匹配，才解析
+                        following_after_task1 = true;
                         speed_error_from_camera = (int32_t)((temp_buffer[0]) |
                                 (temp_buffer[1] << 8) |
                                 (temp_buffer[2] << 16) |
@@ -234,8 +236,8 @@ void UART0_RX_IRQHandler(void)
                         // x_dev_f = cur_pos - target_pos
                         // y_dev_f = cur_suq - target_suq  < 0 -> right; >0 -> left;
                         // < 0 -> right
-                        float x_dev_f = x_dev * 0.8; // 简单的p项
-                        float y_dev_f = y_dev * 0.8;
+                        float x_dev_f = x_dev * 0.45; // 简单的p项
+                        float y_dev_f = y_dev * 0.45;
 
 
                         float temp_speed[4] = {0};

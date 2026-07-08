@@ -204,9 +204,9 @@ extern volatile coordinate_struct task1_encounter_small_cy_in_one_S[3];
 extern volatile coordinate_struct task1_back_to_two_from_small_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_medium_cy_in_one_S[2];
-extern volatile coordinate_struct task1_back_to_two_from_medium_cy_S[1];
+extern volatile coordinate_struct task1_back_to_two_from_medium_cy_S[2];
 
-extern volatile coordinate_struct task1_encounter_large_cy_in_one_S[1];
+extern volatile coordinate_struct task1_encounter_large_cy_in_one_S[2];
 extern volatile coordinate_struct task1_back_to_two_from_large_cy_S[2];
 
 
@@ -214,14 +214,14 @@ extern volatile coordinate_struct task1_back_to_two_from_large_cy_S[2];
 extern volatile coordinate_struct task1_encounter_small_cy_in_two_S[2];
 extern volatile coordinate_struct task1_back_to_three_from_small_cy_S[1];
 
-extern volatile coordinate_struct task1_encounter_medium_cy_in_two_S[1];
+extern volatile coordinate_struct task1_encounter_medium_cy_in_two_S[2];
 extern volatile coordinate_struct task1_back_to_three_from_medium_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_large_cy_in_two_S[2];
 extern volatile coordinate_struct task1_back_to_three_from_large_cy_S[2];
 
 
-extern volatile coordinate_struct task1_encounter_small_cy_in_three_S[1] ;
+extern volatile coordinate_struct task1_encounter_small_cy_in_three_S[2] ;
 extern volatile coordinate_struct task1_back_to_following_from_small_cy_S[1];
 
 extern volatile coordinate_struct task1_encounter_medium_cy_in_three_S[2];

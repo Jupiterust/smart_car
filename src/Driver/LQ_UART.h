@@ -213,6 +213,8 @@ extern volatile task1_cylinder_enum task1_cy_id ;
 extern volatile bool does_dummy_run;
 extern volatile uint8_t pick_times;
 extern volatile uint8_t put_times;
+extern volatile bool following_after_task1;
+
 
 #define HEADER 0xAA                         /* 起始符 */
 #define device_address 0x00     /* 设备地址 */

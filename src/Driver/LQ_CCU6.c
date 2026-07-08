@@ -178,22 +178,22 @@ void CCU60_CH0_IRQHandler(void)
 
     //循迹任务
     // 任务1完成后通过陀螺仪应对处理交叉线               ///////////////////////////////
-//    if(following_flow_start == false)
-//        crossing_line_handle();
-//    if(is_crossing_line1 == true){
-//        following_speed[0] = 25;
-//        following_speed[1] = 25;
-//        following_speed[2] = 25;
-//        following_speed[3] = 25;
-//        angle_correct(0.0f,14);
-//    }
-//    if(is_crossing_line2 == true){
-//        following_speed[0] = 25;
-//        following_speed[1] = 25;
-//        following_speed[2] = 25;
-//        following_speed[3] = 25;
-//        angle_correct(270.0f,14);
-//    }
+    if(following_after_task1 == true)
+        crossing_line_handle();
+    if(is_crossing_line1 == true){
+        following_speed[0] = 25;
+        following_speed[1] = 25;
+        following_speed[2] = 25;
+        following_speed[3] = 25;
+        angle_correct(0.0f,14);
+    }
+    if(is_crossing_line2 == true){
+        following_speed[0] = 25;
+        following_speed[1] = 25;
+        following_speed[2] = 25;
+        following_speed[3] = 25;
+        angle_correct(270.0f,14);
+    }
 
 
 
@@ -215,10 +215,10 @@ void CCU60_CH0_IRQHandler(void)
     }
     if(task1_y_correct_start2 == true){
         if(get_ir_pins_state_num(IR_SENSOR2) < 2){
-            following_speed[0] = -5.4;
-            following_speed[1] =  5.4;
-            following_speed[2] =  5.4;
-            following_speed[3] = -5.4;
+            following_speed[0] = -4.5;
+            following_speed[1] =  4.5;
+            following_speed[2] =  4.5;
+            following_speed[3] = -4.5;
 
             feedback_task1_y_ir2 = 1;
         }
@@ -239,7 +239,9 @@ void CCU60_CH0_IRQHandler(void)
     }
 
     motor_speed_loop((float *)following_speed);
-
+    if(following_after_task1){
+        return;
+    }
     following_speed[0] = 0;
     following_speed[1] = 0;
     following_speed[2] = 0;
