@@ -106,6 +106,13 @@ static float   current_deviation = 0.0f;
     // task1
 static uint8_t rx_count1 = 0;
 static uint8_t temp_buffer1[6];
+static uint8_t rx_count3 = 0;
+static uint8_t rx_count2 = 0;
+
+
+static uint8_t temp_buffer2[5] = {0};
+
+static uint8_t temp_buffer3[3] = {0};
 
 volatile SERVO_ACTION_ENUM pick_or_put;
 volatile bool start_to_pick_or_put = false;
@@ -114,6 +121,9 @@ volatile task1_cylinder_enum task1_cy_id;
 volatile u8 pick_times = 0;
 volatile u8 put_times = 0;
 volatile bool following_after_task1 = false;
+volatile char worm_record_array[4] = {0};
+volatile bool task2_start = false;
+
 
 void UART0_RX_IRQHandler(void)
 {
@@ -133,13 +143,24 @@ void UART0_RX_IRQHandler(void)
                 if (one_byte == 0xAA) rx_state = 1;
                 break;
             case 1: // 寻找帧头2: 根据这个进行切换模式
-                rx_count = 0;
-                rx_count1 = 0;
-                if      (one_byte == 0x01)  rx_state = 2;
-                else if (one_byte == 0x02)  rx_state = 4;
+                if      (one_byte == 0x01) rx_count  = 0, rx_state = 2;
+                else if (one_byte == 0x02) rx_count1 = 0, rx_state = 4;
+                else if (one_byte == 0x04) rx_count3 = 0, rx_state = 6;
+                else if (one_byte == 0x03) rx_count2 = 0, rx_state = 8;
+                // 0x03
+                // 0x04
+                // 任务3
+                // 0xAA 0x04 是否前进继续看 识别的结构 0x0D
+                //
+                // 8 个字节的数据 0000 1111 / 0000 0000  1 / 0
+
+                // 0X03
+                // X = 16
+                // Y = 16
+                // 3 2 1 4
                 break;
-// 巡线逻辑
             case 2: // 接收 4 字节数据
+// 巡线逻辑
                 temp_buffer[rx_count++] = one_byte;
                 if (rx_count >= 4) rx_state = 3;
                 break;
@@ -155,6 +176,9 @@ void UART0_RX_IRQHandler(void)
                             return;
                         }
                         if(is_crossing_line2 == true){
+                            return;
+                        }
+                        if(is_waiting_for_task_record == true){
                             return;
                         }
                     // 只有帧头、数据长度、帧尾全部匹配，才解析
@@ -200,10 +224,10 @@ void UART0_RX_IRQHandler(void)
                 if(rx_count1 >= 6) rx_state = 5;
                 break;
             case 5:
+                rx_state = 0;
                 if(one_byte == 0x0D)
                 {
                     if(pick_or_put != servo_from_camera_idle){
-                        rx_state = 0;
                         return;
                     }
                     int16_t x_dev = (int16_t)((temp_buffer1[0]) | (temp_buffer1[1] << 8));
@@ -271,8 +295,98 @@ void UART0_RX_IRQHandler(void)
                         following_speed[3] = temp_speed[3];
                     }
                 }
-                rx_state = 0;
                 break;
+            case 6:
+                temp_buffer3[rx_count3++] = one_byte;
+                if(rx_count3 >= 2) rx_state = 7;
+                break;
+            case 7:
+                {
+                    // 最先处理
+                    // 无论帧尾是否正确，都回到状态0重新寻找
+                    rx_state = 0;
+                    if (one_byte == 0x0D){
+                        if(temp_buffer3[0] == 1){
+                            following_speed[0] = 0;
+                            following_speed[1] = 0;
+                            following_speed[2] = 0;
+                            following_speed[3] = 0;
+                        }
+                        else {
+                            following_speed[0] = 9;
+                            following_speed[1] = 9;
+                            following_speed[2] = 9;
+                            following_speed[3] = 9;
+                        }
+                        if(temp_buffer3[1] != 0){
+                            worm_record_array[0] = (temp_buffer3[1] & 0x01) ? 0 : 1;
+                            worm_record_array[1] = (temp_buffer3[1] & 0x02) ? 0 : 1;
+                            worm_record_array[2] = (temp_buffer3[1] & 0x04) ? 0 : 1;
+                            worm_record_array[3] = (temp_buffer3[1] & 0x08) ? 0 : 1;
+                            is_waiting_for_task_record = false;
+                        }
+                    }
+                }
+                break;
+            case 8:
+                temp_buffer2[rx_count3++] = one_byte;
+                if(rx_count3 >= 5) rx_state = 9;
+                break;
+            case 9:{
+                rx_state = 0;
+                if (one_byte == 0x0D)
+                {
+                    // x y校准:
+                    if(does_task_work_flow_start == true){
+                        return;
+                    }
+                    task2_start = true;//
+                    int16_t x_offset = (int16_t)((temp_buffer2[0]) | (temp_buffer2[1] << 8));
+                    int16_t y_offset = (int16_t)((temp_buffer2[2]) | (temp_buffer2[3] << 8));
+                    float x_offset_f = x_offset * 0.8;
+                    float y_offset_f = y_offset * 0.8;
+                    float drop_count = temp_buffer2[4];
+
+                    float temp_speed[4] = {0};
+                    temp_speed[0] = x_offset_f - y_offset_f;
+                    temp_speed[1] = x_offset_f + y_offset_f;
+                    temp_speed[2] = x_offset_f + y_offset_f;
+                    temp_speed[3] = x_offset_f - y_offset_f;
+                    for(u8 i =0; i < 4; i++){
+                        if(temp_speed[i] > 15){
+                            temp_speed[i] = 15;
+                        }
+                        else if(temp_speed[i] < -15){
+                            temp_speed[i] = -15;
+                        }
+                    }
+                    following_speed[0] = temp_speed[0];
+                    following_speed[1] = temp_speed[1];
+                    following_speed[2] = temp_speed[2];
+                    following_speed[3] = temp_speed[3];
+                    // 1.看水滴数量
+                    // xy 校准    此时: 0xAA 0x03 x(16) y(16) 0(数量)
+                    // 2.校准完成 发送水滴数量 此时: 0xAA 0x03 x(16) y(16) (数量)
+                    // 开始看水滴 开始根据 xy中心点校准小车
+                    // 先还是校准  此时 0xAA 0x03 x y 0
+                    // 校准完毕后  发送 0xAA 0x03 x y 4
+
+                    //
+                    // 第一次发送 水滴的真实数量
+                    if(drop_count != 0 && drop_count < 4){
+                        TASK2_DROP_COUNT = drop_count;
+                    }
+                    // 全部校准完毕，开始放置
+                    else if(drop_count == 4){
+                        does_task_work_flow_start = true;
+                        following_speed[0] = 0;
+                        following_speed[1] = 0;
+                        following_speed[2] = 0;
+                        following_speed[3] = 0;
+                    }
+                }
+                break;
+            }
             default:
                 rx_state = 0;
                 break;

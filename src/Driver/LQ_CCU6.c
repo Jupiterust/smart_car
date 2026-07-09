@@ -188,14 +188,12 @@ void CCU60_CH0_IRQHandler(void)
         angle_correct(0.0f,14);
     }
     if(is_crossing_line2 == true){
-        following_speed[0] = 25;
-        following_speed[1] = 25;
-        following_speed[2] = 25;
-        following_speed[3] = 25;
+        following_speed[0] = 26;
+        following_speed[1] = 26;
+        following_speed[2] = 26;
+        following_speed[3] = 26;
         angle_correct(270.0f,14);
     }
-
-
 
     // 红外矫正task1的 y轴坐标
     if(task1_y_correct_start1 == true){
@@ -228,7 +226,6 @@ void CCU60_CH0_IRQHandler(void)
             following_speed[1] = 0;
             following_speed[2] = 0;
             following_speed[3] = 0;
-
             feedback_task1_y_ir2 = 2;
         }
     }
@@ -239,6 +236,12 @@ void CCU60_CH0_IRQHandler(void)
     }
 
     motor_speed_loop((float *)following_speed);
+    if (task2_start == true){
+        following_speed[0] = 0;
+        following_speed[1] = 0;
+        following_speed[2] = 0;
+        following_speed[3] = 0;
+    }
     if(following_after_task1){
         return;
     }

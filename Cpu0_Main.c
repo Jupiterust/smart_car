@@ -163,7 +163,7 @@ int speed_examine[4] = {0,0,0,0};
 int speed_value[4] = {0};
 volatile float  exam_angles[5] = {0};
 const char angle_hint_str[5][11] = {"servo idle","index add","index sub","angle add","angle sub"};
-
+const char task_start_signal_from_me = 'A';
 
 // float angle1 = -90
 // float angle2 = -180
@@ -319,6 +319,7 @@ int core0_main (void)
 
     uint8_t temp_ir_record[8] = {0};
     volatile bool look_at_worm = true;
+    volatile u8 did_i_sen = 0;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -335,14 +336,10 @@ int core0_main (void)
 //            printf("%d ",temp_ir_record[i]);
 //        }
 //        printf("\r\n");
-        if(look_at_worm == true && following_after_task1){
+        if(look_at_worm == true && is_waiting_for_task_record == true){
             look_at_worm = false;
-            delayms(100);
-            FSUS_SetServoAngle(servo_usart, 1, 180.0f, 600, power);
-            FSUS_SetServoAngle(servo_usart, 2, 180.0f, 600, power);//-169
-            FSUS_SetServoAngle(servo_usart, 3, -132.0f, 600, power);//-108
-            FSUS_SetServoAngle(servo_usart, 4, -15.0f, 600, power);//76
-
+            did_i_sen = 1;
+            UART_PutChar(UART0,task_start_signal_from_me);
         }
         if(temp_flag1 == false && following_flow_start == false){
             temp_flag1 =true;
@@ -375,7 +372,7 @@ int core0_main (void)
         if(line_record1 == true){
             line_record1 = false;
             //sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
-            //UART_PutStr(UART1,txt);
+            // UART_PutStr(UART1,txt);
         }
         if(BT_flag_set){
             if(BT_flag_set == 1){
@@ -392,7 +389,7 @@ int core0_main (void)
             }
             BT_flag_set =0;
         }
-        sprintf(txt, "debug:%d %d", task1_bug_flag,feedback_task1_y_ir2);
+        sprintf(txt, "debug:%d %d %d", task1_bug_flag, feedback_task1_y_ir2, did_i_sen);
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
         Radar_Distance_Judge();
         if (radar_distance < RADAR_TARGET_MM) {        // ะกำฺ30cm(=300mm)

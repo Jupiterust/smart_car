@@ -232,10 +232,23 @@ extern volatile coordinate_struct task1_back_to_following_from_large_cy_S[1];
 
 extern volatile coordinate_struct following_flow1[4];
 
+
+typedef enum{
+    CROSS_NONE = 0,
+    CROSS_WAIT_FIRST,    // 等待第一次cross line (yaw≈0)
+    CROSS_HANDLING_FIRST,
+    CROSS_WAIT_SECOND,   // 等待第二次cross line (yaw≈270)
+    CROSS_HANDLING_SECOND,
+    CROSS_DONE,
+}cross_line_state_enum;
+
+extern volatile cross_line_state_enum cross_state;
 extern volatile bool is_crossing_line1;
 extern volatile bool is_crossing_line2;
 extern volatile bool line_record1;
+extern volatile bool is_waiting_for_task_record;
 extern volatile float crossing_line_only_total_path;
+
 extern volatile int task1_bug_flag;
 void crossing_line_handle(void);
 

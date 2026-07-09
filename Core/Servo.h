@@ -65,6 +65,10 @@ void TASK1_PICK_OBJECT_UP_SYN(void);
 void TASK1_PUT_OBJECT_DOWN_SYN(void);
 
 
+extern volatile u8 TASK2_DROP_COUNT;
+extern volatile bool does_task_work_flow_start;
+
+
 
 
 
