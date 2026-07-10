@@ -239,7 +239,7 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
 
         SyncArray[2].angle =  task2_middle_state[3];  SyncArray[0].interval_single = 900;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-        delayms(1400);
+        delayms(800);
 
         // ╥еоб
         SyncArray[0].angle =  task2_put_drop_one_down[0];  SyncArray[0].interval_single = 10;
