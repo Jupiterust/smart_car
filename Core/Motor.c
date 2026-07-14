@@ -155,10 +155,10 @@ void PID_init(void){
     motor_pid.k_p[2] = 3.6f;
     motor_pid.k_p[3] = 3.6f;
 
-    motor_pid.k_i[0] = 14.951f;
-    motor_pid.k_i[1] = 14.951f;
-    motor_pid.k_i[2] = 14.951f;
-    motor_pid.k_i[3] = 14.951f;
+    motor_pid.k_i[0] = 17.951f;
+    motor_pid.k_i[1] = 17.951f;
+    motor_pid.k_i[2] = 17.951f;
+    motor_pid.k_i[3] = 17.951f;
 
     motor_pid.k_d[0] = 1.0f;
     motor_pid.k_d[1] = 1.0f;
@@ -431,7 +431,7 @@ void task1_back_to_two_from_small_cy(void){
 
     task1_back_to_two_from_small_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_two_from_small_cy_S[1].delta_distance.x_y_path = 7.1f;
+    task1_back_to_two_from_small_cy_S[1].delta_distance.x_y_path = 8.1f;
     task1_back_to_two_from_small_cy_S[1].next_flag = dis_end;     // [1]完成后期望结束
 
 }
@@ -442,10 +442,10 @@ void task1_back_to_two_from_small_cy(void){
 //
 void task1_encounter_medium_cy_in_one(void){
     point_number = 3;
-    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[0] =  -17;
-    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[1] =   17;
-    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[2] =   22;
-    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[3] =  -23.5;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[0] =  -18;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[1] =   18;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[2] =   23;
+    task1_encounter_medium_cy_in_one_S[0].target_speed.x_y[3] =  -24.5;
 
     task1_encounter_medium_cy_in_one_S[0].flag = dis_start_x;
 
@@ -460,7 +460,7 @@ void task1_encounter_medium_cy_in_one(void){
 
     task1_encounter_medium_cy_in_one_S[1].flag = dis_start_y;
 
-    task1_encounter_medium_cy_in_one_S[1].delta_distance.x_y_path = 6.9f;
+    task1_encounter_medium_cy_in_one_S[1].delta_distance.x_y_path = 7.4f;
     task1_encounter_medium_cy_in_one_S[1].next_flag = dis_end;
 
 }
@@ -638,14 +638,14 @@ void task1_encounter_large_cy_in_two(void){
     task1_encounter_large_cy_in_two_S[0].delta_distance.x_y_path =  (task1_walk_sideway + 2.66);
     task1_encounter_large_cy_in_two_S[0].next_flag = dis_start_y;
 
-    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[0] =   -18;
-    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[1] =   -18;
-    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[2] =   -18;
-    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[3] =   -18;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[0] =   -9;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[1] =   -9;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[2] =   -9;
+    task1_encounter_large_cy_in_two_S[1].target_speed.x_y[3] =   -9;
 
     task1_encounter_large_cy_in_two_S[1].flag = dis_start_y;
 
-    task1_encounter_large_cy_in_two_S[1].delta_distance.x_y_path = 0.03f;
+    task1_encounter_large_cy_in_two_S[1].delta_distance.x_y_path = 6.13f;
 
     task1_encounter_large_cy_in_two_S[1].next_flag = dis_end;
 }
@@ -670,7 +670,7 @@ void task1_back_to_three_from_large_cy(void){
 
     task1_back_to_three_from_large_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_three_from_large_cy_S[1].delta_distance.x_y_path = 9.6f;
+    task1_back_to_three_from_large_cy_S[1].delta_distance.x_y_path = 11.6f;
     task1_back_to_three_from_large_cy_S[1].next_flag = dis_end;
     task1_bug_flag =1;
 }
@@ -1213,8 +1213,10 @@ volatile bool is_crossing_line1 = false;
 volatile bool is_crossing_line2 = false;
 volatile bool line_record1 = false;
 volatile bool is_waiting_for_task_record = false;
+volatile bool does_task3_start_to_count = false;
+
 volatile float crossing_line_only_total_path = 0;
-#define CROSS_LINE_DURATION_CNT1 450
+#define CROSS_LINE_DURATION_CNT1 330
 #define CROSS_LINE_DURATION_CNT2 290
 // 在5ms速度环里调用
 void crossing_line_handle(void){
@@ -1222,7 +1224,7 @@ void crossing_line_handle(void){
     static u16 cross_timer = 0;     // 计时，用于"处理窗口"持续时间
     static float yaw_dev_threshold1 = 5.0f; // yaw判定容差
 
-    static float yaw_dev_threshold = 34.0f; // yaw判定容差
+    static float yaw_dev_threshold = 37.0f; // yaw判定容差
     static u16 record_pointer_distance = 0;  // 打印到第几个10c
     crossing_line_only_total_path += 0.00125f * (motor_pid.actual_speed[0] + motor_pid.actual_speed[1]
                                + motor_pid.actual_speed[2] + motor_pid.actual_speed[3]);
@@ -1249,6 +1251,7 @@ void crossing_line_handle(void){
                 is_crossing_line1 = false;  // 恢复视觉修正
                 cross_state = CROSS_WAIT_SECOND;
                 is_waiting_for_task_record = true;
+                does_task3_start_to_count = true;
                 following_speed[0] = 0;
                 following_speed[1] = 0;
                 following_speed[2] = 0;
@@ -1259,7 +1262,7 @@ void crossing_line_handle(void){
 
         case CROSS_WAIT_SECOND:
             // 检测是否接近 yaw = 270
-            if(fabs(yaw - 270.0f) < yaw_dev_threshold){
+            if(fabs(yaw - 270.0f) < yaw_dev_threshold1){
                 cross_state = CROSS_HANDLING_SECOND;
                 cross_timer = 0;
                 is_crossing_line2 = true;
@@ -1273,6 +1276,7 @@ void crossing_line_handle(void){
                 is_crossing_line2 = false;
                 following_after_task1 = false;
                 cross_state = CROSS_DONE;
+
             }
             break;
 

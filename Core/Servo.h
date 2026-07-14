@@ -52,6 +52,9 @@ void air_pump_pick_up(void);
 #define PUMP_OFF_CCR        500
 #define PWMP_ON_CCR         1300
 
+
+void DUMMY_INIT(void);
+
 void TASK1_PICK_OBJECT_UP(void);
 
 void TASK1_PUT_OBJECT(void);
@@ -69,6 +72,10 @@ extern volatile u8 TASK2_DROP_COUNT;
 extern volatile bool does_task_work_flow_start;
 
 
+void TASK2_WATCH_DROP_WATER_NUMBER(void);
+void TASK2_WATCH_DROP_WATER(void);
+
+void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void);
 
 
 

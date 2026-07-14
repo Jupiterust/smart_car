@@ -163,7 +163,7 @@ int speed_examine[4] = {0,0,0,0};
 int speed_value[4] = {0};
 volatile float  exam_angles[5] = {0};
 const char angle_hint_str[5][11] = {"servo idle","index add","index sub","angle add","angle sub"};
-const char task_start_signal_from_me = 'A';
+
 
 // float angle1 = -90
 // float angle2 = -180
@@ -284,6 +284,7 @@ int core0_main (void)
     my_dummy.pump_state = PUMP_OFF;
     air_pump_pick_up();
     delayms(300);
+    DUMMY_INIT();
 
     PIN_InitConfig(P15_1, IfxPort_Mode_inputNoPullDevice, 0);
     // P10_2 P11_10 P11_6 P11_3 P13_3 P13_2 P13_0 P15_1
@@ -320,6 +321,7 @@ int core0_main (void)
     uint8_t temp_ir_record[8] = {0};
     volatile bool look_at_worm = true;
     volatile u8 did_i_sen = 0;
+    static bool runs_only_once2 = true;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -328,6 +330,27 @@ int core0_main (void)
 //    is_task1_wheels_moving_to_last_point = true;
 //    put_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
+    delayms(2000);
+
+//    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 2, 101.50f, 400, power);//-169
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 3, -116.0f, 1000, power);//-108
+//    delayms(20);
+//    FSUS_SetServoAngle(servo_usart, 4, 10.0f, 1000, power);//76
+//    delayms(20);
+
+    ////////////////////////////////////////////// task2
+//    TASK2_WATCH_DROP_WATER_NUMBER();
+//    delayms(2000);
+//    TASK2_DROP_COUNT = 2;
+//    TASK2_WATCH_DROP_WATER();
+//    delayms(1000);
+//    does_task_work_flow_start = true;
+//    TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
+
+
     while (1)	//主循环
     {
 #if TFT_VERSION
@@ -344,8 +367,17 @@ int core0_main (void)
         if(temp_flag1 == false && following_flow_start == false){
             temp_flag1 =true;
         }
+        if(does_task2_dummy_move == true && runs_only_once2 == true){
+            runs_only_once2 = false;
+            tast2_start_test_distance = true;
+            TASK2_WATCH_DROP_WATER_NUMBER();
+        }
+
         TASK1_PICK_OBJECT_UP_SYN();
         TASK1_PUT_OBJECT_DOWN_SYN();
+
+        TASK2_WATCH_DROP_WATER();
+        TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
         // 显示 巡线速度
         sprintf(txt,"%d %d %d %d  ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
         TFTSPI_P8X16Str(1, 0, txt, u16WHITE, u16BLACK);
@@ -391,15 +423,25 @@ int core0_main (void)
         }
         sprintf(txt, "debug:%d %d %d", task1_bug_flag, feedback_task1_y_ir2, did_i_sen);
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
-        Radar_Distance_Judge();
-        if (radar_distance < RADAR_TARGET_MM) {        // 小于30cm(=300mm)
-            sprintf(txt, "DIST:%4dmm OK ", radar_distance);
-            TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);   // 红字突出
-        }
-        else {
-            sprintf(txt, "DIST:%4dmm    ", radar_distance);
-            TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
-        }
+        Radar_Distance_Judge(&radar1);
+        Radar_Distance_Judge(&radar2);
+        // 第一路（前雷达，0xBB）
+               if (radar1.distance < RADAR_TARGET_MM) {
+                   sprintf(txt, "F:%4dmm OK ", radar1.distance);
+                   TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
+               } else {
+                   sprintf(txt, "F:%4dmm    ", radar1.distance);
+                   TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
+               }
+
+               // 第二路（侧雷达，0xCC）
+//               if (radar2.distance < RADAR_TARGET_MM) {
+//                   sprintf(txt, "S:%4dmm OK ", radar2.distance);
+//                   TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
+//               } else {
+//                   sprintf(txt, "S:%4dmm    ", radar2.distance);
+//                   TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
+//               }
 
         if(flag_from_irq){
             flag_from_irq = 0;

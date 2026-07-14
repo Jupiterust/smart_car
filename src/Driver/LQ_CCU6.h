@@ -65,7 +65,7 @@ typedef struct {
 }Wheel_system_tick_struct;
 
 extern volatile Wheel_system_tick_struct wheel_system_tick;
-
+extern volatile bool does_task2_dummy_move;
 /**
  *
  * 	CCU6Ä£¿éÃ¶¾Ù

@@ -1,43 +1,49 @@
-/*
- * cheju.h
- *
- *  Created on: 2026年6月14日
- *      Author: WSS
- */
-
-#ifndef CORE_CHEJU_H_
-#define CORE_CHEJU_H_
-
 //=============================================================
-// 雷达距离接收模块 (TC264)
-// 收STM32转发的6字节帧: BB | dist_L | dist_H | conf | xor | 0D
-// 串口2中断里调 Radar_Feed_Byte()，主循环调 Radar_Distance_Judge()
+// 雷达距离接收模块 (TC264) - 头文件
 //=============================================================
-#ifndef __RADAR_DIST_H
-#define __RADAR_DIST_H
+#ifndef CHEJU_H_
+#define CHEJU_H_
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "include.h"   // 按你原工程实际的公共头文件路径调整
 
-// 距离判断参数，按场地调
-#define RADAR_TARGET_MM     300   // 小于它算"到达"
-#define RADAR_RELEASE_MM    350   // 回滞，大于它才算"离开"
-#define RADAR_CONF_MIN      30    // 置信度门限，低于不信
-#define RADAR_STABLE_CNT    3     // 连续N帧满足才确认
+#include "Servo.h"
+#include "LQ_CCU6.h"
+#include "IR_sensor.h"
+// 双路雷达实例结构体，每路独立维护自己的状态
+typedef struct {
+    volatile uint16_t distance;
+    volatile uint8_t  confidence;
+    volatile bool     arrived;
+    volatile uint32_t byte_cnt;
+    volatile uint32_t frame_cnt;
+    volatile uint8_t  updated;
+    uint8_t  rx_state;
+    uint8_t  buf[4];
+    uint8_t  cnt;
+    uint8_t  below_cnt;
+} RadarInstance_t;
 
-// 对外状态，其他文件可直接读
-extern volatile uint16_t radar_distance;    // 当前距离 mm
-extern volatile uint8_t  radar_confidence;  // 当前置信度
-extern volatile bool     radar_arrived;     // 是否已到达目标距离(带回滞锁存)
-extern volatile uint32_t radar_byte_cnt ;   // 进来多少字节
-extern volatile uint32_t radar_frame_cnt ;   // 成功解析多少帧
-// 接口
-void Radar_Feed_Byte(uint8_t b);   // 每收到1字节喂进来(串口2中断里调)
-void Radar_Distance_Judge(void);   // 主循环周期调用，判距+触发任务
-extern volatile uint32_t uart3_isr_cnt;
+extern RadarInstance_t radar1;   // 帧头0xBB，对应STM32的USART3那路
+extern RadarInstance_t radar2;   // 帧头0xCC，对应STM32的USART2那路
+
+// 阈值宏，按你原来cheju.h里的定义保留（如果原来就有，不用重复定义）
+
+#ifndef RADAR_CONF_MIN
+#define RADAR_CONF_MIN    50
+#endif
+#ifndef RADAR_TARGET_MM
+#define RADAR_TARGET_MM   300
+#endif
+#ifndef RADAR_RELEASE_MM
+#define RADAR_RELEASE_MM  350
+#endif
+#ifndef RADAR_STABLE_CNT
+#define RADAR_STABLE_CNT  3
 #endif
 
+void Radar_Feed_Byte(uint8_t b);
+void Radar_Distance_Judge(RadarInstance_t *r);
 
-
-
-#endif /* CORE_CHEJU_H_ */
+extern volatile bool tast2_start_test_distance;
+void task2_tast_dis(void);
+#endif /* CHEJU_H_ */

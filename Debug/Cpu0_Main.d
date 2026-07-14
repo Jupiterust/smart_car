@@ -544,5 +544,9 @@ Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :

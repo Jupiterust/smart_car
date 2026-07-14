@@ -528,3 +528,7 @@ LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h" :
 LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :

@@ -260,7 +260,7 @@ extern uint8_t confidence;
 extern uint16_t distance,noise,reftof;
 extern uint32_t peak,intg;
 
-
+extern volatile char task_start_signal_from_me;
 extern IfxAsclin_Asc g_UartConfig[4];
 extern volatile uint32_t rx_irq_count;
 

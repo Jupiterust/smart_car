@@ -123,7 +123,7 @@ volatile u8 put_times = 0;
 volatile bool following_after_task1 = false;
 volatile char worm_record_array[4] = {0};
 volatile bool task2_start = false;
-
+volatile char task_start_signal_from_me = 'A';
 
 void UART0_RX_IRQHandler(void)
 {
@@ -334,6 +334,7 @@ void UART0_RX_IRQHandler(void)
                 break;
             case 9:{
                 rx_state = 0;
+// 任务3
                 if (one_byte == 0x0D)
                 {
                     // x y校准:
@@ -697,6 +698,7 @@ void UART3_RX_IRQHandler(void)
         count = 1;
         IfxAsclin_Asc_read(&g_UartConfig[3], &one_byte, &count, TIME_INFINITE);
         Radar_Feed_Byte(one_byte);
+        task2_tast_dis();
     }
 }
 

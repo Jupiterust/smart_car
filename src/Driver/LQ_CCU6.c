@@ -181,11 +181,11 @@ void CCU60_CH0_IRQHandler(void)
     if(following_after_task1 == true)
         crossing_line_handle();
     if(is_crossing_line1 == true){
-        following_speed[0] = 25;
-        following_speed[1] = 25;
-        following_speed[2] = 25;
-        following_speed[3] = 25;
-        angle_correct(0.0f,14);
+        following_speed[0] = 22;
+        following_speed[1] = 22;
+        following_speed[2] = 22;
+        following_speed[3] = 22;
+        angle_correct(0.0f,18);
     }
     if(is_crossing_line2 == true){
         following_speed[0] = 26;
@@ -198,10 +198,10 @@ void CCU60_CH0_IRQHandler(void)
     // 红外矫正task1的 y轴坐标
     if(task1_y_correct_start1 == true){
         if(get_ir_pins_state_num(IR_SENSOR1) < 2){
-            following_speed[0] = 5.4;
-            following_speed[1] = -5.4;
-            following_speed[2] = -5.4;
-            following_speed[3] = 5.4;
+            following_speed[0] = 6.2;
+            following_speed[1] = -6.2;
+            following_speed[2] = -6.2;
+            following_speed[3] = 6.2;
         }
         else {
             task1_y_correct_start1 = false;
@@ -334,7 +334,7 @@ void CCU60_CH0_IRQHandler(void)
 
 
 volatile Wheel_system_tick_struct wheel_system_tick = {0};
-
+volatile bool does_task2_dummy_move = false;
 
 void CCU60_CH1_IRQHandler (void)
 {
@@ -347,6 +347,24 @@ void CCU60_CH1_IRQHandler (void)
         wheel_system_tick.tick_in_100_ms++;
     }
     /* 用户代码 */
+    if(does_task3_start_to_count == true){
+        static uint16_t task3_count1 = 0;
+        task3_count1++;
+        following_speed[0] = 7.8;
+        following_speed[1] = 7.8;
+        following_speed[2] = 7.8;
+        following_speed[3] = 7.8;
+        if(task3_count1 >=  46){
+            task3_count1 = 0;
+            does_task3_start_to_count = false;
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
+            is_waiting_for_task_record = false;
+            does_task2_dummy_move = true;
+        }
+    }
     LED_Ctrl(LEDALL, RVS);      //电平翻转,LED闪烁
 
 }
@@ -375,7 +393,6 @@ void CCU61_CH0_IRQHandler (void)
     wheel_asix.roll  += wheel_asix.gx * 0.001;
     wheel_asix.pitch += wheel_asix.gy * 0.001;
     wheel_asix.yaw   += wheel_asix.gz * 0.001;
-    flag_from_irq = 1;
 //    ECPULSE1 = ENC_GetCounter(ENC2_InPut_P33_7); // 左电机 母板上编码器1，小车前进为负值
 //    ECPULSE2 = ENC_GetCounter(ENC4_InPut_P02_8); // 右电机 母板上编码器2，小车前进为正值
 //    RAllPulse += ECPULSE2;                       //
