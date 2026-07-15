@@ -520,3 +520,9 @@ Communication.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\u
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h" :
 Communication.o :	..\Core\Motor.h
 ..\Core\Motor.h :
+Communication.o :	..\Core\cheju.h
+..\Core\cheju.h :
+Communication.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+Communication.o :	..\Core\IR_sensor.h
+..\Core\IR_sensor.h :

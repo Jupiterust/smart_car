@@ -522,13 +522,17 @@ LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h" :
 LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :
 LQ_UART.o :	..\src\Driver\LQ_CCU6.h
 ..\src\Driver\LQ_CCU6.h :
 LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h" :
 LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
-LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
-"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
-LQ_UART.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
-"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :

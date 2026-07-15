@@ -70,7 +70,30 @@ void TASK1_PUT_OBJECT_DOWN_SYN(void);
 
 extern volatile u8 TASK2_DROP_COUNT;
 extern volatile bool does_task_work_flow_start;
+extern volatile bool task2_finish_half;
+extern volatile uint8_t task2_all_done;
+extern  volatile bool temp_task2_to_next_point[4];
 
+typedef enum
+{
+    TASK2_IDLE = 0,
+
+    TASK2_CALIBRATION,
+
+    TASK2_ARM,
+
+    TASK2_GO_NEXT_HALF,
+
+    TASK2_SECOND_CALIBRATION,
+
+    TASK2_SECOND_ARM,
+
+    TASK2_FINISH, // 6
+
+}TASK2_STATE;
+
+
+extern volatile TASK2_STATE task2_current_state;
 
 void TASK2_WATCH_DROP_WATER_NUMBER(void);
 void TASK2_WATCH_DROP_WATER(void);

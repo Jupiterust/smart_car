@@ -121,7 +121,7 @@ void TASK1_PICK_OBJECT_UP_SYN(void){
     SyncArray[2].id = 3;SyncArray[2].power = 0; SyncArray[2].interval_single = 50;  SyncArray[2].angle = task1_pick_up_angle[2];
     SyncArray[3].id = 4;SyncArray[3].power = 0; SyncArray[3].interval_single = 50;  SyncArray[3].angle = task1_pick_up_angle[3];
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    delayms(2100);
+    delayms(2300);
 //    my_dummy.pump_state = PUMP_IDLE;
 //    air_pump_pick_up();
 //    is_task1_wheels_moving_to_next_point = true;
@@ -194,7 +194,7 @@ void TASK1_PUT_OBJECT_DOWN_SYN(void){
 volatile u8 TASK2_DROP_COUNT = 0;
 volatile bool does_task_work_flow_start = false;
 //
-volatile float task2_watch_drop_number_state[4] = {0,101,-116,10};
+volatile float task2_watch_drop_number_state[4] = {0,101,-107,10};
 
 volatile float task2_watch_drop_state[4] = {180, 62, -46, 93};
 
@@ -206,7 +206,15 @@ volatile float task2_middle_state[4] = {8, 42,-89,-19};
 volatile float task2_put_drop_one_down[4] = {8, -52,  -65,-38};
 volatile float task2_put_drop_two_down[4] = {8, -22, -64, -32};
 volatile float task2_put_drop_three_down[4] = {8, 48, -74, -16};
+volatile static bool this_function_only_runs_once1 = true;
+volatile bool task2_finish_half = false;
+volatile uint8_t task2_all_done = 0;
  // a2 large
+volatile TASK2_STATE task2_current_state = TASK2_IDLE;
+volatile bool is_pick_three_drop_water = false;
+volatile bool is_pick_three_drop_water_in_first_half = false;
+volatile bool temp_task2_to_next_point[4] = {0};
+
 
 void TASK2_WATCH_DROP_WATER_NUMBER(void){
 
@@ -221,9 +229,11 @@ void TASK2_WATCH_DROP_WATER_NUMBER(void){
 }
 
 void TASK2_WATCH_DROP_WATER(void){
-    volatile static bool this_function_only_runs_once = true;
-    if(TASK2_DROP_COUNT != 0 && this_function_only_runs_once == true){
-        this_function_only_runs_once = false;
+    if(task2_all_done == 2){
+        return;
+    }
+    if(TASK2_DROP_COUNT != 0 && this_function_only_runs_once1 == true){
+        this_function_only_runs_once1 = false;
         SyncArray[0].angle =  task2_watch_drop_state[0];  SyncArray[0].interval_single = 1000;
 
         SyncArray[1].angle =  task2_watch_drop_state[1];  SyncArray[1].interval_single = 1500;
@@ -237,7 +247,15 @@ void TASK2_WATCH_DROP_WATER(void){
 }
 
 void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
+    if(task2_current_state == TASK2_GO_NEXT_HALF)
+    {
+        return;
+    }
     if(does_task_work_flow_start == false){
+        return;
+    }
+    if(task2_current_state == TASK2_FINISH){
+        task2_start = false;
         return;
     }
     if(TASK2_DROP_COUNT == 1){
@@ -254,15 +272,15 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
 
         delayms(1540);
         // 抓取完毕，进入中间状态
-        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1300;
+        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1600;
 
         SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
 
-        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1000;
+        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1200;
 
-        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1000;
+        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1200;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-        delayms(1500);
+        delayms(1600);
 
         // 放下
         SyncArray[0].angle =  task2_put_drop_one_down[0];  SyncArray[0].interval_single = 10;
@@ -287,9 +305,20 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
 
         SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 500;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        if(temp_task2_to_next_point[1] == true){
+            temp_task2_to_next_point[2] = true;
+        }
+        else{
+            temp_task2_to_next_point[0] = true;
+            task2_start = false;
+            following_speed[0] = 19.8;
+            following_speed[1] = 19.8;
+            following_speed[2] = 19.8;
+            following_speed[3] = 19.8;
+        }
+
         delayms(400);
-        does_task_work_flow_start = false;
-        TASK2_DROP_COUNT = 0;
+
     }
     else if(TASK2_DROP_COUNT == 2){
         my_dummy.pump_state = PUMP_ON;
@@ -305,15 +334,15 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
 
         delayms(1600);
         // 抓取完毕，进入中间状态
-        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1300;
+        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1600;
 
-        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
+        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
 
-        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1000;
+        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1200;
 
-        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1000;
+        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1200;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-        delayms(1500);
+        delayms(1600);
 
         // 放下
         SyncArray[0].angle =  task2_put_drop_one_down[0];  SyncArray[0].interval_single = 10;
@@ -363,15 +392,15 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
         delayms(1600);
 
         // 第二次抓取完毕，进入中间状态
-        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1200;
+        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1800;
 
-        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
+        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
 
-        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 500;
+        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1400;
 
-        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 500;
+        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1400;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-        delayms(1500);
+        delayms(1800);
 
         // 放下
         SyncArray[0].angle =  task2_put_drop_two_down[0];  SyncArray[0].interval_single = 10;
@@ -396,10 +425,21 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
         SyncArray[2].angle =  task2_watch_drop_number_state[2];  SyncArray[2].interval_single = 300;
 
         SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 300;
+        if(temp_task2_to_next_point[1] == true){
+            temp_task2_to_next_point[2] = true;
+        }
+        else{
+            temp_task2_to_next_point[0] = true;
+            task2_start = false;
+            following_speed[0] = 19.8;
+            following_speed[1] = 19.8;
+            following_speed[2] = 19.8;
+            following_speed[3] = 19.8;
+        }
+
+
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
         delayms(400);
-        does_task_work_flow_start = false;
-        TASK2_DROP_COUNT = 0;
     }
     else if(TASK2_DROP_COUNT == 3){
         my_dummy.pump_state = PUMP_ON;
@@ -508,9 +548,28 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
         SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 300;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
         delayms(400);
-        does_task_work_flow_start = false;
-        TASK2_DROP_COUNT = 0;
+        if(is_pick_three_drop_water ==  false){
+            is_pick_three_drop_water = true;
+            if(task2_current_state > TASK2_GO_NEXT_HALF){
+                is_pick_three_drop_water_in_first_half = true;
+            }
+            else {
+                is_pick_three_drop_water_in_first_half = false;
+            }
+        }
+       if(is_pick_three_drop_water == true){
+           return;
+       }
+
     }
+    if(task2_current_state == TASK2_SECOND_CALIBRATION){
+        task2_current_state = TASK2_FINISH;
+        task2_start = false;
+    }
+
+    TASK2_DROP_COUNT = 0;
+    this_function_only_runs_once1 = true;
+    temp_test_flag  = 1;
 }
 
 

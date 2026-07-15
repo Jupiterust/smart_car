@@ -300,6 +300,7 @@ void UART0_RX_IRQHandler(void)
                 temp_buffer3[rx_count3++] = one_byte;
                 if(rx_count3 >= 2) rx_state = 7;
                 break;
+// task3接收逻辑
             case 7:
                 {
                     // 最先处理
@@ -329,24 +330,27 @@ void UART0_RX_IRQHandler(void)
                 }
                 break;
             case 8:
-                temp_buffer2[rx_count3++] = one_byte;
-                if(rx_count3 >= 5) rx_state = 9;
+                temp_buffer2[rx_count2++] = one_byte;
+                if(rx_count2 >= 5) rx_state = 9;
                 break;
             case 9:{
                 rx_state = 0;
-// 任务3
+// 任务2
                 if (one_byte == 0x0D)
                 {
                     // x y校准:
                     if(does_task_work_flow_start == true){
                         return;
                     }
-                    task2_start = true;//
+                    if(temp_task2_to_next_point[0] == true){
+                        return;
+                    }
+                    task2_start = true;// 任务结束修改为false
                     int16_t x_offset = (int16_t)((temp_buffer2[0]) | (temp_buffer2[1] << 8));
                     int16_t y_offset = (int16_t)((temp_buffer2[2]) | (temp_buffer2[3] << 8));
                     float x_offset_f = x_offset * 0.8;
                     float y_offset_f = y_offset * 0.8;
-                    float drop_count = temp_buffer2[4];
+                    uint8_t drop_count = temp_buffer2[4];
 
                     float temp_speed[4] = {0};
                     temp_speed[0] = x_offset_f - y_offset_f;

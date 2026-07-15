@@ -528,6 +528,14 @@ Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_ua
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\fashion_star_uart_servo\fashion_star_uart_servo.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Main\Main.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Main\Main.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Libraries\iLLD\TC26B\Tricore\Cpu\Std\IfxCpu.h"
@@ -544,9 +552,3 @@ Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
 Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\cheju.h" :
-Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h"
-"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\Servo.h" :
-Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
-"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
-Cpu0_Main.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h"
-"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\IR_sensor.h" :

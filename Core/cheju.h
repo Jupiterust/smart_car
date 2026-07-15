@@ -45,5 +45,9 @@ void Radar_Feed_Byte(uint8_t b);
 void Radar_Distance_Judge(RadarInstance_t *r);
 
 extern volatile bool tast2_start_test_distance;
+extern volatile bool task2_prepare_correct;
+extern volatile bool task2_start_correct;
+extern volatile bool does_task2_send_a_signal;
+
 void task2_tast_dis(void);
 #endif /* CHEJU_H_ */

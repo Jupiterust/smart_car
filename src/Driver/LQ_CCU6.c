@@ -34,6 +34,7 @@
 #include "Servo.h"
 #include "Task.h"
 #include "IR_sensor.h"
+#include "cheju.h"
 //#include "Motor.h"
 
 volatile int flag_from_irq = 0;
@@ -80,6 +81,9 @@ volatile bool following_flow_start = false;
 volatile bool task1_y_correct_start1 = false;
 volatile bool task1_y_correct_start2 = false;
 volatile int feedback_task1_y_ir2 = 0;
+volatile u32 did_this_work = 0;
+volatile u32 did_this_work2 = 0;
+volatile u8 temp_test_flag = 0;
 void CCU60_CH0_IRQHandler(void)
 {
     /* 开启CPU中断  否则中断不可嵌套 */
@@ -172,7 +176,19 @@ void CCU60_CH0_IRQHandler(void)
         }
         return;
     }
+    if(task2_start_correct == true){
+        did_this_work2++;
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_to_correct_S);
+        return;
 
+    }
+    if(temp_test_flag == 1){
+        did_this_work++;
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_to_next_half_S);
+        return;
+    }
     //angle_correct(0);
     //following_correct_by_icm();
 
@@ -198,10 +214,10 @@ void CCU60_CH0_IRQHandler(void)
     // 红外矫正task1的 y轴坐标
     if(task1_y_correct_start1 == true){
         if(get_ir_pins_state_num(IR_SENSOR1) < 2){
-            following_speed[0] = 6.2;
-            following_speed[1] = -6.2;
-            following_speed[2] = -6.2;
-            following_speed[3] = 6.2;
+            following_speed[0] =  8.2;
+            following_speed[1] = -8.2;
+            following_speed[2] = -8.2;
+            following_speed[3] =  8.2;
         }
         else {
             task1_y_correct_start1 = false;
@@ -213,10 +229,10 @@ void CCU60_CH0_IRQHandler(void)
     }
     if(task1_y_correct_start2 == true){
         if(get_ir_pins_state_num(IR_SENSOR2) < 2){
-            following_speed[0] = -4.5;
-            following_speed[1] =  4.5;
-            following_speed[2] =  4.5;
-            following_speed[3] = -4.5;
+            following_speed[0] = -4.7;
+            following_speed[1] =  4.7;
+            following_speed[2] =  4.7;
+            following_speed[3] = -4.7;
 
             feedback_task1_y_ir2 = 1;
         }
@@ -354,7 +370,7 @@ void CCU60_CH1_IRQHandler (void)
         following_speed[1] = 7.8;
         following_speed[2] = 7.8;
         following_speed[3] = 7.8;
-        if(task3_count1 >=  46){
+        if(task3_count1 >=  50){
             task3_count1 = 0;
             does_task3_start_to_count = false;
             following_speed[0] = 0;
@@ -363,6 +379,11 @@ void CCU60_CH1_IRQHandler (void)
             following_speed[3] = 0;
             is_waiting_for_task_record = false;
             does_task2_dummy_move = true;
+
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
         }
     }
     LED_Ctrl(LEDALL, RVS);      //电平翻转,LED闪烁
@@ -378,7 +399,7 @@ void CCU60_CH1_IRQHandler (void)
  *  备    注：CCU61_CH0使用的中断服务函数
  *************************************************************************/
 volatile wheel_xyz_asix wheel_asix = {0};
-
+volatile uint32_t temp_task2_cnt = 0;
 void CCU61_CH0_IRQHandler (void)
 {
     /* 开启CPU中断  否则中断不可嵌套 */
@@ -393,6 +414,15 @@ void CCU61_CH0_IRQHandler (void)
     wheel_asix.roll  += wheel_asix.gx * 0.001;
     wheel_asix.pitch += wheel_asix.gy * 0.001;
     wheel_asix.yaw   += wheel_asix.gz * 0.001;
+    if(temp_task2_to_next_point[0] == true){
+        temp_task2_cnt++;
+        if(temp_task2_cnt > 1200){
+            temp_task2_cnt = 0;
+            temp_task2_to_next_point[0] = false;
+            temp_task2_to_next_point[1] = true;
+            task2_start = true;
+        }
+    }
 //    ECPULSE1 = ENC_GetCounter(ENC2_InPut_P33_7); // 左电机 母板上编码器1，小车前进为负值
 //    ECPULSE2 = ENC_GetCounter(ENC4_InPut_P02_8); // 右电机 母板上编码器2，小车前进为正值
 //    RAllPulse += ECPULSE2;                       //

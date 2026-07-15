@@ -514,3 +514,9 @@ Motor.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\ring_buffer\ring_bu
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\ring_buffer\ring_buffer.h" :
 Motor.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h" :
+Motor.o :	..\Core\cheju.h
+..\Core\cheju.h :
+Motor.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+Motor.o :	..\Core\IR_sensor.h
+..\Core\IR_sensor.h :

@@ -516,3 +516,9 @@ Task.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Core\\user_uart\user_uart.h" :
 Task.o :	..\Core\Motor.h
 ..\Core\Motor.h :
+Task.o :	..\Core\cheju.h
+..\Core\cheju.h :
+Task.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+Task.o :	..\Core\IR_sensor.h
+..\Core\IR_sensor.h :

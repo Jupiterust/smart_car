@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "stdbool.h"
 #include "Servo.h"
-#
+#include "cheju.h"
 //电机PWM 宏定义
 #define MOTOR1_PWM          IfxGtm_ATOM0_2_TOUT55_P21_4_OUT
 #define MOTOR1_DIR          IfxGtm_ATOM0_1_TOUT54_P21_3_OUT
@@ -200,7 +200,7 @@ void angle_correct(float angle, float limit);
 extern volatile coordinate_struct task1_points_to_put[1];
 extern volatile coordinate_struct task1_points_to_pick[3];
 
-extern volatile coordinate_struct task1_encounter_small_cy_in_one_S[3];
+extern volatile coordinate_struct task1_encounter_small_cy_in_one_S[2];
 extern volatile coordinate_struct task1_back_to_two_from_small_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_medium_cy_in_one_S[2];
@@ -212,7 +212,7 @@ extern volatile coordinate_struct task1_back_to_two_from_large_cy_S[2];
 
 
 extern volatile coordinate_struct task1_encounter_small_cy_in_two_S[2];
-extern volatile coordinate_struct task1_back_to_three_from_small_cy_S[1];
+extern volatile coordinate_struct task1_back_to_three_from_small_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_medium_cy_in_two_S[2];
 extern volatile coordinate_struct task1_back_to_three_from_medium_cy_S[2];
@@ -222,16 +222,22 @@ extern volatile coordinate_struct task1_back_to_three_from_large_cy_S[2];
 
 
 extern volatile coordinate_struct task1_encounter_small_cy_in_three_S[2] ;
-extern volatile coordinate_struct task1_back_to_following_from_small_cy_S[1];
+extern volatile coordinate_struct task1_back_to_following_from_small_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_medium_cy_in_three_S[2];
-extern volatile coordinate_struct task1_back_to_following_from_medium_cy_S[1];
+extern volatile coordinate_struct task1_back_to_following_from_medium_cy_S[2];
 
 extern volatile coordinate_struct task1_encounter_large_cy_in_three_S[2];
-extern volatile coordinate_struct task1_back_to_following_from_large_cy_S[1];
+extern volatile coordinate_struct task1_back_to_following_from_large_cy_S[2];
 
 extern volatile coordinate_struct following_flow1[4];
 
+// task2
+
+extern volatile coordinate_struct task2_to_correct_S[2];
+extern volatile coordinate_struct task2_to_next_half_S[3];
+
+void task2_all_position_loop_init(void);
 
 typedef enum{
     CROSS_NONE = 0,

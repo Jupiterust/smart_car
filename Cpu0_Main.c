@@ -164,7 +164,6 @@ int speed_value[4] = {0};
 volatile float  exam_angles[5] = {0};
 const char angle_hint_str[5][11] = {"servo idle","index add","index sub","angle add","angle sub"};
 
-
 // float angle1 = -90
 // float angle2 = -180
 // float angle3 = -30
@@ -234,9 +233,27 @@ int core0_main (void)
     unsigned char res = Gyro_Chose();
     printf("%d\r\n",res);
 
+    uint16_t  interval = 1000;
+    uint16_t power = 0;
+    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
+    delayms(20);
+    FSUS_SetServoAngle(servo_usart, 2, 126.50f, 2000, power);//-169
+    delayms(20);
+    FSUS_SetServoAngle(servo_usart, 3, -75.0f, interval, power);//-108
+    delayms(20);
+    FSUS_SetServoAngle(servo_usart, 4, 75.0f, interval, power);//76
+    delayms(20);
+    my_dummy.pump_state = PUMP_ON;
+    air_pump_pick_up();
+    delayms(500);
+    my_dummy.pump_state = PUMP_OFF;
+    air_pump_pick_up();
+
+
     delayms(300);
     MPU6050_Init();
     delayms(500);
+
     get_real_gyro_error2();
     //ICM20602_Init();
     // encoder init
@@ -266,23 +283,12 @@ int core0_main (void)
     CCU6_InitConfig(CCU61,CCU6_Channel0,   1000);       // 1000us = 1ms //  icm 积分z
     task1_get_put_position_loop_init();
     task1_get_pick_position_loop_init();
+
     task1_all_position_loop_init();
-    uint16_t  interval=200;
-    uint16_t power = 0;
-    delayms(1000);
-    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
-    delayms(20);
-    FSUS_SetServoAngle(servo_usart, 2, 126.50f, 2000, power);//-169
-    delayms(20);
-    FSUS_SetServoAngle(servo_usart, 3, -75.0f, interval, power);//-108
-    delayms(20);
-    FSUS_SetServoAngle(servo_usart, 4, 75.0f, interval, power);//76
-    delayms(20);
-    my_dummy.pump_state = PUMP_ON;
-    air_pump_pick_up();
-    delayms(500);
-    my_dummy.pump_state = PUMP_OFF;
-    air_pump_pick_up();
+    task2_all_position_loop_init();
+
+    delayms(600);
+
     delayms(300);
     DUMMY_INIT();
 
@@ -313,15 +319,17 @@ int core0_main (void)
     //TASK1_PUT_OBJECT();
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
-
+    //task2_start_correct = true;
     following_flow_start = true;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw矫正还未开启
 
     uint8_t temp_ir_record[8] = {0};
-    volatile bool look_at_worm = true;
+    volatile bool look_at_worm = true; //task2_start_correct = true;= true;
+    volatile bool send_task2_signal_once = true;
     volatile u8 did_i_sen = 0;
     static bool runs_only_once2 = true;
+    does_task_work_flow_start = false;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -330,7 +338,6 @@ int core0_main (void)
 //    is_task1_wheels_moving_to_last_point = true;
 //    put_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
-    delayms(2000);
 
 //    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
 //    delayms(20);
@@ -350,7 +357,6 @@ int core0_main (void)
 //    does_task_work_flow_start = true;
 //    TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
 
-
     while (1)	//主循环
     {
 #if TFT_VERSION
@@ -359,6 +365,23 @@ int core0_main (void)
 //            printf("%d ",temp_ir_record[i]);
 //        }
 //        printf("\r\n");
+        //
+        //
+        if(task2_current_state == TASK2_SECOND_CALIBRATION){
+            temp_test_flag = 0;
+
+            task2_start = false;
+        }
+        if(task2_prepare_correct == true){
+            task2_prepare_correct = false;
+            delayms(50);
+            task2_start_correct = true;
+
+        }
+        if(temp_task2_to_next_point[2] == true){
+
+            task2_start = false;
+        }
         if(look_at_worm == true && is_waiting_for_task_record == true){
             look_at_worm = false;
             did_i_sen = 1;
@@ -379,14 +402,14 @@ int core0_main (void)
         TASK2_WATCH_DROP_WATER();
         TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
         // 显示 巡线速度
-        sprintf(txt,"%d %d %d %d  ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
+        sprintf(txt,"%d %d %d %d ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
         TFTSPI_P8X16Str(1, 0, txt, u16WHITE, u16BLACK);
 
         // 确认串口是否接收是否被读取
-        sprintf(txt,"camera:%d     ", speed_error_from_camera);
+        sprintf(txt,"t2s:%d t2st:%d    ", task2_start, task2_current_state);
         TFTSPI_P8X16Str(1, 1, txt, u16WHITE, u16BLACK);
 
-        sprintf(txt, "enc_f:%d %d %d %d  ",  motor_pid.encoder_value[0],   motor_pid.encoder_value[1],   motor_pid.encoder_value[2],   motor_pid.encoder_value[3]);
+        sprintf(txt, "enc_f:%d %d %d %d  ", motor_pid.encoder_value[0], motor_pid.encoder_value[1], motor_pid.encoder_value[2], motor_pid.encoder_value[3]);
         TFTSPI_P8X16Str(1, 2, txt, u16WHITE, u16BLACK);
 
         sprintf(txt, " %d %d  pwm   ",motor_pid.pwm_out[0], motor_pid.pwm_out[1]);
@@ -421,7 +444,7 @@ int core0_main (void)
             }
             BT_flag_set =0;
         }
-        sprintf(txt, "debug:%d %d %d", task1_bug_flag, feedback_task1_y_ir2, did_i_sen);
+        sprintf(txt, "db: %d %d %d %d ", did_this_work, task2_current_state, task2_finish_half, task2_all_done);
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
         Radar_Distance_Judge(&radar1);
         Radar_Distance_Judge(&radar2);

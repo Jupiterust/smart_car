@@ -505,17 +505,33 @@ unsigned char MPU_Get_Gyroscope(signed short *gx,signed short *gy,signed short *
     return res;
 }
 
+volatile float gx_error2 = 0.0f;
+volatile float gy_error2 = 0.0f;
+volatile float gz_error2 = 0.0f;
 
-volatile float gx_error2,gy_error2,gz_error2;
+void get_real_gyro_error2(void)
+{
+    uint8_t buf[6];
+    int32_t gx_sum = 0;
+    int32_t gy_sum = 0;
+    int32_t gz_sum = 0;
 
-void get_real_gyro_error2(void){
-    unsigned char  buf[6];
-    MPU_Read_Len(MPU6050_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
+    const uint16_t sample_num = 1000;
 
-    gx_error2=(float)(((int16_t)(buf[0]<<8))|buf[1]) / 16.4f;
-    gy_error2=(float)(((int16_t)(buf[2]<<8))|buf[3]) / 16.4f;
-    gz_error2=(float)(((int16_t)(buf[4]<<8))|buf[5]) / 16.4f;
+    for(uint16_t i = 0; i < sample_num; i++)
+    {
+        MPU_Read_Len(MPU6050_ADDR, MPU_GYRO_XOUTH_REG, 6, buf);
 
+        gx_sum += (int16_t)((buf[0] << 8) | buf[1]);
+        gy_sum += (int16_t)((buf[2] << 8) | buf[3]);
+        gz_sum += (int16_t)((buf[4] << 8) | buf[5]);
+
+        delayms(2);      // 根据你的工程改成对应延时函数
+    }
+
+    gx_error2 = (float)gx_sum / sample_num / 16.4f;
+    gy_error2 = (float)gy_sum / sample_num / 16.4f;
+    gz_error2 = (float)gz_sum / sample_num / 16.4f;
 }
 
 
@@ -527,7 +543,11 @@ uint8_t get_real_gyro2(float* gx, float *gy, float* gz){
     {
         *gx=(float)((((int16_t)(buf[0]<<8))|buf[1]) / 16.4f - gx_error2);
         *gy=(float)((((int16_t)(buf[2]<<8))|buf[3]) / 16.4f - gy_error2);
-        *gz=(float)((((int16_t)(buf[4]<<8))|buf[5]) / 16.4f -  gz_error2);
+        *gz=(float)((((int16_t)(buf[4]<<8))|buf[5]) / 16.4f - gz_error2);
+        /* 死区 */
+        if(fabsf(*gx) < 0.05f) *gx = 0.0f;
+        if(fabsf(*gy) < 0.05f) *gy = 0.0f;
+        if(fabsf(*gz) < 0.05f) *gz = 0.0f;
     }
     return res;
 
