@@ -781,7 +781,7 @@ void UART3_RX_IRQHandler(void)
         Radar_Feed_Byte(one_byte);
         task2_tast_dis();
        // task4_test_distance();
-       // task3_start_test_distance();
+       task3_start_test_distance();
     }
 }
 

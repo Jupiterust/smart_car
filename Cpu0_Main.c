@@ -286,7 +286,7 @@ int core0_main (void)
 
     task1_all_position_loop_init();
     task2_all_position_loop_init();
-
+    task3_correct_position_before_shoot_init();
     delayms(600);
 
     delayms(300);
@@ -320,7 +320,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = true;
+    following_flow_start = false;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw½ÃÕý»¹Î´¿ªÆô
 
@@ -332,6 +332,8 @@ int core0_main (void)
     does_task_work_flow_start = false;
     UART_PutChar(UART1,task_start_signal_from_me);
 
+
+    tast3_prepare_to_correct = true;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -340,15 +342,6 @@ int core0_main (void)
 //    is_task1_wheels_moving_to_last_point = true;
 //    put_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
-
-//    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 2, 101.50f, 400, power);//-169
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 3, -116.0f, 1000, power);//-108
-//    delayms(20);
-//    FSUS_SetServoAngle(servo_usart, 4, 10.0f, 1000, power);//76
-//    delayms(20);
 
     ////////////////////////////////////////////// task2
 //    TASK2_WATCH_DROP_WATER_NUMBER();

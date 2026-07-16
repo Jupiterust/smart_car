@@ -156,10 +156,10 @@ void PID_init(void){
     motor_pid.k_p[2] = 4.6f;
     motor_pid.k_p[3] = 4.6f;
 
-    motor_pid.k_i[0] = 22.951f;
-    motor_pid.k_i[1] = 22.951f;
-    motor_pid.k_i[2] = 22.951f;
-    motor_pid.k_i[3] = 22.951f;
+    motor_pid.k_i[0] = 20.951f;
+    motor_pid.k_i[1] = 20.951f;
+    motor_pid.k_i[2] = 20.951f;
+    motor_pid.k_i[3] = 20.951f;
 
     motor_pid.k_d[0] = 1.0f;
     motor_pid.k_d[1] = 1.0f;
@@ -169,10 +169,12 @@ void PID_init(void){
     // 其余均已在创立时清零
 }
 inline void get_real_speed(int * encoder_value, float * actual_speed){
+
     actual_speed[0] = (float)encoder_value[0] *  2.507f;
     actual_speed[1] = (float)encoder_value[1] *  2.507f;
     actual_speed[2] = (float)encoder_value[2] *  2.507f;
     actual_speed[3] = (float)encoder_value[3] *  2.507f;
+
 }
 
 
@@ -979,31 +981,161 @@ void task2_all_position_loop_init(void){
 }
 
 
-volatile coordinate_struct TASK3_SHOOT_IN_ONE_S[1] = {0};
+volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S1[1] = {0};
 
-volatile coordinate_struct TASK3_SHOOT_IN_TWO_S[1] = {0};
+volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S2[1] = {0};
 
-volatile coordinate_struct TASK3_SHOOT_IN_THREE_S[1] = {0};
+volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S3[1] = {0};
 
-volatile coordinate_struct TASK3_SHOOT_IN_FOUR_S[1] = {0};
+volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S4[1] = {0};
 
-volatile coordinate_struct TASK3_CORRECT_POS_S[1] = {0};
+
+volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S1[1] = {0};
+
+volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S2[1] = {0};
+
+
+volatile coordinate_struct TASK3_SHOOT_IN_THREE_DIS_S[1] = {0};
+
+
+volatile coordinate_struct TASK3_SHOOT_IN_FOUR_DIS_S[1] = {0};
+
+
+volatile coordinate_struct TASK3_CORRECT_POS_S[2] = {0};
 
 void task3_correct_pos_init(void){
-    task2_to_next_half_S[0].target_speed.x_y[0] =  15;
-    task2_to_next_half_S[0].target_speed.x_y[1] =  -15;
-    task2_to_next_half_S[0].target_speed.x_y[2] =  -15;
-    task2_to_next_half_S[0].target_speed.x_y[3] =  15;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[0] =  -12;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[1] =  -12;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[2] =  -12;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[3] =  -12;
 
-    task2_to_next_half_S[0].flag = dis_start_x;
+    TASK3_CORRECT_POS_S[0].flag = dis_start_x;
 
-    task2_to_next_half_S[0].delta_distance.x_y_path = 4.929f;
+    TASK3_CORRECT_POS_S[0].delta_distance.x_y_path = 2.929f;
 
-    task2_to_next_half_S[0].next_flag = dis_start_y;
+    TASK3_CORRECT_POS_S[0].next_flag = dis_start_x;
+     // {-10,+10,-10,+10}
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[0] =  12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[1] =  -12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[2] =  12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[3] =  -12;
+
+    TASK3_CORRECT_POS_S[1].flag = dis_start_x;
+
+    TASK3_CORRECT_POS_S[1].delta_distance.x_y_path = 0.529f;
+
+    TASK3_CORRECT_POS_S[1].next_flag = dis_idle;
 }
 
-void task3_correct_position_before_shoot_init(void){
+void task3_shoot_in_one_dis_init(void){
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].target_speed.x_y[3] =  15;
 
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_ONE_DIS_S1[0].next_flag = dis_idle;
+
+
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].next_flag = dis_idle;
+
+
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].next_flag = dis_idle;
+
+
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_ONE_DIS_S4[0].next_flag = dis_idle;
+}
+
+void task3_shoot_in_two_dis_init(void){
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_TWO_DIS_S1[0].next_flag = dis_idle;
+
+
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_TWO_DIS_S2[0].next_flag = dis_idle;
+}
+
+void task3_shoot_in_three_dis_init(void){
+
+    TASK3_SHOOT_IN_THREE_DIS_S[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_THREE_DIS_S[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_THREE_DIS_S[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_THREE_DIS_S[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_THREE_DIS_S[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_THREE_DIS_S[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_THREE_DIS_S[0].next_flag = dis_start_y;
+
+}
+
+void task3_shoot_in_four_dis_init(void){
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].target_speed.x_y[0] =  15;
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].target_speed.x_y[1] =  15;
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].target_speed.x_y[2] =  15;
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].target_speed.x_y[3] =  15;
+
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].flag = dis_start_x;
+
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].delta_distance.x_y_path = 4.929f;
+
+    TASK3_SHOOT_IN_FOUR_DIS_S[0].next_flag = dis_start_y;
+
+}
+void task3_correct_position_before_shoot_init(void){
+    task3_correct_pos_init();
+
+    task3_shoot_in_one_dis_init();
+    task3_shoot_in_two_dis_init();
+    task3_shoot_in_three_dis_init();
+    task3_shoot_in_four_dis_init();
 }
 
 

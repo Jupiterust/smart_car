@@ -248,6 +248,36 @@ typedef enum{
     CROSS_DONE,
 }cross_line_state_enum;
 
+
+extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S1[1];
+extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S2[1];
+extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S3[1];
+extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S4[1];
+
+
+extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S1[1];
+extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S2[1];
+
+
+extern volatile coordinate_struct TASK3_SHOOT_IN_THREE_DIS_S[1];
+
+
+extern volatile coordinate_struct TASK3_SHOOT_IN_FOUR_DIS_S[1];
+
+
+extern volatile coordinate_struct TASK3_CORRECT_POS_S[2];
+
+
+void task3_correct_position_before_shoot_init(void);
+
+
+
+
+
+
+
+
+
 extern volatile cross_line_state_enum cross_state;
 extern volatile bool is_crossing_line1;
 extern volatile bool is_crossing_line2;

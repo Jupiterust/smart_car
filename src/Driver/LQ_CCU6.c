@@ -83,6 +83,7 @@ volatile bool task1_y_correct_start2 = false;
 volatile int feedback_task1_y_ir2 = 0;
 volatile u32 did_this_work = 0;
 volatile u32 did_this_work2 = 0;
+volatile u32 did_this_work3 = 0;
 volatile u8 temp_test_flag = 0;
 void CCU60_CH0_IRQHandler(void)
 {
@@ -180,6 +181,13 @@ void CCU60_CH0_IRQHandler(void)
         did_this_work2++;
         is_position_loop_done = false;
         position_loop((coordinate_struct *)task2_to_correct_S);
+        return;
+
+    }
+    if(tast3_start_to_correct == true){
+        did_this_work3++;
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)TASK3_CORRECT_POS_S);
         return;
 
     }
@@ -377,7 +385,7 @@ void CCU60_CH1_IRQHandler (void)
         following_speed[1] = 6.8;
         following_speed[2] = 6.8;
         following_speed[3] = 6.8;
-        if(task3_count1 >=  64){
+        if(task3_count1 >=  69){
             task3_count1 = 0;
             does_task3_start_to_count = false;
             following_speed[0] = 0;
