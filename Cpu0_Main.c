@@ -329,7 +329,9 @@ int core0_main (void)
     volatile bool send_task2_signal_once = true;
     volatile u8 did_i_sen = 0;
     static bool runs_only_once2 = true;
-    does_task_work_flow_start = false;
+    does_task_work_flow_start = true;
+    UART_PutChar(UART1,task_start_signal_from_me);
+    tast3_start_test_distance_flag = true;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -381,6 +383,14 @@ int core0_main (void)
         if(temp_task2_to_next_point[2] == true){
             task2_start = false;
         }
+        if(temp_flag1 == false && following_flow_start == false){
+                    temp_flag1 =true;
+        }
+        if(does_task2_dummy_move == true && runs_only_once2 == true){
+            runs_only_once2 = false;
+            tast2_start_test_distance = true;
+            TASK2_WATCH_DROP_WATER_NUMBER();
+        }
 
         // task3
         if(look_at_worm == true && is_waiting_for_task_record == true){
@@ -388,14 +398,12 @@ int core0_main (void)
             did_i_sen = 1;
             UART_PutChar(UART0,task_start_signal_from_me);
         }
-        if(temp_flag1 == false && following_flow_start == false){
-            temp_flag1 =true;
+        if(tast3_prepare_to_correct == true){
+            delayms(50);
+            tast3_start_to_correct = true;
+            tast3_prepare_to_correct = false;
         }
-        if(does_task2_dummy_move == true && runs_only_once2 == true){
-            runs_only_once2 = false;
-            tast2_start_test_distance = true;
-            TASK2_WATCH_DROP_WATER_NUMBER();
-        }
+
         if(task4_prepare_correct == true){
             task4_prepare_correct = false;
             delayms(50);

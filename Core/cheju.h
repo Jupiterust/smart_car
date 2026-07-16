@@ -59,6 +59,11 @@ extern volatile bool task4_prepare_correct;
 extern volatile bool task4_start_correct;
 void task4_test_distance(void);
 // task3
+extern volatile bool tast3_start_test_distance_flag ;
+extern volatile bool tast3_prepare_to_shoot ;
+extern volatile bool tast3_prepare_to_correct ;
+extern volatile bool tast3_start_to_correct;
+
 extern volatile bool tast3_start_test_distance_flag;
 
 void task3_start_test_distance(void);

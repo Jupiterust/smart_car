@@ -423,7 +423,13 @@ void CCU61_CH0_IRQHandler (void)
     wheel_asix.yaw   += wheel_asix.gz * 0.001;
     if(temp_task2_to_next_point[0] == true){
         temp_task2_cnt++;
-        if(temp_task2_cnt > 1600){
+        if(temp_task2_cnt > 100){
+            following_speed[0] = 19.8;
+            following_speed[1] = 19.8;
+            following_speed[2] = 19.8;
+            following_speed[3] = 19.8;
+        }
+        if(temp_task2_cnt > 1700){
             temp_task2_cnt = 0;
             temp_task2_to_next_point[0] = false;
             temp_task2_to_next_point[1] = true;

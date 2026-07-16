@@ -8,7 +8,7 @@
 
 #include "Servo.h"
 #include "motified_app.h"
-
+#include "cheju.h"
 #define low_interval        500
 #define midium_interval     200
 #define high_interval       100
@@ -312,8 +312,8 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
             temp_task2_to_next_point[0] = true;
             task2_start = false;
             following_speed[0] = 19.8;
-            following_speed[1] = 19.8;
-            following_speed[2] = 19.8;
+            following_speed[1] = -19.8;
+            following_speed[2] = -19.8;
             following_speed[3] = 19.8;
         }
 
@@ -565,6 +565,8 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     if(task2_current_state == TASK2_SECOND_CALIBRATION){
         task2_current_state = TASK2_FINISH;
         task2_start = false;
+        tast3_start_test_distance_flag = true;
+        return;
     }
 
     TASK2_DROP_COUNT = 0;

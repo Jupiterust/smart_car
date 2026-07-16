@@ -536,3 +536,11 @@ Servo.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Libraries\iLLD\TC26B\Tric
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Libraries\iLLD\TC26B\Tricore\Cpu\Std\Platform_Types.h" :
 Servo.o :	..\Core\motified_app.h
 ..\Core\motified_app.h :
+Servo.o :	..\Core\cheju.h
+..\Core\cheju.h :
+Servo.o :	..\Core\Servo.h
+..\Core\Servo.h :
+Servo.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
+"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
+Servo.o :	..\Core\IR_sensor.h
+..\Core\IR_sensor.h :

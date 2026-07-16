@@ -196,6 +196,13 @@ void UART0_RX_IRQHandler(void)
                         if(is_waiting_for_task_record == true){
                             return;
                         }
+                        if(tast3_prepare_to_shoot == true || tast3_start_to_correct == true){
+                            following_speed[0] = 0;
+                            following_speed[1] = 0;
+                            following_speed[2] = 0;
+                            following_speed[3] = 0;
+                            return;
+                        }
                     // 只有帧头、数据长度、帧尾全部匹配，才解析
                         following_after_task1 = true;
                         speed_error_from_camera = (int32_t)((temp_buffer[0]) |
@@ -771,6 +778,7 @@ void UART3_RX_IRQHandler(void)
         Radar_Feed_Byte(one_byte);
         task2_tast_dis();
         task4_test_distance();
+        task3_start_test_distance();
     }
 }
 
