@@ -922,8 +922,8 @@ void task1_all_position_loop_init(void){
 }
 
 volatile coordinate_struct task2_to_next_half_S[3] = {0};
-volatile coordinate_struct task2_to_correct_S[2] = {0};
 
+volatile coordinate_struct task2_to_correct_S[2] = {0};
 void TASK2_CORRECT_INIT(void){
     task2_to_correct_S[0].target_speed.x_y[0] =  -12;
     task2_to_correct_S[0].target_speed.x_y[1] =  -12;
@@ -1003,22 +1003,23 @@ volatile coordinate_struct TASK3_SHOOT_IN_FOUR_DIS_S[1] = {0};
 
 volatile coordinate_struct TASK3_CORRECT_POS_S[2] = {0};
 
+
+volatile bool does_task3_yaw_correct = false;
 void task3_correct_pos_init(void){
     TASK3_CORRECT_POS_S[0].target_speed.x_y[0] =  -12;
     TASK3_CORRECT_POS_S[0].target_speed.x_y[1] =  -12;
     TASK3_CORRECT_POS_S[0].target_speed.x_y[2] =  -12;
     TASK3_CORRECT_POS_S[0].target_speed.x_y[3] =  -12;
 
-    TASK3_CORRECT_POS_S[0].flag = dis_start_x;
+    TASK3_CORRECT_POS_S[0].flag = dis_start_y;
 
-    TASK3_CORRECT_POS_S[0].delta_distance.x_y_path = 2.929f;
+    TASK3_CORRECT_POS_S[0].delta_distance.x_y_path = 2.629f;
 
     TASK3_CORRECT_POS_S[0].next_flag = dis_start_x;
-     // {-10,+10,-10,+10}
-    TASK3_CORRECT_POS_S[1].target_speed.x_y[0] =  12;
-    TASK3_CORRECT_POS_S[1].target_speed.x_y[1] =  -12;
-    TASK3_CORRECT_POS_S[1].target_speed.x_y[2] =  12;
-    TASK3_CORRECT_POS_S[1].target_speed.x_y[3] =  -12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[0] =  -12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[1] =  12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[2] =  -12;
+    TASK3_CORRECT_POS_S[1].target_speed.x_y[3] =  12;
 
     TASK3_CORRECT_POS_S[1].flag = dis_start_x;
 
@@ -1248,7 +1249,9 @@ void position_loop(coordinate_struct *Points){
             if(task2_start_correct == true){
                 task2_start_correct = false;
             }
-
+            if(tast3_start_to_correct == true){
+                tast3_start_to_correct = false;
+            }
             break;
             /*
 //            Points[index].flag = dis_start_y;

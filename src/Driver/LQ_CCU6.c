@@ -260,13 +260,13 @@ void CCU60_CH0_IRQHandler(void)
     }
 
     motor_speed_loop((float *)following_speed);
-//    if(task4_speed_adjust_start == true){
-//        following_speed[0] = 0;
-//        following_speed[1] = 0;
-//        following_speed[2] = 0;
-//        following_speed[3] = 0;
-//        return;
-//    }
+    if(task4_speed_adjust_start == true){
+        following_speed[0] = 0;
+        following_speed[1] = 0;
+        following_speed[2] = 0;
+        following_speed[3] = 0;
+        return;
+    }
     if (task2_start == true){
         following_speed[0] = 0;
         following_speed[1] = 0;

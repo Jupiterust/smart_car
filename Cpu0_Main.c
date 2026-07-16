@@ -331,9 +331,9 @@ int core0_main (void)
     static bool runs_only_once2 = true;
     does_task_work_flow_start = false;
     UART_PutChar(UART1,task_start_signal_from_me);
-
-
-    tast3_prepare_to_correct = true;
+    //tast4_start_test_distance = true;
+    //task4_speed_adjust_start = false;
+///    tast3_start_test_distance_flag = true;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -360,7 +360,8 @@ int core0_main (void)
 //        }
 //        printf("\r\n");
         //
-
+        // 250 270
+///320 350
         // task2
         if(task2_prepare_correct == true){
             task2_prepare_correct = false;
@@ -389,13 +390,18 @@ int core0_main (void)
             delayms(50);
             tast3_start_to_correct = true;
             tast3_prepare_to_correct = false;
+            delayms(3000);
+
+
         }
 
+        // task4
         if(task4_prepare_correct == true){
             task4_prepare_correct = false;
             delayms(50);
             task4_start_correct = true;
             TASK4_WATCH_BALL();
+
         }
         TASK1_PICK_OBJECT_UP_SYN();
         TASK1_PUT_OBJECT_DOWN_SYN();
@@ -449,6 +455,8 @@ int core0_main (void)
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
         sprintf(txt, "db:%d %d %d ", task2_start, did_this_work, TASK2_DROP_COUNT);
         TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
+        sprintf(txt, "t3:%d", task4_speed_adjust_start);
+        TFTSPI_P8X16Str(1, 9, txt, u16WHITE, u16BLACK);
 // 0  0 6 1
 // 1  0 0 1
 //        get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);

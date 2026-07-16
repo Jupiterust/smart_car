@@ -780,7 +780,7 @@ void UART3_RX_IRQHandler(void)
         IfxAsclin_Asc_read(&g_UartConfig[3], &one_byte, &count, TIME_INFINITE);
         Radar_Feed_Byte(one_byte);
         task2_tast_dis();
-       // task4_test_distance();
+        task4_test_distance();
        task3_start_test_distance();
     }
 }
