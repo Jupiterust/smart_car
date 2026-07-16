@@ -144,14 +144,17 @@ void task2_tast_dis(void){
     if(tast2_start_test_distance == true){
         if(170 <= radar1.distance  &&  radar1.distance <= 270 && wheel_asix.yaw > 80)
         {
+            tast2_start_test_distance = false;
+            // 速度
+            task2_start = true;
             following_speed[0] = 0;
             following_speed[1] = 0;
             following_speed[2] = 0;
             following_speed[3] = 0;
-            task2_start = true;
+            // 开始
             task_start_signal_from_me = 'B';
             UART_PutChar(UART0,task_start_signal_from_me);
-            tast2_start_test_distance = false;
+            // 校准位置
             task2_prepare_correct = true;
         }
     }
@@ -188,7 +191,7 @@ volatile bool tast3_start_to_correct = false;
  void task3_start_test_distance(void){
     if(tast3_start_test_distance_flag == true){
 
-        if(radar2.distance > 800 &&  radar2.distance < 1300 && wheel_asix.yaw < 20 && wheel_asix.yaw > -10){
+        if(radar2.distance > 950 &&  radar2.distance < 1300 && wheel_asix.yaw < 20 && wheel_asix.yaw > -10){
             tast3_prepare_to_shoot = true;
             tast3_start_test_distance_flag = false;
             UART_PutChar(UART1,task_start_signal_from_me);

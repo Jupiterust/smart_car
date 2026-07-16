@@ -183,12 +183,12 @@ void CCU60_CH0_IRQHandler(void)
         return;
 
     }
-    if(temp_test_flag == 1){
-        did_this_work++;
-        is_position_loop_done = false;
-        position_loop((coordinate_struct *)task2_to_next_half_S);
-        return;
-    }
+//    if(temp_test_flag == 1){
+//        did_this_work++;
+//        is_position_loop_done = false;
+//        position_loop((coordinate_struct *)task2_to_next_half_S);
+//        return;
+//    }
     //angle_correct(0);
     //following_correct_by_icm();
 
@@ -252,13 +252,13 @@ void CCU60_CH0_IRQHandler(void)
     }
 
     motor_speed_loop((float *)following_speed);
-    if(task4_speed_adjust_start == true){
-        following_speed[0] = 0;
-        following_speed[1] = 0;
-        following_speed[2] = 0;
-        following_speed[3] = 0;
-        return;
-    }
+//    if(task4_speed_adjust_start == true){
+//        following_speed[0] = 0;
+//        following_speed[1] = 0;
+//        following_speed[2] = 0;
+//        following_speed[3] = 0;
+//        return;
+//    }
     if (task2_start == true){
         following_speed[0] = 0;
         following_speed[1] = 0;
@@ -373,11 +373,11 @@ void CCU60_CH1_IRQHandler (void)
     if(does_task3_start_to_count == true){
         static uint16_t task3_count1 = 0;
         task3_count1++;
-        following_speed[0] = 7.8;
-        following_speed[1] = 7.8;
-        following_speed[2] = 7.8;
-        following_speed[3] = 7.8;
-        if(task3_count1 >=  55){
+        following_speed[0] = 6.8;
+        following_speed[1] = 6.8;
+        following_speed[2] = 6.8;
+        following_speed[3] = 6.8;
+        if(task3_count1 >=  64){
             task3_count1 = 0;
             does_task3_start_to_count = false;
             following_speed[0] = 0;
@@ -421,18 +421,37 @@ void CCU61_CH0_IRQHandler (void)
     wheel_asix.roll  += wheel_asix.gx * 0.001;
     wheel_asix.pitch += wheel_asix.gy * 0.001;
     wheel_asix.yaw   += wheel_asix.gz * 0.001;
-    if(temp_task2_to_next_point[0] == true){
+//                if(temp_test_flag == 1){
+//    does_task_work_flow_start = false;
+//    task2_current_state = TASK2_SECOND_CALIBRATION;
+//    temp_test_flag = 0;
+//    task2_start = true;
+//}
+    if(temp_test_flag == 1){
+        task2_start = false;
         temp_task2_cnt++;
-        if(temp_task2_cnt > 100){
+        if(temp_task2_cnt < 300){
+            following_speed[0] = 19.8;
+            following_speed[1] = -19.8;
+            following_speed[2] = -19.8;
+            following_speed[3] = 19.8;
+
+        }
+        else if(temp_task2_cnt > 300){
             following_speed[0] = 19.8;
             following_speed[1] = 19.8;
             following_speed[2] = 19.8;
             following_speed[3] = 19.8;
         }
-        if(temp_task2_cnt > 1700){
+        if(temp_task2_cnt > 1900){
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
             temp_task2_cnt = 0;
-            temp_task2_to_next_point[0] = false;
-            temp_task2_to_next_point[1] = true;
+            does_task_work_flow_start = false;
+            task2_current_state = TASK2_SECOND_CALIBRATION;
+            temp_test_flag = 0;
             task2_start = true;
         }
     }

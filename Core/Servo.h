@@ -68,6 +68,7 @@ void TASK1_PICK_OBJECT_UP_SYN(void);
 void TASK1_PUT_OBJECT_DOWN_SYN(void);
 
 
+extern volatile  bool this_function_only_runs_once1 ;
 extern volatile u8 TASK2_DROP_COUNT;
 extern volatile bool does_task_work_flow_start;
 extern volatile bool task2_finish_half;
@@ -84,7 +85,7 @@ typedef enum
 
     TASK2_GO_NEXT_HALF,
 
-    TASK2_SECOND_CALIBRATION,
+    TASK2_SECOND_CALIBRATION, // 4
 
     TASK2_SECOND_ARM,
 

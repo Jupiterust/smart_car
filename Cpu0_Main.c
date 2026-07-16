@@ -320,7 +320,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = false;
+    following_flow_start = true;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw矫正还未开启
 
@@ -329,9 +329,9 @@ int core0_main (void)
     volatile bool send_task2_signal_once = true;
     volatile u8 did_i_sen = 0;
     static bool runs_only_once2 = true;
-    does_task_work_flow_start = true;
+    does_task_work_flow_start = false;
     UART_PutChar(UART1,task_start_signal_from_me);
-    tast3_start_test_distance_flag = true;
+
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
 //    task1_cy_id = task1_cylinder_id_small;
@@ -358,7 +358,6 @@ int core0_main (void)
 //    delayms(1000);
 //    does_task_work_flow_start = true;
 //    TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
-
     while (1)	//主循环
     {
 #if TFT_VERSION
@@ -370,21 +369,16 @@ int core0_main (void)
         //
 
         // task2
-        if(task2_current_state == TASK2_SECOND_CALIBRATION){
-            temp_test_flag = 0;
-
-            task2_start = false;
-        }
         if(task2_prepare_correct == true){
             task2_prepare_correct = false;
             delayms(50);
             task2_start_correct = true;
         }
-        if(temp_task2_to_next_point[2] == true){
-            task2_start = false;
-        }
+//        if(temp_task2_to_next_point[2] == true){
+//            task2_start = false;
+//        }
         if(temp_flag1 == false && following_flow_start == false){
-                    temp_flag1 =true;
+            temp_flag1 = true;
         }
         if(does_task2_dummy_move == true && runs_only_once2 == true){
             runs_only_once2 = false;
@@ -415,28 +409,63 @@ int core0_main (void)
 
         TASK2_WATCH_DROP_WATER();
         TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 显示 巡线速度
-        sprintf(txt,"%d %d %d %d ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
+        sprintf(txt,"F%d %d %d %d ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);
         TFTSPI_P8X16Str(1, 0, txt, u16WHITE, u16BLACK);
 
-        // 确认串口是否接收是否被读取
-        sprintf(txt,"t2s:%d t2st:%d    ", task2_start, task2_current_state);
+        sprintf(txt, " %d %d  pwm   ",motor_pid.pwm_out[0], motor_pid.pwm_out[1]);
         TFTSPI_P8X16Str(1, 1, txt, u16WHITE, u16BLACK);
-
-        sprintf(txt, "enc_f:%d %d %d %d  ", motor_pid.encoder_value[0], motor_pid.encoder_value[1], motor_pid.encoder_value[2], motor_pid.encoder_value[3]);
+        sprintf(txt, " %d %d    ",motor_pid.pwm_out[2], motor_pid.pwm_out[3]);
         TFTSPI_P8X16Str(1, 2, txt, u16WHITE, u16BLACK);
 
-        sprintf(txt, " %d %d  pwm   ",motor_pid.pwm_out[0], motor_pid.pwm_out[1]);
+        sprintf(txt, "A:%d %d %d %d %d", (int)wheel_asix.roll,(int)wheel_asix.pitch,(int)wheel_asix.yaw, pick_times, put_times);
+        //UART_PutStr(UART1,txt);
         TFTSPI_P8X16Str(1, 3, txt, u16WHITE, u16BLACK);
-        sprintf(txt, " %d %d    ",motor_pid.pwm_out[2], motor_pid.pwm_out[3]);
+        // 确认串口是否接收是否被读取
+
+        sprintf(txt, "enc_f:%d %d %d %d  ", motor_pid.encoder_value[0], motor_pid.encoder_value[1], motor_pid.encoder_value[2], motor_pid.encoder_value[3]);
         TFTSPI_P8X16Str(1, 4, txt, u16WHITE, u16BLACK);
 
-        int temp_encoder[4] = {0};
-        get_encoder_directly(temp_encoder);
-        sprintf(txt, "enc_b %d %d %d %d     ", temp_encoder[0],temp_encoder[1],temp_encoder[2], temp_encoder[3]);
-        TFTSPI_P8X16Str(1, 5, txt, u16WHITE, u16BLACK);
-//        BT_flag
+        Radar_Distance_Judge(&radar1);
+        Radar_Distance_Judge(&radar2);
+        // 第一路（前雷达，0xBB）
+        if (radar1.distance < RADAR_TARGET_MM) {
+            sprintf(txt, "R:%4dmm OK ", radar1.distance);
+            TFTSPI_P8X16Str(1, 5, txt, u16RED, u16BLACK);
+        } else {
+            sprintf(txt, "R:%4dmm    ", radar1.distance);
+            TFTSPI_P8X16Str(1, 5, txt, u16WHITE, u16BLACK);
+        }
 
+        // 第二路（侧雷达，0xCC）
+        if (radar2.distance < RADAR_TARGET_MM) {
+            sprintf(txt, "L:%4dmm OK ", radar2.distance);
+            TFTSPI_P8X16Str(1, 6, txt, u16RED, u16BLACK);
+        } else {
+            sprintf(txt, "L:%4dmm    ", radar2.distance);
+            TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        // 1 0 4 0 1
+        sprintf(txt,"%d %d %d %d %d  ", task2_start,temp_test_flag, task2_current_state, does_task_work_flow_start, this_function_only_runs_once1);
+        TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
+        sprintf(txt, "db:%d %d %d ", task2_start, did_this_work, TASK2_DROP_COUNT);
+        TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
+// 0  0 6 1
+// 1  0 0 1
+//        get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
+
+//        printf("%d %d %d \r\n",  (int)wheel_asix.gx, (int)wheel_asix.gy, (int)wheel_asix.gz);
+//        printf("%f %f %f \r\n",  wheel_asix.roll,wheel_asix.pitch,wheel_asix.yaw);
+//        signed short ax12,ay12,az12,gx12,gy12,gz12;
+//        MPU_Get_Raw_data(&ax12,&ay12,&az12,&gx12,&gy12,&gz12);
+//        MPU_Get_Gyroscope(&gx12,&gy12,&gz12);
+//        printf("%d %d %d \r\n",  gx12,gy12,gz12);
         if(line_record1 == true){
             line_record1 = false;
             //sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
@@ -457,44 +486,7 @@ int core0_main (void)
             }
             BT_flag_set =0;
         }
-        sprintf(txt, "db: %d %d %d %d ", did_this_work, task2_current_state, task2_finish_half, task2_all_done);
-        TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
-        Radar_Distance_Judge(&radar1);
-        Radar_Distance_Judge(&radar2);
-        // 第一路（前雷达，0xBB）
-        if (radar1.distance < RADAR_TARGET_MM) {
-            sprintf(txt, "R:%4dmm OK ", radar1.distance);
-            TFTSPI_P8X16Str(1, 7, txt, u16RED, u16BLACK);
-        } else {
-            sprintf(txt, "R:%4dmm    ", radar1.distance);
-            TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
-        }
 
-        // 第二路（侧雷达，0xCC）
-        if (radar2.distance < RADAR_TARGET_MM) {
-            sprintf(txt, "L:%4dmm OK ", radar2.distance);
-            TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
-        } else {
-            sprintf(txt, "L:%4dmm    ", radar2.distance);
-            TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
-        }
-
-        if(flag_from_irq){
-            flag_from_irq = 0;
-        }
-
-//        get_real_gyro((float *)&wheel_asix.gx,(float *)&wheel_asix.gy,(float *)&wheel_asix.gz);
-
-//        printf("%d %d %d \r\n",  (int)wheel_asix.gx, (int)wheel_asix.gy, (int)wheel_asix.gz);
-//        printf("%f %f %f \r\n",  wheel_asix.roll,wheel_asix.pitch,wheel_asix.yaw);
-//        signed short ax12,ay12,az12,gx12,gy12,gz12;
-//        MPU_Get_Raw_data(&ax12,&ay12,&az12,&gx12,&gy12,&gz12);
-//        MPU_Get_Gyroscope(&gx12,&gy12,&gz12);
-//        printf("%d %d %d \r\n",  gx12,gy12,gz12);
-
-        sprintf(txt, "A:%d %d %d %d %d", (int)wheel_asix.roll,(int)wheel_asix.pitch,(int)wheel_asix.yaw,pick_times, put_times);
-        //UART_PutStr(UART1,txt);
-        TFTSPI_P8X16Str(1, 9, txt, u16WHITE, u16BLACK);
 
 #if DEBUG_MODE
         //static signed int value[4] = {0};

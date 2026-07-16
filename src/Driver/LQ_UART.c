@@ -206,7 +206,7 @@ void UART0_RX_IRQHandler(void)
                     // 只有帧头、数据长度、帧尾全部匹配，才解析
                         following_after_task1 = true;
                         speed_error_from_camera = (int32_t)((temp_buffer[0]) |
-                                (temp_buffer[1] << 8) |
+                                (temp_buffer[1] << 8 ) |
                                 (temp_buffer[2] << 16) |
                                 (temp_buffer[3] << 24));
                         //printf("hello %d\r\n",speed_error_from_camera);
@@ -364,10 +364,9 @@ void UART0_RX_IRQHandler(void)
                     if(does_task_work_flow_start == true){
                         return;
                     }
-                    if(temp_task2_to_next_point[0] == true){
-                        return;
-                    }
-                    task2_start = true;// 任务结束修改为false
+//                    if(temp_task2_to_next_point[0] == true){
+//                        return;
+//                    }
                     int16_t x_offset = (int16_t)((temp_buffer2[0]) | (temp_buffer2[1] << 8));
                     int16_t y_offset = (int16_t)((temp_buffer2[2]) | (temp_buffer2[3] << 8));
                     float x_offset_f = x_offset * 0.8;
@@ -405,7 +404,11 @@ void UART0_RX_IRQHandler(void)
                     }
                     // 全部校准完毕，开始放置
                     else if(drop_count == 4){
+                        if(task2_current_state == TASK2_IDLE){
+                            task2_current_state = TASK2_CALIBRATION;
+                        }
                         does_task_work_flow_start = true;
+
                         following_speed[0] = 0;
                         following_speed[1] = 0;
                         following_speed[2] = 0;
@@ -777,8 +780,8 @@ void UART3_RX_IRQHandler(void)
         IfxAsclin_Asc_read(&g_UartConfig[3], &one_byte, &count, TIME_INFINITE);
         Radar_Feed_Byte(one_byte);
         task2_tast_dis();
-        task4_test_distance();
-        task3_start_test_distance();
+       // task4_test_distance();
+       // task3_start_test_distance();
     }
 }
 
