@@ -438,20 +438,20 @@ void CCU61_CH0_IRQHandler (void)
     if(temp_test_flag == 1){
         task2_start = false;
         temp_task2_cnt++;
-        if(temp_task2_cnt < 300){
-            following_speed[0] = 19.8;
-            following_speed[1] = -19.8;
-            following_speed[2] = -19.8;
-            following_speed[3] = 19.8;
+        if(temp_task2_cnt < 120){
+            following_speed[0] = 23.8;
+            following_speed[1] = -23.8;
+            following_speed[2] = -23.8;
+            following_speed[3] = 23.8;
 
         }
-        else if(temp_task2_cnt > 300){
-            following_speed[0] = 19.8;
-            following_speed[1] = 19.8;
-            following_speed[2] = 19.8;
-            following_speed[3] = 19.8;
+        else if(temp_task2_cnt > 120){
+            following_speed[0] = 23.8;
+            following_speed[1] = 23.8;
+            following_speed[2] = 23.8;
+            following_speed[3] = 23.8;
         }
-        if(temp_task2_cnt > 1900){
+        if(temp_task2_cnt > 1500){
             following_speed[0] = 0;
             following_speed[1] = 0;
             following_speed[2] = 0;

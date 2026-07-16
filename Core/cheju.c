@@ -169,7 +169,7 @@ volatile bool task4_start_correct = false;
 // Æðµã
 void task4_test_distance(void){
     if(tast4_start_test_distance == true){
-        if(radar2.distance > 190 && radar2.distance < 300 && wheel_asix.yaw > 312){
+        if(radar2.distance > 190 && radar2.distance < 300 && wheel_asix.yaw > 315){
             following_speed[0] = 0;
             following_speed[1] = 0;
             following_speed[2] = 0;
@@ -194,7 +194,7 @@ volatile bool tast3_start_to_correct = false;
 void task3_start_test_distance(void){
     if(tast3_start_test_distance_flag == true){
 
-        if(radar2.distance > 900 &&  radar2.distance < 1300 && wheel_asix.yaw < 280 && wheel_asix.yaw > 240){
+        if(radar2.distance > 900 &&  radar2.distance < 1300 && wheel_asix.yaw < 290 && wheel_asix.yaw > 260){
             tast3_prepare_to_shoot = true;
             tast3_start_test_distance_flag = false;
             UART_PutChar(UART1,task_start_signal_from_me);

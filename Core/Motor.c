@@ -732,14 +732,14 @@ void task1_back_to_following_from_small_cy(void){
     task1_back_to_following_from_small_cy_S[0].next_flag = dis_start_y;
     task1_back_to_following_from_small_cy_S[0].delta_distance.x_y_path = (task1_walk_sideway  - 2);
 
-    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[0] =  24;
-    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[1] =  24;
-    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[2] =  24;
-    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[3] =  24;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[0] =  26;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[1] =  26;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[2] =  26;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[3] =  26;
 
     task1_back_to_following_from_small_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_following_from_small_cy_S[1].delta_distance.x_y_path = 5;
+    task1_back_to_following_from_small_cy_S[1].delta_distance.x_y_path = 7;
 
 
 }
@@ -829,14 +829,14 @@ void task1_back_to_following_from_large_cy(void){
     task1_back_to_following_from_large_cy_S[0].delta_distance.x_y_path = 6.4f;
     task1_back_to_following_from_large_cy_S[0].next_flag = dis_start_y;
 
-    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[0] =    22;
-    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[1] =    22;
-    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[2] =    22;
-    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[3] =    22;
+    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[0] =    25;
+    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[1] =    25;
+    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[2] =    25;
+    task1_back_to_following_from_large_cy_S[1].target_speed.x_y[3] =    25;
 
     task1_back_to_following_from_large_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_following_from_large_cy_S[1].delta_distance.x_y_path = 19.45f;
+    task1_back_to_following_from_large_cy_S[1].delta_distance.x_y_path = 23.45f;
     task1_back_to_following_from_large_cy_S[1].next_flag = dis_end;
 }
 
@@ -932,7 +932,7 @@ void TASK2_CORRECT_INIT(void){
 
     task2_to_correct_S[0].flag = dis_start_x;
 
-    task2_to_correct_S[0].delta_distance.x_y_path = 2.929f;
+    task2_to_correct_S[0].delta_distance.x_y_path = 2.429f;
 
     task2_to_correct_S[0].next_flag = dis_start_x;
     // {-10,+10,-10,+10}
@@ -943,7 +943,7 @@ void TASK2_CORRECT_INIT(void){
 
     task2_to_correct_S[1].flag = dis_start_x;
 
-    task2_to_correct_S[1].delta_distance.x_y_path = 0.529f;
+    task2_to_correct_S[1].delta_distance.x_y_path = 0.829f;
 
     task2_to_correct_S[1].next_flag = dis_idle;
 
@@ -1006,14 +1006,14 @@ volatile coordinate_struct TASK3_CORRECT_POS_S[2] = {0};
 
 volatile bool does_task3_yaw_correct = false;
 void task3_correct_pos_init(void){
-    TASK3_CORRECT_POS_S[0].target_speed.x_y[0] =  -12;
-    TASK3_CORRECT_POS_S[0].target_speed.x_y[1] =  -12;
-    TASK3_CORRECT_POS_S[0].target_speed.x_y[2] =  -12;
-    TASK3_CORRECT_POS_S[0].target_speed.x_y[3] =  -12;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[0] =  20;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[1] =  20;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[2] =  20;
+    TASK3_CORRECT_POS_S[0].target_speed.x_y[3] =  20;
 
     TASK3_CORRECT_POS_S[0].flag = dis_start_y;
 
-    TASK3_CORRECT_POS_S[0].delta_distance.x_y_path = 2.629f;
+    TASK3_CORRECT_POS_S[0].delta_distance.x_y_path = 3.629f;
 
     TASK3_CORRECT_POS_S[0].next_flag = dis_start_x;
     TASK3_CORRECT_POS_S[1].target_speed.x_y[0] =  -12;
@@ -1023,7 +1023,7 @@ void task3_correct_pos_init(void){
 
     TASK3_CORRECT_POS_S[1].flag = dis_start_x;
 
-    TASK3_CORRECT_POS_S[1].delta_distance.x_y_path = 0.529f;
+    TASK3_CORRECT_POS_S[1].delta_distance.x_y_path = 0.129f;
 
     TASK3_CORRECT_POS_S[1].next_flag = dis_idle;
 }
@@ -1508,7 +1508,7 @@ volatile bool is_waiting_for_task_record = false;
 volatile bool does_task3_start_to_count = false;
 
 volatile float crossing_line_only_total_path = 0;
-#define CROSS_LINE_DURATION_CNT1 360
+#define CROSS_LINE_DURATION_CNT1 370
 #define CROSS_LINE_DURATION_CNT2 290
 // 在5ms速度环里调用
 void crossing_line_handle(void){
