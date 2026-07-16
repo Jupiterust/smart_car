@@ -320,7 +320,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = false;
+    following_flow_start = true;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw½ÃÕý»¹Î´¿ªÆô
 
@@ -389,10 +389,9 @@ int core0_main (void)
         if(tast3_prepare_to_correct == true){
             delayms(50);
             tast3_start_to_correct = true;
-            tast3_prepare_to_correct = false;
             delayms(3000);
 
-
+            tast3_prepare_to_correct = false;
         }
 
         // task4
