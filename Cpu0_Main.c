@@ -320,7 +320,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = true;
+    following_flow_start = false;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw矫正还未开启
 
@@ -366,7 +366,8 @@ int core0_main (void)
 //        }
 //        printf("\r\n");
         //
-        //
+
+        // task2
         if(task2_current_state == TASK2_SECOND_CALIBRATION){
             temp_test_flag = 0;
 
@@ -376,12 +377,12 @@ int core0_main (void)
             task2_prepare_correct = false;
             delayms(50);
             task2_start_correct = true;
-
         }
         if(temp_task2_to_next_point[2] == true){
-
             task2_start = false;
         }
+
+        // task3
         if(look_at_worm == true && is_waiting_for_task_record == true){
             look_at_worm = false;
             did_i_sen = 1;
@@ -395,7 +396,12 @@ int core0_main (void)
             tast2_start_test_distance = true;
             TASK2_WATCH_DROP_WATER_NUMBER();
         }
-
+        if(task4_prepare_correct == true){
+            task4_prepare_correct = false;
+            delayms(50);
+            task4_start_correct = true;
+            TASK4_WATCH_BALL();
+        }
         TASK1_PICK_OBJECT_UP_SYN();
         TASK1_PUT_OBJECT_DOWN_SYN();
 
@@ -422,8 +428,7 @@ int core0_main (void)
         sprintf(txt, "enc_b %d %d %d %d     ", temp_encoder[0],temp_encoder[1],temp_encoder[2], temp_encoder[3]);
         TFTSPI_P8X16Str(1, 5, txt, u16WHITE, u16BLACK);
 //        BT_flag
-        sprintf(txt, "bt:%s ",angle_hint_str[BT_flag]);
-        TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
+
         if(line_record1 == true){
             line_record1 = false;
             //sprintf(txt, "%d\r\n",(int)crossing_line_only_total_path);
@@ -445,26 +450,26 @@ int core0_main (void)
             BT_flag_set =0;
         }
         sprintf(txt, "db: %d %d %d %d ", did_this_work, task2_current_state, task2_finish_half, task2_all_done);
-        TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
+        TFTSPI_P8X16Str(1, 6, txt, u16WHITE, u16BLACK);
         Radar_Distance_Judge(&radar1);
         Radar_Distance_Judge(&radar2);
         // 第一路（前雷达，0xBB）
-               if (radar1.distance < RADAR_TARGET_MM) {
-                   sprintf(txt, "F:%4dmm OK ", radar1.distance);
-                   TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
-               } else {
-                   sprintf(txt, "F:%4dmm    ", radar1.distance);
-                   TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
-               }
+        if (radar1.distance < RADAR_TARGET_MM) {
+            sprintf(txt, "R:%4dmm OK ", radar1.distance);
+            TFTSPI_P8X16Str(1, 7, txt, u16RED, u16BLACK);
+        } else {
+            sprintf(txt, "R:%4dmm    ", radar1.distance);
+            TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
+        }
 
-               // 第二路（侧雷达，0xCC）
-//               if (radar2.distance < RADAR_TARGET_MM) {
-//                   sprintf(txt, "S:%4dmm OK ", radar2.distance);
-//                   TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
-//               } else {
-//                   sprintf(txt, "S:%4dmm    ", radar2.distance);
-//                   TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
-//               }
+        // 第二路（侧雷达，0xCC）
+        if (radar2.distance < RADAR_TARGET_MM) {
+            sprintf(txt, "L:%4dmm OK ", radar2.distance);
+            TFTSPI_P8X16Str(1, 8, txt, u16RED, u16BLACK);
+        } else {
+            sprintf(txt, "L:%4dmm    ", radar2.distance);
+            TFTSPI_P8X16Str(1, 8, txt, u16WHITE, u16BLACK);
+        }
 
         if(flag_from_irq){
             flag_from_irq = 0;

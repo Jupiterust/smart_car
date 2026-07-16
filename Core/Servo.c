@@ -572,9 +572,20 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     temp_test_flag  = 1;
 }
 
+//task4
+volatile float task3_watch_all_ball[4] = {180, -34, -23, 93};
 
 
+void TASK4_WATCH_BALL(void){
+    SyncArray[0].angle = task3_watch_all_ball[0];  SyncArray[0].interval_single = 10;
 
+    SyncArray[1].angle = task3_watch_all_ball[1];  SyncArray[1].interval_single = 500;
+
+    SyncArray[2].angle = task3_watch_all_ball[2];  SyncArray[2].interval_single = 10;
+
+    SyncArray[3].angle = task3_watch_all_ball[3];  SyncArray[3].interval_single = 10;
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+}
 
 
 

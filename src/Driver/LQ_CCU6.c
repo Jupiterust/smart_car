@@ -252,6 +252,13 @@ void CCU60_CH0_IRQHandler(void)
     }
 
     motor_speed_loop((float *)following_speed);
+    if(task4_speed_adjust_start == true){
+        following_speed[0] = 0;
+        following_speed[1] = 0;
+        following_speed[2] = 0;
+        following_speed[3] = 0;
+        return;
+    }
     if (task2_start == true){
         following_speed[0] = 0;
         following_speed[1] = 0;
@@ -370,7 +377,7 @@ void CCU60_CH1_IRQHandler (void)
         following_speed[1] = 7.8;
         following_speed[2] = 7.8;
         following_speed[3] = 7.8;
-        if(task3_count1 >=  50){
+        if(task3_count1 >=  55){
             task3_count1 = 0;
             does_task3_start_to_count = false;
             following_speed[0] = 0;
@@ -416,7 +423,7 @@ void CCU61_CH0_IRQHandler (void)
     wheel_asix.yaw   += wheel_asix.gz * 0.001;
     if(temp_task2_to_next_point[0] == true){
         temp_task2_cnt++;
-        if(temp_task2_cnt > 1200){
+        if(temp_task2_cnt > 1600){
             temp_task2_cnt = 0;
             temp_task2_to_next_point[0] = false;
             temp_task2_to_next_point[1] = true;

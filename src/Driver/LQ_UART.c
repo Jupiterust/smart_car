@@ -93,27 +93,29 @@ float Roll_1 = 0.0f, Pitch_1 = 0.0f , Yaw_1 = 0.0f;
 
 // 所有的状态
 static uint8_t rx_state = 0; // 公共 state
-    // 循迹
+
+
+
+
+static uint8_t temp_buffer[4]  = {0};
+static uint8_t temp_buffer1[6] = {0};
+static uint8_t temp_buffer2[5] = {0};
+static uint8_t temp_buffer3[3] = {0};
+static uint8_t temp_buffer4[6] = {0};
+
+
+static uint8_t rx_count = 0;
+static uint8_t rx_count1 = 0;
+static uint8_t rx_count3 = 0;
+static uint8_t rx_count2 = 0;
+static uint8_t rx_count4 = 0;
+
+   // 循迹
+static float   current_deviation = 0.0f;
 // 误差可视化
 volatile int speed_error_from_camera = 0;
 
-static uint8_t rx_count = 0;
-
-
-static uint8_t temp_buffer[4];
-
-static float   current_deviation = 0.0f;
     // task1
-static uint8_t rx_count1 = 0;
-static uint8_t temp_buffer1[6];
-static uint8_t rx_count3 = 0;
-static uint8_t rx_count2 = 0;
-
-
-static uint8_t temp_buffer2[5] = {0};
-
-static uint8_t temp_buffer3[3] = {0};
-
 volatile SERVO_ACTION_ENUM pick_or_put;
 volatile bool start_to_pick_or_put = false;
 volatile bool does_dummy_run = false;
@@ -121,9 +123,21 @@ volatile task1_cylinder_enum task1_cy_id;
 volatile u8 pick_times = 0;
 volatile u8 put_times = 0;
 volatile bool following_after_task1 = false;
+
+    // task3
 volatile char worm_record_array[4] = {0};
+
+    // task2
 volatile bool task2_start = false;
 volatile char task_start_signal_from_me = 'A';
+
+    // task4
+volatile TASK4_BALL_STATE task4_ball_current_state = IDLE_BALL;
+volatile bool does_task4_start_action = false;
+volatile uint8_t blue_ball_number = 0;
+
+volatile uint8_t yellow_ball_number = 0;
+
 
 void UART0_RX_IRQHandler(void)
 {
@@ -147,6 +161,7 @@ void UART0_RX_IRQHandler(void)
                 else if (one_byte == 0x02) rx_count1 = 0, rx_state = 4;
                 else if (one_byte == 0x04) rx_count3 = 0, rx_state = 6;
                 else if (one_byte == 0x03) rx_count2 = 0, rx_state = 8;
+                else if (one_byte == 0x05) rx_count4 = 0, rx_state = 10;
                 // 0x03
                 // 0x04
                 // 任务3
@@ -389,6 +404,58 @@ void UART0_RX_IRQHandler(void)
                         following_speed[2] = 0;
                         following_speed[3] = 0;
                     }
+                }
+                break;
+            }
+            case 10:{
+                temp_buffer4[rx_count4++] = one_byte;
+                if(rx_count4 >= 6) rx_state = 11;
+                break;
+            }
+            case 11:{
+                rx_state = 0;
+                if (one_byte == 0x0D)
+                {
+                    if(does_task4_start_action == true){
+                        return ;
+                    }
+                    int16_t x_offset = (int16_t)((temp_buffer4[0]) | (temp_buffer4[1] << 8));
+                    int16_t y_offset = (int16_t)((temp_buffer4[2]) | (temp_buffer4[3] << 8));
+                    float x_offset_f = x_offset * 0.8;
+                    float y_offset_f = y_offset * 0.8;
+                    task4_ball_current_state = (TASK4_BALL_STATE)temp_buffer4[4];
+                    does_task4_start_action = (bool)temp_buffer4[5];
+                    if(does_task4_start_action == true){
+                        following_speed[0] = 0;
+                        following_speed[1] = 0;
+                        following_speed[2] = 0;
+                        following_speed[3] = 0;
+                        if(task4_ball_current_state == BLUE_BALL){
+                            blue_ball_number++;
+                        }
+                        if(task4_ball_current_state == BLUE_BALL){
+                            yellow_ball_number++;
+                        }
+                        task4_ball_current_state = IDLE_BALL;
+                        return;
+                    }
+                    float temp_speed[4] = {0};
+                    temp_speed[0] = x_offset_f - y_offset_f;
+                    temp_speed[1] = x_offset_f + y_offset_f;
+                    temp_speed[2] = x_offset_f + y_offset_f;
+                    temp_speed[3] = x_offset_f - y_offset_f;
+                    for(u8 i =0; i < 4; i++){
+                        if(temp_speed[i] > 20){
+                            temp_speed[i] = 20;
+                        }
+                        else if(temp_speed[i] < -20){
+                            temp_speed[i] = -20;
+                        }
+                    }
+                    following_speed[0] = temp_speed[0];
+                    following_speed[1] = temp_speed[1];
+                    following_speed[2] = temp_speed[2];
+                    following_speed[3] = temp_speed[3];
                 }
                 break;
             }
@@ -703,6 +770,7 @@ void UART3_RX_IRQHandler(void)
         IfxAsclin_Asc_read(&g_UartConfig[3], &one_byte, &count, TIME_INFINITE);
         Radar_Feed_Byte(one_byte);
         task2_tast_dis();
+        task4_test_distance();
     }
 }
 

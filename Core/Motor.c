@@ -727,7 +727,18 @@ void task1_back_to_following_from_small_cy(void){
 
     task1_back_to_following_from_small_cy_S[0].flag = dis_start_x;
 
+    task1_back_to_following_from_small_cy_S[0].next_flag = dis_start_y;
     task1_back_to_following_from_small_cy_S[0].delta_distance.x_y_path = (task1_walk_sideway  - 2);
+
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[0] =  24;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[1] =  24;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[2] =  24;
+    task1_back_to_following_from_small_cy_S[1].target_speed.x_y[3] =  24;
+
+    task1_back_to_following_from_small_cy_S[1].flag = dis_start_y;
+
+    task1_back_to_following_from_small_cy_S[1].delta_distance.x_y_path = 3;
+
 
 }
 
@@ -1315,7 +1326,7 @@ volatile bool is_waiting_for_task_record = false;
 volatile bool does_task3_start_to_count = false;
 
 volatile float crossing_line_only_total_path = 0;
-#define CROSS_LINE_DURATION_CNT1 330
+#define CROSS_LINE_DURATION_CNT1 350
 #define CROSS_LINE_DURATION_CNT2 290
 // 在5ms速度环里调用
 void crossing_line_handle(void){

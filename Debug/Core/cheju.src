@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc15920a --dep-file=Core/cheju.d -c99 --fp-model=1cFLNRSTZ -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x -D__CPU__=tc26xb -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\user_uart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\ring_buffer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo_examples -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\APP -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Main -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\User -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Trap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Comm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Trig -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TimerWithTrigger -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiSlave -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Icu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Phy_Pef7071 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Can -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Crc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\General -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Cam -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmBc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TPwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Time -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\InternalMux -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Rdc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Lin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim\\\\In -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations\\\\Debug -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Spi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Io -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Std -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o Core/cheju.src ../Core/cheju.c"
+	.compiler_invocation	"ctc -f cc24440a --dep-file=Core/cheju.d -c99 --fp-model=1cFLNRSTZ -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x -D__CPU__=tc26xb -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\user_uart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\ring_buffer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo_examples -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core\\\\fashion_star_uart_servo -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Core -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\APP -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\Main -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\src\\\\User -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Trap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Comm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Trig -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TimerWithTrigger -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Msc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Psi5 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiSlave -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Icu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Phy_Pef7071 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Hssl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Driver -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Can -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Fft -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Eray -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Crc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\General -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Cam -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Sent -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmBc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TPwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Timer -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Time -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\InternalMux -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Rdc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Lin -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\PwmHl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim\\\\In -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Configurations\\\\Debug -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Spi -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Std -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Io -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IE:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Std -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o Core/cheju.src ../Core/cheju.c"
 	.compiler_name		"ctc"
 	;source	'../Core/cheju.c'
 
@@ -13,40 +13,40 @@ $TC16X
 	
 	.global	Radar_Feed_Byte
 ; Function Radar_Feed_Byte
-.L33:
+.L38:
 Radar_Feed_Byte:	.type	func
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.w	d15,[a15]
-.L109:
+.L145:
 	jne	d15,#0,.L2
-.L110:
+.L146:
 	mov	d15,#187
-.L111:
+.L147:
 	jne	d15,d4,.L3
-.L112:
+.L148:
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
-.L113:
+.L149:
 	movh.a	a2,#@his(radar1)
 	lea	a2,[a2]@los(radar1)
-.L114:
+.L150:
 	st.a	[a15],a2
-.L115:
+.L151:
 	j	.L4
 .L3:
 	mov	d15,#204
-.L116:
+.L152:
 	jne	d15,d4,.L5
-.L117:
+.L153:
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
-.L118:
+.L154:
 	movh.a	a2,#@his(radar2)
 	lea	a2,[a2]@los(radar2)
-.L119:
+.L155:
 	st.a	[a15],a2
-.L120:
+.L156:
 	j	.L6
 .L5:
 	j	.L7
@@ -55,140 +55,140 @@ Radar_Feed_Byte:	.type	func
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.a	a15,[a15]
-.L121:
+.L157:
 	mov	d15,#0
-.L122:
+.L158:
 	st.b	[a15]18,d15
-.L123:
+.L159:
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.a	a15,[a15]
-.L124:
+.L160:
 	mov	d15,#1
-.L125:
+.L161:
 	st.b	[a15]13,d15
-.L126:
+.L162:
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.a	a2,[a15]
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.a	a15,[a15]
-.L127:
+.L163:
 	ld.w	d15,[a15]4
-.L128:
+.L164:
 	add	d15,#1
 	st.w	[a2]4,d15
-.L129:
+.L165:
 	j	.L8
 .L2:
 	movh.a	a15,#@his(radar_active)
 	lea	a15,[a15]@los(radar_active)
 	ld.a	a15,[a15]
-.L90:
+.L126:
 	ld.w	d15,[a15]4
-.L130:
+.L166:
 	add	d15,#1
 	st.w	[a15]4,d15
-.L131:
+.L167:
 	ld.bu	d15,[a15]13
-.L132:
+.L168:
 	mov	d0,#1
 	jeq	d15,d0,.L9
-.L133:
+.L169:
 	mov	d0,#2
 	jeq	d15,d0,.L10
 	j	.L11
 .L9:
 	ld.bu	d15,[a15]18
-.L134:
+.L170:
 	addsc.a	a2,a15,d15,#0
-.L135:
+.L171:
 	st.b	[a2]14,d4
-.L136:
+.L172:
 	ld.bu	d15,[a15]18
-.L137:
+.L173:
 	add	d15,#1
 	st.b	[a15]18,d15
-.L138:
+.L174:
 	ld.bu	d15,[a15]18
-.L139:
+.L175:
 	jlt.u	d15,#4,.L12
-.L140:
+.L176:
 	mov	d15,#2
-.L141:
+.L177:
 	st.b	[a15]13,d15
 .L12:
 	j	.L13
 .L10:
 	mov	d15,#13
-.L142:
+.L178:
 	jne	d15,d4,.L14
-.L76:
+.L105:
 	ld.bu	d15,[a15]14
-.L143:
+.L179:
 	ld.bu	d0,[a15]15
-.L144:
+.L180:
 	xor	d15,d0
-.L145:
+.L181:
 	ld.bu	d0,[a15]16
-.L92:
+.L128:
 	xor	d0,d15
-.L146:
+.L182:
 	ld.bu	d15,[a15]17
-.L147:
+.L183:
 	jne	d15,d0,.L15
-.L148:
+.L184:
 	ld.bu	d0,[a15]14
-.L93:
+.L129:
 	ld.bu	d15,[a15]15
-.L149:
+.L185:
 	sha	d15,d15,#8
-.L150:
+.L186:
 	or	d0,d15
-.L151:
+.L187:
 	st.h	[a15],d0
-.L152:
+.L188:
 	ld.bu	d15,[a15]16
-.L153:
+.L189:
 	st.b	[a15]2,d15
-.L154:
+.L190:
 	mov	d15,#1
-.L155:
+.L191:
 	st.b	[a15]12,d15
-.L156:
+.L192:
 	ld.w	d15,[a15]8
-.L157:
+.L193:
 	add	d15,#1
 	st.w	[a15]8,d15
 .L15:
 .L14:
 	mov	d15,#0
-.L158:
+.L194:
 	st.b	[a15]13,d15
-.L159:
+.L195:
 	movh.a	a15,#@his(radar_active)
-.L91:
+.L127:
 	lea	a15,[a15]@los(radar_active)
-.L160:
+.L196:
 	mov.a	a2,#0
-.L161:
+.L197:
 	st.a	[a15],a2
-.L162:
+.L198:
 	j	.L16
 .L11:
 	mov	d15,#0
-.L163:
+.L199:
 	st.b	[a15]13,d15
-.L164:
+.L200:
 	movh.a	a15,#@his(radar_active)
-.L94:
+.L130:
 	lea	a15,[a15]@los(radar_active)
-.L165:
+.L201:
 	mov.a	a2,#0
-.L166:
+.L202:
 	st.a	[a15],a2
-.L167:
+.L203:
 	j	.L17
 .L17:
 .L16:
@@ -196,11 +196,11 @@ Radar_Feed_Byte:	.type	func
 .L8:
 .L7:
 	ret
-.L71:
+.L100:
 	
 __Radar_Feed_Byte_function_end:
 	.size	Radar_Feed_Byte,__Radar_Feed_Byte_function_end-Radar_Feed_Byte
-.L46:
+.L55:
 	; End of function
 	
 	.sdecl	'.text.cheju.Radar_Distance_Judge',code,cluster('Radar_Distance_Judge')
@@ -209,77 +209,77 @@ __Radar_Feed_Byte_function_end:
 	
 	.global	Radar_Distance_Judge
 ; Function Radar_Distance_Judge
-.L35:
+.L40:
 Radar_Distance_Judge:	.type	func
 	ld.bu	d15,[a4]12
-.L172:
+.L208:
 	jne	d15,#0,.L18
-.L173:
+.L209:
 	j	.L19
 .L18:
 	mov	d15,#0
-.L174:
+.L210:
 	st.b	[a4]12,d15
-.L80:
+.L109:
 	ld.hu	d0,[a4]0
-.L95:
+.L131:
 	ld.bu	d15,[a4]2
-.L96:
+.L132:
 	mov	d1,#50
-.L175:
+.L211:
 	jge.u	d15,d1,.L20
-.L176:
+.L212:
 	j	.L21
 .L20:
 	ld.bu	d15,[a4]3
-.L97:
+.L133:
 	jne	d15,#0,.L22
-.L177:
-	mov	d15,#300
-.L178:
+.L213:
+	mov	d15,#1500
+.L214:
 	jge.u	d0,d15,.L23
-.L179:
+.L215:
 	ld.bu	d15,[a4]19
-.L180:
+.L216:
 	add	d15,#1
 	extr.u	d15,d15,#0,#8
 	st.b	[a4]19,d15
-.L181:
+.L217:
 	jlt.u	d15,#3,.L24
-.L182:
+.L218:
 	mov	d15,#1
-.L183:
+.L219:
 	st.b	[a4]3,d15
-.L184:
+.L220:
 	mov	d15,#0
-.L185:
+.L221:
 	st.b	[a4]19,d15
 .L24:
 	j	.L25
 .L23:
 	mov	d15,#0
-.L186:
+.L222:
 	st.b	[a4]19,d15
 .L25:
 	j	.L26
 .L22:
 	mov	d15,#350
-.L187:
+.L223:
 	jge.u	d15,d0,.L27
-.L188:
+.L224:
 	mov	d15,#0
-.L189:
+.L225:
 	st.b	[a4]3,d15
 .L27:
 .L26:
 .L21:
 .L19:
 	ret
-.L78:
+.L107:
 	
 __Radar_Distance_Judge_function_end:
 	.size	Radar_Distance_Judge,__Radar_Distance_Judge_function_end-Radar_Distance_Judge
-.L51:
+.L60:
 	; End of function
 	
 	.sdecl	'.text.cheju.task2_tast_dis',code,cluster('task2_tast_dis')
@@ -288,115 +288,248 @@ __Radar_Distance_Judge_function_end:
 	
 	.global	task2_tast_dis
 ; Function task2_tast_dis
-.L37:
+.L42:
 task2_tast_dis:	.type	func
 	movh.a	a15,#@his(tast2_start_test_distance)
 	lea	a15,[a15]@los(tast2_start_test_distance)
 	ld.bu	d15,[a15]
-.L194:
+.L230:
 	jeq	d15,#0,.L28
-.L195:
+.L231:
 	movh.a	a15,#@his(radar1)
 	lea	a15,[a15]@los(radar1)
-.L196:
+.L232:
 	ld.hu	d0,[a15]0
-.L197:
+.L233:
 	mov	d15,#170
 	jlt.u	d0,d15,.L29
-.L198:
+.L234:
 	movh.a	a15,#@his(radar1)
 	lea	a15,[a15]@los(radar1)
-.L199:
+.L235:
 	ld.hu	d15,[a15]0
-.L200:
+.L236:
 	mov	d0,#270
-.L201:
+.L237:
 	jlt.u	d0,d15,.L30
-.L202:
+.L238:
 	movh.a	a15,#@his(wheel_asix)
 	lea	a15,[a15]@los(wheel_asix)
-.L203:
+.L239:
 	ld.w	d15,[a15]8
-.L204:
+.L240:
 	movh	d0,#17056
-.L205:
+.L241:
 	cmp.f	d15,d15,d0
 	extr.u	d15,d15,#2,#1
 	jeq	d15,#0,.L31
-.L206:
+.L242:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L207:
+.L243:
 	mov	d15,#0
-.L208:
+.L244:
 	st.w	[a15],d15
-.L209:
+.L245:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L210:
+.L246:
 	mov	d15,#0
-.L211:
+.L247:
 	st.w	[a15]4,d15
-.L212:
+.L248:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L213:
+.L249:
 	mov	d15,#0
-.L214:
+.L250:
 	st.w	[a15]8,d15
-.L215:
+.L251:
 	movh.a	a15,#@his(following_speed)
 	lea	a15,[a15]@los(following_speed)
-.L216:
+.L252:
 	mov	d15,#0
-.L217:
+.L253:
 	st.w	[a15]12,d15
-.L218:
+.L254:
 	movh.a	a15,#@his(task2_start)
 	lea	a15,[a15]@los(task2_start)
-.L219:
+.L255:
 	mov	d15,#1
-.L220:
+.L256:
 	st.b	[a15],d15
-.L221:
+.L257:
 	movh.a	a15,#@his(task_start_signal_from_me)
 	lea	a15,[a15]@los(task_start_signal_from_me)
-.L222:
+.L258:
 	mov	d15,#66
-.L223:
+.L259:
 	st.b	[a15],d15
-.L224:
+.L260:
 	movh.a	a15,#@his(task_start_signal_from_me)
 	lea	a15,[a15]@los(task_start_signal_from_me)
 	ld.b	d5,[a15]0
-.L225:
+.L261:
 	mov	d4,#0
-.L226:
+.L262:
 	call	UART_PutChar
-.L227:
+.L263:
 	movh.a	a15,#@his(tast2_start_test_distance)
 	lea	a15,[a15]@los(tast2_start_test_distance)
-.L228:
+.L264:
 	mov	d15,#0
-.L229:
+.L265:
 	st.b	[a15],d15
-.L230:
+.L266:
 	movh.a	a15,#@his(task2_prepare_correct)
 	lea	a15,[a15]@los(task2_prepare_correct)
-.L231:
+.L267:
 	mov	d15,#1
-.L232:
+.L268:
 	st.b	[a15],d15
 .L31:
 .L30:
 .L29:
 .L28:
 	ret
-.L84:
+.L113:
 	
 __task2_tast_dis_function_end:
 	.size	task2_tast_dis,__task2_tast_dis_function_end-task2_tast_dis
-.L56:
+.L65:
+	; End of function
+	
+	.sdecl	'.text.cheju.task4_test_distance',code,cluster('task4_test_distance')
+	.sect	'.text.cheju.task4_test_distance'
+	.align	2
+	
+	.global	task4_test_distance
+; Function task4_test_distance
+.L44:
+task4_test_distance:	.type	func
+	movh.a	a15,#@his(tast4_start_test_distance)
+	lea	a15,[a15]@los(tast4_start_test_distance)
+	ld.bu	d15,[a15]
+.L273:
+	jeq	d15,#0,.L32
+.L274:
+	movh.a	a15,#@his(radar2)
+	lea	a15,[a15]@los(radar2)
+.L275:
+	ld.hu	d0,[a15]0
+.L276:
+	mov	d15,#190
+.L277:
+	jge.u	d15,d0,.L33
+.L278:
+	movh.a	a15,#@his(radar2)
+	lea	a15,[a15]@los(radar2)
+.L279:
+	ld.hu	d15,[a15]0
+.L280:
+	mov	d0,#300
+.L281:
+	jge.u	d15,d0,.L34
+.L282:
+	movh.a	a15,#@his(wheel_asix)
+	lea	a15,[a15]@los(wheel_asix)
+.L283:
+	ld.w	d15,[a15]8
+.L284:
+	movh	d0,#16928
+.L285:
+	cmp.f	d15,d15,d0
+	extr.u	d15,d15,#2,#1
+	jeq	d15,#0,.L35
+.L286:
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
+.L287:
+	mov	d15,#0
+.L288:
+	st.w	[a15],d15
+.L289:
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
+.L290:
+	mov	d15,#0
+.L291:
+	st.w	[a15]4,d15
+.L292:
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
+.L293:
+	mov	d15,#0
+.L294:
+	st.w	[a15]8,d15
+.L295:
+	movh.a	a15,#@his(following_speed)
+	lea	a15,[a15]@los(following_speed)
+.L296:
+	mov	d15,#0
+.L297:
+	st.w	[a15]12,d15
+.L298:
+	movh.a	a15,#@his(task4_speed_adjust_start)
+	lea	a15,[a15]@los(task4_speed_adjust_start)
+.L299:
+	mov	d15,#1
+.L300:
+	st.b	[a15],d15
+.L301:
+	movh.a	a15,#@his(task_start_signal_from_me)
+	lea	a15,[a15]@los(task_start_signal_from_me)
+.L302:
+	mov	d15,#67
+.L303:
+	st.b	[a15],d15
+.L304:
+	movh.a	a15,#@his(task_start_signal_from_me)
+	lea	a15,[a15]@los(task_start_signal_from_me)
+	ld.b	d5,[a15]0
+.L305:
+	mov	d4,#0
+.L306:
+	call	UART_PutChar
+.L307:
+	movh.a	a15,#@his(task4_prepare_correct)
+	lea	a15,[a15]@los(task4_prepare_correct)
+.L308:
+	mov	d15,#1
+.L309:
+	st.b	[a15],d15
+.L35:
+.L34:
+.L33:
+.L32:
+	ret
+.L114:
+	
+__task4_test_distance_function_end:
+	.size	task4_test_distance,__task4_test_distance_function_end-task4_test_distance
+.L70:
+	; End of function
+	
+	.sdecl	'.text.cheju.task3_start_test_distance',code,cluster('task3_start_test_distance')
+	.sect	'.text.cheju.task3_start_test_distance'
+	.align	2
+	
+	.global	task3_start_test_distance
+; Function task3_start_test_distance
+.L46:
+task3_start_test_distance:	.type	func
+	movh.a	a15,#@his(tast3_start_test_distance_flag)
+	lea	a15,[a15]@los(tast3_start_test_distance_flag)
+	ld.bu	d15,[a15]
+.L314:
+	jeq	d15,#0,.L36
+.L36:
+	ret
+.L115:
+	
+__task3_start_test_distance_function_end:
+	.size	task3_start_test_distance,__task3_start_test_distance_function_end-task3_start_test_distance
+.L75:
 	; End of function
 	
 	.sdecl	'.data.cheju.radar1',data,cluster('radar1')
@@ -432,7 +565,7 @@ tast2_start_test_distance:	.type	object
 	.global	task2_prepare_correct
 task2_prepare_correct:	.type	object
 	.size	task2_prepare_correct,1
-	.byte	1
+	.space	1
 	.sdecl	'.data.cheju.task2_start_correct',data,cluster('task2_start_correct')
 	.sect	'.data.cheju.task2_start_correct'
 	.global	task2_start_correct
@@ -445,28 +578,61 @@ task2_start_correct:	.type	object
 does_task2_send_a_signal:	.type	object
 	.size	does_task2_send_a_signal,1
 	.space	1
+	.sdecl	'.data.cheju.tast4_start_test_distance',data,cluster('tast4_start_test_distance')
+	.sect	'.data.cheju.tast4_start_test_distance'
+	.global	tast4_start_test_distance
+tast4_start_test_distance:	.type	object
+	.size	tast4_start_test_distance,1
+	.space	1
+	.sdecl	'.data.cheju.task4_speed_adjust_start',data,cluster('task4_speed_adjust_start')
+	.sect	'.data.cheju.task4_speed_adjust_start'
+	.global	task4_speed_adjust_start
+task4_speed_adjust_start:	.type	object
+	.size	task4_speed_adjust_start,1
+	.space	1
+	.sdecl	'.data.cheju.task4_prepare_correct',data,cluster('task4_prepare_correct')
+	.sect	'.data.cheju.task4_prepare_correct'
+	.global	task4_prepare_correct
+task4_prepare_correct:	.type	object
+	.size	task4_prepare_correct,1
+	.space	1
+	.sdecl	'.data.cheju.task4_start_correct',data,cluster('task4_start_correct')
+	.sect	'.data.cheju.task4_start_correct'
+	.global	task4_start_correct
+task4_start_correct:	.type	object
+	.size	task4_start_correct,1
+	.space	1
+	.sdecl	'.data.cheju.tast3_start_test_distance_flag',data,cluster('tast3_start_test_distance_flag')
+	.sect	'.data.cheju.tast3_start_test_distance_flag'
+	.global	tast3_start_test_distance_flag
+tast3_start_test_distance_flag:	.type	object
+	.size	tast3_start_test_distance_flag,1
+	.space	1
 	.calls	'task2_tast_dis','UART_PutChar'
+	.calls	'task4_test_distance','UART_PutChar'
 	.calls	'Radar_Feed_Byte','',0
 	.calls	'Radar_Distance_Judge','',0
+	.calls	'task2_tast_dis','',0
+	.calls	'task4_test_distance','',0
 	.extern	following_speed
 	.extern	wheel_asix
 	.extern	UART_PutChar
 	.extern	task2_start
 	.extern	task_start_signal_from_me
-	.calls	'task2_tast_dis','',0
+	.calls	'task3_start_test_distance','',0
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
-.L39:
-	.word	322460
+.L48:
+	.word	322485
 	.half	3
-	.word	.L40
+	.word	.L49
 	.byte	4
-.L38:
+.L47:
 	.byte	1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L41
+	.word	.L50
 	.byte	2,1,1,3
 	.word	158
 	.byte	4
@@ -550,10 +716,10 @@ does_task2_send_a_signal:	.type	object
 	.byte	'B',0
 	.word	630
 	.byte	4,2,35,0,0
-.L72:
+.L101:
 	.byte	7
 	.byte	'unsigned char',0,1,8
-.L81:
+.L110:
 	.byte	7
 	.byte	'unsigned short int',0,2,7,12
 	.byte	'_Ifx_SCU_WDTCPU_CON1_Bits',0,4,140,9,16,4,13
@@ -14073,7 +14239,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	16,4
 	.word	766
 	.byte	17,3,0
-.L85:
+.L116:
 	.byte	22,35,13,9,20,15
 	.byte	'distance',0
 	.word	86616
@@ -14105,7 +14271,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	'below_cnt',0
 	.word	766
 	.byte	1,2,35,19,0
-.L74:
+.L103:
 	.byte	3
 	.word	86664
 	.byte	29
@@ -24287,9 +24453,9 @@ does_task2_send_a_signal:	.type	object
 	.byte	'SpiIf_Status',0,46,71,3
 	.word	159566
 	.byte	3
-	.word	.L98-.L39
+	.word	.L134-.L48
 	.byte	3
-	.word	.L98-.L39
+	.word	.L134-.L48
 	.byte	31
 	.word	159566
 	.byte	1,1,32
@@ -24315,7 +24481,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	'SpiIf_GetStatus',0,46,136,1,24
 	.word	159734
 	.byte	3
-	.word	.L99-.L39
+	.word	.L135-.L48
 	.byte	33,1,1,32
 	.word	159764
 	.byte	0,3
@@ -24339,7 +24505,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	'onError',0
 	.word	159783
 	.byte	4,2,35,16,0
-.L99:
+.L135:
 	.byte	12
 	.byte	'SpiIf_',0,46,150,1,8,40,15
 	.byte	'driver',0
@@ -24404,7 +24570,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	29
 	.byte	'TxRxHandler',0,46,209,1,16
 	.word	160262
-.L98:
+.L134:
 	.byte	12
 	.byte	'SpiIf_Ch_',0,46,211,1,8,48,15
 	.byte	'driver',0
@@ -24628,7 +24794,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	'IfxQspi_SuspendMode',0,15,171,2,3
 	.word	162622
 	.byte	3
-	.word	.L100-.L39
+	.word	.L136-.L48
 	.byte	33,1,1,32
 	.word	162739
 	.byte	0,3
@@ -24668,7 +24834,7 @@ does_task2_send_a_signal:	.type	object
 	.byte	'expectTimeoutError',0,1
 	.word	766
 	.byte	1,0,2,35,0,0
-.L100:
+.L136:
 	.byte	12
 	.byte	'IfxQspi_SpiMaster_Channel_s',0,47,144,5,8,84,15
 	.byte	'base',0
@@ -43758,12 +43924,12 @@ does_task2_send_a_signal:	.type	object
 	.byte	10
 	.word	86626
 	.byte	34
-	.byte	'task2_start',0,34,217,1,22
+	.byte	'task2_start',0,34,218,1,22
 	.word	321747
 	.byte	1,1,10
 	.word	86558
 	.byte	34
-	.byte	'task_start_signal_from_me',0,34,135,2,22
+	.byte	'task_start_signal_from_me',0,34,143,2,22
 	.word	321775
 	.byte	1,1,22,72,75,9,16,15
 	.byte	'sysFreq',0
@@ -43866,22 +44032,37 @@ does_task2_send_a_signal:	.type	object
 	.byte	29
 	.byte	'RadarInstance_t',0,35,24,3
 	.word	86664
-.L86:
+.L117:
 	.byte	10
 	.word	86626
-.L87:
+.L118:
 	.byte	10
 	.word	86626
-.L88:
+.L119:
 	.byte	10
 	.word	86626
-.L89:
+.L120:
+	.byte	10
+	.word	86626
+.L121:
+	.byte	10
+	.word	86626
+.L122:
+	.byte	10
+	.word	86626
+.L123:
+	.byte	10
+	.word	86626
+.L124:
+	.byte	10
+	.word	86626
+.L125:
 	.byte	10
 	.word	86626
 	.byte	0
 	.sdecl	'.debug_abbrev',debug
 	.sect	'.debug_abbrev'
-.L40:
+.L49:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,39,12,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32,13
 	.byte	58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,36,0,3,8,11,15,62
 	.byte	15,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,59,0,3,8,0,0,10,53,0,73,19,0,0,11,11
@@ -43894,12 +44075,12 @@ does_task2_send_a_signal:	.type	object
 	.byte	0,34,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
-.L41:
-	.word	.L102-.L101
-.L101:
+.L50:
+	.word	.L138-.L137
+.L137:
 	.half	3
-	.word	.L104-.L103
-.L103:
+	.word	.L140-.L139
+.L139:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg',0
 	.byte	'E:\\\\aurix\\\\Longqi_project\\\\LQ_Encoder__LIB\\\\Libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std',0
@@ -44031,663 +44212,957 @@ does_task2_send_a_signal:	.type	object
 	.byte	'ring_buffer.h',0,20,0,0
 	.byte	'fashion_star_uart_servo.h',0,21,0,0
 	.byte	'..\\Core\\Servo.h',0,0,0,0,0
-.L104:
-.L102:
+.L140:
+.L138:
 	.sdecl	'.debug_info',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_info'
-.L42:
+.L51:
 	.word	274
 	.half	3
-	.word	.L43
+	.word	.L52
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L45,.L44
+	.word	.L54,.L53
 	.byte	2
-	.word	.L38
+	.word	.L47
 	.byte	3
 	.byte	'Radar_Feed_Byte',0,1,23,6,1,1,1
-	.word	.L33,.L71,.L32
+	.word	.L38,.L100,.L37
 	.byte	4
 	.byte	'b',0,1,23,30
-	.word	.L72,.L73
+	.word	.L101,.L102
 	.byte	5
-	.word	.L33,.L71
+	.word	.L38,.L100
 	.byte	5
-	.word	.L2,.L71
+	.word	.L2,.L100
 	.byte	6
 	.byte	'r',0,1,46,22
-	.word	.L74,.L75
+	.word	.L103,.L104
 	.byte	5
-	.word	.L76,.L14
+	.word	.L105,.L14
 	.byte	6
 	.byte	'chk',0,1,60,25
-	.word	.L72,.L77
+	.word	.L101,.L106
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_abbrev'
-.L43:
+.L52:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_line'
-.L44:
-	.word	.L106-.L105
-.L105:
+.L53:
+	.word	.L142-.L141
+.L141:
 	.half	3
-	.word	.L108-.L107
-.L107:
+	.word	.L144-.L143
+.L143:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../Core/cheju.c',0,0,0,0,0
-.L108:
+.L144:
 	.byte	5,9,7,0,5,2
-	.word	.L33
+	.word	.L38
 	.byte	3,28,1,5,5,9
-	.half	.L109-.L33
+	.half	.L145-.L38
 	.byte	1,5,18,7,9
-	.half	.L110-.L109
+	.half	.L146-.L145
 	.byte	3,3,1,5,9,9
-	.half	.L111-.L110
+	.half	.L147-.L146
 	.byte	1,5,29,7,9
-	.half	.L112-.L111
+	.half	.L148-.L147
 	.byte	1,5,45,9
-	.half	.L113-.L112
+	.half	.L149-.L148
 	.byte	1,5,42,9
-	.half	.L114-.L113
+	.half	.L150-.L149
 	.byte	1,5,51,9
-	.half	.L115-.L114
+	.half	.L151-.L150
 	.byte	1,5,23,9
-	.half	.L3-.L115
+	.half	.L3-.L151
 	.byte	3,1,1,5,14,9
-	.half	.L116-.L3
+	.half	.L152-.L3
 	.byte	1,5,29,7,9
-	.half	.L117-.L116
+	.half	.L153-.L152
 	.byte	1,5,45,9
-	.half	.L118-.L117
+	.half	.L154-.L153
 	.byte	1,5,42,9
-	.half	.L119-.L118
+	.half	.L155-.L154
 	.byte	1,5,51,9
-	.half	.L120-.L119
+	.half	.L156-.L155
 	.byte	1,5,14,9
-	.half	.L5-.L120
+	.half	.L5-.L156
 	.byte	3,1,1,5,9,9
 	.half	.L4-.L5
 	.byte	3,5,1,5,34,9
-	.half	.L121-.L4
+	.half	.L157-.L4
 	.byte	1,5,32,9
-	.half	.L122-.L121
+	.half	.L158-.L157
 	.byte	1,5,9,9
-	.half	.L123-.L122
+	.half	.L159-.L158
 	.byte	3,1,1,5,34,9
-	.half	.L124-.L123
+	.half	.L160-.L159
 	.byte	1,5,32,9
-	.half	.L125-.L124
+	.half	.L161-.L160
 	.byte	1,5,9,9
-	.half	.L126-.L125
+	.half	.L162-.L161
 	.byte	3,1,1,5,21,9
-	.half	.L127-.L126
+	.half	.L163-.L162
 	.byte	1,5,31,9
-	.half	.L128-.L127
+	.half	.L164-.L163
 	.byte	1,5,9,9
-	.half	.L129-.L128
+	.half	.L165-.L164
 	.byte	3,1,1,5,26,9
-	.half	.L2-.L129
+	.half	.L2-.L165
 	.byte	3,4,1,5,6,9
-	.half	.L90-.L2
+	.half	.L126-.L2
 	.byte	3,1,1,5,16,9
-	.half	.L130-.L90
+	.half	.L166-.L126
 	.byte	1,5,14,9
-	.half	.L131-.L130
+	.half	.L167-.L166
 	.byte	3,2,1,9
-	.half	.L132-.L131
+	.half	.L168-.L167
 	.byte	3,2,1,9
-	.half	.L133-.L132
+	.half	.L169-.L168
 	.byte	3,5,1,5,21,9
-	.half	.L9-.L133
+	.half	.L9-.L169
 	.byte	3,124,1,5,19,9
-	.half	.L134-.L9
+	.half	.L170-.L9
 	.byte	1,5,30,9
-	.half	.L135-.L134
+	.half	.L171-.L170
 	.byte	1,5,21,9
-	.half	.L136-.L135
+	.half	.L172-.L171
 	.byte	1,5,26,9
-	.half	.L137-.L136
+	.half	.L173-.L172
 	.byte	1,5,18,9
-	.half	.L138-.L137
+	.half	.L174-.L173
 	.byte	3,1,1,5,13,9
-	.half	.L139-.L138
+	.half	.L175-.L174
 	.byte	1,5,44,7,9
-	.half	.L140-.L139
+	.half	.L176-.L175
 	.byte	1,5,42,9
-	.half	.L141-.L140
+	.half	.L177-.L176
 	.byte	1,5,13,9
-	.half	.L12-.L141
+	.half	.L12-.L177
 	.byte	3,1,1,5,22,9
 	.half	.L10-.L12
 	.byte	3,3,1,5,13,9
-	.half	.L142-.L10
+	.half	.L178-.L10
 	.byte	1,5,37,7,9
-	.half	.L76-.L142
+	.half	.L105-.L178
 	.byte	3,3,1,5,49,9
-	.half	.L143-.L76
+	.half	.L179-.L105
 	.byte	1,5,41,9
-	.half	.L144-.L143
+	.half	.L180-.L179
 	.byte	1,5,61,9
-	.half	.L145-.L144
+	.half	.L181-.L180
 	.byte	1,5,53,9
-	.half	.L92-.L145
+	.half	.L128-.L181
 	.byte	1,5,34,9
-	.half	.L146-.L92
+	.half	.L182-.L128
 	.byte	3,1,1,5,17,9
-	.half	.L147-.L146
+	.half	.L183-.L182
 	.byte	1,5,54,7,9
-	.half	.L148-.L147
+	.half	.L184-.L183
 	.byte	3,3,1,5,67,9
-	.half	.L93-.L148
+	.half	.L129-.L184
 	.byte	1,5,71,9
-	.half	.L149-.L93
+	.half	.L185-.L129
 	.byte	1,5,58,9
-	.half	.L150-.L149
+	.half	.L186-.L185
 	.byte	1,5,35,9
-	.half	.L151-.L150
+	.half	.L187-.L186
 	.byte	1,5,43,9
-	.half	.L152-.L151
+	.half	.L188-.L187
 	.byte	3,1,1,5,35,9
-	.half	.L153-.L152
+	.half	.L189-.L188
 	.byte	1,5,37,9
-	.half	.L154-.L153
+	.half	.L190-.L189
 	.byte	3,1,1,5,35,9
-	.half	.L155-.L154
+	.half	.L191-.L190
 	.byte	1,5,22,9
-	.half	.L156-.L155
+	.half	.L192-.L191
 	.byte	3,1,1,5,33,9
-	.half	.L157-.L156
+	.half	.L193-.L192
 	.byte	1,5,28,9
-	.half	.L14-.L157
+	.half	.L14-.L193
 	.byte	3,7,1,5,26,9
-	.half	.L158-.L14
+	.half	.L194-.L14
 	.byte	1,5,13,9
-	.half	.L159-.L158
+	.half	.L195-.L194
 	.byte	3,1,1,5,28,9
-	.half	.L160-.L159
+	.half	.L196-.L195
 	.byte	1,5,26,9
-	.half	.L161-.L160
+	.half	.L197-.L196
 	.byte	1,5,13,9
-	.half	.L162-.L161
+	.half	.L198-.L197
 	.byte	3,2,1,5,28,9
-	.half	.L11-.L162
+	.half	.L11-.L198
 	.byte	3,3,1,5,26,9
-	.half	.L163-.L11
+	.half	.L199-.L11
 	.byte	1,5,13,9
-	.half	.L164-.L163
+	.half	.L200-.L199
 	.byte	3,1,1,5,28,9
-	.half	.L165-.L164
+	.half	.L201-.L200
 	.byte	1,5,26,9
-	.half	.L166-.L165
+	.half	.L202-.L201
 	.byte	1,5,13,9
-	.half	.L167-.L166
+	.half	.L203-.L202
 	.byte	3,1,1,5,1,9
-	.half	.L7-.L167
+	.half	.L7-.L203
 	.byte	3,2,1,7,9
-	.half	.L46-.L7
+	.half	.L55-.L7
 	.byte	0,1,1
-.L106:
+.L142:
 	.sdecl	'.debug_ranges',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_ranges'
-.L45:
-	.word	-1,.L33,0,.L46-.L33,0,0
+.L54:
+	.word	-1,.L38,0,.L55-.L38,0,0
 	.sdecl	'.debug_info',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_info'
-.L47:
+.L56:
 	.word	267
 	.half	3
-	.word	.L48
+	.word	.L57
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L50,.L49
+	.word	.L59,.L58
 	.byte	2
-	.word	.L38
+	.word	.L47
 	.byte	3
 	.byte	'Radar_Distance_Judge',0,1,90,6,1,1,1
-	.word	.L35,.L78,.L34
+	.word	.L40,.L107,.L39
 	.byte	4
 	.byte	'r',0,1,90,44
-	.word	.L74,.L79
+	.word	.L103,.L108
 	.byte	5
-	.word	.L35,.L78
+	.word	.L40,.L107
 	.byte	5
-	.word	.L80,.L78
+	.word	.L109,.L107
 	.byte	6
 	.byte	'd',0,1,99,14
-	.word	.L81,.L82
+	.word	.L110,.L111
 	.byte	6
 	.byte	'c',0,1,100,14
-	.word	.L72,.L83
+	.word	.L101,.L112
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_abbrev'
-.L48:
+.L57:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_line'
-.L49:
-	.word	.L169-.L168
-.L168:
+.L58:
+	.word	.L205-.L204
+.L204:
 	.half	3
-	.word	.L171-.L170
-.L170:
+	.word	.L207-.L206
+.L206:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../Core/cheju.c',0,0,0,0,0
-.L171:
+.L207:
 	.byte	5,11,7,0,5,2
-	.word	.L35
+	.word	.L40
 	.byte	3,222,0,1,5,10,9
-	.half	.L172-.L35
+	.half	.L208-.L40
 	.byte	1,5,22,7,9
-	.half	.L173-.L172
+	.half	.L209-.L208
 	.byte	1,5,18,9
-	.half	.L18-.L173
+	.half	.L18-.L209
 	.byte	3,2,1,5,16,9
-	.half	.L174-.L18
+	.half	.L210-.L18
 	.byte	1,5,19,9
-	.half	.L80-.L174
+	.half	.L109-.L210
 	.byte	3,2,1,9
-	.half	.L95-.L80
+	.half	.L131-.L109
 	.byte	3,1,1,5,13,9
-	.half	.L96-.L95
+	.half	.L132-.L131
 	.byte	3,1,1,5,5,9
-	.half	.L175-.L96
+	.half	.L211-.L132
 	.byte	1,5,29,7,9
-	.half	.L176-.L175
+	.half	.L212-.L211
 	.byte	1,5,11,9
-	.half	.L20-.L176
+	.half	.L20-.L212
 	.byte	3,3,1,5,10,9
-	.half	.L97-.L20
+	.half	.L133-.L20
 	.byte	1,5,17,7,9
-	.half	.L177-.L97
+	.half	.L213-.L133
 	.byte	3,2,1,5,9,9
-	.half	.L178-.L177
+	.half	.L214-.L213
 	.byte	1,5,20,7,9
-	.half	.L179-.L178
+	.half	.L215-.L214
 	.byte	3,2,1,5,17,9
-	.half	.L180-.L179
+	.half	.L216-.L215
 	.byte	1,5,13,9
-	.half	.L181-.L180
+	.half	.L217-.L216
 	.byte	1,5,32,7,9
-	.half	.L182-.L181
+	.half	.L218-.L217
 	.byte	3,5,1,5,30,9
-	.half	.L183-.L182
+	.half	.L219-.L218
 	.byte	1,5,32,9
-	.half	.L184-.L183
+	.half	.L220-.L219
 	.byte	3,1,1,5,30,9
-	.half	.L185-.L184
+	.half	.L221-.L220
 	.byte	1,5,13,9
-	.half	.L24-.L185
+	.half	.L24-.L221
 	.byte	3,122,1,5,29,9
 	.half	.L23-.L24
 	.byte	3,14,1,5,27,9
-	.half	.L186-.L23
+	.half	.L222-.L23
 	.byte	1,5,9,9
-	.half	.L25-.L186
+	.half	.L25-.L222
 	.byte	1,5,17,9
 	.half	.L22-.L25
 	.byte	3,6,1,5,9,9
-	.half	.L187-.L22
+	.half	.L223-.L22
 	.byte	1,5,48,7,9
-	.half	.L188-.L187
+	.half	.L224-.L223
 	.byte	1,5,46,9
-	.half	.L189-.L188
+	.half	.L225-.L224
 	.byte	1,5,1,9
-	.half	.L19-.L189
+	.half	.L19-.L225
 	.byte	3,6,1,7,9
-	.half	.L51-.L19
+	.half	.L60-.L19
 	.byte	0,1,1
-.L169:
+.L205:
 	.sdecl	'.debug_ranges',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_ranges'
-.L50:
-	.word	-1,.L35,0,.L51-.L35,0,0
+.L59:
+	.word	-1,.L40,0,.L60-.L40,0,0
 	.sdecl	'.debug_info',debug,cluster('task2_tast_dis')
 	.sect	'.debug_info'
-.L52:
-	.word	209
-	.half	3
-	.word	.L53
-	.byte	4,1
-	.byte	'../Core/cheju.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
-	.word	.L55,.L54
-	.byte	2
-	.word	.L38
-	.byte	3
-	.byte	'task2_tast_dis',0,1,143,1,6,1,1,1
-	.word	.L37,.L84,.L36
-	.byte	4
-	.word	.L37,.L84
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('task2_tast_dis')
-	.sect	'.debug_abbrev'
-.L53:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('task2_tast_dis')
-	.sect	'.debug_line'
-.L54:
-	.word	.L191-.L190
-.L190:
-	.half	3
-	.word	.L193-.L192
-.L192:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../Core/cheju.c',0,0,0,0,0
-.L193:
-	.byte	5,8,7,0,5,2
-	.word	.L37
-	.byte	3,143,1,1,5,5,9
-	.half	.L194-.L37
-	.byte	1,5,19,7,9
-	.half	.L195-.L194
-	.byte	3,1,1,5,25,9
-	.half	.L196-.L195
-	.byte	1,5,12,9
-	.half	.L197-.L196
-	.byte	1,5,40,9
-	.half	.L198-.L197
-	.byte	1,5,46,9
-	.half	.L199-.L198
-	.byte	1,5,59,9
-	.half	.L200-.L199
-	.byte	1,5,56,9
-	.half	.L201-.L200
-	.byte	1,5,66,7,9
-	.half	.L202-.L201
-	.byte	1,5,76,9
-	.half	.L203-.L202
-	.byte	1,5,83,9
-	.half	.L204-.L203
-	.byte	1,5,81,9
-	.half	.L205-.L204
-	.byte	1,5,13,9
-	.half	.L206-.L205
-	.byte	3,2,1,5,34,9
-	.half	.L207-.L206
-	.byte	1,5,32,9
-	.half	.L208-.L207
-	.byte	1,5,13,9
-	.half	.L209-.L208
-	.byte	3,1,1,5,34,9
-	.half	.L210-.L209
-	.byte	1,5,32,9
-	.half	.L211-.L210
-	.byte	1,5,13,9
-	.half	.L212-.L211
-	.byte	3,1,1,5,34,9
-	.half	.L213-.L212
-	.byte	1,5,32,9
-	.half	.L214-.L213
-	.byte	1,5,13,9
-	.half	.L215-.L214
-	.byte	3,1,1,5,34,9
-	.half	.L216-.L215
-	.byte	1,5,32,9
-	.half	.L217-.L216
-	.byte	1,5,13,9
-	.half	.L218-.L217
-	.byte	3,1,1,5,27,9
-	.half	.L219-.L218
-	.byte	1,5,25,9
-	.half	.L220-.L219
-	.byte	1,5,13,9
-	.half	.L221-.L220
-	.byte	3,1,1,5,41,9
-	.half	.L222-.L221
-	.byte	1,5,39,9
-	.half	.L223-.L222
-	.byte	1,5,32,9
-	.half	.L224-.L223
-	.byte	3,1,1,5,26,9
-	.half	.L225-.L224
-	.byte	1,5,32,9
-	.half	.L226-.L225
-	.byte	1,5,13,9
-	.half	.L227-.L226
-	.byte	3,1,1,5,41,9
-	.half	.L228-.L227
-	.byte	1,5,39,9
-	.half	.L229-.L228
-	.byte	1,5,13,9
-	.half	.L230-.L229
-	.byte	3,1,1,5,37,9
-	.half	.L231-.L230
-	.byte	1,5,35,9
-	.half	.L232-.L231
-	.byte	1,5,1,9
-	.half	.L28-.L232
-	.byte	3,4,1,7,9
-	.half	.L56-.L28
-	.byte	0,1,1
-.L191:
-	.sdecl	'.debug_ranges',debug,cluster('task2_tast_dis')
-	.sect	'.debug_ranges'
-.L55:
-	.word	-1,.L37,0,.L56-.L37,0,0
-	.sdecl	'.debug_info',debug,cluster('radar1')
-	.sect	'.debug_info'
-.L57:
-	.word	178
-	.half	3
-	.word	.L58
-	.byte	4,1
-	.byte	'../Core/cheju.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
-	.byte	3
-	.byte	'radar1',0,36,10,17
-	.word	.L85
-	.byte	1,5,3
-	.word	radar1
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('radar1')
-	.sect	'.debug_abbrev'
-.L58:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('radar2')
-	.sect	'.debug_info'
-.L59:
-	.word	178
-	.half	3
-	.word	.L60
-	.byte	4,1
-	.byte	'../Core/cheju.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
-	.byte	3
-	.byte	'radar2',0,36,11,17
-	.word	.L85
-	.byte	1,5,3
-	.word	radar2
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('radar2')
-	.sect	'.debug_abbrev'
-.L60:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('tast2_start_test_distance')
-	.sect	'.debug_info'
 .L61:
-	.word	198
+	.word	209
 	.half	3
 	.word	.L62
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
+	.word	.L64,.L63
+	.byte	2
+	.word	.L47
+	.byte	3
+	.byte	'task2_tast_dis',0,1,143,1,6,1,1,1
+	.word	.L42,.L113,.L41
+	.byte	4
+	.word	.L42,.L113
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('task2_tast_dis')
+	.sect	'.debug_abbrev'
+.L62:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('task2_tast_dis')
+	.sect	'.debug_line'
+.L63:
+	.word	.L227-.L226
+.L226:
+	.half	3
+	.word	.L229-.L228
+.L228:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../Core/cheju.c',0,0,0,0,0
+.L229:
+	.byte	5,8,7,0,5,2
+	.word	.L42
+	.byte	3,143,1,1,5,5,9
+	.half	.L230-.L42
+	.byte	1,5,19,7,9
+	.half	.L231-.L230
+	.byte	3,1,1,5,25,9
+	.half	.L232-.L231
+	.byte	1,5,12,9
+	.half	.L233-.L232
+	.byte	1,5,40,9
+	.half	.L234-.L233
+	.byte	1,5,46,9
+	.half	.L235-.L234
+	.byte	1,5,59,9
+	.half	.L236-.L235
+	.byte	1,5,56,9
+	.half	.L237-.L236
+	.byte	1,5,66,7,9
+	.half	.L238-.L237
+	.byte	1,5,76,9
+	.half	.L239-.L238
+	.byte	1,5,83,9
+	.half	.L240-.L239
+	.byte	1,5,81,9
+	.half	.L241-.L240
+	.byte	1,5,13,9
+	.half	.L242-.L241
+	.byte	3,2,1,5,34,9
+	.half	.L243-.L242
+	.byte	1,5,32,9
+	.half	.L244-.L243
+	.byte	1,5,13,9
+	.half	.L245-.L244
+	.byte	3,1,1,5,34,9
+	.half	.L246-.L245
+	.byte	1,5,32,9
+	.half	.L247-.L246
+	.byte	1,5,13,9
+	.half	.L248-.L247
+	.byte	3,1,1,5,34,9
+	.half	.L249-.L248
+	.byte	1,5,32,9
+	.half	.L250-.L249
+	.byte	1,5,13,9
+	.half	.L251-.L250
+	.byte	3,1,1,5,34,9
+	.half	.L252-.L251
+	.byte	1,5,32,9
+	.half	.L253-.L252
+	.byte	1,5,13,9
+	.half	.L254-.L253
+	.byte	3,1,1,5,27,9
+	.half	.L255-.L254
+	.byte	1,5,25,9
+	.half	.L256-.L255
+	.byte	1,5,13,9
+	.half	.L257-.L256
+	.byte	3,1,1,5,41,9
+	.half	.L258-.L257
+	.byte	1,5,39,9
+	.half	.L259-.L258
+	.byte	1,5,32,9
+	.half	.L260-.L259
+	.byte	3,1,1,5,26,9
+	.half	.L261-.L260
+	.byte	1,5,32,9
+	.half	.L262-.L261
+	.byte	1,5,13,9
+	.half	.L263-.L262
+	.byte	3,1,1,5,41,9
+	.half	.L264-.L263
+	.byte	1,5,39,9
+	.half	.L265-.L264
+	.byte	1,5,13,9
+	.half	.L266-.L265
+	.byte	3,1,1,5,37,9
+	.half	.L267-.L266
+	.byte	1,5,35,9
+	.half	.L268-.L267
+	.byte	1,5,1,9
+	.half	.L28-.L268
+	.byte	3,3,1,7,9
+	.half	.L65-.L28
+	.byte	0,1,1
+.L227:
+	.sdecl	'.debug_ranges',debug,cluster('task2_tast_dis')
+	.sect	'.debug_ranges'
+.L64:
+	.word	-1,.L42,0,.L65-.L42,0,0
+	.sdecl	'.debug_info',debug,cluster('task4_test_distance')
+	.sect	'.debug_info'
+.L66:
+	.word	214
+	.half	3
+	.word	.L67
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
+	.word	.L69,.L68
+	.byte	2
+	.word	.L47
+	.byte	3
+	.byte	'task4_test_distance',0,1,167,1,6,1,1,1
+	.word	.L44,.L114,.L43
+	.byte	4
+	.word	.L44,.L114
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('task4_test_distance')
+	.sect	'.debug_abbrev'
+.L67:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('task4_test_distance')
+	.sect	'.debug_line'
+.L68:
+	.word	.L270-.L269
+.L269:
+	.half	3
+	.word	.L272-.L271
+.L271:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../Core/cheju.c',0,0,0,0,0
+.L272:
+	.byte	5,8,7,0,5,2
+	.word	.L44
+	.byte	3,167,1,1,5,5,9
+	.half	.L273-.L44
+	.byte	1,5,12,7,9
+	.half	.L274-.L273
+	.byte	3,1,1,5,18,9
+	.half	.L275-.L274
+	.byte	1,5,30,9
+	.half	.L276-.L275
+	.byte	1,5,12,9
+	.half	.L277-.L276
+	.byte	1,5,37,7,9
+	.half	.L278-.L277
+	.byte	1,5,43,9
+	.half	.L279-.L278
+	.byte	1,5,55,9
+	.half	.L280-.L279
+	.byte	1,5,53,9
+	.half	.L281-.L280
+	.byte	1,5,62,7,9
+	.half	.L282-.L281
+	.byte	1,5,72,9
+	.half	.L283-.L282
+	.byte	1,5,79,9
+	.half	.L284-.L283
+	.byte	1,5,77,9
+	.half	.L285-.L284
+	.byte	1,5,13,9
+	.half	.L286-.L285
+	.byte	3,1,1,5,34,9
+	.half	.L287-.L286
+	.byte	1,5,32,9
+	.half	.L288-.L287
+	.byte	1,5,13,9
+	.half	.L289-.L288
+	.byte	3,1,1,5,34,9
+	.half	.L290-.L289
+	.byte	1,5,32,9
+	.half	.L291-.L290
+	.byte	1,5,13,9
+	.half	.L292-.L291
+	.byte	3,1,1,5,34,9
+	.half	.L293-.L292
+	.byte	1,5,32,9
+	.half	.L294-.L293
+	.byte	1,5,13,9
+	.half	.L295-.L294
+	.byte	3,1,1,5,34,9
+	.half	.L296-.L295
+	.byte	1,5,32,9
+	.half	.L297-.L296
+	.byte	1,5,13,9
+	.half	.L298-.L297
+	.byte	3,1,1,5,40,9
+	.half	.L299-.L298
+	.byte	1,5,38,9
+	.half	.L300-.L299
+	.byte	1,5,13,9
+	.half	.L301-.L300
+	.byte	3,1,1,5,41,9
+	.half	.L302-.L301
+	.byte	1,5,39,9
+	.half	.L303-.L302
+	.byte	1,5,32,9
+	.half	.L304-.L303
+	.byte	3,1,1,5,26,9
+	.half	.L305-.L304
+	.byte	1,5,32,9
+	.half	.L306-.L305
+	.byte	1,5,13,9
+	.half	.L307-.L306
+	.byte	3,1,1,5,37,9
+	.half	.L308-.L307
+	.byte	1,5,35,9
+	.half	.L309-.L308
+	.byte	1,5,1,9
+	.half	.L32-.L309
+	.byte	3,4,1,7,9
+	.half	.L70-.L32
+	.byte	0,1,1
+.L270:
+	.sdecl	'.debug_ranges',debug,cluster('task4_test_distance')
+	.sect	'.debug_ranges'
+.L69:
+	.word	-1,.L44,0,.L70-.L44,0,0
+	.sdecl	'.debug_info',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_info'
+.L71:
+	.word	220
+	.half	3
+	.word	.L72
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1
+	.word	.L74,.L73
+	.byte	2
+	.word	.L47
+	.byte	3
+	.byte	'task3_start_test_distance',0,1,185,1,7,1,1,1
+	.word	.L46,.L115,.L45
+	.byte	4
+	.word	.L46,.L115
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_abbrev'
+.L72:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_line'
+.L73:
+	.word	.L311-.L310
+.L310:
+	.half	3
+	.word	.L313-.L312
+.L312:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../Core/cheju.c',0,0,0,0,0
+.L313:
+	.byte	5,8,7,0,5,2
+	.word	.L46
+	.byte	3,185,1,1,5,5,9
+	.half	.L314-.L46
+	.byte	1,5,1,7,9
+	.half	.L36-.L314
+	.byte	3,3,1,7,9
+	.half	.L75-.L36
+	.byte	0,1,1
+.L311:
+	.sdecl	'.debug_ranges',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_ranges'
+.L74:
+	.word	-1,.L46,0,.L75-.L46,0,0
+	.sdecl	'.debug_info',debug,cluster('radar1')
+	.sect	'.debug_info'
+.L76:
+	.word	178
+	.half	3
+	.word	.L77
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
+	.word	.L47
+	.byte	3
+	.byte	'radar1',0,36,10,17
+	.word	.L116
+	.byte	1,5,3
+	.word	radar1
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('radar1')
+	.sect	'.debug_abbrev'
+.L77:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('radar2')
+	.sect	'.debug_info'
+.L78:
+	.word	178
+	.half	3
+	.word	.L79
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
+	.byte	3
+	.byte	'radar2',0,36,11,17
+	.word	.L116
+	.byte	1,5,3
+	.word	radar2
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('radar2')
+	.sect	'.debug_abbrev'
+.L79:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('tast2_start_test_distance')
+	.sect	'.debug_info'
+.L80:
+	.word	198
+	.half	3
+	.word	.L81
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
 	.byte	3
 	.byte	'tast2_start_test_distance',0,36,138,1,15
-	.word	.L86
+	.word	.L117
 	.byte	1,5,3
 	.word	tast2_start_test_distance
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('tast2_start_test_distance')
 	.sect	'.debug_abbrev'
-.L62:
+.L81:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('task2_prepare_correct')
 	.sect	'.debug_info'
-.L63:
+.L82:
 	.word	194
 	.half	3
-	.word	.L64
+	.word	.L83
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
+	.word	.L47
 	.byte	3
 	.byte	'task2_prepare_correct',0,36,140,1,15
-	.word	.L87
+	.word	.L118
 	.byte	1,5,3
 	.word	task2_prepare_correct
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('task2_prepare_correct')
 	.sect	'.debug_abbrev'
-.L64:
+.L83:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('task2_start_correct')
 	.sect	'.debug_info'
-.L65:
+.L84:
 	.word	192
 	.half	3
-	.word	.L66
+	.word	.L85
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
+	.word	.L47
 	.byte	3
 	.byte	'task2_start_correct',0,36,141,1,15
-	.word	.L88
+	.word	.L119
 	.byte	1,5,3
 	.word	task2_start_correct
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('task2_start_correct')
 	.sect	'.debug_abbrev'
-.L66:
+.L85:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('does_task2_send_a_signal')
 	.sect	'.debug_info'
-.L67:
+.L86:
 	.word	197
 	.half	3
-	.word	.L68
+	.word	.L87
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
+	.word	.L47
 	.byte	3
 	.byte	'does_task2_send_a_signal',0,36,142,1,15
-	.word	.L89
+	.word	.L120
 	.byte	1,5,3
 	.word	does_task2_send_a_signal
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('does_task2_send_a_signal')
 	.sect	'.debug_abbrev'
-.L68:
+.L87:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('radar_active')
+	.sdecl	'.debug_info',debug,cluster('tast4_start_test_distance')
 	.sect	'.debug_info'
-.L69:
-	.word	183
+.L88:
+	.word	198
 	.half	3
-	.word	.L70
+	.word	.L89
 	.byte	4,1
 	.byte	'../Core/cheju.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
-	.word	.L38
+	.word	.L47
+	.byte	3
+	.byte	'tast4_start_test_distance',0,36,161,1,15
+	.word	.L121
+	.byte	1,5,3
+	.word	tast4_start_test_distance
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('tast4_start_test_distance')
+	.sect	'.debug_abbrev'
+.L89:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('task4_speed_adjust_start')
+	.sect	'.debug_info'
+.L90:
+	.word	197
+	.half	3
+	.word	.L91
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
+	.byte	3
+	.byte	'task4_speed_adjust_start',0,36,162,1,15
+	.word	.L122
+	.byte	1,5,3
+	.word	task4_speed_adjust_start
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('task4_speed_adjust_start')
+	.sect	'.debug_abbrev'
+.L91:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('task4_prepare_correct')
+	.sect	'.debug_info'
+.L92:
+	.word	194
+	.half	3
+	.word	.L93
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
+	.byte	3
+	.byte	'task4_prepare_correct',0,36,164,1,15
+	.word	.L123
+	.byte	1,5,3
+	.word	task4_prepare_correct
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('task4_prepare_correct')
+	.sect	'.debug_abbrev'
+.L93:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('task4_start_correct')
+	.sect	'.debug_info'
+.L94:
+	.word	192
+	.half	3
+	.word	.L95
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
+	.byte	3
+	.byte	'task4_start_correct',0,36,165,1,15
+	.word	.L124
+	.byte	1,5,3
+	.word	task4_start_correct
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('task4_start_correct')
+	.sect	'.debug_abbrev'
+.L95:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('tast3_start_test_distance_flag')
+	.sect	'.debug_info'
+.L96:
+	.word	203
+	.half	3
+	.word	.L97
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
+	.byte	3
+	.byte	'tast3_start_test_distance_flag',0,36,184,1,15
+	.word	.L125
+	.byte	1,5,3
+	.word	tast3_start_test_distance_flag
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('tast3_start_test_distance_flag')
+	.sect	'.debug_abbrev'
+.L97:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('radar_active')
+	.sect	'.debug_info'
+.L98:
+	.word	183
+	.half	3
+	.word	.L99
+	.byte	4,1
+	.byte	'../Core/cheju.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\Debug\\',0,12,1,2
+	.word	.L47
 	.byte	3
 	.byte	'radar_active',0,36,16,25
-	.word	.L74
+	.word	.L103
 	.byte	5,3
 	.word	radar_active
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('radar_active')
 	.sect	'.debug_abbrev'
-.L70:
+.L99:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
 	.sdecl	'.debug_loc',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_loc'
-.L34:
-	.word	-1,.L35,0,.L78-.L35
+.L39:
+	.word	-1,.L40,0,.L107-.L40
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L83:
-	.word	-1,.L35,.L96-.L35,.L97-.L35
+.L112:
+	.word	-1,.L40,.L132-.L40,.L133-.L40
 	.half	1
 	.byte	95
 	.word	0,0
-.L82:
-	.word	-1,.L35,.L95-.L35,.L19-.L35
+.L111:
+	.word	-1,.L40,.L131-.L40,.L19-.L40
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L79:
-	.word	-1,.L35,0,.L78-.L35
+.L108:
+	.word	-1,.L40,0,.L107-.L40
 	.half	1
 	.byte	100
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_loc'
-.L32:
-	.word	-1,.L33,0,.L71-.L33
+.L37:
+	.word	-1,.L38,0,.L100-.L38
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L73:
-	.word	-1,.L33,0,.L71-.L33
+.L102:
+	.word	-1,.L38,0,.L100-.L38
 	.half	1
 	.byte	84
 	.word	0,0
-.L77:
-	.word	-1,.L33,.L92-.L33,.L93-.L33
+.L106:
+	.word	-1,.L38,.L128-.L38,.L129-.L38
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L75:
-	.word	-1,.L33,.L90-.L33,.L91-.L33
+.L104:
+	.word	-1,.L38,.L126-.L38,.L127-.L38
 	.half	1
 	.byte	111
-	.word	.L11-.L33,.L94-.L33
+	.word	.L11-.L38,.L130-.L38
 	.half	1
 	.byte	111
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('task2_tast_dis')
 	.sect	'.debug_loc'
-.L36:
-	.word	-1,.L37,0,.L84-.L37
+.L41:
+	.word	-1,.L42,0,.L113-.L42
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_loc'
+.L45:
+	.word	-1,.L46,0,.L115-.L46
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('task4_test_distance')
+	.sect	'.debug_loc'
+.L43:
+	.word	-1,.L44,0,.L114-.L44
 	.half	2
 	.byte	138,0
 	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L233:
+.L315:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
@@ -44695,15 +45170,24 @@ does_task2_send_a_signal:	.type	object
 	.sdecl	'.debug_frame',debug,cluster('Radar_Feed_Byte')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L233,.L33,.L71-.L33
+	.word	.L315,.L38,.L100-.L38
 	.byte	8,19,8,20,8,21,8,22,8,23,0,0
 	.sdecl	'.debug_frame',debug,cluster('Radar_Distance_Judge')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L233,.L35,.L78-.L35
+	.word	.L315,.L40,.L107-.L40
 	.byte	8,18,8,19,8,21,8,22,8,23,0,0
 	.sdecl	'.debug_frame',debug,cluster('task2_tast_dis')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L233,.L37,.L84-.L37
+	.word	.L315,.L42,.L113-.L42
+	.sdecl	'.debug_frame',debug,cluster('task4_test_distance')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L315,.L44,.L114-.L44
+	.sdecl	'.debug_frame',debug,cluster('task3_start_test_distance')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L315,.L46,.L115-.L46
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
 	; Module end

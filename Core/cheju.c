@@ -137,7 +137,7 @@ void Radar_Distance_Judge(RadarInstance_t *r)
 
 volatile bool tast2_start_test_distance = false;
 
-volatile bool task2_prepare_correct = true;
+volatile bool task2_prepare_correct = false;
 volatile bool task2_start_correct = false;
 volatile bool does_task2_send_a_signal = false;
 void task2_tast_dis(void){
@@ -153,8 +153,38 @@ void task2_tast_dis(void){
             UART_PutChar(UART0,task_start_signal_from_me);
             tast2_start_test_distance = false;
             task2_prepare_correct = true;
+        }
+    }
+}
+
+
+volatile bool tast4_start_test_distance = false;
+volatile bool task4_speed_adjust_start = false;
+
+volatile bool task4_prepare_correct = false;
+volatile bool task4_start_correct = false;
+// Æðµã
+void task4_test_distance(void){
+    if(tast4_start_test_distance == true){
+        if(radar2.distance > 190 && radar2.distance < 300 && wheel_asix.yaw > 40){
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
+            task4_speed_adjust_start = true;
+            task_start_signal_from_me = 'C';
+            UART_PutChar(UART0,task_start_signal_from_me);
+            task4_prepare_correct = true;
 
         }
+    }
+}
+
+
+volatile bool tast3_start_test_distance_flag = false;
+ void task3_start_test_distance(void){
+    if(tast3_start_test_distance_flag == true){
+
     }
 }
 

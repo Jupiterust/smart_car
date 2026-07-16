@@ -74,6 +74,8 @@ uint8_t get_ir_pins_state_num(uint8_t ir_sensorx){
         }
         return count;
     }
+    else
+        return 0;
 }
 
 

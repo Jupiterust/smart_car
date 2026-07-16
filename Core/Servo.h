@@ -101,6 +101,8 @@ void TASK2_WATCH_DROP_WATER(void);
 void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void);
 
 
+void TASK4_WATCH_BALL(void);
+
 
 
 #endif /* CORE_SERVO_H_ */

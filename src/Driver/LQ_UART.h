@@ -214,7 +214,15 @@ extern volatile bool does_dummy_run;
 extern volatile uint8_t pick_times;
 extern volatile uint8_t put_times;
 extern volatile bool following_after_task1;
+
 extern volatile bool task2_start;
+
+
+typedef enum{
+    IDLE_BALL = 0,
+    BLUE_BALL = 1,
+    YELLOW_BALL = 2,
+}TASK4_BALL_STATE;
 
 #define HEADER 0xAA                         /* 起始符 */
 #define device_address 0x00     /* 设备地址 */
