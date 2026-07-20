@@ -262,15 +262,15 @@ extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S2[1];
 extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S3[1];
 extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S4[1];
 
-
-extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S1[1];
-extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S2[1];
-
-
-extern volatile coordinate_struct TASK3_SHOOT_IN_THREE_DIS_S[1];
-
-
-extern volatile coordinate_struct TASK3_SHOOT_IN_FOUR_DIS_S[1];
+//
+//extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S1[1];
+//extern volatile coordinate_struct TASK3_SHOOT_IN_TWO_DIS_S2[1];
+//
+//
+//extern volatile coordinate_struct TASK3_SHOOT_IN_THREE_DIS_S[1];
+//
+//
+//extern volatile coordinate_struct TASK3_SHOOT_IN_FOUR_DIS_S[1];
 
 
 extern volatile coordinate_struct TASK3_CORRECT_POS_S[2];
@@ -300,6 +300,7 @@ extern volatile float crossing_line_only_total_path;
 
 extern volatile int task1_bug_flag;
 
+extern volatile bool task3_shoot_start;
 
 
 void crossing_line_handle(void);

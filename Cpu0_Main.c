@@ -388,11 +388,8 @@ int core0_main (void)
         if(tast3_prepare_to_correct == true){
             delayms(50);
             tast3_start_to_correct = true;
-            delayms(8000);
-            TASK4_WATCH_BALL();
             tast3_prepare_to_correct = false;
-            tast3_prepare_to_shoot = false;
-            tast4_start_test_distance = true;
+
         }
 
         // task4

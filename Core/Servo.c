@@ -225,8 +225,8 @@ volatile bool does_start_moving_three_water_in_two = false;
 volatile bool task3_arrive_three_ball_done_in_one = false;
 volatile bool task3_arrive_three_ball_done_in_two = false;
 
-volatile bool task3_go_back_to_in_one = false;
-volatile bool task3_go_back_to_in_two = false;
+volatile bool task2_go_back_to_in_one = false;
+volatile bool task2_go_back_to_in_two = false;
 void TASK2_WATCH_DROP_WATER_NUMBER(void){
 
     SyncArray[0].angle =  task2_watch_drop_number_state[0];  SyncArray[0].interval_single = 1500;
@@ -619,7 +619,7 @@ void task2_pick_three(void){
         SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1400;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
 
-        task3_go_back_to_in_one = true;
+        task2_go_back_to_in_one = true;
 
         delayms(2000);
         // 放下
@@ -682,7 +682,7 @@ void task2_pick_three(void){
         SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1000;
         FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
         delayms(1500);
-        task3_go_back_to_in_two = true;
+        task2_go_back_to_in_two = true;
 
         delayms(2000);
 
@@ -783,7 +783,6 @@ void TASK3_STOP(void){
 }
 
 // TASK3
-
 volatile bool task3_shoot_arrive_s[4] = {0};
 // 移动触发旗标（由 WORKFLOW 置位，中断检测）
 
@@ -806,47 +805,54 @@ static void task3_shoot_then_reload(u16 reload_ms)
     TASK3_RELOAD_MS(reload_ms); // 立即开始装弹，后续可与移动并行
 }
 
+static bool task3_wait_move(u8 ch)
+{
+    u16 guard = 0;
+    while(task3_shoot_move_s[ch] == true){
+        delayms(5);
+        if(++guard > 1200){
+            task3_shoot_move_s[ch] = false;
+            motor_all_stop();
+            return false;
+        }
+    }
+    delayms(50);
+    return true;
+}
 
 void TASK3_WORKFLOW(volatile uint8_t* worm_record_array){
-    // 先打开马达电机
+    if(tast3_start_to_shoot == false)
+        return;
+    uint8_t all_target_num = 0;
+    uint16_t reload_time = 200;
+    uint8_t target_index_record[3] = {0};
+
     TASK3_START();
+    delayms(300);                     // ★ 等摩擦轮起速
+
     task3_shoot_move_s[0] = false;
     task3_shoot_move_s[1] = false;
     task3_shoot_move_s[2] = false;
     task3_shoot_move_s[3] = false;
-    uint8_t all_target_num = 0;
-    uint16_t reload_time = 200;
-    uint8_t target_index_record[3] = {0};
+
     for(uint8_t i = 1; i < 4; i++){
         if(worm_record_array[i] == 1){
+            target_index_record[all_target_num] = i;
             all_target_num++;
-            target_index_record[i - 1] = i;
         }
     }
-    // 只需要移动一次
+
     if(all_target_num == 1){
-
-        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = (target_index_record[0] *  6.43f);
-//        if(worm_record_array[1] == 1){
-//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 6.43f;
-//        }
-//        else if(worm_record_array[2] == 1){
-//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 12.86f;
-//        }
-//        else if(worm_record_array[3] == 1){
-//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 19.29f;
-//        }
-
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] * 6.43f;
     }
     else if(all_target_num == 2){
-        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path =  target_index_record[0] *  6.43f;
-        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0])*  6.43f;
-
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] * 6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0]) * 6.43f;
     }
     else if(all_target_num == 3){
-        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] *  6.43f;
-        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0])*  6.43f;
-        TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = (target_index_record[2] - target_index_record[1] ) *  6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] * 6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0]) * 6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = (target_index_record[2] - target_index_record[1]) * 6.43f;
     }
 
     if(worm_record_array[0] == 1){
@@ -855,42 +861,29 @@ void TASK3_WORKFLOW(volatile uint8_t* worm_record_array){
             goto task3_finish;
         }
     }
-    if(all_target_num == 1){
+
+    if(all_target_num >= 1){
         task3_shoot_move_s[1] = true;
-        while(task3_shoot_move_s[1] == true);
+        task3_wait_move(1);
         task3_shoot_then_reload(reload_time);
-        goto task3_finish;
     }
-    else if(all_target_num == 2){
-        task3_shoot_move_s[1] = true;
-        while(task3_shoot_move_s[1] == true);
-        task3_shoot_then_reload(reload_time);
-
+    if(all_target_num >= 2){
         task3_shoot_move_s[2] = true;
-        while(task3_shoot_move_s[2] == true);
+        task3_wait_move(2);
         task3_shoot_then_reload(reload_time);
-
-        goto task3_finish;
     }
-    else if(all_target_num == 3){
-        task3_shoot_move_s[1] = true;
-        while(task3_shoot_move_s[1] == true);
-        task3_shoot_then_reload(reload_time);
-
-        task3_shoot_move_s[2] = true;
-        while(task3_shoot_move_s[2] == true);
-        task3_shoot_then_reload(reload_time);
-
+    if(all_target_num >= 3){
         task3_shoot_move_s[3] = true;
-        while(task3_shoot_move_s[3] == true);
+        task3_wait_move(3);
         task3_shoot_then_reload(reload_time);
     }
 
-    task3_finish:{
-        TASK3_RELOAD_MS(reload_time);
-        delayms(100);
-        TASK3_STOP();
-    }
+task3_finish:
+    delayms(reload_time + 50);
+    TASK3_STOP();
+    tast3_start_to_shoot = false;
+    tast3_prepare_to_shoot = false;
+    tast4_start_test_distance = true;
 }
 
 

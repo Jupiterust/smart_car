@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(iconv -f GBK -t UTF-8 \"龙邱TC2XX3XX单片机资源分配.txt\")",
+      "Bash(iconv *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(echo \"rc=$?\")"
+    ]
+  }
+}

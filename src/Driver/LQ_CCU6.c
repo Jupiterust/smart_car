@@ -202,12 +202,12 @@ void CCU60_CH0_IRQHandler(void)
         return;
     }
 
-    if(task3_go_back_to_in_one == true){
+    if(task2_go_back_to_in_one == true){
         is_position_loop_done = false;
         position_loop((coordinate_struct *)task2_backward_to_three_ball_s_in_one);
         return;
     }
-    if(task3_go_back_to_in_two == true){
+    if(task2_go_back_to_in_two == true){
         is_position_loop_done = false;
         position_loop((coordinate_struct *)task2_backward_to_three_ball_s_in_two);
         return;
@@ -313,6 +313,7 @@ void CCU60_CH0_IRQHandler(void)
     if(following_after_task1){
         return;
     }
+    // 因为摄像头校准小车姿势时需要误差进行速度环积分，这里如果不清零就会导致移动过快，无法校准
     following_speed[0] = 0;
     following_speed[1] = 0;
     following_speed[2] = 0;

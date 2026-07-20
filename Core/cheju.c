@@ -185,6 +185,7 @@ void task4_test_distance(void){
 
 volatile bool tast3_start_test_distance_flag = false;
 volatile bool tast3_prepare_to_shoot = false;
+volatile bool tast3_start_to_shoot = false;
 volatile bool tast3_prepare_to_correct = false;
 volatile bool tast3_start_to_correct = false;
 
