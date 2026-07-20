@@ -231,17 +231,15 @@ int core0_main (void)
     IIC_Init();
     delayms(2000);
     unsigned char res = Gyro_Chose();
-    printf("%d\r\n",res);
-
-    uint16_t  interval = 1000;
-    uint16_t power = 0;
-    FSUS_SetServoAngle(servo_usart, 1, 0.0f, interval, power);
+//  printf("%d\r\n",res);
+    DUMMY_INIT();
+    FSUS_SetServoAngle(servo_usart, 1, 0.0f, 1000, 0);
     delayms(20);
-    FSUS_SetServoAngle(servo_usart, 2, 126.50f, 2000, power);//-169
+    FSUS_SetServoAngle(servo_usart, 2, 126.50f, 2000, 0);//-169
     delayms(20);
-    FSUS_SetServoAngle(servo_usart, 3, -75.0f, interval, power);//-108
+    FSUS_SetServoAngle(servo_usart, 3, -75.0f, 1000, 0);//-108
     delayms(20);
-    FSUS_SetServoAngle(servo_usart, 4, 75.0f, interval, power);//76
+    FSUS_SetServoAngle(servo_usart, 4, 75.0f, 1000, 0);//76
     delayms(20);
     my_dummy.pump_state = PUMP_ON;
     air_pump_pick_up();
@@ -276,21 +274,18 @@ int core0_main (void)
 #endif
     encoder_clear();
     PID_init();
+    all_task_position_loop_init();
+
+
     LED_Ctrl(LEDALL, RVS);        //电平翻转,LED闪烁
 
     CCU6_InitConfig(CCU60,CCU6_Channel0,   5000);       // 5000us = 5ms //  速度环 位置环
     CCU6_InitConfig(CCU60,CCU6_Channel1, 100000);       // 100ms        //  led闪烁state system clock
     CCU6_InitConfig(CCU61,CCU6_Channel0,   1000);       // 1000us = 1ms //  icm 积分z
-    task1_get_put_position_loop_init();
-    task1_get_pick_position_loop_init();
 
-    task1_all_position_loop_init();
-    task2_all_position_loop_init();
-    task3_correct_position_before_shoot_init();
-    delayms(600);
+
 
     delayms(300);
-    DUMMY_INIT();
 
     PIN_InitConfig(P15_1, IfxPort_Mode_inputNoPullDevice, 0);
     // P10_2 P11_10 P11_6 P11_3 P13_3 P13_2 P13_0 P15_1
@@ -320,7 +315,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = true;
+    following_flow_start = false;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw矫正还未开启
 
@@ -331,6 +326,10 @@ int core0_main (void)
     static bool runs_only_once2 = true;
     does_task_work_flow_start = false;
     UART_PutChar(UART1,task_start_signal_from_me);
+
+    task2_current_state = TASK2_SECOND_CALIBRATION;
+    does_task_work_flow_start = true;
+    TASK2_DROP_COUNT = 3;
     //tast4_start_test_distance = true;
     //task4_speed_adjust_start = false;
 ///    tast3_start_test_distance_flag = true;
@@ -371,9 +370,7 @@ int core0_main (void)
 //        if(temp_task2_to_next_point[2] == true){
 //            task2_start = false;
 //        }
-        if(temp_flag1 == false && following_flow_start == false){
-            temp_flag1 = true;
-        }
+
         if(does_task2_dummy_move == true && runs_only_once2 == true){
             runs_only_once2 = false;
             tast2_start_test_distance = true;
@@ -390,7 +387,7 @@ int core0_main (void)
             delayms(50);
             tast3_start_to_correct = true;
             delayms(8000);
-
+            TASK4_WATCH_BALL();
             tast3_prepare_to_correct = false;
             tast3_prepare_to_shoot = false;
             tast4_start_test_distance = true;
@@ -401,7 +398,6 @@ int core0_main (void)
             task4_prepare_correct = false;
             delayms(50);
             task4_start_correct = true;
-            TASK4_WATCH_BALL();
 
         }
         TASK1_PICK_OBJECT_UP_SYN();
@@ -452,6 +448,7 @@ int core0_main (void)
 
 
         // 1 0 4 0 1
+        // 0 0 1 1 1
         sprintf(txt,"%d %d %d %d %d  ", task2_start,temp_test_flag, task2_current_state, does_task_work_flow_start, this_function_only_runs_once1);
         TFTSPI_P8X16Str(1, 7, txt, u16WHITE, u16BLACK);
         sprintf(txt, "db:%d %d %d ", task2_start, did_this_work, TASK2_DROP_COUNT);
@@ -475,16 +472,16 @@ int core0_main (void)
         }
         if(BT_flag_set){
             if(BT_flag_set == 1){
-                FSUS_SetServoAngle(servo_usart, 1, servo_angle[0], interval, power);
-                FSUS_SetServoAngle(servo_usart, 2, servo_angle[1], interval, power);
-                FSUS_SetServoAngle(servo_usart, 3, servo_angle[2], interval, power);
-                FSUS_SetServoAngle(servo_usart, 4, servo_angle[3], interval, power);
+                FSUS_SetServoAngle(servo_usart, 1, servo_angle[0], 1000, 0);
+                FSUS_SetServoAngle(servo_usart, 2, servo_angle[1], 1000, 0);
+                FSUS_SetServoAngle(servo_usart, 3, servo_angle[2], 1000, 0);
+                FSUS_SetServoAngle(servo_usart, 4, servo_angle[3], 1000, 0);
             }
             else if(BT_flag_set == 2){
-                 FSUS_SetServoAngle(servo_usart, 1, servo_angle[0], 1500, power);
-                 FSUS_SetServoAngle(servo_usart, 2, servo_angle[1], 1500, power);
-                 FSUS_SetServoAngle(servo_usart, 3, servo_angle[2], 1500, power);
-                 FSUS_SetServoAngle(servo_usart, 4, servo_angle[3], 1500, power);
+                 FSUS_SetServoAngle(servo_usart, 1, servo_angle[0], 1500, 0);
+                 FSUS_SetServoAngle(servo_usart, 2, servo_angle[1], 1500, 0);
+                 FSUS_SetServoAngle(servo_usart, 3, servo_angle[2], 1500, 0);
+                 FSUS_SetServoAngle(servo_usart, 4, servo_angle[3], 1500, 0);
             }
             BT_flag_set =0;
         }

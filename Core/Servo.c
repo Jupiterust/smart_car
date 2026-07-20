@@ -219,8 +219,13 @@ volatile TASK2_STATE task2_current_state = TASK2_IDLE;
 volatile bool is_pick_three_drop_water = false;
 volatile bool is_pick_three_drop_water_in_first_half = false;
 volatile bool temp_task2_to_next_point[4] = {0};
+volatile bool does_start_moving_three_water_in_one = false;
+volatile bool does_start_moving_three_water_in_two = false;
+volatile bool task3_arrive_three_ball_done_in_one = false;
+volatile bool task3_arrive_three_ball_done_in_two = false;
 
-
+volatile bool task3_go_back_to_in_one = false;
+volatile bool task3_go_back_to_in_two = false;
 void TASK2_WATCH_DROP_WATER_NUMBER(void){
 
     SyncArray[0].angle =  task2_watch_drop_number_state[0];  SyncArray[0].interval_single = 1500;
@@ -264,7 +269,7 @@ void task2_pick_one(void){
 
     delayms(1540);
     // 抓取完毕，进入中间状态
-    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1600;
+    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1400;
 
     SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
 
@@ -335,7 +340,7 @@ void task2_pick_two(void){
 
     delayms(1600);
     // 抓取完毕，进入中间状态
-    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1600;
+    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1500;
 
     SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
 
@@ -369,7 +374,7 @@ void task2_pick_two(void){
     SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 100;
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
     delayms(700);
-    SyncArray[0].angle = task2_watch_drop_state[0];  SyncArray[0].interval_single = 400;
+    SyncArray[0].angle =  task2_watch_drop_state[0]; SyncArray[0].interval_single = 400;
 
     SyncArray[1].angle =  task2_watch_drop_state[1]; SyncArray[1].interval_single = 500;
 
@@ -393,7 +398,7 @@ void task2_pick_two(void){
     delayms(1600);
 
     // 第二次抓取完毕，进入中间状态
-    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1800;
+    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1500;
 
     SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
 
@@ -449,8 +454,22 @@ void task2_pick_two(void){
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
     delayms(400);
 }
-void task2_pick_three(void){
 
+
+
+void task2_pick_three(void){
+    if(does_start_moving_three_water_in_one == true){
+        return;
+    }
+    if(does_start_moving_three_water_in_two == true){
+        return;
+    }
+    if(task3_arrive_three_ball_done_in_one == true){
+        goto PICK_UP_THREE_BALL_IN_ONE;
+    }
+    if(task3_arrive_three_ball_done_in_two == true){
+        goto PICK_UP_THREE_BALL_IN_TWO;
+    }
     my_dummy.pump_state = PUMP_ON;
     air_pump_pick_up();
     SyncArray[0].angle =  task2_pick_drop_one_up[0];  SyncArray[0].interval_single = 10;
@@ -488,7 +507,7 @@ void task2_pick_three(void){
     air_pump_pick_up();
            // 放下
     delayms(400);
-           // 抓取完毕，进入中间状态
+           // 放置完毕，进入中间状态后进入看水滴状态
     SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 10;
 
     SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 400;
@@ -521,16 +540,16 @@ void task2_pick_three(void){
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
     delayms(1600);
 
-           // 第二次抓取完毕，进入中间状态
-    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1200;
+    // 第二次抓取完毕，进入中间状态
+    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1500;
 
-    SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
+    SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
 
-    SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 500;
+    SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1400;
 
-    SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 500;
+    SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1400;
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
-    delayms(1500);
+    delayms(1800);
 
     // 放下
     SyncArray[0].angle =  task2_put_drop_two_down[0];  SyncArray[0].interval_single = 10;
@@ -547,22 +566,153 @@ void task2_pick_three(void){
     // 放下
     delayms(600);
 
-    // 抓取完毕，进入看水滴状态
-    SyncArray[0].angle =  task2_watch_drop_number_state[0];  SyncArray[0].interval_single = 10;
+    // 放置完毕，进入中间状态后进入看水滴状态
+    SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 10;
 
-    SyncArray[1].angle =  task2_watch_drop_number_state[1];  SyncArray[1].interval_single = 300;
+    SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 400;
 
-    SyncArray[2].angle =  task2_watch_drop_number_state[2];  SyncArray[2].interval_single = 300;
+    SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 100;
 
-    SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 300;
+    SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 100;
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    delayms(700);
+    SyncArray[0].angle = task2_watch_drop_state[0];  SyncArray[0].interval_single = 400;
+
+    SyncArray[1].angle =  task2_watch_drop_state[1]; SyncArray[1].interval_single = 500;
+
+    SyncArray[2].angle =  task2_watch_drop_state[2]; SyncArray[2].interval_single = 10;
+
+    SyncArray[3].angle =  task2_watch_drop_state[3]; SyncArray[3].interval_single = 10;
+    FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+    delayms(800);
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
     delayms(400);
     if(task2_current_state == TASK2_SECOND_CALIBRATION){
-        ;
+        does_start_moving_three_water_in_two = true;
+        return;
     }
     else if(task2_current_state == TASK2_CALIBRATION){
-        ;
+        does_start_moving_three_water_in_one = true;
+        return;
     }
+    PICK_UP_THREE_BALL_IN_ONE:{
+        my_dummy.pump_state = PUMP_ON;
+        air_pump_pick_up();
+        SyncArray[0].angle =  task2_pick_drop_two_up[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_pick_drop_two_up[1];  SyncArray[1].interval_single = 500;
+
+        SyncArray[2].angle =  task2_pick_drop_two_up[2];  SyncArray[2].interval_single = 10;
+
+        SyncArray[3].angle =  task2_pick_drop_two_up[3];  SyncArray[3].interval_single = 10;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(1600);
+
+        // 第二次抓取完毕，进入中间状态
+        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1500;
+
+        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 1;
+
+        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1400;
+
+        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1400;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+
+        task3_go_back_to_in_one = true;
+
+        delayms(2000);
+        // 放下
+        SyncArray[0].angle =  task2_put_drop_three_down[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_put_drop_three_down[1];  SyncArray[1].interval_single = 500;
+
+        SyncArray[2].angle =  task2_put_drop_three_down[2];  SyncArray[2].interval_single = 10;
+
+        SyncArray[3].angle =  task2_put_drop_three_down[3];  SyncArray[3].interval_single = 10;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(1200);
+        my_dummy.pump_state = PUMP_OFF;
+        air_pump_pick_up();
+        // 放下
+        delayms(600);
+        if(task2_current_state == TASK2_CALIBRATION){
+            task2_current_state  = TASK2_GO_NEXT_HALF;
+            temp_test_flag  = 1;
+            task2_start = false;
+            following_speed[0] = 19.8;
+            following_speed[1] = -19.8;
+            following_speed[2] = -19.8;
+            following_speed[3] = 19.8;
+        }
+        SyncArray[0].angle =  task2_watch_drop_number_state[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_watch_drop_number_state[1];  SyncArray[1].interval_single = 300;
+
+        SyncArray[2].angle =  task2_watch_drop_number_state[2];  SyncArray[2].interval_single = 300;
+
+        SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 300;
+
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(400);
+        goto THE_END;
+    }
+
+    PICK_UP_THREE_BALL_IN_TWO:{
+        my_dummy.pump_state = PUMP_ON;
+        air_pump_pick_up();
+        SyncArray[0].angle =  task2_pick_drop_two_up[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_pick_drop_two_up[1];  SyncArray[1].interval_single = 500;
+
+        SyncArray[2].angle =  task2_pick_drop_two_up[2];  SyncArray[2].interval_single = 10;
+
+        SyncArray[3].angle =  task2_pick_drop_two_up[3];  SyncArray[3].interval_single = 10;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(1600);
+
+
+        // 第二次抓取完毕，进入中间状态
+        SyncArray[0].angle =  task2_middle_state[0];  SyncArray[0].interval_single = 1200;
+
+        SyncArray[1].angle =  task2_middle_state[1];  SyncArray[1].interval_single = 10;
+
+        SyncArray[2].angle =  task2_middle_state[2];  SyncArray[2].interval_single = 1000;
+
+        SyncArray[3].angle =  task2_middle_state[3];  SyncArray[3].interval_single = 1000;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(1500);
+        task3_go_back_to_in_two = true;
+
+        delayms(2000);
+
+        // 放下
+        SyncArray[0].angle =  task2_put_drop_three_down[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_put_drop_three_down[1];  SyncArray[1].interval_single = 500;
+
+        SyncArray[2].angle =  task2_put_drop_three_down[2];  SyncArray[2].interval_single = 10;
+
+        SyncArray[3].angle =  task2_put_drop_three_down[3];  SyncArray[3].interval_single = 10;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(1200);
+        my_dummy.pump_state = PUMP_OFF;
+        air_pump_pick_up();
+        // 放下
+        delayms(600);
+        SyncArray[0].angle =  task2_watch_drop_number_state[0];  SyncArray[0].interval_single = 10;
+
+        SyncArray[1].angle =  task2_watch_drop_number_state[1];  SyncArray[1].interval_single = 300;
+
+        SyncArray[2].angle =  task2_watch_drop_number_state[2];  SyncArray[2].interval_single = 300;
+
+        SyncArray[3].angle =  task2_watch_drop_number_state[3];  SyncArray[3].interval_single = 300;
+
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+        delayms(400);
+        goto THE_END;
+       }
+
+
 //    if(is_pick_three_drop_water ==  false){
 //        is_pick_three_drop_water = true;
 //        if(task2_current_state > TASK2_GO_NEXT_HALF){
@@ -575,7 +725,11 @@ void task2_pick_three(void){
 //   if(is_pick_three_drop_water == true){
 //       return;
 //   }
+    THE_END:{
+        ;
+    }
 }
+
 void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     if(task2_current_state == TASK2_IDLE || task2_current_state == TASK2_GO_NEXT_HALF)
     { return;}
@@ -584,6 +738,7 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     if(task2_current_state == TASK2_FINISH){
         task2_start = false;
         return;}
+
     if(TASK2_DROP_COUNT == 1){
         task2_pick_one();
     }
@@ -592,6 +747,12 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     }
     else if(TASK2_DROP_COUNT == 3){
         task2_pick_three();
+    }
+    if(does_start_moving_three_water_in_one == true){
+        return;
+    }
+    if(does_start_moving_three_water_in_two == true){
+        return;
     }
     if(task2_current_state == TASK2_SECOND_CALIBRATION){
         task2_current_state = TASK2_FINISH;
@@ -612,9 +773,8 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
 //task4
 volatile float task3_watch_all_ball[4] = {180, -34, -23, 93};
 
-
 void TASK4_WATCH_BALL(void){
-    SyncArray[0].angle = task3_watch_all_ball[0];  SyncArray[0].interval_single =  10;
+    SyncArray[0].angle = task3_watch_all_ball[0];  SyncArray[0].interval_single = 1000;
 
     SyncArray[1].angle = task3_watch_all_ball[1];  SyncArray[1].interval_single = 500;
 
@@ -623,6 +783,16 @@ void TASK4_WATCH_BALL(void){
     SyncArray[3].angle = task3_watch_all_ball[3];  SyncArray[3].interval_single =  10;
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

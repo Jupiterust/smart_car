@@ -74,7 +74,13 @@ extern volatile bool does_task_work_flow_start;
 extern volatile bool task2_finish_half;
 extern volatile uint8_t task2_all_done;
 extern  volatile bool temp_task2_to_next_point[4];
+extern volatile bool does_start_moving_three_water_in_one;
+extern volatile bool does_start_moving_three_water_in_two;
+extern volatile bool task3_arrive_three_ball_done_in_one;
+extern volatile bool task3_arrive_three_ball_done_in_two;
 
+extern volatile bool task3_go_back_to_in_one;
+extern volatile bool task3_go_back_to_in_two;
 typedef enum
 {
     TASK2_IDLE = 0,

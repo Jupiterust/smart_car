@@ -156,10 +156,10 @@ void PID_init(void){
     motor_pid.k_p[2] = 4.6f;
     motor_pid.k_p[3] = 4.6f;
 
-    motor_pid.k_i[0] = 20.951f;
-    motor_pid.k_i[1] = 20.951f;
-    motor_pid.k_i[2] = 20.951f;
-    motor_pid.k_i[3] = 20.951f;
+    motor_pid.k_i[0] = 22.951f;
+    motor_pid.k_i[1] = 22.951f;
+    motor_pid.k_i[2] = 22.951f;
+    motor_pid.k_i[3] = 22.951f;
 
     motor_pid.k_d[0] = 1.0f;
     motor_pid.k_d[1] = 1.0f;
@@ -168,6 +168,7 @@ void PID_init(void){
 
     // 其余均已在创立时清零
 }
+
 inline void get_real_speed(int * encoder_value, float * actual_speed){
 
     actual_speed[0] = (float)encoder_value[0] *  2.507f;
@@ -924,6 +925,13 @@ void task1_all_position_loop_init(void){
 volatile coordinate_struct task2_to_next_half_S[3] = {0};
 
 volatile coordinate_struct task2_to_correct_S[2] = {0};
+
+volatile coordinate_struct task2_forward_to_three_ball_s_in_one[1] = {0};
+volatile coordinate_struct task2_backward_to_three_ball_s_in_one[1] = {0};
+
+volatile coordinate_struct task2_forward_to_three_ball_s_in_two[1] = {0};
+volatile coordinate_struct task2_backward_to_three_ball_s_in_two[1] = {0};
+
 void TASK2_CORRECT_INIT(void){
     task2_to_correct_S[0].target_speed.x_y[0] =  -12;
     task2_to_correct_S[0].target_speed.x_y[1] =  -12;
@@ -972,11 +980,59 @@ void TASK2_TO_NEXT_HALF_INIT(void){
 
 }
 
+void TASK2_GO_TO_THREE_BALL_INIT(void){
+    task2_forward_to_three_ball_s_in_one[0].target_speed.x_y[0] =  20;
+    task2_forward_to_three_ball_s_in_one[0].target_speed.x_y[1] =  20;
+    task2_forward_to_three_ball_s_in_one[0].target_speed.x_y[2] =  20;
+    task2_forward_to_three_ball_s_in_one[0].target_speed.x_y[3] =  20;
 
+    task2_forward_to_three_ball_s_in_one[0].flag = dis_start_x;
+
+    task2_forward_to_three_ball_s_in_one[0].delta_distance.x_y_path = 14.429f;
+
+    task2_forward_to_three_ball_s_in_one[0].next_flag = dis_idle;
+
+
+    task2_backward_to_three_ball_s_in_one[0].target_speed.x_y[0] =  -20;
+    task2_backward_to_three_ball_s_in_one[0].target_speed.x_y[1] =  -20;
+    task2_backward_to_three_ball_s_in_one[0].target_speed.x_y[2] =  -20;
+    task2_backward_to_three_ball_s_in_one[0].target_speed.x_y[3] =  -20;
+
+    task2_backward_to_three_ball_s_in_one[0].flag = dis_start_x;
+
+    task2_backward_to_three_ball_s_in_one[0].delta_distance.x_y_path = 14.429f;
+
+    task2_backward_to_three_ball_s_in_one[0].next_flag = dis_idle;
+
+
+    task2_forward_to_three_ball_s_in_two[0].target_speed.x_y[0] =  -20;
+    task2_forward_to_three_ball_s_in_two[0].target_speed.x_y[1] =  -20;
+    task2_forward_to_three_ball_s_in_two[0].target_speed.x_y[2] =  -20;
+    task2_forward_to_three_ball_s_in_two[0].target_speed.x_y[3] =  -20;
+
+    task2_forward_to_three_ball_s_in_two[0].flag = dis_start_x;
+
+    task2_forward_to_three_ball_s_in_two[0].delta_distance.x_y_path = 14.429f;
+
+    task2_forward_to_three_ball_s_in_two[0].next_flag = dis_idle;
+
+
+    task2_backward_to_three_ball_s_in_two[0].target_speed.x_y[0] =  20;
+    task2_backward_to_three_ball_s_in_two[0].target_speed.x_y[1] =  20;
+    task2_backward_to_three_ball_s_in_two[0].target_speed.x_y[2] =  20;
+    task2_backward_to_three_ball_s_in_two[0].target_speed.x_y[3] =  20;
+
+    task2_backward_to_three_ball_s_in_two[0].flag = dis_start_x;
+
+    task2_backward_to_three_ball_s_in_two[0].delta_distance.x_y_path = 14.429f;
+
+    task2_backward_to_three_ball_s_in_two[0].next_flag = dis_idle;
+}
 
 void task2_all_position_loop_init(void){
     TASK2_TO_NEXT_HALF_INIT();
     TASK2_CORRECT_INIT();
+    TASK2_GO_TO_THREE_BALL_INIT();
     point_number = 5;
 }
 
@@ -1140,9 +1196,109 @@ void task3_correct_position_before_shoot_init(void){
 }
 
 
+volatile coordinate_struct TASK4_STEP_MOVE1[1] = {0};
+
+volatile coordinate_struct TASK4_STEP_MOVE2[1] = {0};
+volatile coordinate_struct TASK4_STEP_MOVE3[1] = {0};
+volatile coordinate_struct TASK4_STEP_MOVE4[1] = {0};
+volatile coordinate_struct TASK4_STEP_MOVE5[1] = {0};
+volatile coordinate_struct TASK4_STEP_MOVE6[1] = {0};
+volatile coordinate_struct TASK4_STEP_MOVE7[1] = {0};
+void task4_step_move_init(void){
+    TASK4_STEP_MOVE1[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE1[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE1[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE1[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE1[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE1[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE1[0].next_flag = dis_start_y;
+
+
+    TASK4_STEP_MOVE2[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE2[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE2[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE2[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE2[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE2[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE2[0].next_flag = dis_start_y;
+
+
+    TASK4_STEP_MOVE3[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE3[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE3[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE3[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE3[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE3[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE3[0].next_flag = dis_start_y;
+
+
+    TASK4_STEP_MOVE4[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE4[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE4[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE4[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE4[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE4[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE4[0].next_flag = dis_start_y;
+
+
+    TASK4_STEP_MOVE5[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE5[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE5[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE5[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE5[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE5[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE5[0].next_flag = dis_start_y;
 
 
 
+    TASK4_STEP_MOVE6[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE6[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE6[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE6[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE6[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE6[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE6[0].next_flag = dis_start_y;
+
+
+
+    TASK4_STEP_MOVE7[0].target_speed.x_y[0] =  15;
+    TASK4_STEP_MOVE7[0].target_speed.x_y[1] =  15;
+    TASK4_STEP_MOVE7[0].target_speed.x_y[2] =  15;
+    TASK4_STEP_MOVE7[0].target_speed.x_y[3] =  15;
+
+    TASK4_STEP_MOVE7[0].flag = dis_start_x;
+
+    TASK4_STEP_MOVE7[0].delta_distance.x_y_path = 4.929f;
+
+    TASK4_STEP_MOVE7[0].next_flag = dis_start_y;
+}
+
+
+
+void all_task_position_loop_init(void){
+    task1_all_position_loop_init();
+    task2_all_position_loop_init();
+    task3_correct_position_before_shoot_init();
+    task4_step_move_init();
+}
 
 
 void angle_stable(float angle){
@@ -1251,6 +1407,22 @@ void position_loop(coordinate_struct *Points){
             }
             if(tast3_start_to_correct == true){
                 tast3_start_to_correct = false;
+            }
+            if(does_start_moving_three_water_in_one == true){
+                does_start_moving_three_water_in_one = false;
+                task3_arrive_three_ball_done_in_one = true;
+            }
+
+            if(does_start_moving_three_water_in_two == true){
+                does_start_moving_three_water_in_two = false;
+                task3_arrive_three_ball_done_in_two = true;
+            }
+            if(task3_go_back_to_in_one == true){
+                task3_go_back_to_in_one = false;
+            }
+
+            if(task3_go_back_to_in_two == true){
+                task3_go_back_to_in_two = false;
             }
             break;
             /*
@@ -1455,6 +1627,23 @@ void position_loop(coordinate_struct *Points){
             if(task2_start_correct == true){
                 task2_start_correct = false;
                 does_task2_send_a_signal =true;
+            }
+
+            if(does_start_moving_three_water_in_one == true){
+                does_start_moving_three_water_in_one = false;
+                task3_arrive_three_ball_done_in_one = true;
+            }
+            if(does_start_moving_three_water_in_two == true){
+                does_start_moving_three_water_in_two = false;
+                task3_arrive_three_ball_done_in_two = true;
+            }
+
+            if(task3_go_back_to_in_one == true){
+                task3_go_back_to_in_one = false;
+            }
+
+            if(task3_go_back_to_in_two == true){
+                task3_go_back_to_in_two = false;
             }
 //            if(temp_test_flag == 1){
 //                does_task_work_flow_start = false;

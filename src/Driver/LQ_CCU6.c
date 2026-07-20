@@ -189,7 +189,28 @@ void CCU60_CH0_IRQHandler(void)
         is_position_loop_done = false;
         position_loop((coordinate_struct *)TASK3_CORRECT_POS_S);
         return;
+    }
 
+    if(does_start_moving_three_water_in_one == true){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_forward_to_three_ball_s_in_one);
+        return;
+    }
+    if(does_start_moving_three_water_in_two == true){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_forward_to_three_ball_s_in_two);
+        return;
+    }
+
+    if(task3_go_back_to_in_one == true){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_backward_to_three_ball_s_in_one);
+        return;
+    }
+    if(task3_go_back_to_in_two == true){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)task2_backward_to_three_ball_s_in_two);
+        return;
     }
 //    if(temp_test_flag == 1){
 //        did_this_work++;
@@ -205,11 +226,11 @@ void CCU60_CH0_IRQHandler(void)
     if(following_after_task1 == true)
         crossing_line_handle();
     if(is_crossing_line1 == true){
-        following_speed[0] = 22;
-        following_speed[1] = 22;
-        following_speed[2] = 22;
-        following_speed[3] = 22;
-        angle_correct(0.0f,18);
+        following_speed[0] = 26;
+        following_speed[1] = 26;
+        following_speed[2] = 26;
+        following_speed[3] = 26;
+        angle_correct(0.0f,22);
     }
     if(is_crossing_line2 == true){
         following_speed[0] = 26;
@@ -237,10 +258,10 @@ void CCU60_CH0_IRQHandler(void)
     }
     if(task1_y_correct_start2 == true){
         if(get_ir_pins_state_num(IR_SENSOR2) < 2){
-            following_speed[0] = -4.7;
-            following_speed[1] =  4.7;
-            following_speed[2] =  4.7;
-            following_speed[3] = -4.7;
+            following_speed[0] = -5.7;
+            following_speed[1] =  5.7;
+            following_speed[2] =  5.7;
+            following_speed[3] = -5.7;
 
             feedback_task1_y_ir2 = 1;
         }
@@ -253,11 +274,11 @@ void CCU60_CH0_IRQHandler(void)
             feedback_task1_y_ir2 = 2;
         }
     }
-    // y轴修正后再task1环节修正角度
-    if(task1_start_yaw_correction){
-        angle_correct(45,8);
-        // 内部又修正
-    }
+//    // y轴修正后再task1环节修正角度
+//    if(task1_start_yaw_correction){
+//        angle_correct(45,8);
+//        // 内部又修正
+//    }
 
     motor_speed_loop((float *)following_speed);
     if(task4_speed_adjust_start == true){
@@ -438,20 +459,20 @@ void CCU61_CH0_IRQHandler (void)
     if(temp_test_flag == 1){
         task2_start = false;
         temp_task2_cnt++;
-        if(temp_task2_cnt < 120){
+        if(temp_task2_cnt < 100){
             following_speed[0] = 23.8;
             following_speed[1] = -23.8;
             following_speed[2] = -23.8;
             following_speed[3] = 23.8;
 
         }
-        else if(temp_task2_cnt > 120){
+        else if(temp_task2_cnt > 100){
             following_speed[0] = 23.8;
             following_speed[1] = 23.8;
             following_speed[2] = 23.8;
             following_speed[3] = 23.8;
         }
-        if(temp_task2_cnt > 1500){
+        if(temp_task2_cnt > 1300){
             following_speed[0] = 0;
             following_speed[1] = 0;
             following_speed[2] = 0;

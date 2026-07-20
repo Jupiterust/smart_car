@@ -190,13 +190,8 @@ extern volatile bool is_position_loop_done;
 void position_init(void);
 void position_loop(coordinate_struct *Points);
 
-void task1_get_put_position_loop_init(void);
 
-void task1_get_pick_position_loop_init(void);
-
-void task1_all_position_loop_init(void);
-void angle_stable(float angle);
-void angle_correct(float angle, float limit);
+// task1
 extern volatile coordinate_struct task1_points_to_put[1];
 extern volatile coordinate_struct task1_points_to_pick[3];
 
@@ -232,12 +227,13 @@ extern volatile coordinate_struct task1_back_to_following_from_large_cy_S[2];
 
 extern volatile coordinate_struct following_flow1[4];
 
+void task1_get_put_position_loop_init(void);
+
+void task1_get_pick_position_loop_init(void);
+
+void task1_all_position_loop_init(void);
+
 // task2
-
-extern volatile coordinate_struct task2_to_correct_S[2];
-extern volatile coordinate_struct task2_to_next_half_S[3];
-
-void task2_all_position_loop_init(void);
 
 typedef enum{
     CROSS_NONE = 0,
@@ -248,6 +244,18 @@ typedef enum{
     CROSS_DONE,
 }cross_line_state_enum;
 
+
+extern volatile coordinate_struct task2_to_correct_S[2];
+extern volatile coordinate_struct task2_to_next_half_S[3];
+extern volatile coordinate_struct task2_forward_to_three_ball_s_in_one[1];
+extern volatile coordinate_struct task2_backward_to_three_ball_s_in_one[1];
+extern volatile coordinate_struct task2_forward_to_three_ball_s_in_two[1];
+extern volatile coordinate_struct task2_backward_to_three_ball_s_in_two[1];
+
+void task2_all_position_loop_init(void);
+
+
+// task3
 
 extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S1[1];
 extern volatile coordinate_struct TASK3_SHOOT_IN_ONE_DIS_S2[1];
@@ -270,12 +278,15 @@ extern volatile coordinate_struct TASK3_CORRECT_POS_S[2];
 
 void task3_correct_position_before_shoot_init(void);
 
+// task4
 
 
 
 
+void all_task_position_loop_init(void);
 
-
+void angle_stable(float angle);
+void angle_correct(float angle, float limit);
 
 
 extern volatile cross_line_state_enum cross_state;
@@ -288,6 +299,9 @@ extern volatile bool does_task3_start_to_count;
 extern volatile float crossing_line_only_total_path;
 
 extern volatile int task1_bug_flag;
+
+
+
 void crossing_line_handle(void);
 
 #endif /* CORE_MOTOR_H_ */

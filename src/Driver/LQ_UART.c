@@ -102,14 +102,14 @@ static uint8_t temp_buffer1[6] = {0};
 static uint8_t temp_buffer2[5] = {0};
 static uint8_t temp_buffer3[3] = {0};
 static uint8_t temp_buffer4[6] = {0};
+static uint8_t temp_buffer5[6] = {0};
 
-
-static uint8_t rx_count = 0;
-static uint8_t rx_count1 = 0;
-static uint8_t rx_count3 = 0;
-static uint8_t rx_count2 = 0;
-static uint8_t rx_count4 = 0;
-
+static uint8_t rx_count  = 0;    // 循迹
+static uint8_t rx_count1 = 0;   // 任务1
+static uint8_t rx_count3 = 0;   // 任务3
+static uint8_t rx_count2 = 0;   // 任务2
+static uint8_t rx_count4 = 0;   // 任务4
+static uint8_t rx_count5 = 0;   // 任务5
    // 循迹
 static float   current_deviation = 0.0f;
 // 误差可视化
@@ -162,6 +162,7 @@ void UART0_RX_IRQHandler(void)
                 else if (one_byte == 0x04) rx_count3 = 0, rx_state = 6;
                 else if (one_byte == 0x03) rx_count2 = 0, rx_state = 8;
                 else if (one_byte == 0x05) rx_count4 = 0, rx_state = 10;
+                else if (one_byte == 0x06) rx_count5 = 0, rx_state = 12;
                 // 0x03
                 // 0x04
                 // 任务3
@@ -423,6 +424,7 @@ void UART0_RX_IRQHandler(void)
                 break;
             }
             case 11:{
+// task4 任务4
                 rx_state = 0;
                 if (one_byte == 0x0D)
                 {
@@ -467,6 +469,15 @@ void UART0_RX_IRQHandler(void)
                     following_speed[2] = temp_speed[2];
                     following_speed[3] = temp_speed[3];
                 }
+                break;
+            }
+            case 12:{
+                temp_buffer5[rx_count5++] = one_byte;
+                if(rx_count5 >= 6) rx_state = 11;
+                break;
+            }
+            case 13:{
+
                 break;
             }
             default:
