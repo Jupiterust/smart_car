@@ -1,0 +1,29 @@
+# 编译产物
+Debug/
+Release/
+*.o
+*.d
+*.elf
+*.hex
+*.map
+*.lsl.pp
+*.mdf
+
+# TASKING / Eclipse
+.metadata/
+*.launch
+RemoteSystemsTempFiles/
+
+# 调试器
+*.wsx
+*.jlink
+
+# 系统 / 编辑器
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+*~
+
+# Claude Code 本地配置
+.claude/settings.local.json
