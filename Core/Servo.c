@@ -9,6 +9,7 @@
 #include "Servo.h"
 #include "motified_app.h"
 #include "cheju.h"
+#include "Motor.h"
 #define low_interval        500
 #define midium_interval     200
 #define high_interval       100
@@ -770,6 +771,130 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void){
     // 开始移动
 }
 
+
+void TASK3_START(void){
+    // 发送给另一个单片机打开马达电机
+    UART_PutChar(UART3,'A');
+}
+
+void TASK3_STOP(void){
+    // 发送给另一个单片机关闭马达电机
+     UART_PutChar(UART3,'B');
+}
+
+// TASK3
+
+volatile bool task3_shoot_arrive_s[4] = {0};
+// 移动触发旗标（由 WORKFLOW 置位，中断检测）
+
+volatile bool task3_shoot_move_s[4] = {0};
+// 舵机总线通信舵机推动发送子弹
+static void TASK3_SHOOT(void){
+    FSUS_SetServoAngle(servo_usart, 5, 75.0f, 10, 0);//76
+}
+
+//// 舵机总线通信舵机重新上子弹发送子弹
+static void TASK3_RELOAD_MS(u16 reload_ms){
+    FSUS_SetServoAngle(servo_usart, 5, 175.0f, reload_ms, 0);//76
+}
+
+
+static void task3_shoot_then_reload(u16 reload_ms)
+{
+    TASK3_SHOOT();          // 推弹到位 (75°, 10ms)
+    delayms(10);           // 等推弹动作稳定到位
+    TASK3_RELOAD_MS(reload_ms); // 立即开始装弹，后续可与移动并行
+}
+
+
+void TASK3_WORKFLOW(volatile uint8_t* worm_record_array){
+    // 先打开马达电机
+    TASK3_START();
+    task3_shoot_move_s[0] = false;
+    task3_shoot_move_s[1] = false;
+    task3_shoot_move_s[2] = false;
+    task3_shoot_move_s[3] = false;
+    uint8_t all_target_num = 0;
+    uint16_t reload_time = 200;
+    uint8_t target_index_record[3] = {0};
+    for(uint8_t i = 1; i < 4; i++){
+        if(worm_record_array[i] == 1){
+            all_target_num++;
+            target_index_record[i - 1] = i;
+        }
+    }
+    // 只需要移动一次
+    if(all_target_num == 1){
+
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = (target_index_record[0] *  6.43f);
+//        if(worm_record_array[1] == 1){
+//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 6.43f;
+//        }
+//        else if(worm_record_array[2] == 1){
+//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 12.86f;
+//        }
+//        else if(worm_record_array[3] == 1){
+//            TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance = 19.29f;
+//        }
+
+    }
+    else if(all_target_num == 2){
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path =  target_index_record[0] *  6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0])*  6.43f;
+
+    }
+    else if(all_target_num == 3){
+        TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] *  6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0])*  6.43f;
+        TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = (target_index_record[2] - target_index_record[1] ) *  6.43f;
+    }
+
+    if(worm_record_array[0] == 1){
+        task3_shoot_then_reload(reload_time);
+        if(all_target_num == 0){
+            goto task3_finish;
+        }
+    }
+    if(all_target_num == 1){
+        task3_shoot_move_s[1] = true;
+        while(task3_shoot_move_s[1] == true);
+        task3_shoot_then_reload(reload_time);
+        goto task3_finish;
+    }
+    else if(all_target_num == 2){
+        task3_shoot_move_s[1] = true;
+        while(task3_shoot_move_s[1] == true);
+        task3_shoot_then_reload(reload_time);
+
+        task3_shoot_move_s[2] = true;
+        while(task3_shoot_move_s[2] == true);
+        task3_shoot_then_reload(reload_time);
+
+        goto task3_finish;
+    }
+    else if(all_target_num == 3){
+        task3_shoot_move_s[1] = true;
+        while(task3_shoot_move_s[1] == true);
+        task3_shoot_then_reload(reload_time);
+
+        task3_shoot_move_s[2] = true;
+        while(task3_shoot_move_s[2] == true);
+        task3_shoot_then_reload(reload_time);
+
+        task3_shoot_move_s[3] = true;
+        while(task3_shoot_move_s[3] == true);
+        task3_shoot_then_reload(reload_time);
+    }
+
+    task3_finish:{
+        TASK3_RELOAD_MS(reload_time);
+        delayms(100);
+        TASK3_STOP();
+    }
+}
+
+
+
 //task4
 volatile float task3_watch_all_ball[4] = {180, -34, -23, 93};
 
@@ -783,7 +908,6 @@ void TASK4_WATCH_BALL(void){
     SyncArray[3].angle = task3_watch_all_ball[3];  SyncArray[3].interval_single =  10;
     FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
 }
-
 
 
 

@@ -544,3 +544,9 @@ Servo.o :	"E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h"
 "E:\\aurix\\Longqi_project\\LQ_Encoder__LIB\\src\\Driver\LQ_CCU6.h" :
 Servo.o :	..\Core\IR_sensor.h
 ..\Core\IR_sensor.h :
+Servo.o :	..\Core\Motor.h
+..\Core\Motor.h :
+Servo.o :	..\Core\Servo.h
+..\Core\Servo.h :
+Servo.o :	..\Core\cheju.h
+..\Core\cheju.h :

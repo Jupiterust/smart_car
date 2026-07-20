@@ -125,7 +125,7 @@ volatile u8 put_times = 0;
 volatile bool following_after_task1 = false;
 
     // task3
-volatile char worm_record_array[4] = {0};
+volatile u8 worm_record_array[4] = {0};
 
     // task2
 volatile bool task2_start = false;

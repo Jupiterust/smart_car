@@ -212,6 +212,22 @@ void CCU60_CH0_IRQHandler(void)
         position_loop((coordinate_struct *)task2_backward_to_three_ball_s_in_two);
         return;
     }
+    if(task3_shoot_move_s[1]){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)TASK3_SHOOT_IN_ONE_DIS_S1);
+        return;
+    }
+    if(task3_shoot_move_s[2]){
+         is_position_loop_done = false;
+         position_loop((coordinate_struct *)TASK3_SHOOT_IN_ONE_DIS_S2);
+         return;
+     }
+    if(task3_shoot_move_s[3]){
+         is_position_loop_done = false;
+         position_loop((coordinate_struct *)TASK3_SHOOT_IN_ONE_DIS_S3);
+         return;
+     }
+
 //    if(temp_test_flag == 1){
 //        did_this_work++;
 //        is_position_loop_done = false;

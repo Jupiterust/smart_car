@@ -108,6 +108,16 @@ void TASK2_WATCH_DROP_WATER(void);
 void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void);
 
 
+
+// task3
+// 移动触发旗标（由 WORKFLOW 置位，中断检测）
+extern volatile bool task3_shoot_move_s[4];
+
+// 到达确认旗标（由 dis_idle/dis_end 置位，WORKFLOW 轮询）
+extern volatile bool task3_shoot_arrive_s[4];
+
+
+
 void TASK4_WATCH_BALL(void);
 
 

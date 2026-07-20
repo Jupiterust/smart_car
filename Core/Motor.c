@@ -1104,7 +1104,7 @@ void task3_shoot_in_one_dis_init(void){
 
     TASK3_SHOOT_IN_ONE_DIS_S2[0].flag = dis_start_x;
 
-    TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = 4.929f;
+    TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = 8.929f;
 
     TASK3_SHOOT_IN_ONE_DIS_S2[0].next_flag = dis_idle;
 
@@ -1116,21 +1116,10 @@ void task3_shoot_in_one_dis_init(void){
 
     TASK3_SHOOT_IN_ONE_DIS_S3[0].flag = dis_start_x;
 
-    TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = 4.929f;
+    TASK3_SHOOT_IN_ONE_DIS_S3[0].delta_distance.x_y_path = 12.929f;
 
     TASK3_SHOOT_IN_ONE_DIS_S3[0].next_flag = dis_idle;
 
-
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[0] =  15;
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[1] =  15;
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[2] =  15;
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].target_speed.x_y[3] =  15;
-
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].flag = dis_start_x;
-
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].delta_distance.x_y_path = 4.929f;
-
-    TASK3_SHOOT_IN_ONE_DIS_S4[0].next_flag = dis_idle;
 }
 
 void task3_shoot_in_two_dis_init(void){
@@ -1424,6 +1413,17 @@ void position_loop(coordinate_struct *Points){
             if(task3_go_back_to_in_two == true){
                 task3_go_back_to_in_two = false;
             }
+
+            if(task3_shoot_move_s[1] == true){
+                task3_shoot_move_s[1] = false;
+            }
+            if(task3_shoot_move_s[2] == true){
+                task3_shoot_move_s[2] = false;
+            }
+            if(task3_shoot_move_s[3] == true){
+                task3_shoot_move_s[3] = false;
+            }
+
             break;
             /*
 //            Points[index].flag = dis_start_y;
@@ -1434,7 +1434,7 @@ void position_loop(coordinate_struct *Points){
 //                Points[index].speed[0] = 10;
 //                Points[index].speed[1] = 10;
 //                Points[index].speed[2] = 10;
-//                Points[index].speed[3] = 10;sa
+//                Points[index].speed[3] = 10;
 //            }
 //            else{
 //                Points[index].speed[0] = -10;
@@ -1645,6 +1645,17 @@ void position_loop(coordinate_struct *Points){
             if(task3_go_back_to_in_two == true){
                 task3_go_back_to_in_two = false;
             }
+
+            if(task3_shoot_move_s[1] == true){
+                task3_shoot_move_s[1] = false;
+            }
+            if(task3_shoot_move_s[2] == true){
+                task3_shoot_move_s[2] = false;
+            }
+            if(task3_shoot_move_s[3] == true){
+                task3_shoot_move_s[3] = false;
+            }
+
 //            if(temp_test_flag == 1){
 //                does_task_work_flow_start = false;
 //                task2_current_state = TASK2_SECOND_CALIBRATION;

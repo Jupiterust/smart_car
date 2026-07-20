@@ -315,7 +315,7 @@ int core0_main (void)
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;
-    following_flow_start = false;
+    following_flow_start = true;
     task1_y_correct_start1  = false;
     task1_start_yaw_correction = false; // yaw½ÃÕý»¹Î´¿ªÆô
 
@@ -327,11 +327,13 @@ int core0_main (void)
     does_task_work_flow_start = false;
     UART_PutChar(UART1,task_start_signal_from_me);
 
-    task2_current_state = TASK2_SECOND_CALIBRATION;
-    does_task_work_flow_start = true;
-    TASK2_DROP_COUNT = 3;
+//    task2_current_state = TASK2_SECOND_CALIBRATION;
+//    does_task_work_flow_start = true;
+//    TASK2_DROP_COUNT = 3;
+
     //tast4_start_test_distance = true;
     //task4_speed_adjust_start = false;
+
 ///    tast3_start_test_distance_flag = true;
 //    is_task1_wheels_moving_to_next_point = true;
 //    pick_times = 1;
