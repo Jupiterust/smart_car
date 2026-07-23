@@ -290,6 +290,7 @@ extern volatile coordinate_struct TASK4_STEP_MOVE7[2];
 
 extern volatile coordinate_struct TASK4_CORRECT_MOVE[2];
 
+void task4_step_move_init(void);
 void all_task_position_loop_init(void);
 
 void angle_stable(float angle);

@@ -318,6 +318,10 @@ int core0_main (void)
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
+//    UART_PutChar(UART3,'a');
+//    delayms(4000);
+//    UART_PutChar(UART3, 'b');
+
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
     //task2_start_correct = true;

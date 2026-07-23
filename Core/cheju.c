@@ -161,28 +161,6 @@ void task2_tast_dis(void){
 }
 
 
-volatile bool tast4_start_test_distance = false;
-volatile bool task4_speed_adjust_start = false;
-
-volatile bool task4_prepare_correct = false;
-volatile bool task4_start_correct = false;
-// ���
-void task4_test_distance(void){
-    if(tast4_start_test_distance == true){
-        if(radar2.distance > 190 && radar2.distance < 435 && wheel_asix.yaw > 435 && wheel_asix.yaw < 475){
-            tast4_start_test_distance = false;
-            following_speed[0] = 0;
-            following_speed[1] = 0;
-            following_speed[2] = 0;
-            following_speed[3] = 0;
-            task4_speed_adjust_start = true;
-            task_start_signal_from_me = 'C';
-            UART_PutChar(UART0,task_start_signal_from_me);
-            task4_prepare_correct = true;
-        }
-    }
-}
-
 
 volatile bool tast3_start_test_distance_flag = false;
 volatile bool tast3_prepare_to_shoot = false;
@@ -211,5 +189,50 @@ void task3_start_test_distance(void){
         }
     }
 }
+
+
+
+
+volatile bool tast4_start_test_distance = false;
+volatile bool task4_speed_adjust_start = false;
+
+volatile bool task4_prepare_correct = false;
+volatile bool task4_start_correct = false;
+// ���
+void task4_test_distance(void){
+    if(tast4_start_test_distance == true){
+        if(radar2.distance > 190 && radar2.distance < 435 && wheel_asix.yaw > 435 && wheel_asix.yaw < 475){
+            tast4_start_test_distance = false;
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
+            task4_speed_adjust_start = true;
+            task_start_signal_from_me = 'C';
+            UART_PutChar(UART0,task_start_signal_from_me);
+            task4_prepare_correct = true;
+        }
+    }
+}
+
+
+volatile bool task5_start_test_distance = false;
+
+void task5_test_distance(void){
+    if(tast4_start_test_distance == true){
+        if(radar2.distance > 190 && radar2.distance < 435 && wheel_asix.yaw > 525 && wheel_asix.yaw < 565){
+            tast4_start_test_distance = false;
+            following_speed[0] = 0;
+            following_speed[1] = 0;
+            following_speed[2] = 0;
+            following_speed[3] = 0;
+            task4_speed_adjust_start = true;
+            task_start_signal_from_me = 'D';
+            UART_PutChar(UART0,task_start_signal_from_me);
+            task4_prepare_correct = true;
+        }
+    }
+}
+
 
 

@@ -30,7 +30,6 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 #include "stdio.h"
 #include "LQ_GPIO.h"
 #include "string.h"
-#include "LQ_UART.h"
 #include "Motor.h"
 #include "stdbool.h"
 #define ASC_TX_BUFFER_SIZE 64        //发送缓冲区长度
@@ -39,7 +38,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 #include "fashion_star_uart_servo.h"
 #include "cheju.h"
 //串口通信结构体
-
+#include "Servo.h"
 IfxAsclin_Asc g_UartConfig[4];
 
 static uint8 s_AscTxBuffer[4][ASC_TX_BUFFER_SIZE + sizeof(Ifx_Fifo) + 8];
@@ -103,7 +102,7 @@ static uint8_t temp_buffer2[5] = {0};
 static uint8_t temp_buffer3[3] = {0};
 static uint8_t temp_buffer3_2[5] = {0};
 static uint8_t temp_buffer4[6] = {0};
-static uint8_t temp_buffer5[6] = {0};
+static uint8_t temp_buffer5[5] = {0};
 
 static uint8_t rx_count  = 0;    // 循迹
 static uint8_t rx_count1 = 0;   // 任务1
@@ -140,8 +139,8 @@ volatile bool does_task4_start_action = false;
 volatile uint8_t blue_ball_number = 0;
 
 volatile uint8_t yellow_ball_number = 0;
-
-
+    // task5
+volatile TASK5_COLOR_STATE  task5_current_color_state = 0;
 void UART0_RX_IRQHandler(void)
 {
     IfxAsclin_Asc_isrReceive(&g_UartConfig[0]);
@@ -482,13 +481,43 @@ void UART0_RX_IRQHandler(void)
             }
             case 12:{
                 temp_buffer5[rx_count5++] = one_byte;
-                if(rx_count5 >= 6) rx_state = 11;
+                if(rx_count5 >= 5) rx_state = 11;
                 break;
             }
             case 13:{
-
-
+// task5
+                rx_state = 0;
+                int16_t x_offset = (int16_t)((temp_buffer5[0]) | (temp_buffer5[1] << 8));
+                int16_t y_offset = (int16_t)((temp_buffer5[2]) | (temp_buffer5[3] << 8));
+                float x_offset_f = x_offset * 0.8;
+                float y_offset_f = y_offset * 0.8;
+                task5_current_color_state  = (TASK5_COLOR_STATE)temp_buffer5[4];
+                if(task5_current_color_state  != 0){
+                    following_speed[0] = 0;
+                    following_speed[1] = 0;
+                    following_speed[2] = 0;
+                    following_speed[3] = 0;
+                    return;
+                }
+                float temp_speed[4] = {0};
+                temp_speed[0] = x_offset_f - y_offset_f;
+                temp_speed[1] = x_offset_f + y_offset_f;
+                temp_speed[2] = x_offset_f + y_offset_f;
+                temp_speed[3] = x_offset_f - y_offset_f;
+                for(u8 i =0; i < 4; i++){
+                    if(temp_speed[i] > 20){
+                        temp_speed[i] = 20;
+                    }
+                    else if(temp_speed[i] < -20){
+                        temp_speed[i] = -20;
+                    }
+                }
+                following_speed[0] = temp_speed[0];
+                following_speed[1] = temp_speed[1];
+                following_speed[2] = temp_speed[2];
+                following_speed[3] = temp_speed[3];
                 break;
+
             }
             case 14:{
                 temp_buffer3_2[rx_count3_2++] = one_byte;
@@ -851,10 +880,10 @@ void UART3_TX_IRQHandler(void)
     IfxAsclin_Asc_isrTransmit(&g_UartConfig[3]);
 
     /* 用户代码 */
-    uint8_t ucTemp = 0;
-    Ifx_SizeT count = 1;
-    IfxAsclin_Asc_read(&g_UartConfig[3], &ucTemp, &count, TIME_INFINITE);
-    RingBuffer_Push(FSUS_Usart.recvBuf, ucTemp);// Put the received data into the buffer, no specific data processing in the interrupt
+//    uint8_t ucTemp = 0;
+//    Ifx_SizeT count = 1;
+//    IfxAsclin_Asc_read(&g_UartConfig[3], &ucTemp, &count, TIME_INFINITE);
+//    RingBuffer_Push(FSUS_Usart.recvBuf, ucTemp);// Put the received data into the buffer, no specific data processing in the interrupt
 
 }
 
@@ -982,7 +1011,7 @@ void UART_InitConfig(UART_RX_t RxPin, UART_TX_t TxPin, unsigned long baudrate)
             ascConfig.rxBufferSize = ASC_RX_BUFFER_SIZE;
 
             IfxAsclin_Asc_initModule(&g_UartConfig[IfxAsclin_getIndex(IfxAsclin_Tx->module)], &ascConfig);
-            IfxAsclin_Asc_initModuleConfig(&ascConfig, IfxAsclin_Tx->module);
+           // IfxAsclin_Asc_initModuleConfig(&ascConfig, IfxAsclin_Tx->module);
 
             IfxCpu_Irq_installInterruptHandler((void*)UartIrqFuncPointer[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3],     UartIrqPriority[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3]);
             IfxCpu_Irq_installInterruptHandler((void*)UartIrqFuncPointer[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3 + 1], UartIrqPriority[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3 + 1]);

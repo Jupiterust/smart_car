@@ -740,7 +740,7 @@ void task1_back_to_following_from_small_cy(void){
 
     task1_back_to_following_from_small_cy_S[1].flag = dis_start_y;
 
-    task1_back_to_following_from_small_cy_S[1].delta_distance.x_y_path = 7;
+    task1_back_to_following_from_small_cy_S[1].delta_distance.x_y_path = 8.;
 
 
 }
@@ -1280,11 +1280,20 @@ void task4_step_move_init(void){
 
     TASK4_CORRECT_MOVE[0].flag = dis_start_x;
 
-    TASK4_CORRECT_MOVE[0].delta_distance.x_y_path = 8.929f;
+    TASK4_CORRECT_MOVE[0].delta_distance.x_y_path = 4.929f;
 
     TASK4_CORRECT_MOVE[0].next_flag = dis_end;
 
+    TASK4_CORRECT_MOVE[1].target_speed.x_y[0] =  -15;
+    TASK4_CORRECT_MOVE[1].target_speed.x_y[1] =  15;
+    TASK4_CORRECT_MOVE[1].target_speed.x_y[2] =  15;
+    TASK4_CORRECT_MOVE[1].target_speed.x_y[3] =  -15;
 
+    TASK4_CORRECT_MOVE[1].flag = dis_start_x;
+
+    TASK4_CORRECT_MOVE[1].delta_distance.x_y_path = 3.929f;
+
+    TASK4_CORRECT_MOVE[1].next_flag = dis_end;
 }
 
 void all_task_position_loop_init(void){

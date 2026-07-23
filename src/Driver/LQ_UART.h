@@ -1,25 +1,25 @@
 /*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
-��ƽ    ̨�������������ܿƼ�TC264DA���İ�
-����    д��chiusir
-��E-mail��chiusir@163.com
-������汾��V1.2 ��Ȩ���У���λʹ��������ϵ��Ȩ
-�������¡�2023��6��6��
-�������Ϣ�ο����е�ַ��
-����    վ��http://www.lqist.cn
-���Ա����̡�http://longqiu.taobao.com
+【平    台】北京龙邱智能科技TC264DA核心板
+【编    写】chiusir
+【E-mail】chiusir@163.com
+【软件版本】V1.2 版权所有，单位使用请先联系授权
+【最后更新】2023年6月6日
+【相关信息参考下列地址】
+【网    站】http://www.lqist.cn
+【淘宝店铺】http://longqiu.taobao.com
 ------------------------------------------------
-��dev.env.��AURIX Development Studio1.6�汾
-��Target �� TC264DA/TC264D
-��Crystal�� 20.000Mhz
-��SYS PLL�� 200MHz
+【dev.env.】AURIX Development Studio1.6版本
+【Target 】 TC264DA/TC264D
+【Crystal】 20.000Mhz
+【SYS PLL】 200MHz
 ________________________________________________________________
-����iLLD_1_0_1_11_0�ײ����,
+基于iLLD_1_0_1_11_0底层程序,
 
-ʹ�����̵�ʱ�򣬽������û�пո��Ӣ��·����
-����CIFΪTC264DA�����⣬�����Ĵ������TC264D
-����Ĭ�ϳ�ʼ����EMEM��512K������û�ʹ��TC264D��ע�͵�EMEM_InitConfig()��ʼ��������
-������\Libraries\iLLD\TC26B\Tricore\Cpu\CStart\IfxCpu_CStart0.c��164�����ҡ�
-ASC�첽����ͨ�ţ�������ΪUART������LIN����ʹ�ã�
+使用例程的时候，建议采用没有空格的英文路径，
+除了CIF为TC264DA独有外，其它的代码兼容TC264D
+本库默认初始化了EMEM：512K，如果用户使用TC264D，注释掉EMEM_InitConfig()初始化函数。
+工程下\Libraries\iLLD\TC26B\Tricore\Cpu\CStart\IfxCpu_CStart0.c第164行左右。
+ASC异步串行通信，可以作为UART和汽车LIN总线使用，
 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 #ifndef _LQ_ASC_H_
 #define _LQ_ASC_H_
@@ -37,69 +37,69 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 #include <IfxPort_regdef.h>
 #include <stdbool.h>
 
-/** UART0�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART0接收中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART0_RX_PRIORITY    120
 
-/** UART0�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART0发送中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART0_TX_PRIORITY    121
 
-/** UART0�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART0错误中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART0_ER_PRIORITY    122
 
-/** UART0�жϷ��������ȼ� �жϹ��ĸ��ں˹��� ��Χ��0��CPU0   1��CPU1   3��DMA*/
+/** UART0中断服务函数所在内核 中断挂在哪个内核 范围：0：CPU0   1：CPU1   3：DMA*/
 #define  UART0_VECTABNUM    0
 
 
-/** UART1�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART1接收中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART1_RX_PRIORITY    130
 
-/** UART1�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART1发送中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART1_TX_PRIORITY    131
 
-/** UART1�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART1错误中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART1_ER_PRIORITY    132
 
-/** UART1�жϷ��������ȼ� �жϹ��ĸ��ں˹��� ��Χ��0��CPU0   1��CPU1   3��DMA*/
+/** UART1中断服务函数所在内核 中断挂在哪个内核 范围：0：CPU0   1：CPU1   3：DMA*/
 #define  UART1_VECTABNUM    0
 
 
-/** UART2�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART2接收中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART2_RX_PRIORITY    140
 
-/** UART2�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART2发送中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART2_TX_PRIORITY    141
 
-/** UART2�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART2错误中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART2_ER_PRIORITY    142
 
-/** UART2�жϷ��������ȼ� �жϹ��ĸ��ں˹��� ��Χ��0��CPU0   1��CPU1   3��DMA*/
+/** UART2中断服务函数所在内核 中断挂在哪个内核 范围：0：CPU0   1：CPU1   3：DMA*/
 #define  UART2_VECTABNUM    0
 
 
-/** UART3�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART3接收中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART3_RX_PRIORITY    150
 
-/** UART3�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART3发送中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART3_TX_PRIORITY    151
 
-/** UART3�����жϷ��������ȼ�   ��Χ��1-255   ����Խ�� ���ȼ�Խ��  ע�����ȼ���Ҫ�ظ� */
+/** UART3错误中断服务函数优先级   范围：1-255   数字越大 优先级越高  注意优先级不要重复 */
 #define  UART3_ER_PRIORITY    152
 
-/** UART3�жϷ��������ȼ� �жϹ��ĸ��ں˹��� ��Χ��0��CPU0   1��CPU1   3��DMA*/
+/** UART3中断服务函数所在内核 中断挂在哪个内核 范围：0：CPU0   1：CPU1   3：DMA*/
 #define  UART3_VECTABNUM    0
 
 /**
-  * @brief UART ö��
+  * @brief UART 枚举
   */
 typedef enum
 {
-	UART0 = 0,
-	UART1,
-	UART2,
-	UART3
+    UART0 = 0,
+    UART1,
+    UART2,
+    UART3
 }UART_t;
 
-//L.Q UART RX �ܽ�ö��
+//L.Q UART RX 管脚枚举
 typedef enum
 {
     UART0_RX_P14_1 = 0xB401, UART0_RX_P15_3 = 0xB503,
@@ -113,7 +113,7 @@ typedef enum
 }UART_RX_t;
 
 
-//L.Q UART TX �ܽ�ö��
+//L.Q UART TX 管脚枚举
 typedef enum
 {
     UART0_TX_P14_0 = 0xB400, UART0_TX_P14_1 = 0xB401, UART0_TX_P15_2 = 0xB502, UART0_TX_P15_3 = 0xB503,
@@ -174,10 +174,10 @@ char UART_GetBuff(UART_t  uratn, unsigned char *data, unsigned char len);
 //#define    last_is_fourth_turning_left_line     10
 //#define    last_is_stop_line    11
 
-// 4�ֽ� float �� unsigned char[4] ����ӳ��
+// 4字节 float 与 unsigned char[4] 的联合体内存映射
 typedef union {
-    float f;               // ������
-    unsigned char bytes[4];// 4���ֽ�
+    float f;               // 浮点数
+    unsigned char bytes[4];// 4个字节
 } FloatByteUnion;
 
 // extern volatile FloatByteUnion deviation;
@@ -225,43 +225,49 @@ typedef enum{
     YELLOW_BALL = 2,
 }TASK4_BALL_STATE;
 
-#define HEADER 0xAA                         /* ��ʼ�� */
-#define device_address 0x00     /* �豸��ַ */
-#define chunk_offset 0x00       /* ƫ�Ƶ�ַ���� */
-#define PACK_GET_DISTANCE 0x02  /* ��ȡ������������ */
-#define PACK_RESET_SYSTEM 0x0D  /* ��λ���� */
-#define PACK_STOP 0x0F                /* ֹͣ�������ݴ������� */
-#define PACK_ACK 0x10           /* Ӧ�������� */
-#define PACK_VERSION 0x14       /* ��ȡ��������Ϣ���� */
+typedef enum{
+    IDLE_COLOR = 0,
+    BLUE_COLOR = 1,
+    YELLOW_COLOR = 2,
+}TASK5_COLOR_STATE;
+
+#define HEADER 0xAA                         /* 起始符（帧头） */
+#define device_address 0x00     /* 设备地址 */
+#define chunk_offset 0x00       /* 偏移地址参数 */
+#define PACK_GET_DISTANCE 0x02  /* 获取测距数据命令 */
+#define PACK_RESET_SYSTEM 0x0D  /* 复位命令 */
+#define PACK_STOP 0x0F                /* 停止发送数据传输命令 */
+#define PACK_ACK 0x10           /* 应答包命令 */
+#define PACK_VERSION 0x14       /* 获取厂商配置信息命令 */
 
 
 typedef struct {
-    int16_t distance;                       /* �������ݣ�����Ŀ����뵥λ mm */
-    uint16_t noise;                             /* ������������ǰ���������µ��ⲿ����������Խ��˵������Խ�� */
-    uint32_t peak;                              /* ����ǿ����Ϣ������Ŀ�귴��صĹ�ǿ�� */
-    uint8_t confidence;                     /* ���Ŷȣ��ɻ��������ͽ���ǿ����Ϣ�ںϺ�Ĳ�����Ŀ��Ŷ� */
-    uint32_t intg;                          /* ���ִ�������ǰ�����������Ļ��ִ��� */
-    int16_t reftof;                         /* �¶ȱ���ֵ������оƬ�ڲ��¶ȱ仯����ֵ��ֻ��һ���¶ȱ仯���޷�����ʵ�¶ȶ�Ӧ */
+    int16_t distance;                       /* 测距数据，表示目标距离，单位 mm */
+    uint16_t noise;                             /* 噪声，代表当前环境光照下的外部干扰量，值越大说明干扰越大 */
+    uint32_t peak;                              /* 反射强度信息，代表目标反射回来的光强度 */
+    uint8_t confidence;                     /* 置信度，由环境噪声和接收强度信息融合后得到的测量点可信度 */
+    uint32_t intg;                          /* 积分次数，代表当前测量点采样使用的积分次数 */
+    int16_t reftof;                         /* 温度补偿值，代表芯片内部温度变化的参考值，只是一个温度变化量，无法与真实温度对应 */
 }LidarPointTypedef;
 
 struct AckResultData{
-    uint8_t ack_cmd_id;                     /* �𸴵����� id */
-    uint8_t result;                             /* 1��ʾ�ɹ�,0��ʾʧ�� */
+    uint8_t ack_cmd_id;                     /* 回复的命令 id */
+    uint8_t result;                             /* 1表示成功,0表示失败 */
 };
 
 struct LiManuConfig
 {
-    uint32_t version;                       /* ����汾�� */
-    uint32_t hardware_version;      /* Ӳ���汾�� */
-    uint32_t manufacture_date;      /* �������� */
-    uint32_t manufacture_time;      /* ����ʱ�� */
-    uint32_t id1;                               /* �豸 id1 */
-    uint32_t id2;                               /* �豸 id2 */
-    uint32_t id3;                               /* �豸 id3 */
+    uint32_t version;                       /* 软件版本号 */
+    uint32_t hardware_version;      /* 硬件版本号 */
+    uint32_t manufacture_date;      /* 生产日期 */
+    uint32_t manufacture_time;      /* 生产时间 */
+    uint32_t id1;                               /* 设备 id1 */
+    uint32_t id2;                               /* 设备 id2 */
+    uint32_t id3;                               /* 设备 id3 */
     uint8_t sn[8];                              /* sn */
-    uint16_t pitch_angle[4];            /* �Ƕ���Ϣ */
-    uint16_t blind_area[2];             /* ä����Ϣ */
-    uint32_t frequence;                     /* ���ݵ�Ƶ */
+    uint16_t pitch_angle[4];            /* 角度信息 */
+    uint16_t blind_area[2];             /* 盲区信息 */
+    uint32_t frequence;                     /* 数据点频 */
 };
 
 extern uint16_t receive_cnt;
