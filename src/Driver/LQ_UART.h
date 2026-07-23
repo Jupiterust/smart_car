@@ -226,6 +226,12 @@ typedef enum{
 }TASK4_BALL_STATE;
 
 typedef enum{
+    IDLE_ACTION = 0,
+    PICK_ACTION = 1,
+    MOVE_ACTION = 2,
+}TASK4_ACTION_STATE;
+
+typedef enum{
     IDLE_COLOR = 0,
     BLUE_COLOR = 1,
     YELLOW_COLOR = 2,
@@ -280,7 +286,7 @@ extern IfxAsclin_Asc g_UartConfig[4];
 extern volatile uint32_t rx_irq_count;
 
 extern volatile TASK4_BALL_STATE task4_ball_current_state;
-extern volatile bool does_task4_start_action;
+extern volatile does_task4_start_action;
 extern volatile uint8_t blue_ball_number;
 
 #endif /* 0_APPSW_TRICORE_APP_LQ_ASC_H_ */

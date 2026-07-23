@@ -318,9 +318,14 @@ int core0_main (void)
 //////
 //    delayms(2000);
     //TASK1_PUT_OBJECT();
-//    UART_PutChar(UART3,'a');
-//    delayms(4000);
-//    UART_PutChar(UART3, 'b');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+    UART_PutChar(UART3,'a');
+ //  UART_PutChar(UART3, 'b');
 
     static volatile bool temp_flag1 = false;
     wheel_system_tick.does_tick_start = true;
@@ -441,6 +446,7 @@ int core0_main (void)
 
         TASK3_WORKFLOW(worm_record_array);
 
+        //TASK4_WORKFLOW();
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 显示 巡线速度
         sprintf(txt,"F%d %d %d %d ",(int)following_speed[0],(int)following_speed[1], (int)following_speed[2],(int)following_speed[3]);

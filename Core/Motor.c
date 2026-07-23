@@ -1448,7 +1448,9 @@ void position_loop(coordinate_struct *Points){
             if(task4_start_correct == true){
                 task4_start_correct = false;
             }
-
+            if(task4_move_to_next_point){
+                task4_move_to_next_point = false;
+            }
             break;
             /*
 //            Points[index].flag = dis_start_y;
@@ -1636,6 +1638,7 @@ void position_loop(coordinate_struct *Points){
             tem_pwm[3] = 0;
 
             motor_all_run((int *)tem_pwm);
+            // task1
             if(is_task1_wheels_moving_to_next_point == true){
                 is_task1_wheels_moving_to_next_point = false;
             }
@@ -1684,9 +1687,17 @@ void position_loop(coordinate_struct *Points){
             if(task3_shoot_move_s[3] == true){
                 task3_shoot_move_s[3] = false;
             }
+            // task4
             if(task4_start_correct == true){
                 task4_start_correct = false;
             }
+            if(task4_move_to_next_point){
+                task4_move_to_next_point = false;
+                if(does_task4_start_action == MOVE_ACTION){
+                    does_task4_start_action = IDLE_ACTION;
+                }
+            }
+
 //            if(temp_test_flag == 1){
 //                does_task_work_flow_start = false;
 //                task2_current_state = TASK2_SECOND_CALIBRATION;

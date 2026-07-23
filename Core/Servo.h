@@ -121,6 +121,11 @@ extern volatile bool task3_shoot_arrive_s[4];
 void TASK3_WORKFLOW(volatile uint8_t* worm_record_array);
 
 void TASK3_WATCH_WORM(void);
+
+
+
+
+extern volatile bool task4_move_to_next_point;
 void TASK4_WATCH_BALL(void);
 
 

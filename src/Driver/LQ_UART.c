@@ -112,6 +112,7 @@ static uint8_t rx_count3_2 = 0;
 static uint8_t rx_count2 = 0;   // 任务2
 static uint8_t rx_count4 = 0;   // 任务4
 static uint8_t rx_count5 = 0;   // 任务5
+static uint8_t rx_count6 = 0;   // 任务5
    // 循迹
 static float   current_deviation = 0.0f;
 // 误差可视化
@@ -135,7 +136,7 @@ volatile char task_start_signal_from_me = 'A';
 
     // task4
 volatile TASK4_BALL_STATE task4_ball_current_state = IDLE_BALL;
-volatile bool does_task4_start_action = false;
+volatile TASK4_ACTION_STATE does_task4_start_action = IDLE_ACTION;
 volatile uint8_t blue_ball_number = 0;
 
 volatile uint8_t yellow_ball_number = 0;
@@ -166,6 +167,7 @@ void UART0_RX_IRQHandler(void)
                 else if (one_byte == 0x05) rx_count4 = 0, rx_state = 10;
                 else if (one_byte == 0x06) rx_count5 = 0, rx_state = 12;
                 else if (one_byte == 0x10) rx_count3_2 = 0,rx_state = 14;
+                else if (one_byte == 0x07) rx_count6 = 0, rx_state = 16;
                 // 0x03
                 // 0x04
                 // 任务3
@@ -280,7 +282,7 @@ void UART0_RX_IRQHandler(void)
                         following_speed[2] = 0;
                         following_speed[3] = 0;
                         task1_start_yaw_correction = false;
-                    }
+                        }
 
                     else {
                         // 这里本来是位置环结果，但是因为帧率低，而放弃
@@ -437,16 +439,26 @@ void UART0_RX_IRQHandler(void)
                 rx_state = 0;
                 if (one_byte == 0x0D)
                 {
-                    if(does_task4_start_action == true){
+                    if(does_task4_start_action != IDLE_ACTION){
                         return ;
                     }
                     int16_t x_offset = (int16_t)((temp_buffer4[0]) | (temp_buffer4[1] << 8));
                     int16_t y_offset = (int16_t)((temp_buffer4[2]) | (temp_buffer4[3] << 8));
                     float x_offset_f = x_offset * 0.8;
                     float y_offset_f = y_offset * 0.8;
-                    task4_ball_current_state = (TASK4_BALL_STATE)temp_buffer4[4];
-                    does_task4_start_action = (bool)temp_buffer4[5];
-                    if(does_task4_start_action == true){
+                    does_task4_start_action  = (TASK4_ACTION_STATE)temp_buffer4[4];
+                    task4_ball_current_state =   (TASK4_BALL_STATE)temp_buffer4[5];
+
+                    if(does_task4_start_action == MOVE_ACTION){
+                        following_speed[0] = 0;
+                        following_speed[1] = 0;
+                        following_speed[2] = 0;
+                        following_speed[3] = 0;
+                        TASK4_STEP_MOVE1[0].flag = dis_start_y;
+                        TASK4_STEP_MOVE1[0].position.x_y_path = 0;
+                        task4_move_to_next_point = true;
+                    }
+                    else if(does_task4_start_action == PICK_ACTION){
                         following_speed[0] = 0;
                         following_speed[1] = 0;
                         following_speed[2] = 0;
@@ -505,11 +517,11 @@ void UART0_RX_IRQHandler(void)
                 temp_speed[2] = x_offset_f + y_offset_f;
                 temp_speed[3] = x_offset_f - y_offset_f;
                 for(u8 i =0; i < 4; i++){
-                    if(temp_speed[i] > 20){
-                        temp_speed[i] = 20;
+                    if(temp_speed[i] > 30){
+                        temp_speed[i] = 30;
                     }
-                    else if(temp_speed[i] < -20){
-                        temp_speed[i] = -20;
+                    else if(temp_speed[i] < -30){
+                        temp_speed[i] = -30;
                     }
                 }
                 following_speed[0] = temp_speed[0];
@@ -557,6 +569,9 @@ void UART0_RX_IRQHandler(void)
                 following_speed[1] = temp_speed[1];
                 following_speed[2] = temp_speed[2];
                 following_speed[3] = temp_speed[3];
+                break;
+            }
+            case 16:{
                 break;
             }
             default:
@@ -1011,7 +1026,7 @@ void UART_InitConfig(UART_RX_t RxPin, UART_TX_t TxPin, unsigned long baudrate)
             ascConfig.rxBufferSize = ASC_RX_BUFFER_SIZE;
 
             IfxAsclin_Asc_initModule(&g_UartConfig[IfxAsclin_getIndex(IfxAsclin_Tx->module)], &ascConfig);
-           // IfxAsclin_Asc_initModuleConfig(&ascConfig, IfxAsclin_Tx->module);
+            IfxAsclin_Asc_initModuleConfig(&ascConfig, IfxAsclin_Tx->module);
 
             IfxCpu_Irq_installInterruptHandler((void*)UartIrqFuncPointer[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3],     UartIrqPriority[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3]);
             IfxCpu_Irq_installInterruptHandler((void*)UartIrqFuncPointer[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3 + 1], UartIrqPriority[IfxAsclin_getIndex(IfxAsclin_Tx->module) * 3 + 1]);

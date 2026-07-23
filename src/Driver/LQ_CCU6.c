@@ -233,6 +233,11 @@ void CCU60_CH0_IRQHandler(void)
         position_loop((coordinate_struct *)TASK4_CORRECT_MOVE);
         return;
     }
+    if(task4_move_to_next_point){
+        is_position_loop_done = false;
+        position_loop((coordinate_struct *)TASK4_STEP_MOVE1);
+        return;
+    }
 
 //    if(temp_test_flag == 1){
 //        did_this_work++;

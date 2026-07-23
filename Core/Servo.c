@@ -873,7 +873,6 @@ void TASK3_WORKFLOW(volatile uint8_t* worm_record_array){
         TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] * 7.43f;
     }
     else if(all_target_num == 2){
-
         TASK3_SHOOT_IN_ONE_DIS_S1[0].delta_distance.x_y_path = target_index_record[0] * 7.43f;
         TASK3_SHOOT_IN_ONE_DIS_S2[0].delta_distance.x_y_path = (target_index_record[1] - target_index_record[0]) * 7.43f;
     }
@@ -920,6 +919,8 @@ task3_finish:
 //task4
 
 //volatile float task4_idle_state[4] = {0};
+volatile bool task4_move_to_next_point = false;
+
 volatile float task4_watch_all_ball[4] = {90, 35, -23, 93};
 volatile float task4_pick_ball_up[4] = {0};
 
@@ -964,6 +965,13 @@ void TASK4_WORKFLOW(void){
             FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
             delayms(1000);
 
+//            // 移动 和转向同时进行，且移动比转动机械臂快得多
+            TASK4_STEP_MOVE1[0].flag = dis_start_y;
+            TASK4_STEP_MOVE1[0].position.x_y_path = 0;
+            task4_move_to_next_point = true;
+//////////////////////////////////////////////////////////
+
+
             SyncArray[0].angle = task4_put_blue_ball_on_my_car[0];  SyncArray[0].interval_single = 1000;
 
             SyncArray[1].angle = task4_put_blue_ball_on_my_car[1];  SyncArray[1].interval_single = 500;
@@ -975,6 +983,16 @@ void TASK4_WORKFLOW(void){
             delayms(1500);
             my_dummy.pump_state = PUMP_OFF;
             air_pump_pick_up();
+
+            SyncArray[0].angle = task4_watch_all_ball[0];  SyncArray[0].interval_single = 1000;
+
+            SyncArray[1].angle = task4_watch_all_ball[1];  SyncArray[1].interval_single = 500;
+
+            SyncArray[2].angle = task4_watch_all_ball[2];  SyncArray[2].interval_single =  10;
+
+            SyncArray[3].angle = task4_watch_all_ball[3];  SyncArray[3].interval_single =  10;
+            FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
+
         }
         else if(task4_ball_current_state == YELLOW_BALL){
             SyncArray[0].angle = task4_yellow_mid_state[0];  SyncArray[0].interval_single = 1000;
@@ -987,6 +1005,7 @@ void TASK4_WORKFLOW(void){
             FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
             delayms(1000);
 
+
             SyncArray[0].angle = task4_put_yellow_ball_on_my_car[0];  SyncArray[0].interval_single = 1000;
 
             SyncArray[1].angle = task4_put_yellow_ball_on_my_car[1];  SyncArray[1].interval_single = 500;
@@ -998,8 +1017,19 @@ void TASK4_WORKFLOW(void){
             delayms(1500);
             my_dummy.pump_state = PUMP_OFF;
             air_pump_pick_up();
+
+
+            SyncArray[0].angle = task4_watch_all_ball[0];  SyncArray[0].interval_single = 1000;
+
+            SyncArray[1].angle = task4_watch_all_ball[1];  SyncArray[1].interval_single = 500;
+
+            SyncArray[2].angle = task4_watch_all_ball[2];  SyncArray[2].interval_single =  10;
+
+            SyncArray[3].angle = task4_watch_all_ball[3];  SyncArray[3].interval_single =  10;
+            FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
         }
         task4_ball_current_state = IDLE_BALL;
+        does_task4_start_action = false;
     }
 }
 
@@ -1012,19 +1042,20 @@ volatile float task5_pick_yellow_ball_up_from_my_car[4] = {0};
 volatile float task5_mid_blue_ball_state[4] = {0};
 volatile float task5_mid_yellow_ball_state[4] = {0};
 
+void TASK5_WORKFLOW(void){
+  //  if()
+    for(uint8_t i = 0; i < 0; i++){
+        SyncArray[0].angle = task4_watch_all_ball[0];  SyncArray[0].interval_single = 1000;
 
+        SyncArray[1].angle = task4_watch_all_ball[1];  SyncArray[1].interval_single = 500;
 
+        SyncArray[2].angle = task4_watch_all_ball[2];  SyncArray[2].interval_single =  10;
 
+        SyncArray[3].angle = task4_watch_all_ball[3];  SyncArray[3].interval_single =  10;
+        FSUS_SyncCommand(servo_usart, sync_count, sync_mode, SyncArray);
 
-
-
-
-
-
-
-
-
-
+    }
+}
 
 void TASK1_PICK_OBJECT_UP(void){
 
