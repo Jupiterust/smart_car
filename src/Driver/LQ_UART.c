@@ -101,12 +101,15 @@ static uint8_t temp_buffer[4]  = {0};
 static uint8_t temp_buffer1[6] = {0};
 static uint8_t temp_buffer2[5] = {0};
 static uint8_t temp_buffer3[3] = {0};
+static uint8_t temp_buffer3_2[5] = {0};
 static uint8_t temp_buffer4[6] = {0};
 static uint8_t temp_buffer5[6] = {0};
 
 static uint8_t rx_count  = 0;    // 循迹
 static uint8_t rx_count1 = 0;   // 任务1
 static uint8_t rx_count3 = 0;   // 任务3
+static uint8_t rx_count3_2 = 0;
+
 static uint8_t rx_count2 = 0;   // 任务2
 static uint8_t rx_count4 = 0;   // 任务4
 static uint8_t rx_count5 = 0;   // 任务5
@@ -163,6 +166,7 @@ void UART0_RX_IRQHandler(void)
                 else if (one_byte == 0x03) rx_count2 = 0, rx_state = 8;
                 else if (one_byte == 0x05) rx_count4 = 0, rx_state = 10;
                 else if (one_byte == 0x06) rx_count5 = 0, rx_state = 12;
+                else if (one_byte == 0x10) rx_count3_2 = 0,rx_state = 14;
                 // 0x03
                 // 0x04
                 // 任务3
@@ -194,7 +198,7 @@ void UART0_RX_IRQHandler(void)
                         if(is_crossing_line2 == true){
                             return;
                         }
-                        if(is_waiting_for_task_record == true){
+                        if(temp_task3_speed_stop == true){
                             return;
                         }
                         if(tast3_prepare_to_shoot == true || tast3_start_to_correct == true){
@@ -267,6 +271,7 @@ void UART0_RX_IRQHandler(void)
                         following_speed[2] = 0;
                         following_speed[3] = 0;
                         task1_start_yaw_correction = false;
+
                     }
                     else if(temp_pick_or_put == servo_put_down_from_camera){
                         put_times++;
@@ -328,26 +333,31 @@ void UART0_RX_IRQHandler(void)
                 {
                     // 最先处理
                     // 无论帧尾是否正确，都回到状态0重新寻找
+                    if(does_task3_start_to_count != true){
+                        return;
+                    }
                     rx_state = 0;
                     if (one_byte == 0x0D){
-                        if(temp_buffer3[0] == 1){
+                        if(temp_buffer3[0] == 0){
                             following_speed[0] = 0;
                             following_speed[1] = 0;
                             following_speed[2] = 0;
                             following_speed[3] = 0;
                         }
                         else {
-                            following_speed[0] = 9;
-                            following_speed[1] = 9;
-                            following_speed[2] = 9;
-                            following_speed[3] = 9;
+                            following_speed[0] = 3.96;
+                            following_speed[1] = 3.96;
+                            following_speed[2] = 3.96;
+                            following_speed[3] = 3.96;
                         }
+                        // 只有摄像头4全部识别完后才会发送害虫标记，然后 一个害虫都没有的情况是不可能发送的
                         if(temp_buffer3[1] != 0){
-                            worm_record_array[0] = (temp_buffer3[1] & 0x01) ? 0 : 1;
-                            worm_record_array[1] = (temp_buffer3[1] & 0x02) ? 0 : 1;
-                            worm_record_array[2] = (temp_buffer3[1] & 0x04) ? 0 : 1;
-                            worm_record_array[3] = (temp_buffer3[1] & 0x08) ? 0 : 1;
+                            worm_record_array[0] = (temp_buffer3[1] >> 0) & 0x01;
+                            worm_record_array[1] = (temp_buffer3[1] >> 1) & 0x01;
+                            worm_record_array[2] = (temp_buffer3[1] >> 2) & 0x01;
+                            worm_record_array[3] = (temp_buffer3[1] >> 3) & 0x01;
                             is_waiting_for_task_record = false;
+                            does_task2_dummy_move = true;
                         }
                     }
                 }
@@ -445,10 +455,9 @@ void UART0_RX_IRQHandler(void)
                         if(task4_ball_current_state == BLUE_BALL){
                             blue_ball_number++;
                         }
-                        if(task4_ball_current_state == BLUE_BALL){
+                        if(task4_ball_current_state == YELLOW_BALL){
                             yellow_ball_number++;
                         }
-                        task4_ball_current_state = IDLE_BALL;
                         return;
                     }
                     float temp_speed[4] = {0};
@@ -478,6 +487,47 @@ void UART0_RX_IRQHandler(void)
             }
             case 13:{
 
+
+                break;
+            }
+            case 14:{
+                temp_buffer3_2[rx_count3_2++] = one_byte;
+                if(rx_count3_2 >= 5) rx_state = 15;
+                break;
+            }
+            case 15:{
+                rx_state = 0;
+                int16_t x_offset = (int16_t)((temp_buffer3_2[0]) | (temp_buffer3_2[1] << 8));
+                int16_t y_offset = (int16_t)((temp_buffer3_2[2]) | (temp_buffer3_2[3] << 8));
+                float x_offset_f = x_offset * 0.8;
+                float y_offset_f = y_offset * 0.8;
+                uint8_t does_correct_done = temp_buffer3_2[4];
+                if(does_correct_done  == 1){
+                    following_speed[0] = 0;
+                    following_speed[1] = 0;
+                    following_speed[2] = 0;
+                    following_speed[3] = 0;
+                    task3_speed_edit = false;
+                    tast3_start_to_shoot = true;
+                    return;
+                }
+                float temp_speed[4] = {0};
+                temp_speed[0] = x_offset_f - y_offset_f;
+                temp_speed[1] = x_offset_f + y_offset_f;
+                temp_speed[2] = x_offset_f + y_offset_f;
+                temp_speed[3] = x_offset_f - y_offset_f;
+                for(u8 i =0; i < 4; i++){
+                    if(temp_speed[i] > 20){
+                        temp_speed[i] = 20;
+                    }
+                    else if(temp_speed[i] < -20){
+                        temp_speed[i] = -20;
+                    }
+                }
+                following_speed[0] = temp_speed[0];
+                following_speed[1] = temp_speed[1];
+                following_speed[2] = temp_speed[2];
+                following_speed[3] = temp_speed[3];
                 break;
             }
             default:

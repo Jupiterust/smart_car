@@ -109,15 +109,18 @@ void TASK2_PICK_AND_PUT_DROP_WATER_WORKFLOW(void);
 
 
 
+
+
 // task3
-// ÒÆ¶¯´¥·¢Æì±ê£¨ÓÉ WORKFLOW ÖÃÎ»£¬ÖÐ¶Ï¼ì²â£©
+// ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¨ï¿½ï¿½ WORKFLOW ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ð¶Ï¼ï¿½â£©
 extern volatile bool task3_shoot_move_s[4];
 
-// µ½´ïÈ·ÈÏÆì±ê£¨ÓÉ dis_idle/dis_end ÖÃÎ»£¬WORKFLOW ÂÖÑ¯£©
+// ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ê£¨ï¿½ï¿½ dis_idle/dis_end ï¿½ï¿½Î»ï¿½ï¿½WORKFLOW ï¿½ï¿½Ñ¯ï¿½ï¿½
 extern volatile bool task3_shoot_arrive_s[4];
 
+void TASK3_WORKFLOW(volatile uint8_t* worm_record_array);
 
-
+void TASK3_WATCH_WORM(void);
 void TASK4_WATCH_BALL(void);
 
 

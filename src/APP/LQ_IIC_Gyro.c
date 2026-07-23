@@ -204,40 +204,6 @@ void Test_IIC_Gyro(void)
 }
 
 
-void Test_LQ6050_DMP(void)
-{
-  char txt[30];
-  IIC_Init();
-  TFTSPI_Init(1);               // TFT2.0初始化0:横屏  1：竖屏
-  TFTSPI_CLS(u16BLACK);         // 清屏
-  TFTSPI_P8X16Str(2,0,"LQ 6050 Test", u16RED, u16BLACK);
-//  UART_PutStr(UART1, "LQ MPU6050 Test\r\n");
-  LQ_DMP_Init();
-
-  while(1)
-  {
-    LQ_DMP_Read();
-
-    sprintf((char*)txt,"Pitch:%.02f", Pitch);
-    TFTSPI_P8X16Str(0,1,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"Roll:%.02f", Roll);
-    TFTSPI_P8X16Str(0,2,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"YAW:%.02f", Yaw);
-    TFTSPI_P8X16Str(0,3,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"ax:%06d",accel[0]);
-    TFTSPI_P8X16Str(0,4,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"ay:%06d",accel[1]);
-    TFTSPI_P8X16Str(0,5,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"az:%06d",accel[2]);
-    TFTSPI_P8X16Str(0,6,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"gx:%06d",gyro[0]);
-    TFTSPI_P8X16Str(0,7,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"gy:%06d",gyro[1]);
-    TFTSPI_P8X16Str(0,8,txt,u16RED,u16BLACK);
-    sprintf((char*)txt,"gz:%06d",gyro[2]);
-    TFTSPI_P8X16Str(0,9,txt,u16RED,u16BLACK);
-  }
-}
 
 /**
   * @brief    不精确延时

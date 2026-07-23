@@ -1,4 +1,2 @@
 eclipse.preferences.version=1
-encoding//src/APP/font.h=GBK
-encoding//src/Driver/LQ_UART.c=UTF-8
-encoding/<project>=GBK
+encoding/<project>=UTF-8

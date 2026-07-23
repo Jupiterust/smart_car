@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/CPATH/delimiter=;
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/CPATH/operation=remove
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/append=true
+environment/buildEnvironmentInclude/com.infineon.aurix.buildsystem.managed.configuration.binary.1184771093/appendContributed=true
